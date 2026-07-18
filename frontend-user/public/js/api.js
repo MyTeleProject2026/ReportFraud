@@ -1,7 +1,6 @@
 // API configuration
 // API_BASE should be set in Render environment variables
 const API_BASE = window.API_BASE || 'https://reportfraud-ftc-gov-api.onrender.com';
-
 // All API calls will use ${API_BASE}/api/...
 // Example: ${API_BASE}/api/auth/login
   // Settings
