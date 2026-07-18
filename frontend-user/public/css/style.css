@@ -1,4 +1,112 @@
-/* ===== HEADER ===== */
+/* ============================================================
+   RESET & BASE
+   ============================================================ */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    /* Official FTC Colors */
+    --primary: #003c78;
+    --primary-dark: #002a55;
+    --primary-light: #e8f0fe;
+    --secondary: #1a73e8;
+    --secondary-hover: #1557b0;
+    --warning: #f39c12;
+    --gray-50: #f8f9fa;
+    --gray-100: #f1f3f4;
+    --gray-200: #e8eaed;
+    --gray-300: #dadce0;
+    --gray-400: #bdc1c6;
+    --gray-500: #9aa0a6;
+    --gray-600: #80868b;
+    --gray-700: #5f6368;
+    --gray-800: #3c4043;
+    --gray-900: #202124;
+    --white: #ffffff;
+    --shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 8px 30px rgba(0, 0, 0, 0.15);
+    --radius: 6px;
+    --radius-lg: 12px;
+    --font: 'Public Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font);
+    color: var(--gray-900);
+    background: var(--white);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+    text-decoration: none;
+    color: var(--secondary);
+}
+
+a:hover {
+    color: var(--primary-dark);
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+/* ============================================================
+   OFFICIAL GOVERNMENT BANNER
+   ============================================================ */
+.gov-banner {
+    background: #1a1a1a;
+    color: var(--gray-300);
+    padding: 6px 0;
+    font-size: 0.8rem;
+    border-bottom: 2px solid var(--primary);
+}
+
+.gov-banner-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.gov-banner-left {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.gov-icon {
+    color: var(--gray-400);
+    font-size: 0.7rem;
+}
+
+.gov-text {
+    color: var(--gray-300);
+}
+
+.gov-link {
+    color: var(--gray-400);
+    text-decoration: underline;
+}
+
+.gov-link:hover {
+    color: var(--white);
+}
+
+/* ============================================================
+   HEADER
+   ============================================================ */
 .site-header {
     background: var(--white);
     padding: 12px 0;
@@ -96,8 +204,499 @@
     padding: 4px 8px;
 }
 
+/* ============================================================
+   BUTTONS
+   ============================================================ */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 28px;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: var(--radius);
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-family: var(--font);
+    text-decoration: none;
+}
+
+.btn-primary {
+    background: var(--primary);
+    color: var(--white);
+}
+
+.btn-primary:hover {
+    background: var(--primary-dark);
+    color: var(--white);
+    box-shadow: var(--shadow);
+}
+
+.btn-large {
+    padding: 16px 40px;
+    font-size: 1.1rem;
+}
+
+/* ============================================================
+   HERO SECTION
+   ============================================================ */
+.hero-section {
+    padding: 60px 0 80px;
+    background: var(--white);
+    text-align: center;
+}
+
+.hero-content h1 {
+    font-size: 3.2rem;
+    font-weight: 900;
+    color: var(--primary);
+    line-height: 1.2;
+    margin-bottom: 16px;
+    letter-spacing: -1px;
+}
+
+.hero-content .btn-large {
+    margin-bottom: 20px;
+}
+
+.hero-content p {
+    font-size: 1.2rem;
+    color: var(--gray-600);
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+/* ============================================================
+   HOW IT WORKS
+   ============================================================ */
+.how-it-works {
+    padding: 60px 0;
+    background: var(--gray-50);
+}
+
+.section-title {
+    text-align: center;
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: var(--gray-900);
+    margin-bottom: 40px;
+}
+
+.steps-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+}
+
+.step-card {
+    text-align: center;
+    padding: 32px 20px;
+    background: var(--white);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--gray-200);
+    transition: all 0.3s ease;
+}
+
+.step-card:hover {
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-4px);
+}
+
+.step-icon {
+    font-size: 2.4rem;
+    color: var(--primary);
+    margin-bottom: 16px;
+}
+
+.step-card h3 {
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: var(--gray-900);
+}
+
+.step-card p {
+    color: var(--gray-600);
+    font-size: 0.95rem;
+}
+
+/* ============================================================
+   HELP STOP FRAUD BANNER
+   ============================================================ */
+.stop-fraud-banner {
+    padding: 60px 0;
+    background: var(--white);
+    text-align: center;
+}
+
+.stop-fraud-banner h2 {
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: var(--gray-900);
+    margin-bottom: 8px;
+}
+
+.stop-fraud-banner p {
+    font-size: 1.1rem;
+    color: var(--gray-600);
+    margin-bottom: 24px;
+}
+
+.stop-actions {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.stop-or {
+    color: var(--gray-600);
+    font-size: 1rem;
+}
+
+.stop-link {
+    font-weight: 600;
+}
+
+/* ============================================================
+   SCAM WARNING
+   ============================================================ */
+.scam-warning-section {
+    padding: 30px 0;
+    background: #fef9e7;
+    border-top: 1px solid #f0e4c8;
+    border-bottom: 1px solid #f0e4c8;
+}
+
+.scam-warning {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    color: #7a5d00;
+    font-size: 0.95rem;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.scam-warning i {
+    color: var(--warning);
+    font-size: 1.2rem;
+    margin-top: 4px;
+    flex-shrink: 0;
+}
+
+.scam-link {
+    display: block;
+    text-align: center;
+    font-weight: 600;
+    margin-top: 12px;
+}
+
+/* ============================================================
+   TRUST SECTION (Blue Background)
+   ============================================================ */
+.trust-section {
+    padding: 60px 0;
+    background: var(--primary);
+    color: var(--white);
+}
+
+.trust-content {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.trust-content h2 {
+    font-size: 2.2rem;
+    font-weight: 800;
+    margin-bottom: 12px;
+}
+
+.trust-highlight {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 12px;
+}
+
+.trust-content p {
+    font-size: 1.05rem;
+    opacity: 0.9;
+    margin-bottom: 12px;
+}
+
+.trust-link {
+    color: #ffd966;
+    font-weight: 600;
+    text-decoration: underline;
+}
+
+.trust-link:hover {
+    color: #ffe599;
+}
+
+/* ============================================================
+   FINAL CTA
+   ============================================================ */
+.final-cta {
+    padding: 60px 0 80px;
+    background: var(--white);
+    text-align: center;
+}
+
+.final-cta h2 {
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: var(--gray-900);
+    margin-bottom: 8px;
+}
+
+.final-cta p {
+    font-size: 1.1rem;
+    color: var(--gray-600);
+    margin-bottom: 24px;
+}
+
+.final-cta a {
+    color: var(--secondary);
+}
+
+.final-cta a:hover {
+    color: var(--primary-dark);
+}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+.site-footer {
+    background: var(--gray-900);
+    color: var(--gray-400);
+    padding: 40px 0 20px;
+}
+
+.footer-top {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 40px;
+    padding-bottom: 30px;
+    border-bottom: 1px solid var(--gray-700);
+}
+
+.footer-brand .footer-logo {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--white);
+    display: block;
+    margin-bottom: 8px;
+}
+
+.footer-brand p {
+    font-size: 0.95rem;
+    margin-bottom: 8px;
+}
+
+.footer-brand a {
+    color: var(--gray-400);
+    text-decoration: underline;
+}
+
+.footer-brand a:hover {
+    color: var(--white);
+}
+
+.footer-links {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.footer-links a {
+    color: var(--gray-400);
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.footer-links a:hover {
+    color: var(--white);
+}
+
+/* Language Grid */
+.footer-language-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    padding: 24px 0;
+    border-bottom: 1px solid var(--gray-700);
+}
+
+.lang-col {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.lang-col a {
+    color: var(--gray-400);
+    font-size: 0.9rem;
+}
+
+.lang-col a:hover {
+    color: var(--white);
+}
+
+/* Footer Bottom */
+.footer-bottom {
+    padding-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 16px;
+    font-size: 0.85rem;
+    color: var(--gray-500);
+}
+
+.footer-omb p {
+    margin-bottom: 4px;
+}
+
+/* ============================================================
+   RESPONSIVE (Mobile & Tablet)
+   ============================================================ */
+@media (max-width: 992px) {
+    .hero-content h1 {
+        font-size: 2.6rem;
+    }
+
+    .steps-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .footer-top {
+        grid-template-columns: 1fr;
+        gap: 24px;
+    }
+
+    .footer-language-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
 @media (max-width: 768px) {
-    .menu-label {
+    .mobile-toggle {
+        display: block;
+    }
+
+    .main-nav {
+        display: none;
+        width: 100%;
+        padding-top: 12px;
+        border-top: 1px solid var(--gray-200);
+    }
+
+    .main-nav.open {
+        display: block;
+    }
+
+    .main-nav ul {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+    }
+
+    .main-nav ul li a,
+    .main-nav ul li .menu-label {
+        padding: 12px 16px;
+        border-radius: 0;
+    }
+
+    .main-nav ul li .menu-label {
+        display: none;
+    }
+
+    .main-nav ul li a.btn {
+        text-align: center;
+    }
+
+    .hero-content h1 {
+        font-size: 2rem;
+    }
+
+    .hero-content p {
+        font-size: 1rem;
+    }
+
+    .steps-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .step-card {
+        padding: 24px 16px;
+    }
+
+    .stop-actions {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .trust-content h2 {
+        font-size: 1.8rem;
+    }
+
+    .final-cta h2 {
+        font-size: 1.8rem;
+    }
+
+    .footer-language-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .footer-bottom {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .gov-banner-inner {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 4px;
+    }
+
+    .logo-text .logo-agency {
+        font-size: 0.6rem;
+    }
+
+    .logo-text .logo-site {
+        font-size: 0.9rem;
+    }
+
+    .site-logo {
+        height: 32px;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-content h1 {
+        font-size: 1.6rem;
+    }
+
+    .btn-large {
+        padding: 14px 24px;
+        font-size: 1rem;
+    }
+
+    .section-title {
+        font-size: 1.6rem;
+    }
+
+    .footer-language-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .logo-text .logo-agency {
         display: none;
     }
 }
