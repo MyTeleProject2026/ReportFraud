@@ -1,0 +1,57 @@
+services:
+  # Backend API Service
+  - type: web
+    name: reportfraud-backend
+    runtime: node
+    rootDir: backend
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: PORT
+        value: 5000
+      - key: DB_HOST
+        sync: false
+      - key: DB_PORT
+        sync: false
+      - key: DB_USER
+        sync: false
+      - key: DB_PASSWORD
+        sync: false
+      - key: DB_NAME
+        sync: false
+      - key: JWT_SECRET
+        generateValue: true
+      - key: JWT_EXPIRE
+        value: 7d
+      - key: CLOUDINARY_CLOUD_NAME
+        sync: false
+      - key: CLOUDINARY_API_KEY
+        sync: false
+      - key: CLOUDINARY_API_SECRET
+        sync: false
+      - key: FRONTEND_URL
+        value: https://reportfraud-user.onrender.com
+      - key: ADMIN_URL
+        value: https://reportfraud-admin.onrender.com
+
+  # Frontend User Static Site
+  - type: web
+    name: reportfraud-user
+    runtime: static
+    rootDir: frontend-user/public
+    buildCommand: echo "Static site - no build needed"
+    staticPublishPath: .
+    envVars:
+      - key: API_BASE
+        value: https://reportfraud-backend.onrender.com/api
+
+  # Frontend Admin Static Site
+  - type: web
+    name: reportfraud-admin
+    runtime: static
+    rootDir: frontend-admin/public
+    buildCommand: echo "Static site - no build needed"
+    staticPublishPath: .
+    envVars:
+      - key: API_BASE
+        value: https://reportfraud-backend.onrender.com/api
