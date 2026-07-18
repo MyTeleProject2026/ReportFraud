@@ -1,6 +1,30 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">
-    <rect width="100" height="100" fill="#003c78" rx="8" ry="8"/>
-    <text x="50" y="55" font-family="Arial, sans-serif" font-size="22" font-weight="bold" fill="white" text-anchor="middle">FTC</text>
-    <text x="50" y="75" font-family="Arial, sans-serif" font-size="9" fill="white" text-anchor="middle">FEDERAL TRADE</text>
-    <text x="50" y="88" font-family="Arial, sans-serif" font-size="9" fill="white" text-anchor="middle">COMMISSION</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 90" width="260" height="90">
+    <!-- Background -->
+    <rect width="260" height="90" fill="#003c78" rx="4" ry="4"/>
+    
+    <!-- White circular emblem -->
+    <circle cx="50" cy="45" r="32" fill="white"/>
+    <circle cx="50" cy="45" r="28" fill="none" stroke="#003c78" stroke-width="1.5"/>
+    
+    <!-- Stars inside circle (13 stars - simplified) -->
+    <circle cx="35" cy="35" r="2.5" fill="#003c78"/>
+    <circle cx="50" cy="30" r="2.5" fill="#003c78"/>
+    <circle cx="65" cy="35" r="2.5" fill="#003c78"/>
+    <circle cx="30" cy="48" r="2.5" fill="#003c78"/>
+    <circle cx="70" cy="48" r="2.5" fill="#003c78"/>
+    <circle cx="35" cy="58" r="2.5" fill="#003c78"/>
+    <circle cx="50" cy="63" r="2.5" fill="#003c78"/>
+    <circle cx="65" cy="58" r="2.5" fill="#003c78"/>
+    <circle cx="40" cy="42" r="2" fill="#003c78"/>
+    <circle cx="60" cy="42" r="2" fill="#003c78"/>
+    <circle cx="40" cy="52" r="2" fill="#003c78"/>
+    <circle cx="60" cy="52" r="2" fill="#003c78"/>
+    <circle cx="50" cy="48" r="2.5" fill="#003c78"/>
+    
+    <!-- "FEDERAL TRADE COMMISSION" text -->
+    <text x="95" y="38" font-family="'Public Sans', 'Arial', sans-serif" font-size="15" font-weight="800" fill="white" letter-spacing="1.2">FEDERAL TRADE</text>
+    <text x="95" y="58" font-family="'Public Sans', 'Arial', sans-serif" font-size="15" font-weight="800" fill="white" letter-spacing="1.2">COMMISSION</text>
+    
+    <!-- "ReportFraud.ftc.gov" text -->
+    <text x="95" y="75" font-family="'Public Sans', 'Arial', sans-serif" font-size="11" font-weight="400" fill="#ffd966" letter-spacing="0.5">ReportFraud.ftc.gov</text>
 </svg>
