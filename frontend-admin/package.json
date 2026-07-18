@@ -1,0 +1,9 @@
+{
+  "name": "reportfraud-admin",
+  "version": "1.0.0",
+  "description": "ReportFraud Frontend Admin",
+  "main": "public/index.html",
+  "scripts": {
+    "build": "echo 'Static site - no build needed'"
+  }
+}
