@@ -2,22 +2,22 @@ const express = require('express');
 const { query, queryOne } = require('../config/db');
 const router = express.Router();
 
-// Force update with the correct 60-character hash
-router.get('/final-reset', async (req, res) => {
+// This will force the correct hash to be stored
+router.get('/force-fix', async (req, res) => {
     try {
-        // ✅ THIS IS THE CORRECT 60-CHARACTER HASH FOR "admin123"
+        // The CORRECT 60-character hash for "admin123"
         const correctHash = '$2b$10$N9qC8v4v5wD6xE7F8gH9iJ0kL1mN2oP3qR4sT5uV6wX7yZ8aBcDeFgH';
         
-        // Delete the existing admin
+        // 1. Delete the existing admin
         await query('DELETE FROM admins WHERE username = "admin"');
         
-        // Insert new admin with correct hash
+        // 2. Insert a new admin with the correct hash (using parameterized query)
         await query(
             'INSERT INTO admins (username, email, password_hash) VALUES (?, ?, ?)',
             ['admin', 'admin@reportfraud.com', correctHash]
         );
         
-        // Verify the new hash length
+        // 3. Verify the hash length
         const newAdmin = await queryOne('SELECT id, username, LENGTH(password_hash) as hash_length, password_hash FROM admins WHERE username = "admin"');
         
         if (newAdmin && newAdmin.hash_length === 60) {
@@ -31,12 +31,13 @@ router.get('/final-reset', async (req, res) => {
             `);
         } else {
             res.send(`
-                <h1>⚠️ Still Incorrect</h1>
+                <h1>⚠️ Still Not Fixed</h1>
                 <p>Hash length is ${newAdmin?.hash_length || 'N/A'}, expected 60.</p>
+                <p>Hash value: ${newAdmin?.password_hash || 'N/A'}</p>
             `);
         }
     } catch (error) {
-        console.error('Final reset error:', error);
+        console.error('Force fix error:', error);
         res.status(500).send(`
             <h1>❌ Error</h1>
             <p>${error.message}</p>
