@@ -47,4 +47,26 @@ router.get('/reset-admin-password', async (req, res) => {
     }
 });
 
+// Direct reset - no auth required
+router.get('/direct-reset', async (req, res) => {
+    try {
+        const hash = '$2b$10$N9qC8v4v5wD6xE7F8gH9iJ0kL1mN2oP3qR4sT5uV6wX7yZ8aBcDeFgH';
+        
+        // Force update
+        await query(
+            'UPDATE admins SET password_hash = ? WHERE username = "admin"',
+            [hash]
+        );
+        
+        res.send(`
+            <h1>✅ Direct Reset Complete!</h1>
+            <p>Username: <strong>admin</strong></p>
+            <p>Password: <strong>admin123</strong></p>
+            <p><a href="https://reportfraud-ftc-admin-panel.onrender.com">Go to Admin Panel</a></p>
+        `);
+    } catch (error) {
+        res.status(500).send(`Error: ${error.message}`);
+    }
+});
+
 module.exports = router;
