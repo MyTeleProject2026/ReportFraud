@@ -1,0 +1,9 @@
+{
+  "name": "reportfraud-user",
+  "version": "1.0.0",
+  "description": "ReportFraud Frontend User",
+  "main": "public/index.html",
+  "scripts": {
+    "build": "echo 'Static site - no build needed'"
+  }
+}
