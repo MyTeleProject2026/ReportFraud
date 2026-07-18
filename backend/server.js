@@ -22,6 +22,7 @@ connectDB();
 
 // Middleware
 app.use(helmet());
+
 app.use(cors({
     origin: [
         'https://reportfraud-ftc-admim-panel.onrender.com',
@@ -32,6 +33,7 @@ app.use(cors({
     ],
     credentials: true
 }));
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
