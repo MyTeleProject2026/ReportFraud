@@ -6,7 +6,7 @@
     <title>ReportFraud - Report Fraud, Scams, and Bad Business Practices</title>
     <link rel="stylesheet" href="css/style.css" />
     <link rel="stylesheet" href="css/responsive.css" />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 </head>
 <body>
@@ -33,21 +33,16 @@
                 <div class="logo-container">
                     <a href="/" class="logo-link">
                         <img src="assets/images/ftc-logo.svg" alt="FTC Logo" class="site-logo" id="siteLogo" />
-                        <span class="site-name">ReportFraud.ftc.gov</span>
+                        <div class="logo-text">
+                            <span class="logo-agency">FEDERAL TRADE COMMISSION</span>
+                            <span class="logo-site">ReportFraud.ftc.gov</span>
+                        </div>
                     </a>
                 </div>
                 <nav class="main-nav" id="mainNav">
                     <ul>
                         <li><a href="#" data-key="nav_faqs">FAQs</a></li>
-                        <li class="language-dropdown">
-                            <button class="lang-toggle" id="langToggle">
-                                <i class="fas fa-globe"></i> <span data-key="nav_languages">Languages</span> <i class="fas fa-chevron-down"></i>
-                            </button>
-                            <ul class="lang-menu" id="langMenu">
-                                <li><a href="#" data-lang="en" class="lang-option active">English</a></li>
-                                <li><a href="#" data-lang="es" class="lang-option">Español</a></li>
-                            </ul>
-                        </li>
+                        <li><a href="#" data-key="nav_languages">Languages</a></li>
                         <li><a href="#" class="btn btn-primary btn-sm" data-key="nav_report">Report Now</a></li>
                     </ul>
                 </nav>
@@ -75,17 +70,23 @@
             <h2 class="section-title" data-key="how_title">How it works</h2>
             <div class="steps-grid">
                 <div class="step-card">
-                    <div class="step-icon"><i class="fas fa-pen"></i></div>
+                    <div class="step-icon">
+                        <i class="fas fa-pen"></i>
+                    </div>
                     <h3 data-key="step1_title">Tell us what happened</h3>
                     <p data-key="step1_desc">Report a scam, a company, or an unwanted call.</p>
                 </div>
                 <div class="step-card">
-                    <div class="step-icon"><i class="fas fa-list-check"></i></div>
+                    <div class="step-icon">
+                        <i class="fas fa-list-check"></i>
+                    </div>
                     <h3 data-key="step2_title">Get your next steps</h3>
                     <p data-key="step2_desc">Find out what you can do to protect yourself.</p>
                 </div>
                 <div class="step-card">
-                    <div class="step-icon"><i class="fas fa-shield-halved"></i></div>
+                    <div class="step-icon">
+                        <i class="fas fa-shield-halved"></i>
+                    </div>
                     <h3 data-key="step3_title">Help stop fraud</h3>
                     <p data-key="step3_desc">We use and share reports to help with investigations.</p>
                 </div>
@@ -93,29 +94,48 @@
         </div>
     </section>
 
-    <!-- ===== TRUST & AUTHORITY ===== -->
-    <section class="trust-section">
+    <!-- ===== HELP STOP FRAUD BANNER ===== -->
+    <section class="stop-fraud-banner">
         <div class="container">
-            <h2 data-key="trust_title">The power of ReportFraud.ftc.gov</h2>
-            <p data-key="trust_desc">Your report is shared with over 2,000 law enforcers.</p>
-            <p data-key="trust_note">We can't resolve your individual report, but we use reports to investigate and bring cases against fraud, scams, and bad business practices.</p>
-            <a href="#" class="trust-link" data-key="trust_privacy">Read our Privacy Act statement</a>
-            <div class="scam-warning">
-                <i class="fas fa-triangle-exclamation"></i>
-                <span data-key="scam_warning">Scammers are impersonating the FTC. Know that the FTC will never threaten you, say you must transfer your money to "protect it," or tell you to withdraw cash or buy gold and give it to someone.</span>
-                <a href="https://ftc.gov/impersonators" target="_blank" data-key="scam_link">Learn more at ftc.gov/impersonators</a>
+            <h2 data-key="stop_title">Help stop fraud</h2>
+            <p data-key="stop_desc">We use and share reports with our law enforcement partners to help with investigations.</p>
+            <div class="stop-actions">
+                <a href="#" class="btn btn-primary" data-key="stop_cta">Get started now.</a>
+                <span data-key="stop_or">Or you can</span>
+                <a href="#" class="stop-link" data-key="stop_faqs">browse our FAQs.</a>
             </div>
         </div>
     </section>
 
-    <!-- ===== REPORT CTA ===== -->
-    <section class="cta-section">
+    <!-- ===== SCAM WARNING ===== -->
+    <section class="scam-warning-section">
         <div class="container">
-            <div class="cta-content">
-                <h2 data-key="cta_title">Start your report now</h2>
-                <p data-key="cta_sub">or check out what is going on in your state or metro area by visiting <a href="https://ftc.gov/exploredata" target="_blank">ftc.gov/exploredata</a></p>
-                <a href="#" class="btn btn-primary btn-large" data-key="cta_button">Report Now</a>
+            <div class="scam-warning">
+                <i class="fas fa-triangle-exclamation"></i>
+                <span data-key="scam_warning">Scammers are impersonating the FTC. Know that the FTC will never threaten you, say you must transfer your money to "protect it," or tell you to withdraw cash or buy gold and give it to someone.</span>
             </div>
+            <a href="https://ftc.gov/impersonators" target="_blank" class="scam-link" data-key="scam_link">Learn more at ftc.gov/impersonators</a>
+        </div>
+    </section>
+
+    <!-- ===== TRUST & AUTHORITY ===== -->
+    <section class="trust-section">
+        <div class="container">
+            <div class="trust-content">
+                <h2 data-key="trust_title">The power of ReportFraud.ftc.gov</h2>
+                <p class="trust-highlight" data-key="trust_desc">Your report is shared with over 2,000 law enforcers.</p>
+                <p data-key="trust_note">We can't resolve your individual report, but we use reports to investigate and bring cases against fraud, scams, and bad business practices.</p>
+                <a href="#" class="trust-link" data-key="trust_privacy">Read our Privacy Act statement</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FINAL CTA ===== -->
+    <section class="final-cta">
+        <div class="container">
+            <h2 data-key="cta_title">Start your report now</h2>
+            <p data-key="cta_sub">or check out what is going on in your state or metro area by visiting <a href="https://ftc.gov/exploredata" target="_blank">ftc.gov/exploredata</a></p>
+            <a href="#" class="btn btn-primary btn-large" data-key="cta_button">Report Now</a>
         </div>
     </section>
 
@@ -129,24 +149,38 @@
                     <p data-key="footer_tips">Visit <a href="https://consumer.ftc.gov" target="_blank">consumer.ftc.gov</a> to find tips and learn how to avoid scams.</p>
                 </div>
                 <div class="footer-links">
-                    <h4 data-key="footer_privacy">Privacy Policy</h4>
-                    <h4 data-key="footer_faqs">FAQs</h4>
-                    <h4 data-key="footer_languages">Languages</h4>
-                    <div class="footer-lang-list">
-                        <a href="#" data-lang="ar">العربية</a>
-                        <a href="#" data-lang="zh-CN">简体中文</a>
-                        <a href="#" data-lang="zh-TW">繁體中文</a>
-                        <a href="#" data-lang="fr">Français</a>
-                        <a href="#" data-lang="hmn">Hmoob</a>
-                        <a href="#" data-lang="so">Soomaali</a>
-                        <a href="#" data-lang="es">Español</a>
-                        <a href="#" data-lang="ko">한국어</a>
-                        <a href="#" data-lang="ru">Русский</a>
-                        <a href="#" data-lang="vi">Tiếng Việt</a>
-                        <a href="#" data-lang="other">Other Languages</a>
+                    <div class="footer-link-group">
+                        <a href="#" data-key="footer_privacy">Privacy Policy</a>
+                    </div>
+                    <div class="footer-link-group">
+                        <a href="#" data-key="footer_faqs">FAQs</a>
+                    </div>
+                    <div class="footer-link-group">
+                        <a href="#" data-key="footer_languages">Languages</a>
                     </div>
                 </div>
             </div>
+
+            <div class="footer-language-grid">
+                <div class="lang-col">
+                    <a href="#" data-lang="ar">العربية</a>
+                    <a href="#" data-lang="fr">Français</a>
+                    <a href="#" data-lang="hmn">Hmoob</a>
+                    <a href="#" data-lang="zh-CN">简体中文</a>
+                    <a href="#" data-lang="zh-TW">繁體中文</a>
+                </div>
+                <div class="lang-col">
+                    <a href="#" data-lang="so">Soomaali</a>
+                    <a href="#" data-lang="es">Español</a>
+                    <a href="#" data-lang="ko">한국어</a>
+                    <a href="#" data-lang="ru">Русский</a>
+                    <a href="#" data-lang="vi">Tiếng Việt</a>
+                </div>
+                <div class="lang-col">
+                    <a href="#" data-lang="other">Other Languages</a>
+                </div>
+            </div>
+
             <div class="footer-bottom">
                 <div class="footer-omb">
                     <p><strong>OMB CONTROL#:</strong> 3084-0169</p>
