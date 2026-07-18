@@ -13,7 +13,7 @@ const settingRoutes = require('./src/routes/settingRoutes');
 const uploadRoutes = require('./src/routes/uploadRoutes');
 
 const app = express();
-app.set('trust proxy', 1);  // Trust the first proxy (Render's load balancer)
+app.set('trust proxy', 1);
 
 const PORT = process.env.PORT || 5000;
 
@@ -31,14 +31,14 @@ app.use(cors({
     ],
     credentials: true
 }));
-}));
+// ✅ REMOVED the extra })); here
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // Rate limiting
 const limiter = rateLimit({
-  windowMs: 15 * 60 * 1000, // 15 minutes
-  max: 100 // limit each IP to 100 requests per windowMs
+    windowMs: 15 * 60 * 1000,
+    max: 100
 });
 app.use('/api/', limiter);
 
@@ -51,19 +51,19 @@ app.use('/api/upload', uploadRoutes);
 
 // Health check endpoint
 app.get('/api/health', (req, res) => {
-  res.json({ status: 'OK', message: 'ReportFraud API is running' });
+    res.json({ status: 'OK', message: 'ReportFraud API is running' });
 });
 
 // Error handling middleware
 app.use((err, req, res, next) => {
-  console.error(err.stack);
-  res.status(err.status || 500).json({
-    success: false,
-    message: err.message || 'Internal Server Error'
-  });
+    console.error(err.stack);
+    res.status(err.status || 500).json({
+        success: false,
+        message: err.message || 'Internal Server Error'
+    });
 });
 
 // Start server
 app.listen(PORT, () => {
-  console.log(`🚀 ReportFraud Backend running on port ${PORT}`);
+    console.log(`🚀 ReportFraud Backend running on port ${PORT}`);
 });
