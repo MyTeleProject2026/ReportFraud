@@ -124,21 +124,22 @@ a:hover {
 }
 
 .site-logo {
-    height: 45px;
+    height: 50px;
     width: auto;
 }
 
 .logo-text {
     display: flex;
     flex-direction: column;
-    line-height: 1.15;
+    line-height: 1.1;
 }
 
 .logo-agency {
-    font-size: 0.65rem;
+    font-size: 0.7rem;
     font-weight: 700;
     color: var(--gray-700);
     letter-spacing: 0.5px;
+    text-transform: uppercase;
 }
 
 .logo-site {
@@ -153,6 +154,15 @@ a:hover {
     align-items: center;
     list-style: none;
     gap: 4px;
+}
+
+/* MENU label */
+.menu-label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--gray-700);
+    padding: 8px 8px 8px 0;
+    letter-spacing: 0.3px;
 }
 
 .main-nav ul li a {
@@ -185,6 +195,11 @@ a:hover {
     padding: 4px 8px;
 }
 
+@media (max-width: 768px) {
+    .menu-label {
+        display: none;
+    }
+}
 /* ===== BUTTONS ===== */
 .btn {
     display: inline-flex;
