@@ -11,7 +11,6 @@ const reportRoutes = require('./src/routes/reportRoutes');
 const categoryRoutes = require('./src/routes/categoryRoutes');
 const settingRoutes = require('./src/routes/settingRoutes');
 const uploadRoutes = require('./src/routes/uploadRoutes');
-const fixResetRoutes = require('./src/routes/fixResetRoutes');
 
 const app = express();
 app.set('trust proxy', 1);
@@ -49,7 +48,7 @@ app.use('/api/reports', reportRoutes);
 app.use('/api/categories', categoryRoutes);
 app.use('/api/settings', settingRoutes);
 app.use('/api/upload', uploadRoutes);
-app.use('/api/fix', fixResetRoutes);
+
 
 // Health check endpoint
 app.get('/api/health', (req, res) => {
