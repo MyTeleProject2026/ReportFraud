@@ -24,15 +24,24 @@ const translations = {
         step3_title: 'Help stop fraud',
         step3_desc: 'We use and share reports to help with investigations.',
 
+        // Stop Fraud Banner
+        stop_title: 'Help stop fraud',
+        stop_desc: 'We use and share reports with our law enforcement partners to help with investigations.',
+        stop_cta: 'Get started now.',
+        stop_or: 'Or you can',
+        stop_faqs: 'browse our FAQs.',
+
+        // Scam Warning
+        scam_warning: 'Scammers are impersonating the FTC. Know that the FTC will never threaten you, say you must transfer your money to "protect it," or tell you to withdraw cash or buy gold and give it to someone.',
+        scam_link: 'Learn more at ftc.gov/impersonators',
+
         // Trust Section
         trust_title: 'The power of ReportFraud.ftc.gov',
         trust_desc: 'Your report is shared with over 2,000 law enforcers.',
         trust_note: "We can't resolve your individual report, but we use reports to investigate and bring cases against fraud, scams, and bad business practices.",
         trust_privacy: 'Read our Privacy Act statement',
-        scam_warning: 'Scammers are impersonating the FTC. Know that the FTC will never threaten you, say you must transfer your money to "protect it," or tell you to withdraw cash or buy gold and give it to someone.',
-        scam_link: 'Learn more at ftc.gov/impersonators',
 
-        // CTA Section
+        // Final CTA
         cta_title: 'Start your report now',
         cta_sub: 'or check out what is going on in your state or metro area by visiting',
         cta_button: 'Report Now',
@@ -69,15 +78,24 @@ const translations = {
         step3_title: 'Ayuda a detener el fraude',
         step3_desc: 'Usamos y compartimos informes para ayudar en las investigaciones.',
 
+        // Stop Fraud Banner
+        stop_title: 'Ayuda a detener el fraude',
+        stop_desc: 'Usamos y compartimos informes con nuestros socios de la ley para ayudar en las investigaciones.',
+        stop_cta: 'Comienza ahora.',
+        stop_or: 'O puedes',
+        stop_faqs: 'explorar nuestras Preguntas Frecuentes.',
+
+        // Scam Warning
+        scam_warning: 'Los estafadores se hacen pasar por la FTC. Sepa que la FTC nunca lo amenazará, le dirá que debe transferir su dinero para "protegerlo" o le pedirá que retire efectivo o compre oro y se lo dé a alguien.',
+        scam_link: 'Obtenga más información en ftc.gov/impersonators',
+
         // Trust Section
         trust_title: 'El poder de ReportFraud.ftc.gov',
         trust_desc: 'Tu informe se comparte con más de 2,000 autoridades.',
         trust_note: 'No podemos resolver tu informe individual, pero usamos los informes para investigar y presentar casos contra fraudes, estafas y malas prácticas comerciales.',
         trust_privacy: 'Lea nuestra declaración de la Ley de Privacidad',
-        scam_warning: 'Los estafadores se hacen pasar por la FTC. Sepa que la FTC nunca lo amenazará, le dirá que debe transferir su dinero para "protegerlo" o le pedirá que retire efectivo o compre oro y se lo dé a alguien.',
-        scam_link: 'Obtenga más información en ftc.gov/impersonators',
 
-        // CTA Section
+        // Final CTA
         cta_title: 'Comienza tu reporte ahora',
         cta_sub: 'o consulta lo que está pasando en tu estado o área metropolitana visitando',
         cta_button: 'Reportar Ahora',
