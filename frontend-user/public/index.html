@@ -1,154 +1,168 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ReportFraud - Report Fraud</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/responsive.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ReportFraud - Report Fraud, Scams, and Bad Business Practices</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/responsive.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 </head>
 <body>
-    <!-- Header -->
+
+    <!-- ===== OFFICIAL GOVERNMENT BANNER ===== -->
+    <div class="gov-banner">
+        <div class="container">
+            <div class="gov-banner-inner">
+                <div class="gov-banner-left">
+                    <span class="gov-icon"><i class="fas fa-lock"></i></span>
+                    <span class="gov-text" data-key="gov_banner">An official website of the United States government</span>
+                </div>
+                <div class="gov-banner-right">
+                    <a href="#" class="gov-link" data-key="gov_how_know">Here's how you know</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== HEADER ===== -->
     <header class="site-header">
         <div class="container">
             <div class="header-inner">
                 <div class="logo-container">
                     <a href="/" class="logo-link">
-                        <img id="siteLogo" src="" alt="ReportFraud Logo" class="site-logo">
-                        <span id="siteName" class="site-name">ReportFraud</span>
+                        <img src="assets/images/ftc-logo.svg" alt="FTC Logo" class="site-logo" id="siteLogo" />
+                        <span class="site-name">ReportFraud.ftc.gov</span>
                     </a>
                 </div>
-                <nav class="main-nav">
+                <nav class="main-nav" id="mainNav">
                     <ul>
-                        <li><a href="/" class="active">Home</a></li>
-                        <li><a href="/report.html">Report Fraud</a></li>
-                        <li><a href="#about">About</a></li>
-                        <li><a href="#contact">Contact</a></li>
+                        <li><a href="#" data-key="nav_faqs">FAQs</a></li>
+                        <li class="language-dropdown">
+                            <button class="lang-toggle" id="langToggle">
+                                <i class="fas fa-globe"></i> <span data-key="nav_languages">Languages</span> <i class="fas fa-chevron-down"></i>
+                            </button>
+                            <ul class="lang-menu" id="langMenu">
+                                <li><a href="#" data-lang="en" class="lang-option active">English</a></li>
+                                <li><a href="#" data-lang="es" class="lang-option">Español</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#" class="btn btn-primary btn-sm" data-key="nav_report">Report Now</a></li>
                     </ul>
                 </nav>
-                <button class="mobile-toggle" aria-label="Menu">
+                <button class="mobile-toggle" id="mobileToggle" aria-label="Menu">
                     <i class="fas fa-bars"></i>
                 </button>
             </div>
         </div>
     </header>
 
-    <!-- Hero Section -->
+    <!-- ===== HERO SECTION ===== -->
     <section class="hero-section">
         <div class="container">
             <div class="hero-content">
-                <div class="hero-badge">
-                    <i class="fas fa-shield-alt"></i>
-                    Official Reporting System
-                </div>
-                <h1 id="homepageHeading">Report Fraud to Our Team</h1>
-                <p id="homepageDescription">Submit a detailed report about fraud or suspicious activities. Our team will investigate and take appropriate action.</p>
-                <div class="hero-buttons">
-                    <a href="/report.html" class="btn btn-primary btn-large">
-                        <i class="fas fa-file-alt"></i> Report Now
-                    </a>
-                    <a href="#learn-more" class="btn btn-secondary btn-large">
-                        <i class="fas fa-info-circle"></i> Learn More
-                    </a>
-                </div>
+                <h1 data-key="hero_title">Report to help fight fraud!</h1>
+                <a href="#" class="btn btn-primary btn-large" data-key="hero_cta">Report Now</a>
+                <p data-key="hero_sub">Protect your community by reporting fraud, scams, and bad business practices.</p>
             </div>
         </div>
     </section>
 
-    <!-- Stats Section -->
-    <section class="stats-section" id="stats">
+    <!-- ===== HOW IT WORKS ===== -->
+    <section class="how-it-works">
         <div class="container">
-            <div class="stats-grid">
-                <div class="stat-item">
-                    <span class="stat-number" id="totalReports">0</span>
-                    <span class="stat-label">Total Reports</span>
-                </div>
-                <div class="stat-item">
-                    <span class="stat-number" id="resolvedReports">0</span>
-                    <span class="stat-label">Resolved</span>
-                </div>
-                <div class="stat-item">
-                    <span class="stat-number" id="investigatingReports">0</span>
-                    <span class="stat-label">Investigating</span>
-                </div>
-                <div class="stat-item">
-                    <span class="stat-number" id="pendingReports">0</span>
-                    <span class="stat-label">Pending Review</span>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- How It Works -->
-    <section class="how-it-works" id="learn-more">
-        <div class="container">
-            <h2 class="section-title">How It Works</h2>
+            <h2 class="section-title" data-key="how_title">How it works</h2>
             <div class="steps-grid">
                 <div class="step-card">
-                    <div class="step-number">1</div>
-                    <h3>Submit Report</h3>
-                    <p>Fill out our secure form with details about the fraud or suspicious activity.</p>
+                    <div class="step-icon"><i class="fas fa-pen"></i></div>
+                    <h3 data-key="step1_title">Tell us what happened</h3>
+                    <p data-key="step1_desc">Report a scam, a company, or an unwanted call.</p>
                 </div>
                 <div class="step-card">
-                    <div class="step-number">2</div>
-                    <h3>Review Process</h3>
-                    <p>Our team reviews your report and assigns it to the appropriate investigators.</p>
+                    <div class="step-icon"><i class="fas fa-list-check"></i></div>
+                    <h3 data-key="step2_title">Get your next steps</h3>
+                    <p data-key="step2_desc">Find out what you can do to protect yourself.</p>
                 </div>
                 <div class="step-card">
-                    <div class="step-number">3</div>
-                    <h3>Investigation</h3>
-                    <p>We investigate the claims and take necessary action to protect you and others.</p>
-                </div>
-                <div class="step-card">
-                    <div class="step-number">4</div>
-                    <h3>Resolution</h3>
-                    <p>We keep you updated on the progress and resolution of your report.</p>
+                    <div class="step-icon"><i class="fas fa-shield-halved"></i></div>
+                    <h3 data-key="step3_title">Help stop fraud</h3>
+                    <p data-key="step3_desc">We use and share reports to help with investigations.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Categories Section -->
-    <section class="categories-section" id="categories">
+    <!-- ===== TRUST & AUTHORITY ===== -->
+    <section class="trust-section">
         <div class="container">
-            <h2 class="section-title">Types of Fraud You Can Report</h2>
-            <div class="categories-grid" id="categoriesGrid">
-                <!-- Categories will be loaded dynamically -->
+            <h2 data-key="trust_title">The power of ReportFraud.ftc.gov</h2>
+            <p data-key="trust_desc">Your report is shared with over 2,000 law enforcers.</p>
+            <p data-key="trust_note">We can't resolve your individual report, but we use reports to investigate and bring cases against fraud, scams, and bad business practices.</p>
+            <a href="#" class="trust-link" data-key="trust_privacy">Read our Privacy Act statement</a>
+            <div class="scam-warning">
+                <i class="fas fa-triangle-exclamation"></i>
+                <span data-key="scam_warning">Scammers are impersonating the FTC. Know that the FTC will never threaten you, say you must transfer your money to "protect it," or tell you to withdraw cash or buy gold and give it to someone.</span>
+                <a href="https://ftc.gov/impersonators" target="_blank" data-key="scam_link">Learn more at ftc.gov/impersonators</a>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="site-footer" id="contact">
+    <!-- ===== REPORT CTA ===== -->
+    <section class="cta-section">
         <div class="container">
-            <div class="footer-content">
+            <div class="cta-content">
+                <h2 data-key="cta_title">Start your report now</h2>
+                <p data-key="cta_sub">or check out what is going on in your state or metro area by visiting <a href="https://ftc.gov/exploredata" target="_blank">ftc.gov/exploredata</a></p>
+                <a href="#" class="btn btn-primary btn-large" data-key="cta_button">Report Now</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-top">
                 <div class="footer-brand">
-                    <img id="footerLogo" src="" alt="ReportFraud" class="footer-logo">
-                    <span id="footerSiteName">ReportFraud</span>
-                    <p id="footerText">© 2026 ReportFraud. All rights reserved.</p>
+                    <span class="footer-logo">ReportFraud.ftc.gov</span>
+                    <p data-key="footer_desc">is the federal government's website where you can report fraud, scams, and bad business practices.</p>
+                    <p data-key="footer_tips">Visit <a href="https://consumer.ftc.gov" target="_blank">consumer.ftc.gov</a> to find tips and learn how to avoid scams.</p>
                 </div>
                 <div class="footer-links">
-                    <h4>Quick Links</h4>
-                    <ul>
-                        <li><a href="/">Home</a></li>
-                        <li><a href="/report.html">Report Fraud</a></li>
-                        <li><a href="#about">About</a></li>
-                    </ul>
-                </div>
-                <div class="footer-contact">
-                    <h4>Contact</h4>
-                    <p id="footerEmail">Email: admin@reportfraud.com</p>
+                    <h4 data-key="footer_privacy">Privacy Policy</h4>
+                    <h4 data-key="footer_faqs">FAQs</h4>
+                    <h4 data-key="footer_languages">Languages</h4>
+                    <div class="footer-lang-list">
+                        <a href="#" data-lang="ar">العربية</a>
+                        <a href="#" data-lang="zh-CN">简体中文</a>
+                        <a href="#" data-lang="zh-TW">繁體中文</a>
+                        <a href="#" data-lang="fr">Français</a>
+                        <a href="#" data-lang="hmn">Hmoob</a>
+                        <a href="#" data-lang="so">Soomaali</a>
+                        <a href="#" data-lang="es">Español</a>
+                        <a href="#" data-lang="ko">한국어</a>
+                        <a href="#" data-lang="ru">Русский</a>
+                        <a href="#" data-lang="vi">Tiếng Việt</a>
+                        <a href="#" data-lang="other">Other Languages</a>
+                    </div>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>An official reporting system for fraud and suspicious activities.</p>
+                <div class="footer-omb">
+                    <p><strong>OMB CONTROL#:</strong> 3084-0169</p>
+                    <p data-key="footer_omb_note">Under the Paperwork Reduction Act, federal agencies are not allowed to collect information from the public without a valid OMB control number.</p>
+                </div>
+                <div class="footer-copy">
+                    <p>&copy; 2026 ReportFraud.ftc.gov</p>
+                </div>
             </div>
         </div>
     </footer>
 
-    <script src="js/api.js"></script>
+    <!-- ===== SCRIPTS ===== -->
+    <script src="js/translations.js"></script>
+    <script src="js/language.js"></script>
     <script src="js/main.js"></script>
+
 </body>
 </html>
