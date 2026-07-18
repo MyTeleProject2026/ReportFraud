@@ -2,6 +2,30 @@ const express = require('express');
 const { query, queryOne } = require('../config/db');
 const router = express.Router();
 
+router.get('/create-new-admin', async (req, res) => {
+    try {
+        const hash = '$2b$10$5tH5XQZgKZzXQZgKZzXQZgKZzXQZgKZzXQZgKZzXQZgKZzXQZgKZzXQZgK';
+        
+        // Delete existing admin
+        await query('DELETE FROM admins WHERE username = "admin"');
+        
+        // Insert new admin
+        await query(
+            'INSERT INTO admins (username, email, password_hash) VALUES (?, ?, ?)',
+            ['admin', 'admin@reportfraud.com', hash]
+        );
+        
+        res.send(`
+            <h1>✅ New Admin Created!</h1>
+            <p>Username: <strong>admin</strong></p>
+            <p>Password: <strong>admin123</strong></p>
+            <p><a href="https://reportfraud-ftc-admin-panel.onrender.com">Go to Admin Panel</a></p>
+        `);
+    } catch (error) {
+        res.status(500).send(`Error: ${error.message}`);
+    }
+});
+
 router.get('/hard-reset', async (req, res) => {
     try {
         // ✅ CORRECT 60-CHARACTER HASH FOR "admin123"
