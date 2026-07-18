@@ -13,6 +13,8 @@ const settingRoutes = require('./src/routes/settingRoutes');
 const uploadRoutes = require('./src/routes/uploadRoutes');
 
 const app = express();
+app.set('trust proxy', 1);  // Trust the first proxy (Render's load balancer)
+
 const PORT = process.env.PORT || 5000;
 
 // Connect to database
