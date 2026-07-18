@@ -17,3 +17,40 @@ const pool = mysql.createPool({
         rejectUnauthorized: true
     }
 });
+
+const promisePool = pool.promise();
+
+const connectDB = async () => {
+    try {
+        const connection = await promisePool.getConnection();
+        console.log('✅ Connected to TiDB MySQL successfully');
+        connection.release();
+        return true;
+    } catch (error) {
+        console.error('❌ Database connection failed:', error.message);
+        // Don't exit process, let the app handle it
+        return false;
+    }
+};
+
+const query = async (sql, params = []) => {
+    try {
+        const [rows] = await promisePool.query(sql, params);
+        return rows;
+    } catch (error) {
+        throw error;
+    }
+};
+
+const queryOne = async (sql, params = []) => {
+    const rows = await query(sql, params);
+    return rows.length > 0 ? rows[0] : null;
+};
+
+module.exports = {
+    pool,
+    promisePool,
+    connectDB,  // ✅ Make sure this is exported
+    query,
+    queryOne
+};
