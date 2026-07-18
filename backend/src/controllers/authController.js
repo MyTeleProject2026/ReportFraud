@@ -2,9 +2,9 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const { query, queryOne } = require('../config/db');
 
-// ✅ Use environment variables with fallback
+// ✅ Read admin credentials from environment variables
 const ADMIN_USERNAME = process.env.ADMIN_USERNAME || 'admin';
-const ADMIN_PASSWORD_HASH = '$2b$10$N9qC8v4v5wD6xE7F8gH9iJ0kL1mN2oP3qR4sT5uV6wX7yZ8aBcDeFgH';
+const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || 'admin123';
 
 const login = async (req, res) => {
     try {
@@ -17,34 +17,31 @@ const login = async (req, res) => {
             });
         }
 
-        // ✅ Check against hardcoded credentials FIRST
-        if (username === ADMIN_USERNAME) {
-            const isPasswordValid = await bcrypt.compare(password, ADMIN_PASSWORD_HASH);
-            if (isPasswordValid) {
-                // Generate JWT token
-                const token = jwt.sign(
-                    {
-                        id: 1,
-                        username: ADMIN_USERNAME,
-                        email: 'admin@reportfraud.com'
-                    },
-                    process.env.JWT_SECRET,
-                    { expiresIn: process.env.JWT_EXPIRE || '7d' }
-                );
+        // ✅ FIRST: Check against environment variables (plain text comparison)
+        if (username === ADMIN_USERNAME && password === ADMIN_PASSWORD) {
+            // Generate JWT token
+            const token = jwt.sign(
+                {
+                    id: 1,
+                    username: ADMIN_USERNAME,
+                    email: 'admin@reportfraud.com'
+                },
+                process.env.JWT_SECRET,
+                { expiresIn: process.env.JWT_EXPIRE || '7d' }
+            );
 
-                return res.json({
-                    success: true,
-                    token,
-                    admin: {
-                        id: 1,
-                        username: ADMIN_USERNAME,
-                        email: 'admin@reportfraud.com'
-                    }
-                });
-            }
+            return res.json({
+                success: true,
+                token,
+                admin: {
+                    id: 1,
+                    username: ADMIN_USERNAME,
+                    email: 'admin@reportfraud.com'
+                }
+            });
         }
 
-        // ❌ If hardcoded credentials fail, try database (fallback)
+        // ❌ If env credentials fail, try database (fallback)
         const admin = await queryOne(
             'SELECT id, username, email, password_hash FROM admins WHERE username = ? OR email = ?',
             [username, username]
@@ -95,7 +92,7 @@ const login = async (req, res) => {
 
 const verify = async (req, res) => {
     try {
-        // ✅ Allow hardcoded admin to verify
+        // ✅ Allow environment-based admin to verify
         if (req.adminId === 1) {
             return res.json({
                 success: true,
