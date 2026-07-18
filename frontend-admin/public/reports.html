@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ReportFraud - Reports</title>
+    <link rel="stylesheet" href="css/admin-style.css">
+    <link rel="stylesheet" href="css/admin-responsive.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+    <div class="admin-wrapper">
+        <!-- Sidebar -->
+        <aside class="admin-sidebar">
+            <div class="sidebar-brand">
+                <h2>ReportFraud</h2>
+                <span>Admin Panel</span>
+            </div>
+            <nav class="sidebar-nav">
+                <ul>
+                    <li><a href="/dashboard.html"><i class="fas fa-home"></i> Dashboard</a></li>
+                    <li><a href="/reports.html" class="active"><i class="fas fa-file-alt"></i> Reports</a></li>
+                    <li><a href="/categories.html"><i class="fas fa-tags"></i> Categories</a></li>
+                    <li><a href="/settings.html"><i class="fas fa-cog"></i> Settings</a></li>
+                    <li><a href="#" id="logoutBtn"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="admin-main">
+            <header class="admin-header">
+                <div class="header-left">
+                    <button class="sidebar-toggle" id="sidebarToggle">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <h1>All Reports</h1>
+                </div>
+                <div class="header-right">
+                    <span id="adminUser" class="admin-user"><i class="fas fa-user-circle"></i> Admin</span>
+                </div>
+            </header>
+
+            <div class="admin-content">
+                <!-- Filters -->
+                <section class="filters">
+                    <div class="filter-group">
+                        <select id="filterStatus">
+                            <option value="">All Status</option>
+                            <option value="pending">Pending</option>
+                            <option value="reviewing">Reviewing</option>
+                            <option value="investigating">Investigating</option>
+                            <option value="resolved">Resolved</option>
+                            <option value="rejected">Rejected</option>
+                        </select>
+                        <input type="text" id="filterSearch" placeholder="Search by name, email, or report #">
+                        <button class="btn btn-secondary" id="applyFilters"><i class="fas fa-filter"></i> Apply</button>
+                        <button class="btn btn-secondary" id="resetFilters"><i class="fas fa-undo"></i> Reset</button>
+                    </div>
+                </section>
+
+                <!-- Reports Table -->
+                <section class="reports-table-section">
+                    <div class="table-responsive">
+                        <table class="admin-table">
+                            <thead>
+                                <tr>
+                                    <th>Report #</th>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>Category</th>
+                                    <th>Status</th>
+                                    <th>Date</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody id="reportsBody">
+                                <tr>
+                                    <td colspan="7" class="text-center">Loading...</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="pagination" id="pagination">
+                        <!-- Pagination controls -->
+                    </div>
+                </section>
+
+                <!-- Report Detail Modal -->
+                <div id="detailModal" class="modal" style="display:none;">
+                    <div class="modal-content modal-large">
+                        <span class="modal-close">&times;</span>
+                        <h2>Report Details</h2>
+                        <div id="reportDetailContent">
+                            <!-- Loaded dynamically -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="js/api.js"></script>
+    <script src="js/reports.js"></script>
+</body>
+</html>

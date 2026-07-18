@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ReportFraud - Submit Report</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="site-header">
+        <div class="container">
+            <div class="header-inner">
+                <div class="logo-container">
+                    <a href="/" class="logo-link">
+                        <img id="siteLogo" src="" alt="ReportFraud Logo" class="site-logo">
+                        <span id="siteName" class="site-name">ReportFraud</span>
+                    </a>
+                </div>
+                <nav class="main-nav">
+                    <ul>
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/report.html" class="active">Report Fraud</a></li>
+                        <li><a href="/#about">About</a></li>
+                        <li><a href="/#contact">Contact</a></li>
+                    </ul>
+                </nav>
+                <button class="mobile-toggle" aria-label="Menu">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Report Form Section -->
+    <section class="report-section">
+        <div class="container">
+            <div class="report-container">
+                <div class="report-header">
+                    <h1>Submit a Fraud Report</h1>
+                    <p>Please provide as much detail as possible. All information is confidential and secure.</p>
+                    <div class="progress-bar">
+                        <div class="progress-step active">1. Your Details</div>
+                        <div class="progress-step">2. Incident Details</div>
+                        <div class="progress-step">3. Suspect Info</div>
+                        <div class="progress-step">4. Review & Submit</div>
+                    </div>
+                </div>
+
+                <form id="reportForm" class="report-form">
+                    <!-- Step 1: Your Details -->
+                    <div class="form-step active" data-step="1">
+                        <h2>Your Information</h2>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="firstName">First Name <span class="required">*</span></label>
+                                <input type="text" id="firstName" name="first_name" required placeholder="Enter your first name">
+                            </div>
+                            <div class="form-group">
+                                <label for="lastName">Last Name <span class="required">*</span></label>
+                                <input type="text" id="lastName" name="last_name" required placeholder="Enter your last name">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="email">Email Address <span class="required">*</span></label>
+                                <input type="email" id="email" name="email" required placeholder="your@email.com">
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">Phone Number</label>
+                                <input type="tel" id="phone" name="phone" placeholder="(123) 456-7890">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="address">Street Address</label>
+                            <input type="text" id="address" name="address" placeholder="123 Main St">
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="city">City</label>
+                                <input type="text" id="city" name="city" placeholder="New York">
+                            </div>
+                            <div class="form-group">
+                                <label for="state">State/Province</label>
+                                <input type="text" id="state" name="state" placeholder="NY">
+                            </div>
+                            <div class="form-group">
+                                <label for="zipCode">Zip Code</label>
+                                <input type="text" id="zipCode" name="zip_code" placeholder="10001">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="country">Country</label>
+                            <input type="text" id="country" name="country" placeholder="United States">
+                        </div>
+                        <div class="form-nav">
+                            <button type="button" class="btn btn-primary next-step">Next <i class="fas fa-arrow-right"></i></button>
+                        </div>
+                    </div>
+
+                    <!-- Step 2: Incident Details -->
+                    <div class="form-step" data-step="2">
+                        <h2>Incident Details</h2>
+                        <div class="form-group">
+                            <label for="category">Category of Fraud <span class="required">*</span></label>
+                            <select id="category" name="category_id" required>
+                                <option value="">Select a category</option>
+                                <!-- Categories loaded dynamically -->
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="incidentDate">Date of Incident</label>
+                            <input type="date" id="incidentDate" name="incident_date">
+                        </div>
+                        <div class="form-group">
+                            <label for="incidentDescription">Description of Incident <span class="required">*</span></label>
+                            <textarea id="incidentDescription" name="incident_description" rows="6" required placeholder="Please describe in detail what happened, including dates, times, and any relevant information..."></textarea>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="amountLost">Amount Lost (if any)</label>
+                                <input type="number" id="amountLost" name="amount_lost" step="0.01" placeholder="0.00">
+                            </div>
+                            <div class="form-group">
+                                <label for="currency">Currency</label>
+                                <select id="currency" name="currency">
+                                    <option value="USD">USD - US Dollar</option>
+                                    <option value="EUR">EUR - Euro</option>
+                                    <option value="GBP">GBP - British Pound</option>
+                                    <option value="CAD">CAD - Canadian Dollar</option>
+                                    <option value="AUD">AUD - Australian Dollar</option>
+                                    <option value="INR">INR - Indian Rupee</option>
+                                    <option value="Other">Other</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="paymentMethod">Payment Method Used</label>
+                            <input type="text" id="paymentMethod" name="payment_method" placeholder="Credit Card, Bank Transfer, Cryptocurrency, etc.">
+                        </div>
+                        <div class="form-nav">
+                            <button type="button" class="btn btn-secondary prev-step"><i class="fas fa-arrow-left"></i> Previous</button>
+                            <button type="button" class="btn btn-primary next-step">Next <i class="fas fa-arrow-right"></i></button>
+                        </div>
+                    </div>
+
+                    <!-- Step 3: Suspect Info -->
+                    <div class="form-step" data-step="3">
+                        <h2>Suspect Information</h2>
+                        <div class="form-group">
+                            <label for="suspectName">Suspect Name</label>
+                            <input type="text" id="suspectName" name="suspect_name" placeholder="Full name of suspect">
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="suspectEmail">Suspect Email</label>
+                                <input type="email" id="suspectEmail" name="suspect_email" placeholder="suspect@example.com">
+                            </div>
+                            <div class="form-group">
+                                <label for="suspectPhone">Suspect Phone</label>
+                                <input type="tel" id="suspectPhone" name="suspect_phone" placeholder="(123) 456-7890">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="suspectWebsite">Suspect Website</label>
+                            <input type="url" id="suspectWebsite" name="suspect_website" placeholder="https://example.com">
+                        </div>
+                        <div class="form-group">
+                            <label for="additionalInfo">Additional Information</label>
+                            <textarea id="additionalInfo" name="additional_info" rows="4" placeholder="Any other details that might help with the investigation..."></textarea>
+                        </div>
+                        <div class="form-nav">
+                            <button type="button" class="btn btn-secondary prev-step"><i class="fas fa-arrow-left"></i> Previous</button>
+                            <button type="button" class="btn btn-primary next-step">Next <i class="fas fa-arrow-right"></i></button>
+                        </div>
+                    </div>
+
+                    <!-- Step 4: Review & Submit -->
+                    <div class="form-step" data-step="4">
+                        <h2>Review & Submit</h2>
+                        <div class="review-box">
+                            <p>Please review your information before submitting.</p>
+                            <div class="review-summary">
+                                <!-- Dynamic review content -->
+                            </div>
+                        </div>
+                        <div class="form-actions">
+                            <button type="button" class="btn btn-secondary prev-step"><i class="fas fa-arrow-left"></i> Previous</button>
+                            <button type="submit" class="btn btn-success btn-large">
+                                <i class="fas fa-paper-plane"></i> Submit Report
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="site-footer" id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <img id="footerLogo" src="" alt="ReportFraud" class="footer-logo">
+                    <span id="footerSiteName">ReportFraud</span>
+                    <p id="footerText">© 2026 ReportFraud. All rights reserved.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/report.html">Report Fraud</a></li>
+                        <li><a href="/#about">About</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h4>Contact</h4>
+                    <p id="footerEmail">Email: admin@reportfraud.com</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>An official reporting system for fraud and suspicious activities.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/api.js"></script>
+    <script src="js/report.js"></script>
+</body>
+</html>

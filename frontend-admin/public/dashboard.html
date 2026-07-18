@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ReportFraud - Admin Dashboard</title>
+    <link rel="stylesheet" href="css/admin-style.css">
+    <link rel="stylesheet" href="css/admin-responsive.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+    <div class="admin-wrapper">
+        <!-- Sidebar -->
+        <aside class="admin-sidebar">
+            <div class="sidebar-brand">
+                <h2>ReportFraud</h2>
+                <span>Admin Panel</span>
+            </div>
+            <nav class="sidebar-nav">
+                <ul>
+                    <li><a href="/dashboard.html" class="active"><i class="fas fa-home"></i> Dashboard</a></li>
+                    <li><a href="/reports.html"><i class="fas fa-file-alt"></i> Reports</a></li>
+                    <li><a href="/categories.html"><i class="fas fa-tags"></i> Categories</a></li>
+                    <li><a href="/settings.html"><i class="fas fa-cog"></i> Settings</a></li>
+                    <li><a href="#" id="logoutBtn"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="admin-main">
+            <header class="admin-header">
+                <div class="header-left">
+                    <button class="sidebar-toggle" id="sidebarToggle">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <h1>Dashboard</h1>
+                </div>
+                <div class="header-right">
+                    <span id="adminUser" class="admin-user"><i class="fas fa-user-circle"></i> Admin</span>
+                </div>
+            </header>
+
+            <div class="admin-content">
+                <!-- Stats Cards -->
+                <section class="stats-cards">
+                    <div class="stat-card">
+                        <div class="stat-icon"><i class="fas fa-file-alt"></i></div>
+                        <div class="stat-info">
+                            <span class="stat-number" id="statTotal">0</span>
+                            <span class="stat-label">Total Reports</span>
+                        </div>
+                    </div>
+                    <div class="stat-card pending">
+                        <div class="stat-icon"><i class="fas fa-clock"></i></div>
+                        <div class="stat-info">
+                            <span class="stat-number" id="statPending">0</span>
+                            <span class="stat-label">Pending</span>
+                        </div>
+                    </div>
+                    <div class="stat-card reviewing">
+                        <div class="stat-icon"><i class="fas fa-search"></i></div>
+                        <div class="stat-info">
+                            <span class="stat-number" id="statReviewing">0</span>
+                            <span class="stat-label">Reviewing</span>
+                        </div>
+                    </div>
+                    <div class="stat-card investigating">
+                        <div class="stat-icon"><i class="fas fa-gavel"></i></div>
+                        <div class="stat-info">
+                            <span class="stat-number" id="statInvestigating">0</span>
+                            <span class="stat-label">Investigating</span>
+                        </div>
+                    </div>
+                    <div class="stat-card resolved">
+                        <div class="stat-icon"><i class="fas fa-check-circle"></i></div>
+                        <div class="stat-info">
+                            <span class="stat-number" id="statResolved">0</span>
+                            <span class="stat-label">Resolved</span>
+                        </div>
+                    </div>
+                    <div class="stat-card rejected">
+                        <div class="stat-icon"><i class="fas fa-times-circle"></i></div>
+                        <div class="stat-info">
+                            <span class="stat-number" id="statRejected">0</span>
+                            <span class="stat-label">Rejected</span>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Recent Reports -->
+                <section class="recent-reports">
+                    <h2>Recent Reports</h2>
+                    <div class="table-responsive">
+                        <table class="admin-table">
+                            <thead>
+                                <tr>
+                                    <th>Report #</th>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>Category</th>
+                                    <th>Status</th>
+                                    <th>Date</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody id="recentReportsBody">
+                                <tr>
+                                    <td colspan="7" class="text-center">Loading...</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+            </div>
+        </main>
+    </div>
+
+    <script src="js/api.js"></script>
+    <script src="js/dashboard.js"></script>
+</body>
+</html>

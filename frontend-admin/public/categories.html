@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ReportFraud - Categories</title>
+    <link rel="stylesheet" href="css/admin-style.css">
+    <link rel="stylesheet" href="css/admin-responsive.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+    <div class="admin-wrapper">
+        <!-- Sidebar -->
+        <aside class="admin-sidebar">
+            <div class="sidebar-brand">
+                <h2>ReportFraud</h2>
+                <span>Admin Panel</span>
+            </div>
+            <nav class="sidebar-nav">
+                <ul>
+                    <li><a href="/dashboard.html"><i class="fas fa-home"></i> Dashboard</a></li>
+                    <li><a href="/reports.html"><i class="fas fa-file-alt"></i> Reports</a></li>
+                    <li><a href="/categories.html" class="active"><i class="fas fa-tags"></i> Categories</a></li>
+                    <li><a href="/settings.html"><i class="fas fa-cog"></i> Settings</a></li>
+                    <li><a href="#" id="logoutBtn"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="admin-main">
+            <header class="admin-header">
+                <div class="header-left">
+                    <button class="sidebar-toggle" id="sidebarToggle">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <h1>Categories</h1>
+                </div>
+                <div class="header-right">
+                    <span id="adminUser" class="admin-user"><i class="fas fa-user-circle"></i> Admin</span>
+                </div>
+            </header>
+
+            <div class="admin-content">
+                <!-- Add Category -->
+                <section class="add-category">
+                    <h2>Add New Category</h2>
+                    <form id="addCategoryForm" class="inline-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <input type="text" id="newCategoryName" placeholder="Category Name" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" id="newCategoryDescription" placeholder="Description (optional)">
+                            </div>
+                            <div class="form-group">
+                                <input type="number" id="newCategoryOrder" placeholder="Display Order" value="0">
+                            </div>
+                            <button type="submit" class="btn btn-success">
+                                <i class="fas fa-plus"></i> Add
+                            </button>
+                        </div>
+                    </form>
+                </section>
+
+                <!-- Categories List -->
+                <section class="categories-list">
+                    <h2>All Categories</h2>
+                    <div class="table-responsive">
+                        <table class="admin-table">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Name</th>
+                                    <th>Description</th>
+                                    <th>Order</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="categoriesBody">
+                                <tr>
+                                    <td colspan="6" class="text-center">Loading...</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <!-- Edit Modal -->
+                <div id="editModal" class="modal" style="display:none;">
+                    <div class="modal-content">
+                        <span class="modal-close">&times;</span>
+                        <h2>Edit Category</h2>
+                        <form id="editCategoryForm">
+                            <input type="hidden" id="editCategoryId">
+                            <div class="form-group">
+                                <label for="editCategoryName">Name</label>
+                                <input type="text" id="editCategoryName" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="editCategoryDescription">Description</label>
+                                <input type="text" id="editCategoryDescription">
+                            </div>
+                            <div class="form-group">
+                                <label for="editCategoryOrder">Display Order</label>
+                                <input type="number" id="editCategoryOrder" value="0">
+                            </div>
+                            <div class="form-group">
+                                <label for="editCategoryStatus">Active</label>
+                                <select id="editCategoryStatus">
+                                    <option value="1">Active</option>
+                                    <option value="0">Inactive</option>
+                                </select>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Update Category</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="js/api.js"></script>
+    <script src="js/categories.js"></script>
+</body>
+</html>

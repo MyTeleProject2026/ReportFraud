@@ -1,0 +1,65 @@
+/* ===== TABLETS ===== */
+@media (max-width: 992px) {
+  .stats-cards {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* ===== MOBILE ===== */
+@media (max-width: 768px) {
+  .admin-sidebar {
+    transform: translateX(-100%);
+  }
+  
+  .admin-sidebar.open {
+    transform: translateX(0);
+  }
+  
+  .admin-main {
+    margin-left: 0;
+  }
+  
+  .sidebar-toggle {
+    display: block;
+  }
+  
+  .stats-cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .form-row {
+    flex-direction: column;
+  }
+  
+  .inline-form .form-row .form-group {
+    width: 100%;
+  }
+  
+  .modal-content {
+    padding: 20px;
+    width: 95%;
+  }
+  
+  .modal-content.modal-large {
+    max-width: 95%;
+  }
+}
+
+/* ===== SMALL MOBILE ===== */
+@media (max-width: 480px) {
+  .stats-cards {
+    grid-template-columns: 1fr;
+  }
+  
+  .admin-header h1 {
+    font-size: 1rem;
+  }
+  
+  .admin-content {
+    padding: 12px;
+  }
+  
+  .settings-section {
+    padding: 16px;
+  }
+}

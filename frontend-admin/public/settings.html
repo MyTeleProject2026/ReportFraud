@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ReportFraud - Settings</title>
+    <link rel="stylesheet" href="css/admin-style.css">
+    <link rel="stylesheet" href="css/admin-responsive.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+    <div class="admin-wrapper">
+        <!-- Sidebar -->
+        <aside class="admin-sidebar">
+            <div class="sidebar-brand">
+                <h2>ReportFraud</h2>
+                <span>Admin Panel</span>
+            </div>
+            <nav class="sidebar-nav">
+                <ul>
+                    <li><a href="/dashboard.html"><i class="fas fa-home"></i> Dashboard</a></li>
+                    <li><a href="/reports.html"><i class="fas fa-file-alt"></i> Reports</a></li>
+                    <li><a href="/categories.html"><i class="fas fa-tags"></i> Categories</a></li>
+                    <li><a href="/settings.html" class="active"><i class="fas fa-cog"></i> Settings</a></li>
+                    <li><a href="#" id="logoutBtn"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="admin-main">
+            <header class="admin-header">
+                <div class="header-left">
+                    <button class="sidebar-toggle" id="sidebarToggle">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <h1>Settings</h1>
+                </div>
+                <div class="header-right">
+                    <span id="adminUser" class="admin-user"><i class="fas fa-user-circle"></i> Admin</span>
+                </div>
+            </header>
+
+            <div class="admin-content">
+                <form id="settingsForm" class="settings-form">
+                    <div class="settings-section">
+                        <h2>Site Information</h2>
+                        <div class="form-group">
+                            <label for="siteName">Site Name</label>
+                            <input type="text" id="siteName" name="site_name" placeholder="ReportFraud">
+                        </div>
+                        <div class="form-group">
+                            <label for="siteLogo">Site Logo URL</label>
+                            <input type="text" id="siteLogo" name="site_logo" placeholder="https://example.com/logo.png">
+                            <small>Upload logo using the upload tool below</small>
+                        </div>
+                        <div class="form-group">
+                            <label for="adminEmail">Admin Email</label>
+                            <input type="email" id="adminEmail" name="admin_email" placeholder="admin@reportfraud.com">
+                        </div>
+                        <div class="form-group">
+                            <label for="footerText">Footer Text</label>
+                            <input type="text" id="footerText" name="footer_text" placeholder="© 2026 ReportFraud. All rights reserved.">
+                        </div>
+                    </div>
+
+                    <div class="settings-section">
+                        <h2>Homepage Content</h2>
+                        <div class="form-group">
+                            <label for="homepageHeading">Homepage Heading</label>
+                            <input type="text" id="homepageHeading" name="homepage_heading" placeholder="Report Fraud to Our Team">
+                        </div>
+                        <div class="form-group">
+                            <label for="homepageDescription">Homepage Description</label>
+                            <textarea id="homepageDescription" name="homepage_description" rows="3" placeholder="Submit a detailed report about fraud..."></textarea>
+                        </div>
+                    </div>
+
+                    <div class="settings-section">
+                        <h2>Confirmation Page</h2>
+                        <div class="form-group">
+                            <label for="confirmationMessage">Confirmation Message</label>
+                            <textarea id="confirmationMessage" name="confirmation_message" rows="3" placeholder="Thank you for your report..."></textarea>
+                        </div>
+                    </div>
+
+                    <div class="settings-section">
+                        <h2>Logo Upload</h2>
+                        <div class="upload-area">
+                            <input type="file" id="logoUpload" accept="image/*">
+                            <button type="button" class="btn btn-secondary" id="uploadLogoBtn">
+                                <i class="fas fa-cloud-upload-alt"></i> Upload Logo
+                            </button>
+                            <div id="uploadPreview"></div>
+                            <div id="uploadStatus"></div>
+                        </div>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-save"></i> Save All Settings
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </main>
+    </div>
+
+    <script src="js/api.js"></script>
+    <script src="js/settings.js"></script>
+</body>
+</html>
