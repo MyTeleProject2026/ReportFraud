@@ -1,6 +1,5 @@
 // API configuration
-const API_BASE = 'https://reportfraud-ftc-gov-api.onrender.com/api';
-
+const API_BASE = window.API_BASE || 'https://reportfraud-ftc-gov-api.onrender.com/api';
 const API = {
   // Settings
   getSettings: async () => {
