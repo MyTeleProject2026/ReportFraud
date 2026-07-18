@@ -25,7 +25,7 @@ app.use(helmet());
 app.use(cors({
     origin: [
         'https://reportfraud-ftc-admim-panel.onrender.com',
-        'https://reportfraud-ftc-admin-panel.onrender.com',
+        'https://reportfraud-ftc-admin-panel.onrender.com',  // ✅ Both versions
         'https://reportfraud.onrender.com',
         'http://localhost:3000',
         'http://localhost:3001'
