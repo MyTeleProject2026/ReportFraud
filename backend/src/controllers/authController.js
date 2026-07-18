@@ -2,6 +2,9 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const { query, queryOne } = require('../config/db');
 
+const ADMIN_USERNAME = process.env.ADMIN_USERNAME || 'admin';
+const ADMIN_PASSWORD_HASH = '$2b$10$N9qC8v4v5wD6xE7F8gH9iJ0kL1mN2oP3qR4sT5uV6wX7yZ8aBcDeFgH';
+
 // ✅ HARDCODED ADMIN CREDENTIALS (bypass database)
 const ADMIN_USERNAME = 'admin';
 const ADMIN_PASSWORD = 'admin123';
