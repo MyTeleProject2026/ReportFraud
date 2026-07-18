@@ -29,7 +29,7 @@
     --shadow-lg: 0 8px 30px rgba(0, 0, 0, 0.15);
     --radius: 6px;
     --radius-lg: 12px;
-    --font: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    --font: 'Public Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 }
 
 html {
@@ -123,7 +123,7 @@ a:hover {
 .logo-link {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 12px;
 }
 
 .site-logo {
@@ -131,9 +131,22 @@ a:hover {
     width: auto;
 }
 
-.site-name {
-    font-size: 1.2rem;
+.logo-text {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.2;
+}
+
+.logo-agency {
+    font-size: 0.7rem;
     font-weight: 700;
+    color: var(--gray-700);
+    letter-spacing: 0.5px;
+}
+
+.logo-site {
+    font-size: 1.1rem;
+    font-weight: 800;
     color: var(--primary);
     letter-spacing: -0.3px;
 }
@@ -158,70 +171,6 @@ a:hover {
 .main-nav ul li a:hover {
     background: var(--gray-100);
     color: var(--primary);
-}
-
-/* Language Dropdown */
-.language-dropdown {
-    position: relative;
-}
-
-.lang-toggle {
-    background: none;
-    border: none;
-    padding: 8px 14px;
-    font-family: var(--font);
-    font-weight: 500;
-    font-size: 0.95rem;
-    color: var(--gray-700);
-    cursor: pointer;
-    border-radius: var(--radius);
-    transition: all 0.2s ease;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-}
-
-.lang-toggle:hover {
-    background: var(--gray-100);
-    color: var(--primary);
-}
-
-.lang-menu {
-    display: none;
-    position: absolute;
-    top: 100%;
-    right: 0;
-    background: var(--white);
-    border: 1px solid var(--gray-200);
-    border-radius: var(--radius);
-    box-shadow: var(--shadow-lg);
-    min-width: 140px;
-    padding: 6px 0;
-    list-style: none;
-    z-index: 100;
-}
-
-.lang-menu.open {
-    display: block;
-}
-
-.lang-menu li a {
-    display: block;
-    padding: 8px 16px;
-    color: var(--gray-700);
-    font-size: 0.9rem;
-    font-weight: 400;
-}
-
-.lang-menu li a:hover {
-    background: var(--gray-100);
-    color: var(--primary);
-}
-
-.lang-menu li a.active {
-    background: var(--primary-light);
-    color: var(--primary);
-    font-weight: 600;
 }
 
 /* Buttons in header */
@@ -274,13 +223,12 @@ a:hover {
 /* ===== HERO ===== */
 .hero-section {
     padding: 60px 0 80px;
-    background: linear-gradient(135deg, #f0f7ff 0%, #ffffff 100%);
+    background: var(--white);
     text-align: center;
-    border-bottom: 1px solid var(--gray-200);
 }
 
 .hero-content h1 {
-    font-size: 3rem;
+    font-size: 3.2rem;
     font-weight: 900;
     color: var(--primary);
     line-height: 1.2;
@@ -302,7 +250,7 @@ a:hover {
 /* ===== HOW IT WORKS ===== */
 .how-it-works {
     padding: 60px 0;
-    background: var(--white);
+    background: var(--gray-50);
 }
 
 .section-title {
@@ -322,8 +270,9 @@ a:hover {
 .step-card {
     text-align: center;
     padding: 32px 20px;
-    border: 1px solid var(--gray-200);
+    background: var(--white);
     border-radius: var(--radius-lg);
+    border: 1px solid var(--gray-200);
     transition: all 0.3s ease;
 }
 
@@ -350,87 +299,137 @@ a:hover {
     font-size: 0.95rem;
 }
 
-/* ===== TRUST SECTION ===== */
-.trust-section {
+/* ===== HELP STOP FRAUD BANNER ===== */
+.stop-fraud-banner {
     padding: 60px 0;
-    background: var(--gray-50);
-}
-
-.trust-section h2 {
-    font-size: 2rem;
-    font-weight: 800;
-    color: var(--gray-900);
-    margin-bottom: 12px;
-}
-
-.trust-section p {
-    color: var(--gray-700);
-    max-width: 700px;
-    margin-bottom: 8px;
-}
-
-.trust-link {
-    display: inline-block;
-    margin: 12px 0 24px;
-    font-weight: 600;
-}
-
-.scam-warning {
-    background: #fef3c7;
-    border-left: 4px solid var(--warning);
-    padding: 16px 20px;
-    border-radius: var(--radius);
-    margin-top: 24px;
-    color: #92400e;
-}
-
-.scam-warning i {
-    margin-right: 10px;
-    color: var(--warning);
-}
-
-.scam-warning a {
-    display: block;
-    margin-top: 6px;
-    font-weight: 600;
-}
-
-/* ===== CTA SECTION ===== */
-.cta-section {
-    padding: 60px 0;
-    background: var(--primary);
-    color: var(--white);
+    background: var(--white);
     text-align: center;
 }
 
-.cta-content h2 {
+.stop-fraud-banner h2 {
     font-size: 2.2rem;
     font-weight: 800;
+    color: var(--gray-900);
     margin-bottom: 8px;
 }
 
-.cta-content p {
+.stop-fraud-banner p {
     font-size: 1.1rem;
-    opacity: 0.9;
+    color: var(--gray-600);
     margin-bottom: 24px;
 }
 
-.cta-content a {
+.stop-actions {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.stop-link {
+    font-weight: 600;
+}
+
+/* ===== SCAM WARNING ===== */
+.scam-warning-section {
+    padding: 30px 0;
+    background: #fef9e7;
+    border-top: 1px solid #f0e4c8;
+    border-bottom: 1px solid #f0e4c8;
+}
+
+.scam-warning {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    color: #7a5d00;
+    font-size: 0.95rem;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.scam-warning i {
+    color: var(--warning);
+    font-size: 1.2rem;
+    margin-top: 4px;
+    flex-shrink: 0;
+}
+
+.scam-link {
+    display: block;
+    text-align: center;
+    font-weight: 600;
+    margin-top: 12px;
+}
+
+/* ===== TRUST SECTION ===== */
+.trust-section {
+    padding: 60px 0;
+    background: var(--primary);
     color: var(--white);
+}
+
+.trust-content {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.trust-content h2 {
+    font-size: 2.2rem;
+    font-weight: 800;
+    margin-bottom: 12px;
+}
+
+.trust-highlight {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 12px;
+}
+
+.trust-content p {
+    font-size: 1.05rem;
+    opacity: 0.9;
+    margin-bottom: 12px;
+}
+
+.trust-link {
+    color: #ffd966;
+    font-weight: 600;
     text-decoration: underline;
 }
 
-.cta-content a:hover {
-    color: var(--gray-200);
+.trust-link:hover {
+    color: #ffe599;
 }
 
-.cta-content .btn-primary {
+/* ===== FINAL CTA ===== */
+.final-cta {
+    padding: 60px 0 80px;
     background: var(--white);
-    color: var(--primary);
+    text-align: center;
 }
 
-.cta-content .btn-primary:hover {
-    background: var(--gray-100);
+.final-cta h2 {
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: var(--gray-900);
+    margin-bottom: 8px;
+}
+
+.final-cta p {
+    font-size: 1.1rem;
+    color: var(--gray-600);
+    margin-bottom: 24px;
+}
+
+.final-cta a {
+    color: var(--secondary);
+}
+
+.final-cta a:hover {
+    color: var(--primary-dark);
 }
 
 /* ===== FOOTER ===== */
@@ -470,28 +469,43 @@ a:hover {
     color: var(--white);
 }
 
-.footer-links h4 {
-    color: var(--white);
-    font-size: 1rem;
-    margin: 12px 0 8px;
-}
-
-.footer-links h4:first-child {
-    margin-top: 0;
-}
-
-.footer-lang-list {
+.footer-links {
     display: flex;
-    flex-wrap: wrap;
-    gap: 6px 16px;
+    flex-direction: column;
+    gap: 8px;
 }
 
-.footer-lang-list a {
+.footer-link-group a {
+    color: var(--gray-400);
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.footer-link-group a:hover {
+    color: var(--white);
+}
+
+/* Language Grid */
+.footer-language-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    padding: 24px 0;
+    border-bottom: 1px solid var(--gray-700);
+}
+
+.lang-col {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.lang-col a {
     color: var(--gray-400);
     font-size: 0.9rem;
 }
 
-.footer-lang-list a:hover {
+.lang-col a:hover {
     color: var(--white);
 }
 
