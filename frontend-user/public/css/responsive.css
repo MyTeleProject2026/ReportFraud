@@ -1,7 +1,7 @@
 /* ===== TABLETS ===== */
 @media (max-width: 992px) {
     .hero-content h1 {
-        font-size: 2.4rem;
+        font-size: 2.6rem;
     }
 
     .steps-grid {
@@ -11,6 +11,10 @@
     .footer-top {
         grid-template-columns: 1fr;
         gap: 24px;
+    }
+
+    .footer-language-grid {
+        grid-template-columns: repeat(2, 1fr);
     }
 }
 
@@ -46,22 +50,8 @@
         text-align: center;
     }
 
-    .language-dropdown {
-        position: static;
-    }
-
-    .lang-menu {
-        position: static;
-        box-shadow: none;
-        border: none;
-        border-left: 3px solid var(--gray-200);
-        border-radius: 0;
-        padding-left: 16px;
-        margin-left: 16px;
-    }
-
     .hero-content h1 {
-        font-size: 1.8rem;
+        font-size: 2rem;
     }
 
     .hero-content p {
@@ -76,12 +66,21 @@
         padding: 24px 16px;
     }
 
-    .trust-section h2 {
-        font-size: 1.5rem;
+    .stop-actions {
+        flex-direction: column;
+        gap: 8px;
     }
 
-    .cta-content h2 {
-        font-size: 1.6rem;
+    .trust-content h2 {
+        font-size: 1.8rem;
+    }
+
+    .final-cta h2 {
+        font-size: 1.8rem;
+    }
+
+    .footer-language-grid {
+        grid-template-columns: 1fr 1fr;
     }
 
     .footer-bottom {
@@ -90,21 +89,29 @@
         text-align: center;
     }
 
-    .footer-lang-list {
-        justify-content: center;
-    }
-
     .gov-banner-inner {
         flex-direction: column;
         align-items: flex-start;
         gap: 4px;
+    }
+
+    .logo-text .logo-agency {
+        font-size: 0.6rem;
+    }
+
+    .logo-text .logo-site {
+        font-size: 0.9rem;
+    }
+
+    .site-logo {
+        height: 32px;
     }
 }
 
 /* ===== SMALL MOBILE ===== */
 @media (max-width: 480px) {
     .hero-content h1 {
-        font-size: 1.5rem;
+        font-size: 1.6rem;
     }
 
     .btn-large {
@@ -116,11 +123,11 @@
         font-size: 1.6rem;
     }
 
-    .site-name {
-        font-size: 1rem;
+    .footer-language-grid {
+        grid-template-columns: 1fr;
     }
 
-    .site-logo {
-        height: 30px;
+    .logo-text .logo-agency {
+        display: none;
     }
 }
