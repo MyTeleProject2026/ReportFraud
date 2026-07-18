@@ -11,9 +11,6 @@
     --primary-light: #e8f0fe;
     --secondary: #1a73e8;
     --secondary-hover: #1557b0;
-    --success: #0f7b3e;
-    --warning: #f39c12;
-    --danger: #d93025;
     --gray-50: #f8f9fa;
     --gray-100: #f1f3f4;
     --gray-200: #e8eaed;
@@ -127,18 +124,18 @@ a:hover {
 }
 
 .site-logo {
-    height: 40px;
+    height: 45px;
     width: auto;
 }
 
 .logo-text {
     display: flex;
     flex-direction: column;
-    line-height: 1.2;
+    line-height: 1.15;
 }
 
 .logo-agency {
-    font-size: 0.7rem;
+    font-size: 0.65rem;
     font-weight: 700;
     color: var(--gray-700);
     letter-spacing: 0.5px;
@@ -173,7 +170,6 @@ a:hover {
     color: var(--primary);
 }
 
-/* Buttons in header */
 .btn-primary.btn-sm {
     padding: 8px 20px;
     font-size: 0.9rem;
@@ -220,7 +216,7 @@ a:hover {
     font-size: 1.1rem;
 }
 
-/* ===== HERO ===== */
+/* ===== HERO SECTION ===== */
 .hero-section {
     padding: 60px 0 80px;
     background: var(--white);
@@ -325,6 +321,11 @@ a:hover {
     justify-content: center;
     gap: 12px;
     flex-wrap: wrap;
+}
+
+.stop-or {
+    color: var(--gray-600);
+    font-size: 1rem;
 }
 
 .stop-link {
@@ -475,13 +476,13 @@ a:hover {
     gap: 8px;
 }
 
-.footer-link-group a {
+.footer-links a {
     color: var(--gray-400);
     font-size: 1rem;
     font-weight: 500;
 }
 
-.footer-link-group a:hover {
+.footer-links a:hover {
     color: var(--white);
 }
 
@@ -509,6 +510,7 @@ a:hover {
     color: var(--white);
 }
 
+/* Footer Bottom */
 .footer-bottom {
     padding-top: 20px;
     display: flex;
@@ -525,4 +527,133 @@ a:hover {
 }
 
 /* ===== RESPONSIVE ===== */
-/* See responsive.css */
+@media (max-width: 992px) {
+    .hero-content h1 {
+        font-size: 2.6rem;
+    }
+
+    .steps-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .footer-top {
+        grid-template-columns: 1fr;
+        gap: 24px;
+    }
+
+    .footer-language-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .mobile-toggle {
+        display: block;
+    }
+
+    .main-nav {
+        display: none;
+        width: 100%;
+        padding-top: 12px;
+        border-top: 1px solid var(--gray-200);
+    }
+
+    .main-nav.open {
+        display: block;
+    }
+
+    .main-nav ul {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+    }
+
+    .main-nav ul li a {
+        padding: 12px 16px;
+        border-radius: 0;
+    }
+
+    .main-nav ul li a.btn {
+        text-align: center;
+    }
+
+    .hero-content h1 {
+        font-size: 2rem;
+    }
+
+    .hero-content p {
+        font-size: 1rem;
+    }
+
+    .steps-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .step-card {
+        padding: 24px 16px;
+    }
+
+    .stop-actions {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .trust-content h2 {
+        font-size: 1.8rem;
+    }
+
+    .final-cta h2 {
+        font-size: 1.8rem;
+    }
+
+    .footer-language-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .footer-bottom {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .gov-banner-inner {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 4px;
+    }
+
+    .logo-text .logo-agency {
+        font-size: 0.6rem;
+    }
+
+    .logo-text .logo-site {
+        font-size: 0.9rem;
+    }
+
+    .site-logo {
+        height: 32px;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-content h1 {
+        font-size: 1.6rem;
+    }
+
+    .btn-large {
+        padding: 14px 24px;
+        font-size: 1rem;
+    }
+
+    .section-title {
+        font-size: 1.6rem;
+    }
+
+    .footer-language-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .logo-text .logo-agency {
+        display: none;
+    }
+}
