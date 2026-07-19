@@ -2,6 +2,20 @@
    REPORTFRAUD PREVIEW WIZARD
    ============================================================ */
 
+.vt-inline-icon {
+    width: 16px;
+    height: 16px;
+    object-fit: contain;
+    display: inline-block;
+}
+
+.vt-confirmation-svg {
+    width: 64px;
+    height: 64px;
+    display: block;
+    margin: 0 auto 16px;
+}
+
 .vt-report-page {
     background: #ffffff;
     color: #23374d;
