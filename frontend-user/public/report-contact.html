@@ -1,1 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ReportFraud - Your Contact Information</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/report.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+</head>
+<body class="report-page-body">
 
+    <!-- ===== GOV BANNER ===== -->
+    <div class="gov-banner report-gov-banner">
+        <div class="container">
+            <div class="gov-banner-inner">
+                <div class="gov-banner-left">
+                    <span class="gov-icon"><i class="fas fa-lock"></i></span>
+                    <span class="gov-text">An official website of the United States government</span>
+                </div>
+                <div class="gov-banner-right">
+                    <a href="#" class="gov-link">Here's how you know</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== HEADER ===== -->
+    <header class="report-header-shell">
+        <div class="container report-header-inner">
+            <a href="/" class="report-brand">
+                <img src="css/ftc-logo.svg" alt="FTC Logo" class="report-brand-logo" />
+                <div class="report-brand-text">
+                    <span class="report-brand-agency">FEDERAL TRADE COMMISSION</span>
+                    <span class="report-brand-site">ReportFraud.ftc.gov</span>
+                </div>
+            </a>
+        </div>
+    </header>
+
+    <!-- ===== REPORT FLOW ===== -->
+    <main class="report-flow-page">
+        <div class="container report-flow-container">
+            <!-- Progress Indicator -->
+            <section class="report-progress-card">
+                <div class="report-progress-row">
+                    <span class="report-progress-label">Start</span>
+                    <div class="report-progress-track" aria-hidden="true">
+                        <span class="report-progress-fill" style="width: 75%;"></span>
+                    </div>
+                    <span class="report-progress-label">Submit</span>
+                </div>
+            </section>
+
+            <!-- Step 3: Contact Info -->
+            <section class="report-question-block">
+                <h1>Your contact information</h1>
+                <p>This helps us follow up if we need more information. <em>Optional but recommended.</em></p>
+            </section>
+
+            <form class="report-form" id="contactForm">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="firstName">First name</label>
+                        <input type="text" id="firstName" name="first_name" placeholder="John" />
+                    </div>
+                    <div class="form-group">
+                        <label for="lastName">Last name</label>
+                        <input type="text" id="lastName" name="last_name" placeholder="Doe" />
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email address</label>
+                    <input type="email" id="email" name="email" placeholder="john.doe@example.com" />
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">Phone number</label>
+                    <input type="tel" id="phone" name="phone" placeholder="(123) 456-7890" />
+                </div>
+
+                <div class="form-group">
+                    <label for="address">Street address</label>
+                    <input type="text" id="address" name="address" placeholder="123 Main St" />
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="city">City</label>
+                        <input type="text" id="city" name="city" placeholder="New York" />
+                    </div>
+                    <div class="form-group">
+                        <label for="state">State</label>
+                        <input type="text" id="state" name="state" placeholder="NY" />
+                    </div>
+                    <div class="form-group">
+                        <label for="zipCode">ZIP code</label>
+                        <input type="text" id="zipCode" name="zip_code" placeholder="10001" />
+                    </div>
+                </div>
+
+                <div class="report-navigation">
+                    <a href="/report-details.html" class="btn btn-secondary">Back</a>
+                    <button type="button" class="btn btn-primary" id="contactContinueBtn">Continue <i class="fas fa-arrow-right"></i></button>
+                </div>
+            </form>
+
+            <div class="report-bottom-space"></div>
+        </div>
+    </main>
+
+    <script src="js/report-contact.js"></script>
+</body>
+</html>
