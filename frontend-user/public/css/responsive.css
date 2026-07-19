@@ -4,139 +4,46 @@
 
 /* Tablet */
 @media (max-width: 992px) {
-    .hero-content h1 {
-        font-size: 2.6rem;
-    }
-
-    .steps-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    .footer-top {
-        grid-template-columns: 1fr;
-        gap: 24px;
-    }
-
-    .footer-language-grid {
-        grid-template-columns: repeat(2, 1fr);
+    .trust-map-box {
+        max-width: 100%;
     }
 }
 
 /* Mobile */
 @media (max-width: 768px) {
-    .mobile-toggle {
-        display: block;
-    }
-
-    .main-nav {
-        display: none;
-        width: 100%;
-        padding-top: 12px;
-        border-top: 1px solid var(--gray-200);
-    }
-
-    .main-nav.open {
-        display: block;
-    }
-
-    .main-nav ul {
-        flex-direction: column;
-        align-items: stretch;
-        gap: 0;
-    }
-
-    .main-nav ul li a,
-    .main-nav ul li .menu-label {
-        padding: 12px 16px;
-        border-radius: 0;
-    }
-
-    .main-nav ul li .menu-label {
-        display: none;
-    }
-
-    .main-nav ul li a.btn {
-        text-align: center;
-    }
-
-    .hero-content h1 {
-        font-size: 2rem;
-    }
-
-    .hero-content p {
-        font-size: 1rem;
-    }
-
-    .steps-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .step-card {
-        padding: 24px 16px;
-    }
-
     .stop-actions {
-        flex-direction: column;
-        gap: 8px;
+        display: block;
+        line-height: 1.9;
     }
 
-    .trust-content h2 {
-        font-size: 1.8rem;
+    .trust-content p,
+    .stop-fraud-banner p,
+    .step-card p {
+        max-width: 100%;
     }
 
-    .final-cta h2 {
-        font-size: 1.8rem;
-    }
-
-    .footer-language-grid {
-        grid-template-columns: 1fr 1fr;
-    }
-
-    .footer-bottom {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-    }
-
-    .gov-banner-inner {
-        flex-direction: column;
+    .footer-ftc-brand {
         align-items: flex-start;
-        gap: 4px;
-    }
-
-    .logo-text .logo-agency {
-        font-size: 0.6rem;
-    }
-
-    .logo-text .logo-site {
-        font-size: 0.9rem;
-    }
-
-    .site-logo {
-        height: 32px;
     }
 }
 
 /* Small Mobile */
 @media (max-width: 480px) {
-    .hero-content h1 {
-        font-size: 1.6rem;
+    .gov-banner {
+        font-size: 0.72rem;
     }
 
-    .btn-large {
-        padding: 14px 24px;
-        font-size: 1rem;
+    .hero-section {
+        min-height: 470px;
     }
 
-    .section-title {
-        font-size: 1.6rem;
-    }
-
-    .footer-language-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .logo-text .logo-agency {
-        display: none;
+    .stop-link,
+    .strong-link,
+    .inline-link,
+    .footer-brand a,
+    .footer-links a,
+    .footer-nav-links a,
+    .footer-report-link a {
+        word-break: break-word;
     }
 }
