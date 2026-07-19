@@ -1,5 +1,5 @@
 /* ============================================================
-   RESET & BASE - 100% MATCH REPORTFRAUD.FTC.GOV
+   RESET & BASE
    ============================================================ */
 * {
     margin: 0;
@@ -8,7 +8,6 @@
 }
 
 :root {
-    /* Official FTC Colors */
     --primary: #003c78;
     --primary-dark: #002a55;
     --primary-light: #e8f0fe;
