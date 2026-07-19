@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="css/responsive.css" />
     <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <link rel="stylesheet" href="css/mobile-menu-faq.css">
 </head>
 <body>
 
@@ -53,6 +54,24 @@
             </div>
         </div>
     </header>
+
+    <div class="mobile-utility-panel" data-mobile-utility-panel>
+    <div class="mobile-utility-inner">
+        <form class="mobile-faq-search" data-faq-search-form>
+            <input type="text" placeholder="Search FAQs on ReportFraud.ftc.gov" data-faq-search-input>
+            <button type="submit" aria-label="Search">⌕</button>
+        </form>
+
+        <div class="mobile-utility-links">
+            <a href="#faq-module" data-mobile-menu-close>FAQs</a>
+            <a href="/es" data-mobile-menu-close>Español</a>
+        </div>
+
+        <div class="mobile-report-btn-wrap">
+            <a href="/report.html" class="mobile-report-btn" data-mobile-menu-close>Report Now</a>
+        </div>
+    </div>
+    </div>
 
     <!-- ===== HERO SECTION ===== -->
     <section class="hero-section">
@@ -274,5 +293,6 @@
     </footer>
 
     <script src="js/main.js"></script>
+    <script src="js/mobile-menu-faq.js"></script>
 </body>
 </html>
