@@ -1,74 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Report Submitted - ReportFraud Preview</title>
-  <link rel="stylesheet" href="css/style.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ReportFraud - Report Submitted</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/report.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 </head>
-<body>
-  <div class="gov-banner">
-    <div class="container">
-      <div class="gov-banner-inner">
-        <div class="gov-banner-left">
-          <img src="css/icon-shield.svg" alt="" class="vt-inline-icon" />
-          <span class="gov-text">Public reporting confirmation preview</span>
+<body class="report-page-body">
+
+    <!-- ===== GOV BANNER ===== -->
+    <div class="gov-banner report-gov-banner">
+        <div class="container">
+            <div class="gov-banner-inner">
+                <div class="gov-banner-left">
+                    <span class="gov-icon"><i class="fas fa-lock"></i></span>
+                    <span class="gov-text">An official website of the United States government</span>
+                </div>
+                <div class="gov-banner-right">
+                    <a href="#" class="gov-link">Here's how you know</a>
+                </div>
+            </div>
         </div>
-      </div>
     </div>
-  </div>
 
-  <section class="confirmation-section">
-    <div class="container">
-      <div class="confirmation-container">
-        <img src="css/icon-warning.svg" alt="" class="vt-confirmation-svg" />
-        <h1>Your report has been submitted</h1>
-        <p>Thank you for taking the time to share information.</p>
-
-        <div class="confirmation-details">
-          <div class="detail-item">
-            <span class="detail-label">Report number</span>
-            <span class="detail-value" id="reportNumber">—</span>
-          </div>
-          <div class="detail-item">
-            <span class="detail-label">Category</span>
-            <span class="detail-value" id="reportTopic">—</span>
-          </div>
-          <div class="detail-item">
-            <span class="detail-label">Status</span>
-            <span class="detail-value status-pending">Received</span>
-          </div>
+    <!-- ===== HEADER ===== -->
+    <header class="report-header-shell">
+        <div class="container report-header-inner">
+            <a href="/" class="report-brand">
+                <img src="css/ftc-logo.svg" alt="FTC Logo" class="report-brand-logo" />
+                <div class="report-brand-text">
+                    <span class="report-brand-agency">FEDERAL TRADE COMMISSION</span>
+                    <span class="report-brand-site">ReportFraud.ftc.gov</span>
+                </div>
+            </a>
         </div>
+    </header>
 
-        <div class="confirmation-actions">
-          <a href="/report.html" class="btn btn-primary">File another report</a>
-          <a href="/" class="btn btn-secondary">Return home</a>
+    <!-- ===== CONFIRMATION ===== -->
+    <main class="confirmation-main">
+        <div class="container">
+            <div class="confirmation-card">
+                <div class="confirmation-icon">
+                    <i class="fas fa-check-circle"></i>
+                </div>
+                <h1>Report Submitted Successfully</h1>
+                <p>Thank you for your report. Our team will review it shortly.</p>
+                <div class="confirmation-details">
+                    <div class="detail-item">
+                        <span class="detail-label">Report Number:</span>
+                        <span class="detail-value" id="reportNumber">RF-20260101-0001</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">Status:</span>
+                        <span class="detail-value status-pending">Pending Review</span>
+                    </div>
+                </div>
+                <div class="confirmation-actions">
+                    <a href="/" class="btn btn-primary"><i class="fas fa-home"></i> Return Home</a>
+                    <a href="/report-start.html" class="btn btn-secondary"><i class="fas fa-plus"></i> Submit Another</a>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-  </section>
+    </main>
 
-  <script>
-    const params = new URLSearchParams(window.location.search);
-    const report = params.get('report') || 'Unavailable';
-    const topic = params.get('topic') || 'Not specified';
-
-    const topicMap = {
-      'impersonator': 'An impersonator',
-      'shopping': 'Online shopping',
-      'job-investment': 'Job or investment opportunity',
-      'sweepstakes': 'Prize, lottery, or sweepstakes',
-      'phone-service': 'Phone, internet, or TV service',
-      'auto': 'Auto sale or repair',
-      'health': 'Health-related issue',
-      'credit': 'Credit, debt, or loan',
-      'annoying-call': 'Just an unwanted call',
-      'something-else': 'Something else'
-    };
-
-    document.getElementById('reportNumber').textContent = report;
-    document.getElementById('reportTopic').textContent = topicMap[topic] || topic;
-  </script>
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const reportNumber = urlParams.get('report') || 'RF-20260101-0001';
+        document.getElementById('reportNumber').textContent = reportNumber;
+    </script>
 </body>
 </html>
