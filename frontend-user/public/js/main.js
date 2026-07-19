@@ -44,18 +44,6 @@ document.addEventListener("DOMContentLoaded", function () {
             if (!item) return;
 
             const isOpen = item.classList.contains("is-open");
-            // Close all other items in the same accordion (optional)
-            // Uncomment the next lines if you want only one open at a time
-            // const accordion = item.closest('.faq-accordion');
-            // if (accordion) {
-            //     accordion.querySelectorAll('.faq-item.is-open').forEach(function(openItem) {
-            //         if (openItem !== item) {
-            //             openItem.classList.remove('is-open');
-            //             openItem.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
-            //         }
-            //     });
-            // }
-
             item.classList.toggle("is-open", !isOpen);
             this.setAttribute("aria-expanded", !isOpen ? "true" : "false");
         });
@@ -81,14 +69,11 @@ document.addEventListener("DOMContentLoaded", function () {
             faqGroups.forEach(function (group) {
                 const groupTopic = group.getAttribute("data-topic-group");
                 group.classList.toggle("is-active", groupTopic === target);
-
-                // If "all", show everything (but we handle this via data-topic-group)
                 if (target === "all") {
                     group.classList.add("is-active");
                 }
             });
 
-            // If "all" is selected, show all groups
             if (target === "all") {
                 faqGroups.forEach(function (group) {
                     group.classList.add("is-active");
@@ -99,7 +84,6 @@ document.addEventListener("DOMContentLoaded", function () {
             const searchInput = document.getElementById("faqSearchInput");
             if (searchInput) {
                 searchInput.value = "";
-                // Remove hidden-by-search from all items
                 document.querySelectorAll(".faq-item").forEach(function (item) {
                     item.classList.remove("hidden-by-search");
                 });
@@ -116,12 +100,10 @@ document.addEventListener("DOMContentLoaded", function () {
         const allItems = document.querySelectorAll(".faq-item");
         const allGroups = document.querySelectorAll(".faq-group");
 
-        // If search is empty, show all items and reset topic filter
         if (!query) {
             allItems.forEach(function (item) {
                 item.classList.remove("hidden-by-search");
             });
-            // Restore topic filter state
             const activeBtn = document.querySelector(".faq-topic-btn.is-active");
             if (activeBtn) {
                 const topic = activeBtn.getAttribute("data-topic");
@@ -133,12 +115,10 @@ document.addEventListener("DOMContentLoaded", function () {
             return;
         }
 
-        // Show all groups for search results
         allGroups.forEach(function (group) {
             group.classList.add("is-active");
         });
 
-        // Filter items
         allItems.forEach(function (item) {
             const question = item.querySelector(".faq-question-text")?.textContent?.toLowerCase() || "";
             const answer = item.querySelector(".faq-answer")?.textContent?.toLowerCase() || "";
@@ -146,17 +126,15 @@ document.addEventListener("DOMContentLoaded", function () {
             item.classList.toggle("hidden-by-search", !match);
         });
 
-        // Remove active topic highlighting (since search overrides)
         topicButtons.forEach(function (btn) {
             btn.classList.remove("is-active");
             btn.setAttribute("aria-selected", "false");
         });
-        // Optionally, we could set a "search" mode indicator, but we'll just keep the visual.
     }
 
     if (searchInput) {
         searchInput.addEventListener("input", performSearch);
-        searchInput.addEventListener("search", performSearch); // for clear button on some browsers
+        searchInput.addEventListener("search", performSearch);
     }
 
     if (searchBtn) {
