@@ -31,10 +31,6 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-    // ============================================
-    // FAQ SYSTEM - 100% MATCH OFFICIAL
-    // ============================================
-
     // ---- FAQ Accordion Toggle ----
     const faqQuestions = document.querySelectorAll(".faq-question");
 
@@ -57,7 +53,6 @@ document.addEventListener("DOMContentLoaded", function () {
         btn.addEventListener("click", function () {
             const target = this.getAttribute("data-topic");
 
-            // Update active button
             topicButtons.forEach(function (b) {
                 b.classList.remove("is-active");
                 b.setAttribute("aria-selected", "false");
@@ -65,7 +60,6 @@ document.addEventListener("DOMContentLoaded", function () {
             this.classList.add("is-active");
             this.setAttribute("aria-selected", "true");
 
-            // Show only the selected group
             faqGroups.forEach(function (group) {
                 const groupTopic = group.getAttribute("data-topic-group");
                 group.classList.toggle("is-active", groupTopic === target);
@@ -80,7 +74,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 });
             }
 
-            // Clear search input when switching topics
             const searchInput = document.getElementById("faqSearchInput");
             if (searchInput) {
                 searchInput.value = "";
