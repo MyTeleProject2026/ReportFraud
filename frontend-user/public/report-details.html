@@ -1,1 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ReportFraud - Report Details</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/report.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+</head>
+<body class="report-page-body">
 
+    <!-- ===== GOV BANNER ===== -->
+    <div class="gov-banner report-gov-banner">
+        <div class="container">
+            <div class="gov-banner-inner">
+                <div class="gov-banner-left">
+                    <span class="gov-icon"><i class="fas fa-lock"></i></span>
+                    <span class="gov-text">An official website of the United States government</span>
+                </div>
+                <div class="gov-banner-right">
+                    <a href="#" class="gov-link">Here's how you know</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== HEADER ===== -->
+    <header class="report-header-shell">
+        <div class="container report-header-inner">
+            <a href="/" class="report-brand">
+                <img src="css/ftc-logo.svg" alt="FTC Logo" class="report-brand-logo" />
+                <div class="report-brand-text">
+                    <span class="report-brand-agency">FEDERAL TRADE COMMISSION</span>
+                    <span class="report-brand-site">ReportFraud.ftc.gov</span>
+                </div>
+            </a>
+        </div>
+    </header>
+
+    <!-- ===== REPORT FLOW ===== -->
+    <main class="report-flow-page">
+        <div class="container report-flow-container">
+            <!-- Progress Indicator -->
+            <section class="report-progress-card">
+                <div class="report-progress-row">
+                    <span class="report-progress-label">Start</span>
+                    <div class="report-progress-track" aria-hidden="true">
+                        <span class="report-progress-fill" style="width: 50%;"></span>
+                    </div>
+                    <span class="report-progress-label">Submit</span>
+                </div>
+            </section>
+
+            <!-- Step 2: Details -->
+            <section class="report-question-block">
+                <h1>Tell us what happened</h1>
+                <p>Provide as much detail as possible about the fraud or scam.</p>
+            </section>
+
+            <form class="report-form" id="detailsForm">
+                <div class="form-group">
+                    <label for="incidentDescription">Description of the incident <span class="required">*</span></label>
+                    <textarea id="incidentDescription" name="incident_description" rows="6" required placeholder="Describe what happened, including dates, times, and any relevant information..."></textarea>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="incidentDate">Date of incident</label>
+                        <input type="date" id="incidentDate" name="incident_date" />
+                    </div>
+                    <div class="form-group">
+                        <label for="amountLost">Amount lost (if any)</label>
+                        <input type="number" id="amountLost" name="amount_lost" step="0.01" placeholder="0.00" />
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="paymentMethod">Payment method used</label>
+                    <input type="text" id="paymentMethod" name="payment_method" placeholder="Credit Card, Bank Transfer, Cryptocurrency, etc." />
+                </div>
+
+                <h3 style="margin-top: 28px; margin-bottom: 16px;">Suspect Information</h3>
+
+                <div class="form-group">
+                    <label for="suspectName">Suspect name</label>
+                    <input type="text" id="suspectName" name="suspect_name" placeholder="Full name of the suspect" />
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="suspectEmail">Suspect email</label>
+                        <input type="email" id="suspectEmail" name="suspect_email" placeholder="suspect@example.com" />
+                    </div>
+                    <div class="form-group">
+                        <label for="suspectPhone">Suspect phone</label>
+                        <input type="tel" id="suspectPhone" name="suspect_phone" placeholder="(123) 456-7890" />
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="suspectWebsite">Suspect website</label>
+                    <input type="url" id="suspectWebsite" name="suspect_website" placeholder="https://example.com" />
+                </div>
+
+                <div class="form-group">
+                    <label for="additionalInfo">Additional information</label>
+                    <textarea id="additionalInfo" name="additional_info" rows="3" placeholder="Any other details that might help with the investigation..."></textarea>
+                </div>
+
+                <div class="report-navigation">
+                    <a href="/report-start.html" class="btn btn-secondary">Back</a>
+                    <button type="button" class="btn btn-primary" id="detailsContinueBtn">Continue <i class="fas fa-arrow-right"></i></button>
+                </div>
+            </form>
+
+            <div class="report-bottom-space"></div>
+        </div>
+    </main>
+
+    <script src="js/report-details.js"></script>
+</body>
+</html>
