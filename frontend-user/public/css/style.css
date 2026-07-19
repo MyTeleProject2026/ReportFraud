@@ -287,6 +287,18 @@ a:hover {
     opacity: 0.6;
 }
 
+/* 🔧 IF YOU WANT TO USE AN IMAGE INSTEAD OF SVG */
+/* .hero-background img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+} */
+
+/* 🔧 IF YOU WANT TO USE A GRADIENT BACKGROUND */
+/* .hero-background {
+    background: linear-gradient(135deg, #003c78 0%, #1a5a9c 50%, #f0f5fa 100%);
+} */
+
 .hero-content {
     position: relative;
     z-index: 1;
@@ -360,6 +372,13 @@ a:hover {
     font-size: 2.4rem;
     color: var(--primary);
     margin-bottom: 16px;
+}
+
+.step-icon.custom-illustration img {
+    width: 80px;
+    height: auto;
+    display: block;
+    margin: 0 auto;
 }
 
 .step-card h3 {
