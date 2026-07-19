@@ -1,1493 +1,216 @@
 /* ============================================================
-   RESET & BASE
-   ============================================================ */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-:root {
-    --primary: #214f86;
-    --primary-dark: #173d68;
-    --primary-light: #bfe8fb;
-    --secondary: #214f86;
-    --secondary-hover: #173d68;
-    --warning: #f0b323;
-    --gray-50: #f3f3f3;
-    --gray-100: #ececec;
-    --gray-200: #d9d9d9;
-    --gray-300: #c7c7c7;
-    --gray-400: #a8a8a8;
-    --gray-500: #7d7d7d;
-    --gray-600: #5d5d5d;
-    --gray-700: #2f4f74;
-    --gray-800: #27486e;
-    --gray-900: #1f4268;
-    --white: #ffffff;
-    --footer-bg: #214f86;
-    --page-bg: #f2f2f2;
-    --line: #b7e5ef;
-    --shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
-    --shadow-lg: 0 8px 22px rgba(0, 0, 0, 0.08);
-    --radius: 4px;
-    --radius-lg: 8px;
-    --font: 'Public Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-}
-
-html {
-    scroll-behavior: smooth;
-}
-
-body {
-    font-family: var(--font);
-    color: var(--gray-900);
-    background: var(--page-bg);
-    line-height: 1.55;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-}
-
-a {
-    text-decoration: underline;
-    color: var(--gray-800);
-}
-
-a:hover {
-    color: var(--primary-dark);
-}
-
-.container {
-    max-width: 1040px;
-    margin: 0 auto;
-    padding: 0 18px;
-}
-
-/* ============================================================
-   OFFICIAL BANNER
-   ============================================================ */
-.gov-banner {
-    background: var(--white);
-    color: var(--gray-700);
-    padding: 6px 0;
-    font-size: 0.78rem;
-    border-bottom: 1px solid var(--gray-200);
-}
-
-.gov-banner-inner {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 8px;
-    flex-wrap: wrap;
-}
-
-.gov-banner-left {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
-
-.gov-icon {
-    color: var(--gray-700);
-    font-size: 0.8rem;
-}
-
-.gov-text {
-    color: var(--gray-700);
-}
-
-.gov-link {
-    color: var(--gray-700);
-    text-decoration: underline;
-}
-
-.gov-link:hover {
-    color: var(--primary-dark);
-}
-
-/* ============================================================
-   HEADER
-   ============================================================ */
-.site-header {
-    background: var(--white);
-    padding: 0;
-    border-bottom: 1px solid var(--gray-200);
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-}
-
-.header-inner {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    min-height: 64px;
-    gap: 16px;
-}
-
-.logo-container {
-    display: flex;
-    align-items: center;
-}
-
-.logo-link {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    text-decoration: none;
-}
-
-.site-logo {
-    height: 38px;
-    width: auto;
-}
-
-.logo-text {
-    display: flex;
-    flex-direction: column;
-    line-height: 1.05;
-}
-
-.logo-agency {
-    font-size: 0.6rem;
-    font-weight: 700;
-    color: var(--gray-700);
-    letter-spacing: 0.3px;
-    text-transform: uppercase;
-}
-
-.logo-site {
-    font-size: 1rem;
-    font-weight: 700;
-    color: var(--gray-900);
-    letter-spacing: -0.2px;
-}
-
-.main-nav ul {
-    display: flex;
-    align-items: center;
-    list-style: none;
-    gap: 2px;
-}
-
-.menu-label {
-    font-size: 0.82rem;
-    font-weight: 700;
-    color: var(--white);
-    background: var(--primary);
-    padding: 14px 18px;
-    letter-spacing: 0.3px;
-    text-transform: uppercase;
-    text-decoration: none;
-}
-
-.main-nav ul li a {
-    display: block;
-    padding: 10px 12px;
-    color: var(--gray-700);
-    font-weight: 500;
-    font-size: 0.95rem;
-    border-radius: 0;
-    text-decoration: underline;
-    transition: all 0.2s ease;
-}
-
-.main-nav ul li a:hover,
-.main-nav ul li a.active {
-    color: var(--primary-dark);
-}
-
-.btn-primary.btn-sm {
-    padding: 8px 16px;
-    font-size: 0.92rem;
-    text-decoration: none !important;
-}
-
-.mobile-toggle {
-    display: none;
-    background: var(--primary);
-    border: none;
-    font-size: 1.05rem;
-    color: var(--white);
-    cursor: pointer;
-    padding: 14px 18px;
-    line-height: 1;
-}
-
-/* ============================================================
-   BUTTONS
-   ============================================================ */
-.btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    padding: 12px 28px;
-    font-size: 1rem;
-    font-weight: 500;
-    border-radius: var(--radius);
-    border: none;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    font-family: var(--font);
-    text-decoration: none;
-}
-
-.btn-primary {
-    background: var(--primary);
-    color: var(--white);
-}
-
-.btn-primary:hover {
-    background: var(--primary-dark);
-    color: var(--white);
-}
-
-.btn-secondary {
-    background: transparent;
-    color: var(--primary);
-    border: 1px solid var(--primary);
-}
-
-.btn-secondary:hover {
-    background: #eef6fb;
-    color: var(--primary-dark);
-}
-
-.btn-large {
-    padding: 16px 34px;
-    font-size: 1.05rem;
-}
-
-/* ============================================================
-   HERO
-   ============================================================ */
-.hero-section {
-    position: relative;
-    min-height: 520px;
-    display: flex;
-    align-items: center;
-    text-align: center;
-    overflow: hidden;
-    background: var(--primary-light);
-    border-bottom: 1px solid var(--line);
-}
-
-.hero-background {
-    position: absolute;
-    inset: 0;
-    z-index: 0;
-}
-
-.city-skyline {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-}
-
-.hero-content {
-    position: relative;
-    z-index: 1;
-    padding: 76px 0 74px;
-    max-width: 650px;
-    margin: 0 auto;
-}
-
-.hero-content h1 {
-    font-size: 3rem;
-    font-weight: 600;
-    color: var(--gray-900);
-    line-height: 1.18;
-    margin-bottom: 26px;
-    letter-spacing: -0.4px;
-}
-
-.hero-content .btn-large {
-    margin-bottom: 26px;
-    font-size: 1.05rem;
-    padding: 18px 34px;
-    min-width: 220px;
-    justify-content: center;
-    box-shadow: var(--shadow-lg);
-}
-
-.hero-content p {
-    font-size: 1.08rem;
-    color: var(--gray-800);
-    max-width: 610px;
-    margin: 0 auto;
-    line-height: 1.45;
-}
-
-/* ============================================================
-   HOW IT WORKS
-   ============================================================ */
-.how-it-works {
-    padding: 56px 0 30px;
-    background: var(--page-bg);
-}
-
-.section-title {
-    text-align: center;
-    font-size: 2.05rem;
-    font-weight: 600;
-    color: var(--gray-900);
-    margin-bottom: 34px;
-}
-
-.steps-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 0;
-    border-top: 1px solid var(--gray-200);
-}
-
-.step-card {
-    text-align: center;
-    padding: 38px 24px 34px;
-    background: transparent;
-    border-bottom: 1px solid var(--gray-200);
-    transition: none;
-}
-
-.step-card:hover {
-    transform: none;
-    box-shadow: none;
-}
-
-.step-icon {
-    font-size: 3.4rem;
-    color: var(--primary);
-    margin-bottom: 20px;
-}
-.step-icon.custom-illustration {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 22px;
-}
-
-.step-icon.custom-illustration img {
-    width: 112px;
-    height: auto;
-    display: block;
-}
-
-
-.step-card h3 {
-    font-size: 1.15rem;
-    font-weight: 500;
-    margin-bottom: 10px;
-    color: var(--gray-900);
-}
-
-.step-card p {
-    color: var(--gray-600);
-    font-size: 0.98rem;
-    max-width: 250px;
-    margin: 0 auto;
-}
-
-/* ============================================================
-   HELP STOP FRAUD
-   ============================================================ */
-.stop-fraud-banner {
-    padding: 26px 0 36px;
-    background: var(--page-bg);
-    text-align: center;
-}
-
-.stop-fraud-banner h2 {
-    font-size: 2rem;
-    font-weight: 600;
-    color: var(--gray-900);
-    margin-bottom: 10px;
-}
-
-.stop-fraud-banner p {
-    font-size: 1rem;
-    color: var(--gray-600);
-    margin-bottom: 18px;
-    max-width: 660px;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.stop-actions {
-    display: block;
-    text-align: center;
-}
-
-.stop-or {
-    color: var(--gray-600);
-    font-size: 1rem;
-    margin: 0 6px;
-}
-
-.stop-link,
-.strong-link {
-    font-weight: 500;
-    color: var(--gray-900);
-    text-decoration: underline;
-}
-
-/* ============================================================
-   SCAM WARNING
-   ============================================================ */
-.scam-warning-section {
-    padding: 12px 0 22px;
-    background: var(--page-bg);
-}
-
-.scam-warning-card {
-    max-width: 760px;
-    margin: 0 auto;
-    background: var(--primary);
-    color: var(--white);
-    text-align: center;
-    padding: 48px 32px 42px;
-}
-
-.scam-warning-icon {
-    font-size: 3rem;
-    color: var(--white);
-    margin-bottom: 22px;
-}
-
-.scam-warning-card p {
-    font-size: 1rem;
-    line-height: 1.7;
-    max-width: 620px;
-    margin: 0 auto 18px;
-}
-
-.scam-warning-link {
-    color: var(--white);
-    text-decoration: underline;
-    font-weight: 500;
-}
-
-.scam-warning-link:hover {
-    color: #e6eef8;
-}
-
-/* ============================================================
-   TRUST SECTION
-   ============================================================ */
-.trust-section {
-    padding: 28px 0 20px;
-    background: var(--page-bg);
-    color: var(--gray-900);
-    border-top: 2px solid var(--line);
-}
-
-.trust-content {
-    max-width: 820px;
-    margin: 0 auto;
-    text-align: center;
-}
-
-.trust-content h2 {
-    font-size: 2.05rem;
-    font-weight: 600;
-    margin-bottom: 20px;
-    color: var(--gray-900);
-}
-
-.trust-highlight {
-    font-size: 1.02rem;
-    font-weight: 400;
-    margin-bottom: 22px;
-    color: var(--gray-700);
-}
-
-.trust-content p {
-    font-size: 1rem;
-    color: var(--gray-700);
-    margin-bottom: 20px;
-    line-height: 1.65;
-}
-
-.inline-link {
-    color: var(--gray-900);
-    text-decoration: underline;
-}
-
-.inline-link:hover {
-    color: var(--primary-dark);
-}
-
-
-.trust-map-box {
-    margin: 18px auto 20px;
-    background: #d7eef6;
-    border: 1px solid #d2e8f0;
-    padding: 10px;
-    max-width: 760px;
-}
-
-.trust-map-image {
-    width: 100%;
-    height: auto;
-    display: block;
-}
-
-
-/* ============================================================
-   REPORT PAGE
-   ============================================================ */
-.report-section {
-    padding: 36px 0 56px;
-    background: var(--page-bg);
-}
-
-.report-container {
-    max-width: 940px;
-    margin: 0 auto;
-    background: var(--white);
-    border: 1px solid var(--gray-200);
-    box-shadow: var(--shadow);
-}
-
-.report-header {
-    padding: 28px 28px 22px;
-    background: #f9fbfd;
-    border-bottom: 1px solid var(--gray-200);
-}
-
-.report-header h1 {
-    font-size: 2rem;
-    font-weight: 600;
-    color: var(--gray-900);
-    margin-bottom: 8px;
-}
-
-.report-header p {
-    color: var(--gray-600);
-    font-size: 0.98rem;
-    margin-bottom: 18px;
-}
-
-.progress-bar {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 10px;
-}
-
-.progress-step {
-    background: #eef3f7;
-    border: 1px solid #d7e0e7;
-    color: var(--gray-600);
-    font-size: 0.9rem;
-    font-weight: 600;
-    padding: 12px 10px;
-    text-align: center;
-}
-
-.progress-step.active {
-    background: var(--primary);
-    color: var(--white);
-    border-color: var(--primary);
-}
-
-.report-form {
-    padding: 28px;
-}
-
-.form-step {
-    display: none;
-}
-
-.form-step.active {
-    display: block;
-}
-
-.form-step h2 {
-    font-size: 1.5rem;
-    font-weight: 600;
-    color: var(--gray-900);
-    margin-bottom: 20px;
-}
-
-.form-row {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 16px;
-}
-
-.form-group {
-    margin-bottom: 18px;
-}
-
-.form-group label {
-    display: block;
-    margin-bottom: 7px;
-    color: var(--gray-800);
-    font-weight: 600;
-    font-size: 0.95rem;
-}
-
-.required {
-    color: #b42318;
-}
-
-.form-group input,
-.form-group select,
-.form-group textarea {
-    width: 100%;
-    padding: 12px 14px;
-    border: 1px solid var(--gray-300);
-    background: var(--white);
-    color: var(--gray-900);
-    border-radius: 2px;
-}
-
-.form-group input:focus,
-.form-group select:focus,
-.form-group textarea:focus {
-    outline: none;
-    border-color: var(--primary);
-}
-
-.form-nav,
-.form-actions {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 14px;
-    margin-top: 10px;
-}
-
-.review-box {
-    background: #f9fbfd;
-    border: 1px solid var(--gray-200);
-    padding: 20px;
-}
-
-.review-box p {
-    color: var(--gray-700);
-    margin-bottom: 14px;
-}
-
-.review-summary {
-    display: grid;
-    gap: 12px;
-}
-
-.review-item {
-    display: grid;
-    grid-template-columns: 180px 1fr;
-    gap: 10px;
-    padding-bottom: 10px;
-    border-bottom: 1px solid var(--gray-200);
-}
-
-.review-item .label {
-    font-weight: 700;
-    color: var(--gray-800);
-}
-
-.review-item .value {
-    color: var(--gray-700);
-}
-
-/* ============================================================
-   CONFIRMATION PAGE
-   ============================================================ */
-.confirmation-section {
-    padding: 60px 0 70px;
-    background: var(--page-bg);
-}
-
-.confirmation-container {
-    max-width: 700px;
-    margin: 0 auto;
-    background: var(--white);
-    border: 1px solid var(--gray-200);
-    text-align: center;
-    padding: 42px 28px;
-    box-shadow: var(--shadow);
-}
-
-.confirmation-icon {
-    font-size: 4rem;
-    color: var(--primary);
-    margin-bottom: 16px;
-}
-
-.confirmation-container h1 {
-    font-size: 2rem;
-    font-weight: 600;
-    color: var(--gray-900);
-    margin-bottom: 10px;
-}
-
-.confirmation-container p {
-    color: var(--gray-600);
-}
-
-.confirmation-details {
-    margin: 24px auto;
-    max-width: 520px;
-    border: 1px solid var(--gray-200);
-    background: #f9fbfd;
-}
-
-.detail-item {
-    display: flex;
-    justify-content: space-between;
-    gap: 12px;
-    padding: 14px 18px;
-    border-bottom: 1px solid var(--gray-200);
-    text-align: left;
-}
-
-.detail-item:last-child {
-    border-bottom: none;
-}
-
-.detail-label {
-    color: var(--gray-800);
-    font-weight: 700;
-}
-
-.detail-value {
-    color: var(--gray-700);
-    font-weight: 600;
-}
-
-.status-pending {
-    color: var(--primary);
-}
-
-.confirmation-actions {
-    display: flex;
-    justify-content: center;
-    gap: 12px;
-    flex-wrap: wrap;
-}
-
-/* ============================================================
-   FOOTER
-   ============================================================ */
-.site-footer {
-    background: var(--footer-bg);
-    color: #eef4fb;
-    padding: 20px 0 24px;
-}
-
-.footer-top {
-    display: grid;
-    grid-template-columns: 2fr 1fr;
-    gap: 28px;
-    padding-bottom: 18px;
-}
-
-.footer-brand p {
-    font-size: 0.98rem;
-    margin-bottom: 14px;
-    line-height: 1.6;
-    color: #eef4fb;
-}
-
-.footer-brand a,
-.footer-links a,
-.footer-nav-links a,
-.footer-report-link a,
-.footer-logo-text a {
-    color: #eef4fb;
-    text-decoration: underline;
-}
-
-.footer-brand a:hover,
-.footer-links a:hover,
-.footer-nav-links a:hover,
-.footer-report-link a:hover,
-.footer-logo-text a:hover {
-    color: var(--white);
-}
-
-.footer-logo-text {
-    font-size: 1.05rem;
-    font-weight: 500;
-    display: inline-block;
-    margin-bottom: 10px;
-}
-
-.footer-links {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    align-items: flex-start;
-}
-
-.footer-middle {
-    display: flex;
-    flex-direction: column;
-    gap: 18px;
-}
-
-.footer-ftc-brand {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    color: var(--white);
-}
-
-.footer-ftc-logo {
-    height: 34px;
-    width: auto;
-    filter: brightness(0) invert(1);
-}
-
-.footer-nav-links {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-
-.footer-language-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 16px;
-}
-
-.lang-col {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-}
-
-.lang-col a {
-    color: #eef4fb;
-    font-size: 0.95rem;
-    text-decoration: none;
-}
-
-.lang-col a:hover {
-    text-decoration: underline;
-}
-
-.footer-report-link a {
-    font-size: 1rem;
-    font-weight: 500;
-}
-
-.footer-bottom {
-    padding-top: 16px;
-    font-size: 0.88rem;
-    color: #eef4fb;
-}
-
-.footer-omb p {
-    margin-bottom: 4px;
-}
-
-.simple-footer {
-    padding: 20px 0;
-}
-
-.simple-footer-top {
-    grid-template-columns: 2fr 1fr;
-    padding-bottom: 0;
-}
-
-/* ============================================================
-   RESPONSIVE SUPPORT
-   ============================================================ */
-@media (max-width: 992px) {
-    .hero-content h1 {
-        font-size: 2.5rem;
-    }
-
-    .steps-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .step-card {
-        border-top: 1px solid var(--gray-200);
-    }
-
-    .progress-bar {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    .form-row {
-        grid-template-columns: 1fr 1fr;
-    }
-
-    .footer-top,
-    .simple-footer-top {
-        grid-template-columns: 1fr;
-        gap: 18px;
-    }
-
-    .footer-language-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-@media (max-width: 768px) {
-    .mobile-toggle {
-        display: block;
-    }
-
-    .main-nav {
-        display: none;
-        width: 100%;
-        padding-top: 0;
-        border-top: 1px solid var(--gray-200);
-    }
-
-    .main-nav.open {
-        display: block;
-    }
-
-    .main-nav ul {
-        flex-direction: column;
-        align-items: stretch;
-        gap: 0;
-    }
-
-    .main-nav ul li a,
-    .main-nav ul li .menu-label {
-        padding: 14px 16px;
-        border-radius: 0;
-    }
-
-    .main-nav ul li .menu-label {
-        display: none;
-    }
-
-    .main-nav ul li a.btn {
-        text-align: center;
-    }
-
-    .hero-section {
-        min-height: 520px;
-    }
-
-    .hero-content {
-        padding: 58px 0 62px;
-    }
-
-    .hero-content h1 {
-        font-size: 2rem;
-    }
-
-    .hero-content p {
-        font-size: 1rem;
-    }
-
-    .section-title,
-    .stop-fraud-banner h2,
-    .trust-content h2 {
-        font-size: 1.9rem;
-    }
-
-    .progress-bar {
-        grid-template-columns: 1fr;
-    }
-
-    .form-row {
-        grid-template-columns: 1fr;
-    }
-
-    .review-item {
-        grid-template-columns: 1fr;
-    }
-
-    .detail-item {
-        flex-direction: column;
-    }
-
-    .footer-language-grid {
-        grid-template-columns: 1fr 1fr;
-    }
-
-    .gov-banner-inner {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 4px;
-    }
-
-    .logo-text .logo-agency {
-        font-size: 0.55rem;
-    }
-
-    .logo-text .logo-site {
-        font-size: 0.88rem;
-    }
-
-    .site-logo {
-        height: 30px;
-    }
-}
-
-@media (max-width: 480px) {
-    .container {
-        padding: 0 10px;
-    }
-
-    .hero-content h1 {
-        font-size: 1.65rem;
-    }
-
-    .hero-content .btn-large {
-        min-width: 0;
-        width: auto;
-        padding: 14px 24px;
-        font-size: 0.98rem;
-    }
-
-    .section-title,
-    .stop-fraud-banner h2,
-    .trust-content h2,
-    .report-header h1,
-    .confirmation-container h1 {
-        font-size: 1.45rem;
-    }
-
-    .footer-language-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .logo-text .logo-agency {
-        display: none;
-    }
-
-    .scam-warning-card {
-        padding: 34px 20px;
-    }
-}
-/* ============================================================
-   REPORT CATEGORY CHOOSER SCREEN
+   REPORTFRAUD PREVIEW WIZARD
    ============================================================ */
 
-.report-chooser-shell {
+.vt-report-page {
     background: #ffffff;
-    min-height: 100vh;
-    padding-bottom: 120px;
+    color: #23374d;
 }
 
-.report-chooser-wrap {
-    max-width: 860px;
-    margin: 0 auto;
-    padding: 20px 18px 0;
+.vt-gov-banner {
+    background: #ffffff;
+    border-bottom: 1px solid #dfe3e8;
 }
 
-.report-chooser-progress {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-    margin-bottom: 26px;
+.gov-expand-btn {
+    background: transparent;
+    border: none;
+    color: var(--gray-700);
+    text-decoration: underline;
+    cursor: pointer;
+    font: inherit;
 }
 
-.report-chooser-progress-label {
-    font-size: 0.98rem;
-    color: #444;
-    white-space: nowrap;
+.gov-expand-panel {
+    border-top: 1px solid #e6ebef;
+    padding: 12px 0 14px;
 }
 
-.report-chooser-progress-track {
-    width: 190px;
-    height: 26px;
-    background: #ececec;
-    border-radius: 999px;
-    overflow: hidden;
-    position: relative;
-}
-
-.report-chooser-progress-fill {
-    width: 24%;
-    height: 100%;
-    background: #b8e8fb;
-}
-
-.report-chooser-heading {
-    max-width: 760px;
-    margin: 0 auto 22px;
-}
-
-.report-chooser-heading h1 {
-    font-size: 2.25rem;
-    line-height: 1.15;
-    font-weight: 500;
-    color: #3d3d3d;
-    margin-bottom: 14px;
-}
-
-.report-chooser-heading p {
-    font-size: 1.1rem;
-    line-height: 1.5;
-    color: #4a4a4a;
-    max-width: 690px;
-}
-
-.report-topic-list {
-    max-width: 760px;
-    margin: 0 auto;
-}
-
-.report-topic-card {
-    position: relative;
+.gov-expand-grid {
     display: grid;
-    grid-template-columns: 34px 1fr;
+    grid-template-columns: 1fr 1fr;
     gap: 20px;
-    align-items: center;
-    background: #d1f1ff;
-    border: 1px solid #b7deef;
-    border-radius: 10px;
-    padding: 18px 20px;
-    margin-bottom: 14px;
-    cursor: pointer;
-    transition: background 0.2s ease, border-color 0.2s ease;
+    color: #435465;
+    font-size: 0.92rem;
 }
 
-.report-topic-card:hover {
-    background: #c5edfd;
+.gov-expand-grid p {
+    margin-top: 4px;
 }
 
-.report-topic-card input {
-    position: absolute;
-    opacity: 0;
-    pointer-events: none;
-}
-
-.report-topic-radio {
-    width: 28px;
-    height: 28px;
-    border: 3px solid #121212;
-    border-radius: 50%;
-    background: #fff;
-    position: relative;
-    margin-left: 2px;
-}
-
-.report-topic-copy {
-    display: flex;
-    flex-direction: column;
-    gap: 3px;
-}
-
-.report-topic-title {
-    font-size: 1.12rem;
-    line-height: 1.25;
-    color: #313131;
-    font-weight: 400;
-}
-
-.report-topic-subtitle {
-    font-size: 0.95rem;
-    line-height: 1.25;
-    color: #444;
-}
-
-.report-topic-card input:checked + .report-topic-radio::after {
-    content: "";
-    position: absolute;
-    inset: 5px;
-    background: #111;
-    border-radius: 50%;
-}
-
-.report-topic-card.is-selected {
-    background: #b8e8fb;
-    border-color: #97d4eb;
-}
-
-.report-scroll-hint {
-    position: fixed;
-    left: 0;
-    right: 0;
-    bottom: 62px;
-    background: #f2ab00;
-    color: #fff7dd;
-    font-size: 1rem;
-    line-height: 1;
-    padding: 12px 16px;
-    z-index: 30;
-    transition: opacity 0.2s ease, visibility 0.2s ease;
-}
-
-.report-scroll-hint.is-hidden {
-    opacity: 0;
-    visibility: hidden;
-}
-
-.report-chooser-actions {
-    position: fixed;
-    left: 0;
-    right: 0;
-    bottom: 0;
+.vt-report-header {
     background: #ffffff;
-    border-top: 1px solid #dddddd;
-    z-index: 40;
+    border-bottom: 1px solid #e5e7eb;
 }
 
-.report-chooser-actions-inner {
-    max-width: 1040px;
-    margin: 0 auto;
-    padding: 10px 18px;
-    display: flex;
-    justify-content: flex-end;
-}
-
-.report-chooser-continue {
-    min-width: 148px;
-    height: 50px;
-    border: none;
-    border-radius: 4px;
-    font-family: inherit;
-    font-size: 1.02rem;
-    font-weight: 500;
-    padding: 0 16px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    background: #214f86;
-    color: #fff;
-    cursor: pointer;
-}
-
-.report-chooser-continue:disabled {
-    background: #d8d2d7;
-    color: #ffffff;
-    cursor: not-allowed;
-}
-
-.report-chooser-hidden {
-    display: none !important;
-}
-
-@media (max-width: 768px) {
-    .report-chooser-wrap {
-        padding: 14px 16px 0;
-    }
-
-    .report-chooser-progress {
-        gap: 10px;
-        margin-bottom: 20px;
-    }
-
-    .report-chooser-progress-track {
-        width: 160px;
-        height: 24px;
-    }
-
-    .report-chooser-heading {
-        margin-bottom: 18px;
-    }
-
-    .report-chooser-heading h1 {
-        font-size: 1.7rem;
-        line-height: 1.2;
-        margin-bottom: 10px;
-        font-weight: 600;
-    }
-
-    .report-chooser-heading p {
-        font-size: 0.98rem;
-        line-height: 1.45;
-    }
-
-    .report-topic-card {
-        grid-template-columns: 30px 1fr;
-        gap: 16px;
-        padding: 14px 16px;
-        margin-bottom: 11px;
-        border-radius: 8px;
-    }
-
-    .report-topic-radio {
-        width: 27px;
-        height: 27px;
-    }
-
-    .report-topic-title {
-        font-size: 1rem;
-    }
-
-    .report-topic-subtitle {
-        font-size: 0.8rem;
-        line-height: 1.22;
-    }
-
-    .report-chooser-actions-inner {
-        padding: 8px 16px;
-    }
-
-    .report-scroll-hint {
-        bottom: 62px;
-        font-size: 0.94rem;
-        padding: 11px 16px;
-    }
-}
-
-@media (max-width: 480px) {
-    .report-chooser-heading h1 {
-        font-size: 1.05rem;
-        line-height: 1.25;
-    }
-
-    .report-chooser-heading p {
-        font-size: 0.86rem;
-    }
-
-    .report-chooser-progress-label {
-        font-size: 0.86rem;
-    }
-
-    .report-chooser-progress-track {
-        width: 196px;
-        height: 23px;
-    }
-
-    .report-topic-title {
-        font-size: 0.9rem;
-    }
-
-    .report-topic-subtitle {
-        font-size: 0.74rem;
-    }
-   
-   .report-option-card.is-selected {
-    background: #b8e8fb;
-    border-color: #97d4eb;
-    }
-   
-}
-
-/* ============================================================
-   CLEAN FINAL REPORT PAGE
-   ============================================================ */
-
-.report-page-body {
-    background: #ffffff;
-    color: #3a3a3a;
-}
-
-.report-gov-banner {
-    background: #ffffff;
-    border-bottom: 1px solid #e6e6e6;
-}
-
-.report-header-shell {
-    background: #ffffff;
-    border-bottom: 1px solid #e9e9e9;
-}
-
-.report-header-inner {
-    min-height: 84px;
+.vt-report-header-inner {
+    min-height: 82px;
     display: flex;
     align-items: center;
+    justify-content: space-between;
+    gap: 16px;
 }
 
-.report-brand {
+.vt-report-brand {
     display: inline-flex;
     align-items: center;
     gap: 12px;
     text-decoration: none;
 }
 
-.report-brand-logo {
-    width: 42px;
-    height: 42px;
+.vt-report-brand-logo {
+    width: 46px;
+    height: 46px;
     object-fit: contain;
 }
 
-.report-brand-text {
+.vt-report-brand-text {
     display: flex;
     flex-direction: column;
-    line-height: 1.15;
+    line-height: 1.12;
 }
 
-.report-brand-agency {
+.vt-report-brand-agency {
     font-size: 0.58rem;
-    font-weight: 700;
-    color: #52606d;
     letter-spacing: 0.3px;
+    font-weight: 700;
+    color: #506273;
 }
 
-.report-brand-site {
-    font-size: 1.45rem;
+.vt-report-brand-site {
+    font-size: 1.5rem;
     font-weight: 400;
-    color: #2f2f2f;
+    color: #2a2f36;
 }
 
-.report-flow-page {
+.vt-report-header-tools {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.vt-lang-label {
+    font-size: 0.9rem;
+    color: #435465;
+    font-weight: 600;
+}
+
+.vt-lang-select {
+    height: 40px;
+    padding: 0 12px;
+    border: 1px solid #c8d0d8;
+    background: #fff;
+    color: #223548;
+    border-radius: 4px;
+    font-family: inherit;
+}
+
+.vt-report-main {
     background: #ffffff;
 }
 
-.report-flow-container {
-    max-width: 860px;
+.vt-report-shell {
+    max-width: 900px;
     padding-top: 18px;
     padding-bottom: 0;
 }
 
-.report-progress-card {
-    padding: 4px 0 20px;
+.vt-progress-wrap {
+    padding: 4px 0 24px;
 }
 
-.report-progress-row {
+.vt-progress-top {
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 12px;
+    margin-bottom: 18px;
 }
 
-.report-progress-label {
-    font-size: 0.98rem;
-    color: #444;
+.vt-progress-caption {
+    font-size: 0.95rem;
+    color: #455464;
     white-space: nowrap;
 }
 
-.report-progress-track {
-    width: 190px;
-    height: 26px;
+.vt-progress-line {
+    width: 210px;
+    height: 24px;
     background: #ececec;
     border-radius: 999px;
     overflow: hidden;
-    position: relative;
 }
 
-.report-progress-fill {
+.vt-progress-line-fill {
     display: block;
-    width: 23%;
+    width: 25%;
     height: 100%;
     background: #b8e8fb;
+    transition: width 0.25s ease;
 }
 
-.report-question-block {
-    max-width: 760px;
+.vt-step-indicators {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+}
+
+.vt-step-indicator {
+    text-align: center;
+    border: 1px solid #d8e0e7;
+    background: #f2f5f8;
+    color: #566676;
+    font-size: 0.92rem;
+    font-weight: 600;
+    padding: 10px 8px;
+}
+
+.vt-step-indicator.active {
+    background: #214f86;
+    color: #ffffff;
+    border-color: #214f86;
+}
+
+.vt-step-indicator.done {
+    background: #d9f0fb;
+    color: #214f86;
+    border-color: #bcdfee;
+}
+
+.vt-step-panel {
+    display: none;
+}
+
+.vt-step-panel.active {
+    display: block;
+}
+
+.vt-step-heading {
+    max-width: 780px;
     margin: 0 auto 24px;
 }
 
-.report-question-block h1 {
-    font-size: 2.35rem;
+.vt-step-heading h1 {
+    font-size: 2.3rem;
     line-height: 1.15;
-    font-weight: 500;
+    font-weight: 600;
     color: #1f4268;
-    margin-bottom: 16px;
+    margin-bottom: 12px;
 }
 
-.report-question-block p {
-    font-size: 1.15rem;
-    line-height: 1.5;
-    color: #474747;
-    max-width: 680px;
+.vt-step-heading p {
+    font-size: 1.08rem;
+    line-height: 1.55;
+    color: #455464;
+    max-width: 720px;
 }
 
-.report-options-form {
-    max-width: 760px;
+.vt-category-grid {
+    max-width: 780px;
     margin: 0 auto;
 }
 
-.report-option-card {
+.vt-category-card {
     position: relative;
     display: grid;
     grid-template-columns: 34px 1fr;
@@ -1500,278 +223,358 @@ a:hover {
     margin-bottom: 14px;
     cursor: pointer;
     transition: background 0.2s ease, border-color 0.2s ease;
-    text-decoration: none;
 }
 
-.report-option-card:hover {
-    background: #c5edfd;
+.vt-category-card:hover {
+    background: #c4ecfb;
 }
 
-.report-option-card input {
+.vt-category-card input {
     position: absolute;
     opacity: 0;
     pointer-events: none;
 }
 
-.report-option-radio {
+.vt-category-radio {
     width: 28px;
     height: 28px;
-    border: 3px solid #121212;
+    border: 3px solid #111;
     border-radius: 50%;
-    background: #fff;
+    background: #ffffff;
     position: relative;
-    margin-left: 2px;
-    flex-shrink: 0;
 }
 
-.report-option-copy {
+.vt-category-card input:checked + .vt-category-radio::after {
+    content: "";
+    position: absolute;
+    inset: 5px;
+    border-radius: 50%;
+    background: #111;
+}
+
+.vt-category-card.is-selected {
+    background: #b8e8fb;
+    border-color: #99d4e9;
+}
+
+.vt-category-copy {
     display: flex;
     flex-direction: column;
     gap: 3px;
 }
 
-.report-option-title {
-    display: block;
-    font-size: 1.14rem;
+.vt-category-title {
+    font-size: 1.12rem;
     line-height: 1.25;
-    color: #313131;
-    font-weight: 400;
+    color: #2e3339;
+    font-weight: 500;
 }
 
-.report-option-subtitle {
-    display: block;
-    font-size: 0.96rem;
+.vt-category-subtitle {
+    font-size: 0.95rem;
     line-height: 1.25;
-    color: #444;
+    color: #47525d;
 }
 
-.report-option-card input:checked + .report-option-radio::after {
-    content: "";
-    position: absolute;
-    inset: 5px;
-    background: #111;
-    border-radius: 50%;
+.vt-form-grid {
+    max-width: 780px;
+    margin: 0 auto;
+    display: grid;
+    gap: 18px;
 }
 
-.report-option-card.is-selected {
-    background: #b8e8fb;
-    border-color: #97d4eb;
+.vt-form-grid.two-col {
+    grid-template-columns: 1fr 1fr;
 }
 
-.report-bottom-space {
+.vt-form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.vt-form-group.full {
+    grid-column: 1 / -1;
+}
+
+.vt-form-group label {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #314355;
+    margin-bottom: 8px;
+}
+
+.vt-form-group input,
+.vt-form-group select,
+.vt-form-group textarea {
+    width: 100%;
+    min-height: 46px;
+    padding: 12px 14px;
+    border: 1px solid #c7d0d8;
+    background: #ffffff;
+    color: #223548;
+    border-radius: 3px;
+    font-family: inherit;
+    font-size: 0.98rem;
+}
+
+.vt-form-group textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+.vt-form-group input:focus,
+.vt-form-group select:focus,
+.vt-form-group textarea:focus {
+    outline: 3px solid rgba(33, 79, 134, 0.15);
+    border-color: #214f86;
+}
+
+.vt-invalid {
+    border-color: #b42318 !important;
+    background: #fff8f7 !important;
+}
+
+.vt-review-box {
+    max-width: 780px;
+    margin: 0 auto;
+    border: 1px solid #d9e1e7;
+    background: #fbfcfd;
+    padding: 22px;
+}
+
+.vt-review-section + .vt-review-section {
+    margin-top: 22px;
+}
+
+.vt-review-section h2 {
+    font-size: 1.2rem;
+    color: #1f4268;
+    margin-bottom: 14px;
+}
+
+.vt-review-list {
+    display: grid;
+    gap: 10px;
+}
+
+.vt-review-item {
+    display: grid;
+    grid-template-columns: 180px 1fr;
+    gap: 12px;
+    border-bottom: 1px solid #e3e8ed;
+    padding-bottom: 10px;
+}
+
+.vt-review-label {
+    font-weight: 700;
+    color: #33485d;
+}
+
+.vt-review-value {
+    color: #4c5d6f;
+    word-break: break-word;
+}
+
+.vt-bottom-space {
     height: 130px;
 }
 
-.report-scroll-banner {
+.vt-scroll-banner {
     position: fixed;
     left: 0;
     right: 0;
     bottom: 62px;
     background: #f2ab00;
-    color: #fff7dd;
-    font-size: 1rem;
-    line-height: 1;
+    color: #fff9e7;
     padding: 12px 0;
     z-index: 30;
     transition: opacity 0.2s ease, visibility 0.2s ease;
 }
 
-.report-scroll-banner.is-hidden {
+.vt-scroll-banner.is-hidden {
     opacity: 0;
     visibility: hidden;
 }
 
-.report-sticky-actions {
+.vt-sticky-actions {
     position: fixed;
     left: 0;
     right: 0;
     bottom: 0;
     background: #ffffff;
-    border-top: 1px solid #dddddd;
+    border-top: 1px solid #d9dfe5;
     z-index: 40;
 }
 
-.report-sticky-actions-inner {
+.vt-sticky-actions-inner {
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
     padding-top: 10px;
     padding-bottom: 10px;
 }
 
-.report-continue-btn {
-    min-width: 148px;
-    height: 50px;
-    border: none;
-    border-radius: 4px;
-    font-family: inherit;
-    font-size: 1.05rem;
-    font-weight: 500;
-    padding: 0 16px;
-    display: inline-flex;
+.vt-nav-btn {
+    min-width: 140px;
+    justify-content: center;
+}
+
+.vt-hidden {
+    display: none !important;
+}
+
+.vt-modal-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(18, 28, 39, 0.55);
+    display: flex;
     align-items: center;
     justify-content: center;
-    gap: 8px;
-    background: #214f86;
-    color: #fff;
-    cursor: pointer;
-    transition: background 0.2s ease, opacity 0.2s ease;
+    padding: 18px;
+    z-index: 100;
 }
 
-.report-continue-btn:disabled {
-    background: #d8d2d7;
-    color: #ffffff;
-    cursor: not-allowed;
+.vt-modal {
+    width: 100%;
+    max-width: 560px;
+    background: #ffffff;
+    border-radius: 6px;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
 }
 
-.report-continue-arrow {
-    font-size: 1.2rem;
-    line-height: 1;
+.vt-modal-header {
+    padding: 20px 22px 12px;
+    border-bottom: 1px solid #e4e9ee;
+}
+
+.vt-modal-header h2 {
+    font-size: 1.35rem;
+    color: #1f4268;
+}
+
+.vt-modal-body {
+    padding: 18px 22px;
+    color: #435465;
+    line-height: 1.6;
+}
+
+.vt-modal-body p + p {
+    margin-top: 10px;
+}
+
+.vt-modal-actions {
+    padding: 0 22px 22px;
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    flex-wrap: wrap;
 }
 
 @media (max-width: 768px) {
-    .report-header-inner {
-        min-height: 78px;
+    .gov-expand-grid {
+        grid-template-columns: 1fr;
     }
 
-    .report-brand-logo {
-        width: 38px;
-        height: 38px;
+    .vt-report-header-inner {
+        min-height: 74px;
+        flex-direction: column;
+        align-items: flex-start;
+        padding-top: 10px;
+        padding-bottom: 10px;
     }
 
-    .report-brand-site {
+    .vt-report-brand-site {
         font-size: 1.05rem;
     }
 
-    .report-flow-container {
+    .vt-report-shell {
         padding-top: 14px;
     }
 
-    .report-progress-card {
-        padding-bottom: 18px;
-    }
-
-    .report-progress-row {
+    .vt-progress-top {
         gap: 10px;
     }
 
-    .report-progress-track {
+    .vt-progress-line {
         width: 160px;
-        height: 24px;
+        height: 22px;
     }
 
-    .report-question-block {
-        margin-bottom: 20px;
+    .vt-step-indicators {
+        grid-template-columns: 1fr 1fr;
     }
 
-    .report-question-block h1 {
-        font-size: 1.12rem;
-        line-height: 1.28;
+    .vt-step-heading h1 {
+        font-size: 1.5rem;
+        line-height: 1.22;
         margin-bottom: 10px;
-        font-weight: 700;
     }
 
-    .report-question-block p {
-        font-size: 0.92rem;
-        line-height: 1.45;
+    .vt-step-heading p {
+        font-size: 0.96rem;
     }
 
-    .report-option-card {
+    .vt-category-card {
         grid-template-columns: 30px 1fr;
         gap: 16px;
-        padding: 14px 16px;
-        margin-bottom: 11px;
-        border-radius: 8px;
+        padding: 15px 16px;
     }
 
-    .report-option-radio {
-        width: 27px;
-        height: 27px;
-        border-width: 3px;
+    .vt-category-title {
+        font-size: 1rem;
     }
 
-    .report-option-title {
-        font-size: 0.98rem;
-        line-height: 1.25;
+    .vt-category-subtitle {
+        font-size: 0.82rem;
     }
 
-    .report-option-subtitle {
-        font-size: 0.78rem;
-        line-height: 1.22;
+    .vt-form-grid.two-col {
+        grid-template-columns: 1fr;
     }
 
-    .report-scroll-banner {
-        bottom: 62px;
-        font-size: 0.94rem;
-        padding: 11px 0;
+    .vt-review-item {
+        grid-template-columns: 1fr;
+        gap: 6px;
     }
 
-    .report-sticky-actions-inner {
+    .vt-sticky-actions-inner {
         padding-top: 8px;
         padding-bottom: 8px;
-    }
-
-    .report-continue-btn {
-        min-width: 146px;
-        height: 50px;
-        font-size: 0.98rem;
-    }
-
-    .report-bottom-space {
-        height: 120px;
     }
 }
 
 @media (max-width: 480px) {
-    .report-gov-banner .container,
-    .report-header-inner,
-    .report-flow-container,
-    .report-sticky-actions-inner,
-    .report-scroll-banner .container {
-        padding-left: 16px;
-        padding-right: 16px;
-    }
-
-    .report-brand-site {
-        font-size: 0.92rem;
-    }
-
-    .report-brand-agency {
+    .vt-report-brand-agency {
         font-size: 0.48rem;
     }
 
-    .report-progress-label {
-        font-size: 0.86rem;
+    .vt-report-brand-site {
+        font-size: 0.92rem;
     }
 
-    .report-progress-track {
-        width: 196px;
-        height: 23px;
+    .vt-progress-caption {
+        font-size: 0.85rem;
     }
 
-    .report-question-block h1 {
-        font-size: 1rem;
-        line-height: 1.25;
+    .vt-step-heading h1 {
+        font-size: 1.18rem;
     }
 
-    .report-question-block p {
-        font-size: 0.86rem;
+    .vt-step-heading p {
+        font-size: 0.88rem;
     }
 
-    .report-option-card {
-        padding: 13px 14px;
-        gap: 14px;
+    .vt-category-title {
+        font-size: 0.92rem;
     }
 
-    .report-option-title {
-        font-size: 0.9rem;
+    .vt-category-subtitle {
+        font-size: 0.76rem;
     }
 
-    .report-option-subtitle {
-        font-size: 0.74rem;
+    .vt-nav-btn {
+        min-width: 120px;
     }
-
-    .report-continue-btn {
-        min-width: 146px;
-        height: 50px;
-    }
-       }
+}
