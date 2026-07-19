@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", function () {
     if (!form || !continueBtn) return;
 
     const radios = form.querySelectorAll('input[name="report-topic"]');
-    const cards = form.querySelectorAll('.report-option-card');
+    const cards = form.querySelectorAll(".report-option-card");
 
     radios.forEach(function (radio) {
         radio.addEventListener("change", function () {
