@@ -32,6 +32,6 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     // ---- Console message ----
-    console.log('🚀 ReportFraud.ftc.gov 100% Clone loaded successfully!');
+    console.log('🚀 ReportFraud.ftc.gov 100% Duplicate Clone loaded successfully!');
 
 });
