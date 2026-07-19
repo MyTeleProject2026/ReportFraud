@@ -1,0 +1,162 @@
+<svg width="900" height="420" viewBox="0 0 900 420" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="900" height="420" fill="#D9EEF6"/>
+
+  <!-- simplified US-style map shape -->
+  <path d="M78 178L112 150L144 154L170 132L210 138L252 120L288 128L340 112L398 120L448 108L514 118L580 132L632 126L690 142L738 162L766 198L760 232L732 250L720 282L676 292L636 288L592 302L526 294L490 308L430 300L378 316L318 300L268 308L228 296L190 270L148 258L118 232L96 208L78 178Z" fill="#7CCBEA"/>
+
+  <!-- network lines -->
+  <g stroke="#6C7399" stroke-width="4" stroke-linecap="round" opacity="0.9">
+    <line x1="118" y1="168" x2="205" y2="188"/>
+    <line x1="205" y1="188" x2="320" y2="170"/>
+    <line x1="320" y1="170" x2="430" y2="164"/>
+    <line x1="430" y1="164" x2="555" y2="145"/>
+    <line x1="555" y1="145" x2="678" y2="166"/>
+    <line x1="678" y1="166" x2="776" y2="186"/>
+
+    <line x1="118" y1="168" x2="95" y2="260"/>
+    <line x1="205" y1="188" x2="210" y2="278"/>
+    <line x1="320" y1="170" x2="268" y2="244"/>
+    <line x1="430" y1="164" x2="430" y2="230"/>
+    <line x1="555" y1="145" x2="536" y2="258"/>
+    <line x1="678" y1="166" x2="694" y2="272"/>
+    <line x1="776" y1="186" x2="824" y2="268"/>
+
+    <line x1="95" y1="260" x2="210" y2="278"/>
+    <line x1="210" y1="278" x2="268" y2="244"/>
+    <line x1="268" y1="244" x2="430" y2="230"/>
+    <line x1="430" y1="230" x2="536" y2="258"/>
+    <line x1="536" y1="258" x2="694" y2="272"/>
+    <line x1="694" y1="272" x2="824" y2="268"/>
+
+    <line x1="205" y1="188" x2="430" y2="230"/>
+    <line x1="320" y1="170" x2="536" y2="258"/>
+    <line x1="555" y1="145" x2="694" y2="272"/>
+  </g>
+
+  <!-- central report card -->
+  <rect x="370" y="145" width="110" height="130" fill="#FFF8E8" stroke="#E2B21E" stroke-width="6"/>
+  <text x="425" y="176" text-anchor="middle" font-family="Arial, sans-serif" font-size="24" fill="#243F6B">REPORT</text>
+  <line x1="392" y1="196" x2="458" y2="196" stroke="#243F6B" stroke-width="6"/>
+  <line x1="392" y1="216" x2="458" y2="216" stroke="#243F6B" stroke-width="6"/>
+  <line x1="392" y1="236" x2="458" y2="236" stroke="#243F6B" stroke-width="6"/>
+
+  <!-- helper defs -->
+  <defs>
+    <g id="node-blue">
+      <circle cx="0" cy="0" r="24" fill="#244F86"/>
+      <circle cx="0" cy="0" r="18" fill="#244F86"/>
+    </g>
+
+    <g id="node-yellow">
+      <circle cx="0" cy="0" r="24" fill="#F0B323"/>
+      <circle cx="0" cy="0" r="18" fill="#F0B323"/>
+    </g>
+
+    <g id="node-light">
+      <circle cx="0" cy="0" r="24" fill="#DAD9E2"/>
+      <circle cx="0" cy="0" r="18" fill="#DAD9E2"/>
+    </g>
+
+    <g id="icon-search">
+      <circle cx="-4" cy="-4" r="8" stroke="#FFFFFF" stroke-width="4" fill="none"/>
+      <line x1="3" y1="3" x2="12" y2="12" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round"/>
+    </g>
+
+    <g id="icon-shield">
+      <path d="M0 -12C6 -12 10 -16 12 -20C14 -16 18 -12 24 -12V6C24 16 17 23 12 26C7 23 0 16 0 6V-12Z" fill="#FFFFFF"/>
+    </g>
+
+    <g id="icon-scale">
+      <line x1="12" y1="-14" x2="12" y2="16" stroke="#244F86" stroke-width="3"/>
+      <line x1="0" y1="-8" x2="24" y2="-8" stroke="#244F86" stroke-width="3"/>
+      <line x1="4" y1="-8" x2="-2" y2="2" stroke="#244F86" stroke-width="2"/>
+      <line x1="20" y1="-8" x2="26" y2="2" stroke="#244F86" stroke-width="2"/>
+      <path d="M-7 2H3L-2 11L-7 2Z" fill="#244F86"/>
+      <path d="M21 2H31L26 11L21 2Z" fill="#244F86"/>
+      <line x1="4" y1="16" x2="20" y2="16" stroke="#244F86" stroke-width="3"/>
+    </g>
+  </defs>
+
+  <!-- top row nodes -->
+  <g transform="translate(118 168)">
+    <use href="#node-light"/>
+    <use href="#icon-scale" transform="translate(-12,-2) scale(0.9)"/>
+  </g>
+
+  <g transform="translate(205 188)">
+    <use href="#node-light"/>
+    <use href="#icon-scale" transform="translate(-12,-2) scale(0.9)"/>
+  </g>
+
+  <g transform="translate(320 170)">
+    <use href="#node-yellow"/>
+    <circle cx="0" cy="0" r="9" fill="#244F86"/>
+  </g>
+
+  <g transform="translate(555 145)">
+    <use href="#node-yellow"/>
+    <use href="#icon-search" transform="translate(0,0)"/>
+  </g>
+
+  <g transform="translate(678 166)">
+    <use href="#node-blue"/>
+    <use href="#icon-shield" transform="translate(-12,0) scale(1)"/>
+  </g>
+
+  <g transform="translate(776 186)">
+    <use href="#node-blue"/>
+    <use href="#icon-shield" transform="translate(-12,0) scale(1)"/>
+  </g>
+
+  <!-- bottom row nodes -->
+  <g transform="translate(95 260)">
+    <use href="#node-blue"/>
+    <use href="#icon-search" transform="translate(0,0) scale(0.9)"/>
+  </g>
+
+  <g transform="translate(210 278)">
+    <use href="#node-yellow"/>
+    <use href="#icon-shield" transform="translate(-12,0) scale(1)"/>
+  </g>
+
+  <g transform="translate(268 244)">
+    <use href="#node-blue"/>
+    <use href="#icon-search" transform="translate(0,0) scale(0.9)"/>
+  </g>
+
+  <g transform="translate(430 230)">
+    <use href="#node-blue"/>
+    <use href="#icon-shield" transform="translate(-12,0) scale(1)"/>
+  </g>
+
+  <g transform="translate(536 258)">
+    <use href="#node-blue"/>
+    <use href="#icon-shield" transform="translate(-12,0) scale(1)"/>
+  </g>
+
+  <g transform="translate(694 272)">
+    <use href="#node-yellow"/>
+    <use href="#icon-shield" transform="translate(-12,0) scale(1)"/>
+  </g>
+
+  <g transform="translate(824 268)">
+    <use href="#node-blue"/>
+    <use href="#icon-shield" transform="translate(-12,0) scale(1)"/>
+  </g>
+
+  <!-- extra middle-right nodes -->
+  <g transform="translate(622 226)">
+    <use href="#node-blue"/>
+    <use href="#icon-shield" transform="translate(-12,0) scale(0.95)"/>
+  </g>
+
+  <g transform="translate(500 194)">
+    <use href="#node-yellow"/>
+    <use href="#icon-search" transform="translate(0,0) scale(0.85)"/>
+  </g>
+
+  <g transform="translate(150 220)">
+    <use href="#node-light"/>
+    <use href="#icon-scale" transform="translate(-12,-2) scale(0.9)"/>
+  </g>
+</svg>
