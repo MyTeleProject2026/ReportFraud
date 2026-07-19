@@ -6,42 +6,59 @@
     <title>ReportFraud - Submit Report</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/responsive.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
-    <!-- Header -->
+    <div class="gov-banner">
+        <div class="container">
+            <div class="gov-banner-inner">
+                <div class="gov-banner-left">
+                    <span class="gov-icon"><i class="fas fa-lock"></i></span>
+                    <span class="gov-text">Secure fraud report submission form</span>
+                </div>
+                <div class="gov-banner-right">
+                    <a href="#" class="gov-link">How your information is used</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <header class="site-header">
         <div class="container">
             <div class="header-inner">
                 <div class="logo-container">
                     <a href="/" class="logo-link">
-                        <img id="siteLogo" src="" alt="ReportFraud Logo" class="site-logo">
-                        <span id="siteName" class="site-name">ReportFraud</span>
+                        <img src="images/logo.svg" alt="Site Logo" class="site-logo">
+                        <div class="logo-text">
+                            <span class="logo-agency">Consumer Protection Service</span>
+                            <span class="logo-site">ReportFraud</span>
+                        </div>
                     </a>
                 </div>
-                <nav class="main-nav">
+
+                <nav class="main-nav" id="mainNav">
                     <ul>
+                        <li class="menu-label">MENU</li>
                         <li><a href="/">Home</a></li>
                         <li><a href="/report.html" class="active">Report Fraud</a></li>
-                        <li><a href="/#about">About</a></li>
-                        <li><a href="/#contact">Contact</a></li>
+                        <li><a href="/confirmation.html">Confirmation</a></li>
                     </ul>
                 </nav>
-                <button class="mobile-toggle" aria-label="Menu">
+
+                <button class="mobile-toggle" id="mobileToggle" aria-label="Menu">
                     <i class="fas fa-bars"></i>
                 </button>
             </div>
         </div>
     </header>
 
-    <!-- Report Form Section -->
     <section class="report-section">
         <div class="container">
             <div class="report-container">
                 <div class="report-header">
                     <h1>Submit a Fraud Report</h1>
-                    <p>Please provide as much detail as possible. All information is confidential and secure.</p>
+                    <p>Please complete the form below with as much detail as possible.</p>
                     <div class="progress-bar">
                         <div class="progress-step active">1. Your Details</div>
                         <div class="progress-step">2. Incident Details</div>
@@ -51,79 +68,94 @@
                 </div>
 
                 <form id="reportForm" class="report-form">
-                    <!-- Step 1: Your Details -->
                     <div class="form-step active" data-step="1">
                         <h2>Your Information</h2>
+
                         <div class="form-row">
                             <div class="form-group">
                                 <label for="firstName">First Name <span class="required">*</span></label>
                                 <input type="text" id="firstName" name="first_name" required placeholder="Enter your first name">
                             </div>
+
                             <div class="form-group">
                                 <label for="lastName">Last Name <span class="required">*</span></label>
                                 <input type="text" id="lastName" name="last_name" required placeholder="Enter your last name">
                             </div>
                         </div>
+
                         <div class="form-row">
                             <div class="form-group">
                                 <label for="email">Email Address <span class="required">*</span></label>
-                                <input type="email" id="email" name="email" required placeholder="your@email.com">
+                                <input type="email" id="email" name="email" required placeholder="you@example.com">
                             </div>
+
                             <div class="form-group">
                                 <label for="phone">Phone Number</label>
                                 <input type="tel" id="phone" name="phone" placeholder="(123) 456-7890">
                             </div>
                         </div>
+
                         <div class="form-group">
                             <label for="address">Street Address</label>
-                            <input type="text" id="address" name="address" placeholder="123 Main St">
+                            <input type="text" id="address" name="address" placeholder="123 Main Street">
                         </div>
+
                         <div class="form-row">
                             <div class="form-group">
                                 <label for="city">City</label>
-                                <input type="text" id="city" name="city" placeholder="New York">
+                                <input type="text" id="city" name="city" placeholder="City">
                             </div>
+
                             <div class="form-group">
                                 <label for="state">State/Province</label>
-                                <input type="text" id="state" name="state" placeholder="NY">
+                                <input type="text" id="state" name="state" placeholder="State or province">
                             </div>
+                        </div>
+
+                        <div class="form-row">
                             <div class="form-group">
                                 <label for="zipCode">Zip Code</label>
-                                <input type="text" id="zipCode" name="zip_code" placeholder="10001">
+                                <input type="text" id="zipCode" name="zip_code" placeholder="Zip or postal code">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="country">Country</label>
+                                <input type="text" id="country" name="country" placeholder="Country">
                             </div>
                         </div>
-                        <div class="form-group">
-                            <label for="country">Country</label>
-                            <input type="text" id="country" name="country" placeholder="United States">
-                        </div>
+
                         <div class="form-nav">
+                            <span></span>
                             <button type="button" class="btn btn-primary next-step">Next <i class="fas fa-arrow-right"></i></button>
                         </div>
                     </div>
 
-                    <!-- Step 2: Incident Details -->
                     <div class="form-step" data-step="2">
                         <h2>Incident Details</h2>
+
                         <div class="form-group">
                             <label for="category">Category of Fraud <span class="required">*</span></label>
                             <select id="category" name="category_id" required>
                                 <option value="">Select a category</option>
-                                <!-- Categories loaded dynamically -->
                             </select>
                         </div>
+
                         <div class="form-group">
                             <label for="incidentDate">Date of Incident</label>
                             <input type="date" id="incidentDate" name="incident_date">
                         </div>
+
                         <div class="form-group">
                             <label for="incidentDescription">Description of Incident <span class="required">*</span></label>
-                            <textarea id="incidentDescription" name="incident_description" rows="6" required placeholder="Please describe in detail what happened, including dates, times, and any relevant information..."></textarea>
+                            <textarea id="incidentDescription" name="incident_description" rows="6" required placeholder="Describe what happened in as much detail as possible."></textarea>
                         </div>
+
                         <div class="form-row">
                             <div class="form-group">
-                                <label for="amountLost">Amount Lost (if any)</label>
+                                <label for="amountLost">Amount Lost</label>
                                 <input type="number" id="amountLost" name="amount_lost" step="0.01" placeholder="0.00">
                             </div>
+
                             <div class="form-group">
                                 <label for="currency">Currency</label>
                                 <select id="currency" name="currency">
@@ -137,56 +169,62 @@
                                 </select>
                             </div>
                         </div>
+
                         <div class="form-group">
                             <label for="paymentMethod">Payment Method Used</label>
-                            <input type="text" id="paymentMethod" name="payment_method" placeholder="Credit Card, Bank Transfer, Cryptocurrency, etc.">
+                            <input type="text" id="paymentMethod" name="payment_method" placeholder="Credit card, bank transfer, gift card, crypto, cash, etc.">
                         </div>
+
                         <div class="form-nav">
                             <button type="button" class="btn btn-secondary prev-step"><i class="fas fa-arrow-left"></i> Previous</button>
                             <button type="button" class="btn btn-primary next-step">Next <i class="fas fa-arrow-right"></i></button>
                         </div>
                     </div>
 
-                    <!-- Step 3: Suspect Info -->
                     <div class="form-step" data-step="3">
                         <h2>Suspect Information</h2>
+
                         <div class="form-group">
                             <label for="suspectName">Suspect Name</label>
-                            <input type="text" id="suspectName" name="suspect_name" placeholder="Full name of suspect">
+                            <input type="text" id="suspectName" name="suspect_name" placeholder="Name of person or company">
                         </div>
+
                         <div class="form-row">
                             <div class="form-group">
                                 <label for="suspectEmail">Suspect Email</label>
-                                <input type="email" id="suspectEmail" name="suspect_email" placeholder="suspect@example.com">
+                                <input type="email" id="suspectEmail" name="suspect_email" placeholder="name@example.com">
                             </div>
+
                             <div class="form-group">
                                 <label for="suspectPhone">Suspect Phone</label>
                                 <input type="tel" id="suspectPhone" name="suspect_phone" placeholder="(123) 456-7890">
                             </div>
                         </div>
+
                         <div class="form-group">
                             <label for="suspectWebsite">Suspect Website</label>
                             <input type="url" id="suspectWebsite" name="suspect_website" placeholder="https://example.com">
                         </div>
+
                         <div class="form-group">
                             <label for="additionalInfo">Additional Information</label>
-                            <textarea id="additionalInfo" name="additional_info" rows="4" placeholder="Any other details that might help with the investigation..."></textarea>
+                            <textarea id="additionalInfo" name="additional_info" rows="4" placeholder="Add any extra information that may be useful."></textarea>
                         </div>
+
                         <div class="form-nav">
                             <button type="button" class="btn btn-secondary prev-step"><i class="fas fa-arrow-left"></i> Previous</button>
                             <button type="button" class="btn btn-primary next-step">Next <i class="fas fa-arrow-right"></i></button>
                         </div>
                     </div>
 
-                    <!-- Step 4: Review & Submit -->
                     <div class="form-step" data-step="4">
                         <h2>Review & Submit</h2>
+
                         <div class="review-box">
-                            <p>Please review your information before submitting.</p>
-                            <div class="review-summary">
-                                <!-- Dynamic review content -->
-                            </div>
+                            <p>Please review your details before sending your report.</p>
+                            <div class="review-summary"></div>
                         </div>
+
                         <div class="form-actions">
                             <button type="button" class="btn btn-secondary prev-step"><i class="fas fa-arrow-left"></i> Previous</button>
                             <button type="submit" class="btn btn-success btn-large">
@@ -199,35 +237,37 @@
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="site-footer" id="contact">
+    <footer class="site-footer">
         <div class="container">
             <div class="footer-content">
                 <div class="footer-brand">
-                    <img id="footerLogo" src="" alt="ReportFraud" class="footer-logo">
-                    <span id="footerSiteName">ReportFraud</span>
-                    <p id="footerText">© 2026 ReportFraud. All rights reserved.</p>
+                    <span class="footer-logo">ReportFraud</span>
+                    <p>Replace this text with your own reporting service details and footer description.</p>
                 </div>
+
                 <div class="footer-links">
                     <h4>Quick Links</h4>
                     <ul>
                         <li><a href="/">Home</a></li>
                         <li><a href="/report.html">Report Fraud</a></li>
-                        <li><a href="/#about">About</a></li>
+                        <li><a href="/confirmation.html">Confirmation</a></li>
                     </ul>
                 </div>
+
                 <div class="footer-contact">
                     <h4>Contact</h4>
-                    <p id="footerEmail">Email: admin@reportfraud.com</p>
+                    <p>Email: you@example.com</p>
                 </div>
             </div>
+
             <div class="footer-bottom">
-                <p>An official reporting system for fraud and suspicious activities.</p>
+                <p>Replace footer legal and support text with your own content.</p>
             </div>
         </div>
     </footer>
 
     <script src="js/api.js"></script>
+    <script src="js/main.js"></script>
     <script src="js/report.js"></script>
 </body>
 </html>
