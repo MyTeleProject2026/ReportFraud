@@ -1,163 +1,374 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ReportFraud.ftc.gov - Report</title>
-    <link rel="stylesheet" href="css/style.css" />
-    <link rel="stylesheet" href="css/responsive.css" />
-    <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ReportFraud Preview - Report</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
 </head>
-<body class="report-page-body">
+<body class="vt-report-page">
 
-    <div class="gov-banner report-gov-banner">
-        <div class="container">
-            <div class="gov-banner-inner">
-                <div class="gov-banner-left">
-                    <span class="gov-icon">🇺🇸</span>
-                    <span class="gov-text">An official website of the United States government</span>
-                </div>
-                <div class="gov-banner-right">
-                    <a href="#" class="gov-link">Here's how you know</a>
-                </div>
+  <div class="gov-banner vt-gov-banner">
+    <div class="container">
+      <div class="gov-banner-inner">
+        <div class="gov-banner-left">
+          <span class="gov-icon">🇺🇸</span>
+          <span class="gov-text">A public-service style reporting preview</span>
+        </div>
+        <div class="gov-banner-right">
+          <button class="gov-link gov-expand-btn" id="govExpandBtn" type="button" aria-expanded="false" aria-controls="govExpandPanel">
+            Here's how you know
+          </button>
+        </div>
+      </div>
+      <div class="gov-expand-panel" id="govExpandPanel" hidden>
+        <div class="gov-expand-grid">
+          <div>
+            <strong>Clear public-service style</strong>
+            <p>This preview is designed to be simple, accessible, and easy to understand.</p>
+          </div>
+          <div>
+            <strong>Secure submission</strong>
+            <p>Only submit personal information if you trust the website and connection you are using.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <header class="vt-report-header">
+    <div class="container vt-report-header-inner">
+      <a href="/" class="vt-report-brand" aria-label="Go to homepage">
+        <img src="assets/reportfraud-vt-logo.svg" alt="ReportFraud Preview logo" class="vt-report-brand-logo" />
+        <div class="vt-report-brand-text">
+          <span class="vt-report-brand-agency">PUBLIC REPORTING SERVICE</span>
+          <span class="vt-report-brand-site">ReportFraud Preview</span>
+        </div>
+      </a>
+
+      <div class="vt-report-header-tools">
+        <label class="vt-lang-label" for="languageSelect">Language</label>
+        <select id="languageSelect" class="vt-lang-select">
+          <option value="en">English</option>
+          <option value="es">Español</option>
+          <option value="fr">Français</option>
+          <option value="de">Deutsch</option>
+        </select>
+      </div>
+    </div>
+  </header>
+
+  <main class="vt-report-main">
+    <div class="container vt-report-shell">
+
+      <section class="vt-progress-wrap" aria-label="Report progress">
+        <div class="vt-progress-top">
+          <span class="vt-progress-caption">Start</span>
+          <div class="vt-progress-line" aria-hidden="true">
+            <span class="vt-progress-line-fill" id="progressFill"></span>
+          </div>
+          <span class="vt-progress-caption">Submit</span>
+        </div>
+
+        <div class="vt-step-indicators">
+          <div class="vt-step-indicator active" data-step-indicator="0">Category</div>
+          <div class="vt-step-indicator" data-step-indicator="1">Details</div>
+          <div class="vt-step-indicator" data-step-indicator="2">Contact</div>
+          <div class="vt-step-indicator" data-step-indicator="3">Review</div>
+        </div>
+      </section>
+
+      <form id="wizardForm" novalidate>
+        <section class="vt-step-panel active" data-step="0">
+          <div class="vt-step-heading">
+            <h1>What is your report about?</h1>
+            <p>Choose the option that best fits your experience. If you're not sure, choose “Something else.”</p>
+          </div>
+
+          <div class="vt-category-grid" role="radiogroup" aria-label="Fraud categories">
+            <label class="vt-category-card">
+              <input type="radio" name="report_topic" value="impersonator" required />
+              <span class="vt-category-radio"></span>
+              <span class="vt-category-copy">
+                <span class="vt-category-title">An impersonator</span>
+                <span class="vt-category-subtitle">Example: fake government, business, family emergency, or romance contact</span>
+              </span>
+            </label>
+
+            <label class="vt-category-card">
+              <input type="radio" name="report_topic" value="shopping" />
+              <span class="vt-category-radio"></span>
+              <span class="vt-category-copy">
+                <span class="vt-category-title">Online shopping</span>
+              </span>
+            </label>
+
+            <label class="vt-category-card">
+              <input type="radio" name="report_topic" value="job-investment" />
+              <span class="vt-category-radio"></span>
+              <span class="vt-category-copy">
+                <span class="vt-category-title">Job or investment opportunity</span>
+                <span class="vt-category-subtitle">Example: fake jobs, money-making offers, franchise schemes</span>
+              </span>
+            </label>
+
+            <label class="vt-category-card">
+              <input type="radio" name="report_topic" value="sweepstakes" />
+              <span class="vt-category-radio"></span>
+              <span class="vt-category-copy">
+                <span class="vt-category-title">Prize, lottery, or sweepstakes</span>
+              </span>
+            </label>
+
+            <label class="vt-category-card">
+              <input type="radio" name="report_topic" value="phone-service" />
+              <span class="vt-category-radio"></span>
+              <span class="vt-category-copy">
+                <span class="vt-category-title">Phone, internet, or TV service</span>
+              </span>
+            </label>
+
+            <label class="vt-category-card">
+              <input type="radio" name="report_topic" value="auto" />
+              <span class="vt-category-radio"></span>
+              <span class="vt-category-copy">
+                <span class="vt-category-title">Auto sale or repair</span>
+              </span>
+            </label>
+
+            <label class="vt-category-card">
+              <input type="radio" name="report_topic" value="health" />
+              <span class="vt-category-radio"></span>
+              <span class="vt-category-copy">
+                <span class="vt-category-title">Health-related issue</span>
+                <span class="vt-category-subtitle">Example: treatment claims, eye care, weight loss</span>
+              </span>
+            </label>
+
+            <label class="vt-category-card">
+              <input type="radio" name="report_topic" value="credit" />
+              <span class="vt-category-radio"></span>
+              <span class="vt-category-copy">
+                <span class="vt-category-title">Credit, debt, or loan</span>
+                <span class="vt-category-subtitle">Example: debt collection, credit reporting, relief offers</span>
+              </span>
+            </label>
+
+            <label class="vt-category-card">
+              <input type="radio" name="report_topic" value="annoying-call" />
+              <span class="vt-category-radio"></span>
+              <span class="vt-category-copy">
+                <span class="vt-category-title">Just an unwanted call</span>
+              </span>
+            </label>
+
+            <label class="vt-category-card">
+              <input type="radio" name="report_topic" value="something-else" />
+              <span class="vt-category-radio"></span>
+              <span class="vt-category-copy">
+                <span class="vt-category-title">Something else</span>
+                <span class="vt-category-subtitle">We’ll still collect your report and route it appropriately</span>
+              </span>
+            </label>
+          </div>
+        </section>
+
+        <section class="vt-step-panel" data-step="1">
+          <div class="vt-step-heading">
+            <h1>Tell us what happened</h1>
+            <p>Share the key details of the incident. Include only information you are comfortable providing.</p>
+          </div>
+
+          <div class="vt-form-grid two-col">
+            <div class="vt-form-group full">
+              <label for="incident_description">What happened? <span class="required">*</span></label>
+              <textarea id="incident_description" name="incident_description" rows="6" required></textarea>
             </div>
-        </div>
+
+            <div class="vt-form-group">
+              <label for="incident_date">When did it happen?</label>
+              <input type="date" id="incident_date" name="incident_date" />
+            </div>
+
+            <div class="vt-form-group">
+              <label for="amount_lost">Amount lost</label>
+              <input type="number" id="amount_lost" name="amount_lost" min="0" step="0.01" placeholder="0.00" />
+            </div>
+
+            <div class="vt-form-group">
+              <label for="payment_method">Payment method</label>
+              <select id="payment_method" name="payment_method">
+                <option value="">Select one</option>
+                <option>Credit card</option>
+                <option>Debit card</option>
+                <option>Bank transfer</option>
+                <option>Cash</option>
+                <option>Gift card</option>
+                <option>Crypto</option>
+                <option>Mobile payment app</option>
+                <option>Other</option>
+              </select>
+            </div>
+
+            <div class="vt-form-group">
+              <label for="suspect_name">Name used by the person or business</label>
+              <input type="text" id="suspect_name" name="suspect_name" />
+            </div>
+
+            <div class="vt-form-group">
+              <label for="suspect_phone">Phone number</label>
+              <input type="tel" id="suspect_phone" name="suspect_phone" />
+            </div>
+
+            <div class="vt-form-group">
+              <label for="suspect_email">Email address</label>
+              <input type="email" id="suspect_email" name="suspect_email" />
+            </div>
+
+            <div class="vt-form-group">
+              <label for="suspect_website">Website</label>
+              <input type="url" id="suspect_website" name="suspect_website" placeholder="https://example.com" />
+            </div>
+
+            <div class="vt-form-group full">
+              <label for="additional_info">Additional information</label>
+              <textarea id="additional_info" name="additional_info" rows="4"></textarea>
+            </div>
+          </div>
+        </section>
+
+        <section class="vt-step-panel" data-step="2">
+          <div class="vt-step-heading">
+            <h1>Your contact information</h1>
+            <p>Providing contact information is optional, but it may help if more details are needed later.</p>
+          </div>
+
+          <div class="vt-form-grid two-col">
+            <div class="vt-form-group">
+              <label for="first_name">First name</label>
+              <input type="text" id="first_name" name="first_name" />
+            </div>
+
+            <div class="vt-form-group">
+              <label for="last_name">Last name</label>
+              <input type="text" id="last_name" name="last_name" />
+            </div>
+
+            <div class="vt-form-group">
+              <label for="email">Email address</label>
+              <input type="email" id="email" name="email" />
+            </div>
+
+            <div class="vt-form-group">
+              <label for="phone">Phone number</label>
+              <input type="tel" id="phone" name="phone" />
+            </div>
+
+            <div class="vt-form-group full">
+              <label for="address">Street address</label>
+              <input type="text" id="address" name="address" />
+            </div>
+
+            <div class="vt-form-group">
+              <label for="city">City</label>
+              <input type="text" id="city" name="city" />
+            </div>
+
+            <div class="vt-form-group">
+              <label for="state">State / Province</label>
+              <input type="text" id="state" name="state" />
+            </div>
+
+            <div class="vt-form-group">
+              <label for="zip_code">ZIP / Postal code</label>
+              <input type="text" id="zip_code" name="zip_code" />
+            </div>
+
+            <div class="vt-form-group">
+              <label for="country">Country</label>
+              <input type="text" id="country" name="country" />
+            </div>
+          </div>
+        </section>
+
+        <section class="vt-step-panel" data-step="3">
+          <div class="vt-step-heading">
+            <h1>Review your report</h1>
+            <p>Please review your information before submitting.</p>
+          </div>
+
+          <div class="vt-review-box">
+            <div class="vt-review-section">
+              <h2>Category</h2>
+              <div class="vt-review-list" id="reviewCategory"></div>
+            </div>
+
+            <div class="vt-review-section">
+              <h2>Incident details</h2>
+              <div class="vt-review-list" id="reviewDetails"></div>
+            </div>
+
+            <div class="vt-review-section">
+              <h2>Contact information</h2>
+              <div class="vt-review-list" id="reviewContact"></div>
+            </div>
+          </div>
+        </section>
+
+        <div class="vt-bottom-space"></div>
+        <input type="hidden" name="category_id" id="category_id" value="" />
+      </form>
     </div>
+  </main>
 
-    <header class="report-header-shell">
-        <div class="container report-header-inner">
-            <a href="/" class="report-brand" aria-label="Go to homepage">
-                <img src="css/ftc-logo.svg" alt="Federal Trade Commission" class="report-brand-logo" />
-                <div class="report-brand-text">
-                    <span class="report-brand-agency">FEDERAL TRADE COMMISSION</span>
-                    <span class="report-brand-site">ReportFraud.ftc.gov</span>
-                </div>
-            </a>
-        </div>
-    </header>
-
-    <main class="report-flow-page">
-        <div class="container report-flow-container">
-            <section class="report-progress-card">
-                <div class="report-progress-row">
-                    <span class="report-progress-label">Start</span>
-                    <div class="report-progress-track" aria-hidden="true">
-                        <span class="report-progress-fill"></span>
-                    </div>
-                    <span class="report-progress-label">Submit</span>
-                </div>
-            </section>
-
-            <section class="report-question-block">
-                <h1>Is your report about any of these common problems?</h1>
-                <p>Choose the best fit. If you don't see your problem, choose “Something else.”</p>
-            </section>
-
-            <form class="report-options-form" id="reportOptionsForm">
-                <label class="report-option-card">
-                    <input type="radio" name="report-topic" value="impersonator" />
-                    <span class="report-option-radio"></span>
-                    <span class="report-option-copy">
-                        <span class="report-option-title">An impersonator</span>
-                        <span class="report-option-subtitle">(ex. fake government, business, love interest, grandchild)</span>
-                    </span>
-                </label>
-
-                <label class="report-option-card">
-                    <input type="radio" name="report-topic" value="shopping" />
-                    <span class="report-option-radio"></span>
-                    <span class="report-option-copy">
-                        <span class="report-option-title">Online shopping</span>
-                    </span>
-                </label>
-
-                <label class="report-option-card">
-                    <input type="radio" name="report-topic" value="job-investment" />
-                    <span class="report-option-radio"></span>
-                    <span class="report-option-copy">
-                        <span class="report-option-title">Job, investment, money-making opportunity, franchise</span>
-                    </span>
-                </label>
-
-                <label class="report-option-card">
-                    <input type="radio" name="report-topic" value="sweepstakes" />
-                    <span class="report-option-radio"></span>
-                    <span class="report-option-copy">
-                        <span class="report-option-title">Sweepstakes, prize, lottery</span>
-                    </span>
-                </label>
-
-                <label class="report-option-card">
-                    <input type="radio" name="report-topic" value="phone-service" />
-                    <span class="report-option-radio"></span>
-                    <span class="report-option-copy">
-                        <span class="report-option-title">Phone, internet, TV service</span>
-                    </span>
-                </label>
-
-                <label class="report-option-card">
-                    <input type="radio" name="report-topic" value="auto" />
-                    <span class="report-option-radio"></span>
-                    <span class="report-option-copy">
-                        <span class="report-option-title">Auto sale, repair</span>
-                    </span>
-                </label>
-
-                <label class="report-option-card">
-                    <input type="radio" name="report-topic" value="health" />
-                    <span class="report-option-radio"></span>
-                    <span class="report-option-copy">
-                        <span class="report-option-title">Health</span>
-                        <span class="report-option-subtitle">(ex. weight loss, eye care, treatment)</span>
-                    </span>
-                </label>
-
-                <label class="report-option-card">
-                    <input type="radio" name="report-topic" value="credit" />
-                    <span class="report-option-radio"></span>
-                    <span class="report-option-copy">
-                        <span class="report-option-title">Credit, debt, loan</span>
-                        <span class="report-option-subtitle">(ex. debt collection, credit report, student loan debt relief)</span>
-                    </span>
-                </label>
-
-                <label class="report-option-card">
-                    <input type="radio" name="report-topic" value="annoying-call" />
-                    <span class="report-option-radio"></span>
-                    <span class="report-option-copy">
-                        <span class="report-option-title">Just an annoying call</span>
-                    </span>
-                </label>
-
-                <label class="report-option-card">
-                    <input type="radio" name="report-topic" value="something-else" />
-                    <span class="report-option-radio"></span>
-                    <span class="report-option-copy">
-                        <span class="report-option-title">Something else</span>
-                        <span class="report-option-subtitle">(we'll get it to the right place)</span>
-                    </span>
-                </label>
-            </form>
-
-            <div class="report-bottom-space"></div>
-        </div>
-    </main>
-
-    <div class="report-scroll-banner" id="reportScrollBanner">
-        <div class="container">
-            <span>Scroll to continue....</span>
-        </div>
+  <div class="vt-scroll-banner" id="scrollBanner">
+    <div class="container">
+      <span>Scroll to continue...</span>
     </div>
+  </div>
 
-    <div class="report-sticky-actions">
-        <div class="container report-sticky-actions-inner">
-            <button class="report-continue-btn" id="reportContinueBtn" type="button" disabled>
-                Continue
-                <span class="report-continue-arrow">→</span>
-            </button>
-        </div>
+  <div class="vt-sticky-actions">
+    <div class="container vt-sticky-actions-inner">
+      <button type="button" class="btn btn-secondary vt-nav-btn vt-hidden" id="backBtn">Back</button>
+      <button type="button" class="btn btn-primary vt-nav-btn" id="nextBtn">Continue</button>
+      <button type="button" class="btn btn-primary vt-nav-btn vt-hidden" id="submitBtn">Submit report</button>
     </div>
+  </div>
 
-    <script src="js/report.js"></script>
+  <div class="vt-modal-backdrop vt-hidden" id="guardrailModal" aria-hidden="true">
+    <div class="vt-modal" role="dialog" aria-modal="true" aria-labelledby="guardrailTitle">
+      <div class="vt-modal-header">
+        <h2 id="guardrailTitle">You may need a different agency</h2>
+      </div>
+      <div class="vt-modal-body">
+        <p>Your selection may be better handled by another consumer protection service.</p>
+        <p>If you continue, you can still submit your report here. You can also choose to visit the external service instead.</p>
+      </div>
+      <div class="vt-modal-actions">
+        <button type="button" class="btn btn-secondary" id="guardrailStay">Stay here</button>
+        <a href="https://www.consumerfinance.gov/complaint/" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Go to consumerfinance.gov</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="vt-modal-backdrop vt-hidden" id="sessionModal" aria-hidden="true">
+    <div class="vt-modal" role="dialog" aria-modal="true" aria-labelledby="sessionTitle">
+      <div class="vt-modal-header">
+        <h2 id="sessionTitle">Your session is about to expire</h2>
+      </div>
+      <div class="vt-modal-body">
+        <p>For your privacy, this reporting session will expire soon if there is no activity.</p>
+        <p>Select “Continue session” to keep working, or “Start over” to reset the report.</p>
+      </div>
+      <div class="vt-modal-actions">
+        <button type="button" class="btn btn-secondary" id="sessionReset">Start over</button>
+        <button type="button" class="btn btn-primary" id="sessionContinue">Continue session</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/api.js"></script>
+  <script src="js/report.js"></script>
 </body>
 </html>
