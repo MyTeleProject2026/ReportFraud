@@ -3,10 +3,10 @@
 document.addEventListener('DOMContentLoaded', () => {
   // Load categories into dropdown
   loadCategoriesForForm();
-  
+
   // Setup form steps
   setupFormSteps();
-  
+
   // Handle form submission
   const form = document.getElementById('reportForm');
   if (form) {
@@ -16,14 +16,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
 async function loadCategoriesForForm() {
   try {
-    const response = await API.getCategories(true);
-    if (response.success && response.data) {
-      const select = document.getElementById('category');
-      if (select) {
-        select.innerHTML = '<option value="">Select a category</option>' +
+    const select = document.getElementById('category');
+    if (!select) return;
+
+    if (typeof API !== 'undefined' && API.getCategories) {
+      const response = await API.getCategories(true);
+
+      if (response.success && response.data) {
+        select.innerHTML =
+          '<option value="">Select a category</option>' +
           response.data.map(cat => `
-                        <option value="${cat.id}">${cat.name}</option>
-                    `).join('');
+            <option value="${cat.id}">${cat.name}</option>
+          `).join('');
+        return;
       }
     }
   } catch (error) {
@@ -35,10 +40,12 @@ function setupFormSteps() {
   const steps = document.querySelectorAll('.form-step');
   const progressSteps = document.querySelectorAll('.progress-step');
   let currentStep = 0;
-  
+
+  if (!steps.length) return;
+
   // Show first step
   showStep(0);
-  
+
   // Next buttons
   document.querySelectorAll('.next-step').forEach(btn => {
     btn.addEventListener('click', () => {
@@ -50,7 +57,7 @@ function setupFormSteps() {
       }
     });
   });
-  
+
   // Previous buttons
   document.querySelectorAll('.prev-step').forEach(btn => {
     btn.addEventListener('click', () => {
@@ -60,42 +67,46 @@ function setupFormSteps() {
       }
     });
   });
-  
+
   function showStep(index) {
     // Hide all steps
     steps.forEach((step, i) => {
       step.classList.toggle('active', i === index);
     });
-    
+
     // Update progress
     progressSteps.forEach((step, i) => {
       step.classList.toggle('active', i === index);
     });
-    
+
     // Update review summary on step 4
     if (index === 3) {
       updateReviewSummary();
     }
+
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   }
-  
+
   function validateStep(index) {
     const step = steps[index];
+    if (!step) return true;
+
     const inputs = step.querySelectorAll('input[required], select[required], textarea[required]');
     let valid = true;
-    
+
     inputs.forEach(input => {
       if (!input.value.trim()) {
-        input.style.borderColor = 'var(--danger)';
+        input.style.borderColor = '#b42318';
         valid = false;
       } else {
         input.style.borderColor = '';
       }
     });
-    
+
     if (!valid) {
       alert('Please fill in all required fields marked with *');
     }
-    
+
     return valid;
   }
 }
@@ -103,11 +114,13 @@ function setupFormSteps() {
 function updateReviewSummary() {
   const summary = document.querySelector('.review-summary');
   if (!summary) return;
-  
+
   const form = document.getElementById('reportForm');
+  if (!form) return;
+
   const formData = new FormData(form);
   const data = Object.fromEntries(formData.entries());
-  
+
   const fields = [
     { label: 'First Name', value: data.first_name },
     { label: 'Last Name', value: data.last_name },
@@ -129,57 +142,70 @@ function updateReviewSummary() {
     { label: 'Suspect Website', value: data.suspect_website || 'N/A' },
     { label: 'Additional Info', value: data.additional_info || 'N/A' }
   ];
-  
+
   summary.innerHTML = fields
     .filter(f => f.value && f.value !== 'N/A')
     .map(f => `
-            <div class="review-item">
-                <span class="label">${f.label}:</span>
-                <span class="value">${f.value}</span>
-            </div>
-        `).join('');
+      <div class="review-item">
+        <span class="label">${f.label}:</span>
+        <span class="value">${f.value}</span>
+      </div>
+    `).join('');
 }
 
 function getCategoryName(categoryId) {
   const select = document.getElementById('category');
-  const option = select?.querySelector(`option[value="${categoryId}"]`);
+  if (!select) return 'Not selected';
+
+  const option = select.querySelector(`option[value="${categoryId}"]`);
   return option ? option.textContent : 'Not selected';
 }
 
 async function handleSubmit(e) {
   e.preventDefault();
-  
+
   const form = document.getElementById('reportForm');
+  if (!form) return;
+
   const formData = new FormData(form);
   const data = Object.fromEntries(formData.entries());
-  
+
   // Validate required fields
   if (!data.first_name || !data.last_name || !data.email || !data.incident_description || !data.category_id) {
     alert('Please fill in all required fields.');
     return;
   }
-  
+
   // Show loading
   const submitBtn = form.querySelector('button[type="submit"]');
-  const originalText = submitBtn.innerHTML;
-  submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Submitting...';
-  submitBtn.disabled = true;
-  
+  const originalText = submitBtn ? submitBtn.innerHTML : '';
+
+  if (submitBtn) {
+    submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Submitting...';
+    submitBtn.disabled = true;
+  }
+
   try {
-    const response = await API.submitReport(data);
-    
-    if (response.success) {
-      // Redirect to confirmation page
-      const reportNumber = response.report?.report_number || 'RF-UNKNOWN';
-      window.location.href = `/confirmation.html?report=${reportNumber}`;
+    if (typeof API !== 'undefined' && API.submitReport) {
+      const response = await API.submitReport(data);
+
+      if (response.success) {
+        // Redirect to confirmation page
+        const reportNumber = response.report?.report_number || 'RF-UNKNOWN';
+        window.location.href = `/confirmation.html?report=${reportNumber}`;
+      } else {
+        alert(response.message || 'Failed to submit report. Please try again.');
+      }
     } else {
-      alert(response.message || 'Failed to submit report. Please try again.');
+      alert('API service is not available.');
     }
   } catch (error) {
     console.error('Submit error:', error);
     alert('An error occurred. Please try again later.');
   } finally {
-    submitBtn.innerHTML = originalText;
-    submitBtn.disabled = false;
+    if (submitBtn) {
+      submitBtn.innerHTML = originalText;
+      submitBtn.disabled = false;
+    }
   }
 }
