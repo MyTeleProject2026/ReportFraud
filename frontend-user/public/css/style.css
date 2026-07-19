@@ -362,6 +362,19 @@ a:hover {
     color: var(--primary);
     margin-bottom: 20px;
 }
+.step-icon.custom-illustration {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 22px;
+}
+
+.step-icon.custom-illustration img {
+    width: 112px;
+    height: auto;
+    display: block;
+}
+
 
 .step-card h3 {
     font-size: 1.15rem;
