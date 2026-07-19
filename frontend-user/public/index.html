@@ -11,42 +11,42 @@
 </head>
 <body>
 
-    <!-- ===== OFFICIAL GOVERNMENT BANNER ===== -->
     <div class="gov-banner">
         <div class="container">
             <div class="gov-banner-inner">
                 <div class="gov-banner-left">
                     <span class="gov-icon"><i class="fas fa-lock"></i></span>
-                    <span class="gov-text">An official website of the United States government</span>
+                    <span class="gov-text">Public fraud reporting information portal</span>
                 </div>
                 <div class="gov-banner-right">
-                    <a href="#" class="gov-link">Here's how you know</a>
+                    <a href="#" class="gov-link">Learn how this service works</a>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- ===== HEADER ===== -->
     <header class="site-header">
         <div class="container">
             <div class="header-inner">
                 <div class="logo-container">
                     <a href="/" class="logo-link">
-                        <img src="css/ftc-logo.svg" alt="FTC Logo" class="site-logo" />
+                        <img src="images/logo.svg" alt="Site Logo" class="site-logo" />
                         <div class="logo-text">
-                            <span class="logo-agency">FEDERAL TRADE COMMISSION</span>
-                            <span class="logo-site">ReportFraud.ftc.gov</span>
+                            <span class="logo-agency">Consumer Protection Service</span>
+                            <span class="logo-site">ReportFraud</span>
                         </div>
                     </a>
                 </div>
+
                 <nav class="main-nav" id="mainNav">
                     <ul>
                         <li class="menu-label">MENU</li>
-                        <li><a href="#">FAQs</a></li>
-                        <li><a href="#">Languages</a></li>
-                        <li><a href="#" class="btn btn-primary btn-sm">Report Now</a></li>
+                        <li><a href="#faq">FAQs</a></li>
+                        <li><a href="#languages">Languages</a></li>
+                        <li><a href="/report.html" class="btn btn-primary btn-sm">Report Now</a></li>
                     </ul>
                 </nav>
+
                 <button class="mobile-toggle" id="mobileToggle" aria-label="Menu">
                     <i class="fas fa-bars"></i>
                 </button>
@@ -54,156 +54,38 @@
         </div>
     </header>
 
-    <!-- ===== HERO SECTION WITH CITY SKYLINE ===== -->
     <section class="hero-section">
         <div class="hero-background">
-            <!-- City Skyline SVG -->
             <svg class="city-skyline" viewBox="0 0 1200 450" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
-                <defs>
-                    <linearGradient id="skyGrad" x1="0%" y1="0%" x2="0%" y2="100%">
-                        <stop offset="0%" style="stop-color:#0a1a3a;stop-opacity:1" />
-                        <stop offset="100%" style="stop-color:#003c78;stop-opacity:1" />
-                    </linearGradient>
-                    <linearGradient id="buildGrad" x1="0%" y1="0%" x2="0%" y2="100%">
-                        <stop offset="0%" style="stop-color:#0d2847;stop-opacity:0.9" />
-                        <stop offset="100%" style="stop-color:#0a1a3a;stop-opacity:0.95" />
-                    </linearGradient>
-                </defs>
-                <rect width="1200" height="450" fill="url(#skyGrad)" />
-                <!-- Building 1 -->
-                <rect x="40" y="250" width="35" height="200" fill="url(#buildGrad)" stroke="#1a3a6a" stroke-width="1"/>
-                <rect x="46" y="260" width="6" height="8" fill="#2a5a8a" opacity="0.6"/>
-                <rect x="56" y="260" width="6" height="8" fill="#2a5a8a" opacity="0.6"/>
-                <rect x="46" y="275" width="6" height="8" fill="#2a5a8a" opacity="0.5"/>
-                <rect x="56" y="275" width="6" height="8" fill="#2a5a8a" opacity="0.5"/>
-                <!-- Building 2 -->
-                <rect x="90" y="180" width="40" height="270" fill="url(#buildGrad)" stroke="#1a3a6a" stroke-width="1"/>
-                <rect x="96" y="190" width="7" height="10" fill="#2a5a8a" opacity="0.7"/>
-                <rect x="108" y="190" width="7" height="10" fill="#2a5a8a" opacity="0.7"/>
-                <rect x="96" y="208" width="7" height="10" fill="#2a5a8a" opacity="0.6"/>
-                <rect x="108" y="208" width="7" height="10" fill="#2a5a8a" opacity="0.6"/>
-                <rect x="96" y="226" width="7" height="10" fill="#2a5a8a" opacity="0.5"/>
-                <rect x="108" y="226" width="7" height="10" fill="#2a5a8a" opacity="0.5"/>
-                <!-- Building 3 -->
-                <rect x="145" y="220" width="45" height="230" fill="url(#buildGrad)" stroke="#1a3a6a" stroke-width="1"/>
-                <rect x="152" y="230" width="7" height="10" fill="#2a5a8a" opacity="0.5"/>
-                <rect x="166" y="230" width="7" height="10" fill="#2a5a8a" opacity="0.5"/>
-                <rect x="180" y="230" width="7" height="10" fill="#2a5a8a" opacity="0.5"/>
-                <rect x="152" y="248" width="7" height="10" fill="#2a5a8a" opacity="0.4"/>
-                <rect x="166" y="248" width="7" height="10" fill="#2a5a8a" opacity="0.4"/>
-                <rect x="180" y="248" width="7" height="10" fill="#2a5a8a" opacity="0.4"/>
-                <!-- Building 4 (Skyscraper) -->
-                <rect x="210" y="120" width="30" height="330" fill="url(#buildGrad)" stroke="#1a3a6a" stroke-width="1"/>
-                <polygon points="210,120 240,120 225,90" fill="#0d2847" stroke="#1a3a6a" stroke-width="1"/>
-                <rect x="215" y="130" width="6" height="10" fill="#2a5a8a" opacity="0.7"/>
-                <rect x="227" y="130" width="6" height="10" fill="#2a5a8a" opacity="0.7"/>
-                <rect x="215" y="148" width="6" height="10" fill="#2a5a8a" opacity="0.6"/>
-                <rect x="227" y="148" width="6" height="10" fill="#2a5a8a" opacity="0.6"/>
-                <rect x="215" y="166" width="6" height="10" fill="#2a5a8a" opacity="0.5"/>
-                <rect x="227" y="166" width="6" height="10" fill="#2a5a8a" opacity="0.5"/>
-                <!-- Building 5 -->
-                <rect x="260" y="260" width="40" height="190" fill="url(#buildGrad)" stroke="#1a3a6a" stroke-width="1"/>
-                <rect x="266" y="270" width="7" height="10" fill="#2a5a8a" opacity="0.4"/>
-                <rect x="280" y="270" width="7" height="10" fill="#2a5a8a" opacity="0.4"/>
-                <!-- Building 6 -->
-                <rect x="315" y="190" width="35" height="260" fill="url(#buildGrad)" stroke="#1a3a6a" stroke-width="1"/>
-                <rect x="321" y="200" width="6" height="10" fill="#2a5a8a" opacity="0.5"/>
-                <rect x="333" y="200" width="6" height="10" fill="#2a5a8a" opacity="0.5"/>
-                <rect x="321" y="218" width="6" height="10" fill="#2a5a8a" opacity="0.4"/>
-                <rect x="333" y="218" width="6" height="10" fill="#2a5a8a" opacity="0.4"/>
-                <!-- Building 7 -->
-                <rect x="370" y="140" width="40" height="310" fill="url(#buildGrad)" stroke="#1a3a6a" stroke-width="1"/>
-                <rect x="376" y="150" width="7" height="10" fill="#2a5a8a" opacity="0.6"/>
-                <rect x="390" y="150" width="7" height="10" fill="#2a5a8a" opacity="0.6"/>
-                <rect x="376" y="168" width="7" height="10" fill="#2a5a8a" opacity="0.5"/>
-                <rect x="390" y="168" width="7" height="10" fill="#2a5a8a" opacity="0.5"/>
-                <rect x="376" y="186" width="7" height="10" fill="#2a5a8a" opacity="0.4"/>
-                <rect x="390" y="186" width="7" height="10" fill="#2a5a8a" opacity="0.4"/>
-                <!-- Building 8 -->
-                <rect x="430" y="240" width="50" height="210" fill="url(#buildGrad)" stroke="#1a3a6a" stroke-width="1"/>
-                <rect x="438" y="250" width="8" height="10" fill="#2a5a8a" opacity="0.5"/>
-                <rect x="454" y="250" width="8" height="10" fill="#2a5a8a" opacity="0.5"/>
-                <rect x="470" y="250" width="8" height="10" fill="#2a5a8a" opacity="0.5"/>
-                <rect x="438" y="268" width="8" height="10" fill="#2a5a8a" opacity="0.4"/>
-                <rect x="454" y="268" width="8" height="10" fill="#2a5a8a" opacity="0.4"/>
-                <rect x="470" y="268" width="8" height="10" fill="#2a5a8a" opacity="0.4"/>
-                <!-- Building 9 -->
-                <rect x="500" y="200" width="35" height="250" fill="url(#buildGrad)" stroke="#1a3a6a" stroke-width="1"/>
-                <rect x="506" y="210" width="6" height="10" fill="#2a5a8a" opacity="0.5"/>
-                <rect x="518" y="210" width="6" height="10" fill="#2a5a8a" opacity="0.5"/>
-                <rect x="506" y="228" width="6" height="10" fill="#2a5a8a" opacity="0.4"/>
-                <rect x="518" y="228" width="6" height="10" fill="#2a5a8a" opacity="0.4"/>
-                <!-- Building 10 -->
-                <rect x="555" y="160" width="45" height="290" fill="url(#buildGrad)" stroke="#1a3a6a" stroke-width="1"/>
-                <rect x="562" y="170" width="7" height="10" fill="#2a5a8a" opacity="0.5"/>
-                <rect x="576" y="170" width="7" height="10" fill="#2a5a8a" opacity="0.5"/>
-                <rect x="590" y="170" width="7" height="10" fill="#2a5a8a" opacity="0.5"/>
-                <rect x="562" y="188" width="7" height="10" fill="#2a5a8a" opacity="0.4"/>
-                <rect x="576" y="188" width="7" height="10" fill="#2a5a8a" opacity="0.4"/>
-                <rect x="590" y="188" width="7" height="10" fill="#2a5a8a" opacity="0.4"/>
-                <!-- Building 11 -->
-                <rect x="620" y="230" width="30" height="220" fill="url(#buildGrad)" stroke="#1a3a6a" stroke-width="1"/>
-                <rect x="626" y="240" width="6" height="10" fill="#2a5a8a" opacity="0.4"/>
-                <rect x="636" y="240" width="6" height="10" fill="#2a5a8a" opacity="0.4"/>
-                <!-- Building 12 -->
-                <rect x="670" y="180" width="40" height="270" fill="url(#buildGrad)" stroke="#1a3a6a" stroke-width="1"/>
-                <rect x="676" y="190" width="7" height="10" fill="#2a5a8a" opacity="0.5"/>
-                <rect x="690" y="190" width="7" height="10" fill="#2a5a8a" opacity="0.5"/>
-                <rect x="676" y="208" width="7" height="10" fill="#2a5a8a" opacity="0.4"/>
-                <rect x="690" y="208" width="7" height="10" fill="#2a5a8a" opacity="0.4"/>
-                <!-- Building 13 -->
-                <rect x="730" y="260" width="50" height="190" fill="url(#buildGrad)" stroke="#1a3a6a" stroke-width="1"/>
-                <rect x="738" y="270" width="7" height="10" fill="#2a5a8a" opacity="0.4"/>
-                <rect x="752" y="270" width="7" height="10" fill="#2a5a8a" opacity="0.4"/>
-                <rect x="766" y="270" width="7" height="10" fill="#2a5a8a" opacity="0.4"/>
-                <!-- Building 14 -->
-                <rect x="800" y="210" width="35" height="240" fill="url(#buildGrad)" stroke="#1a3a6a" stroke-width="1"/>
-                <rect x="806" y="220" width="6" height="10" fill="#2a5a8a" opacity="0.5"/>
-                <rect x="818" y="220" width="6" height="10" fill="#2a5a8a" opacity="0.5"/>
-                <!-- Building 15 -->
-                <rect x="855" y="150" width="40" height="300" fill="url(#buildGrad)" stroke="#1a3a6a" stroke-width="1"/>
-                <rect x="861" y="160" width="7" height="10" fill="#2a5a8a" opacity="0.6"/>
-                <rect x="875" y="160" width="7" height="10" fill="#2a5a8a" opacity="0.6"/>
-                <rect x="861" y="178" width="7" height="10" fill="#2a5a8a" opacity="0.5"/>
-                <rect x="875" y="178" width="7" height="10" fill="#2a5a8a" opacity="0.5"/>
-                <rect x="861" y="196" width="7" height="10" fill="#2a5a8a" opacity="0.4"/>
-                <rect x="875" y="196" width="7" height="10" fill="#2a5a8a" opacity="0.4"/>
-                <!-- Building 16 -->
-                <rect x="915" y="240" width="45" height="210" fill="url(#buildGrad)" stroke="#1a3a6a" stroke-width="1"/>
-                <rect x="922" y="250" width="7" height="10" fill="#2a5a8a" opacity="0.4"/>
-                <rect x="936" y="250" width="7" height="10" fill="#2a5a8a" opacity="0.4"/>
-                <rect x="950" y="250" width="7" height="10" fill="#2a5a8a" opacity="0.4"/>
-                <!-- Building 17 -->
-                <rect x="980" y="190" width="30" height="260" fill="url(#buildGrad)" stroke="#1a3a6a" stroke-width="1"/>
-                <rect x="986" y="200" width="6" height="10" fill="#2a5a8a" opacity="0.5"/>
-                <rect x="996" y="200" width="6" height="10" fill="#2a5a8a" opacity="0.5"/>
-                <!-- Building 18 -->
-                <rect x="1030" y="220" width="50" height="230" fill="url(#buildGrad)" stroke="#1a3a6a" stroke-width="1"/>
-                <rect x="1038" y="230" width="7" height="10" fill="#2a5a8a" opacity="0.5"/>
-                <rect x="1052" y="230" width="7" height="10" fill="#2a5a8a" opacity="0.5"/>
-                <rect x="1066" y="230" width="7" height="10" fill="#2a5a8a" opacity="0.5"/>
-                <!-- Building 19 -->
-                <rect x="1100" y="170" width="35" height="280" fill="url(#buildGrad)" stroke="#1a3a6a" stroke-width="1"/>
-                <rect x="1106" y="180" width="6" height="10" fill="#2a5a8a" opacity="0.5"/>
-                <rect x="1118" y="180" width="6" height="10" fill="#2a5a8a" opacity="0.5"/>
-                <rect x="1106" y="198" width="6" height="10" fill="#2a5a8a" opacity="0.4"/>
-                <rect x="1118" y="198" width="6" height="10" fill="#2a5a8a" opacity="0.4"/>
-                <!-- Building 20 -->
-                <rect x="1155" y="210" width="40" height="240" fill="url(#buildGrad)" stroke="#1a3a6a" stroke-width="1"/>
-                <rect x="1161" y="220" width="7" height="10" fill="#2a5a8a" opacity="0.4"/>
-                <rect x="1175" y="220" width="7" height="10" fill="#2a5a8a" opacity="0.4"/>
+                <rect width="1200" height="450" fill="#0f2742"></rect>
+                <rect x="40" y="260" width="50" height="190" fill="#17385e"></rect>
+                <rect x="115" y="200" width="40" height="250" fill="#183452"></rect>
+                <rect x="180" y="150" width="34" height="300" fill="#1b3e67"></rect>
+                <rect x="245" y="240" width="52" height="210" fill="#17385e"></rect>
+                <rect x="325" y="170" width="38" height="280" fill="#1b3e67"></rect>
+                <rect x="390" y="220" width="46" height="230" fill="#17385e"></rect>
+                <rect x="470" y="130" width="34" height="320" fill="#1b3e67"></rect>
+                <rect x="530" y="260" width="55" height="190" fill="#17385e"></rect>
+                <rect x="615" y="180" width="42" height="270" fill="#1b3e67"></rect>
+                <rect x="690" y="230" width="50" height="220" fill="#17385e"></rect>
+                <rect x="770" y="150" width="36" height="300" fill="#1b3e67"></rect>
+                <rect x="835" y="200" width="48" height="250" fill="#17385e"></rect>
+                <rect x="910" y="120" width="34" height="330" fill="#1b3e67"></rect>
+                <rect x="970" y="240" width="55" height="210" fill="#17385e"></rect>
+                <rect x="1050" y="180" width="45" height="270" fill="#1b3e67"></rect>
+                <rect x="1120" y="220" width="50" height="230" fill="#17385e"></rect>
             </svg>
         </div>
+
         <div class="container">
             <div class="hero-content">
-                <h1>Report to help fight fraud!</h1>
-                <a href="#" class="btn btn-primary btn-large">Report Now</a>
-                <p>Protect your community by reporting fraud, scams, and bad business practices.</p>
+                <h1>Report fraud and protect your community</h1>
+                <a href="/report.html" class="btn btn-primary btn-large">Start a Report</a>
+                <p>Share information about scams, suspicious conduct, and harmful business activity through a clear and secure reporting process.</p>
             </div>
         </div>
     </section>
 
-    <!-- ===== HOW IT WORKS ===== -->
     <section class="how-it-works">
         <div class="container">
             <h2 class="section-title">How it works</h2>
@@ -212,89 +94,91 @@
                     <div class="step-icon">
                         <i class="fas fa-pen"></i>
                     </div>
-                    <h3>Tell us what happened</h3>
-                    <p>Report a scam, a company, or an unwanted call.</p>
+                    <h3>Describe what happened</h3>
+                    <p>Tell us about the scam, contact, payment request, or suspicious activity you experienced.</p>
                 </div>
                 <div class="step-card">
                     <div class="step-icon">
                         <i class="fas fa-list-check"></i>
                     </div>
-                    <h3>Get your next steps</h3>
-                    <p>Find out what you can do to protect yourself.</p>
+                    <h3>Review your details</h3>
+                    <p>Check your information before sending it through the reporting form.</p>
                 </div>
                 <div class="step-card">
                     <div class="step-icon">
                         <i class="fas fa-shield-halved"></i>
                     </div>
-                    <h3>Help stop fraud</h3>
-                    <p>We use and share reports to help with investigations.</p>
+                    <h3>Support prevention efforts</h3>
+                    <p>Reports can help identify patterns, improve awareness, and support enforcement work.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ===== HELP STOP FRAUD BANNER ===== -->
     <section class="stop-fraud-banner">
         <div class="container">
             <h2>Help stop fraud</h2>
-            <p>We use and share reports with our law enforcement partners to help with investigations.</p>
+            <p>Submitting accurate reports can help improve scam awareness, prevention resources, and response efforts.</p>
             <div class="stop-actions">
-                <a href="#" class="btn btn-primary">Get started now.</a>
-                <span class="stop-or">Or you can</span>
-                <a href="#" class="stop-link">browse our FAQs.</a>
+                <a href="/report.html" class="btn btn-primary">Get started now</a>
+                <span class="stop-or">or</span>
+                <a href="#faq" class="stop-link">browse FAQs</a>
             </div>
         </div>
     </section>
 
-    <!-- ===== SCAM WARNING ===== -->
     <section class="scam-warning-section">
         <div class="container">
             <div class="scam-warning">
                 <i class="fas fa-triangle-exclamation"></i>
-                <span>Scammers are impersonating the FTC. Know that the FTC will never threaten you, say you must transfer your money to "protect it," or tell you to withdraw cash or buy gold and give it to someone.</span>
+                <span>Be cautious of urgent threats, payment demands, fake support calls, and requests involving gift cards, wire transfers, cryptocurrency, or cash pickups.</span>
             </div>
-            <a href="https://ftc.gov/impersonators" target="_blank" class="scam-link">Learn more at ftc.gov/impersonators</a>
+            <a href="#" class="scam-link">Read safety tips before you report</a>
         </div>
     </section>
 
-    <!-- ===== TRUST & AUTHORITY ===== -->
     <section class="trust-section">
         <div class="container">
             <div class="trust-content">
-                <h2>The power of ReportFraud.ftc.gov</h2>
-                <p class="trust-highlight">Your report is shared with over 2,000 law enforcers.</p>
-                <p>We can't resolve your individual report, but we use reports to investigate and bring cases against fraud, scams, and bad business practices.</p>
-                <a href="#" class="trust-link">Read our Privacy Act statement</a>
+                <h2>Why reporting matters</h2>
+                <p class="trust-highlight">Each report can help reveal broader fraud patterns.</p>
+                <p>Your information may support public awareness, pattern analysis, internal review, and other anti-fraud activities.</p>
+                <a href="#" class="trust-link">Read the privacy notice</a>
             </div>
         </div>
     </section>
 
-    <!-- ===== FINAL CTA ===== -->
     <section class="final-cta">
         <div class="container">
-            <h2>Start your report now</h2>
-            <p>or check out what is going on in your state or metro area by visiting <a href="https://ftc.gov/exploredata" target="_blank">ftc.gov/exploredata</a></p>
-            <a href="#" class="btn btn-primary btn-large">Report Now</a>
+            <h2>Start your report today</h2>
+            <p>Use the reporting form to submit details about fraud, scam attempts, or suspicious business conduct.</p>
+            <a href="/report.html" class="btn btn-primary btn-large">Report Now</a>
         </div>
     </section>
 
-    <!-- ===== FOOTER ===== -->
     <footer class="site-footer">
         <div class="container">
             <div class="footer-top">
                 <div class="footer-brand">
-                    <span class="footer-logo">ReportFraud.ftc.gov</span>
-                    <p>is the federal government's website where you can report fraud, scams, and bad business practices.</p>
-                    <p>Visit <a href="https://consumer.ftc.gov" target="_blank">consumer.ftc.gov</a> to find tips and learn how to avoid scams.</p>
+                    <span class="footer-logo">ReportFraud</span>
+                    <p>This website provides a structured place to submit fraud-related information and review next steps.</p>
+                    <p>Use your own custom content, organization details, and support links here.</p>
                 </div>
+
                 <div class="footer-links">
+                    <h4>Site Links</h4>
                     <a href="#">Privacy Policy</a>
-                    <a href="#">FAQs</a>
-                    <a href="#">Languages</a>
+                    <a href="#faq">FAQs</a>
+                    <a href="#languages">Languages</a>
+                </div>
+
+                <div class="footer-contact">
+                    <h4>Support</h4>
+                    <p>Update this section with your contact details or service information.</p>
                 </div>
             </div>
 
-            <div class="footer-language-grid">
+            <div class="footer-language-grid" id="languages">
                 <div class="lang-col">
                     <a href="#">العربية</a>
                     <a href="#">Français</a>
@@ -316,11 +200,11 @@
 
             <div class="footer-bottom">
                 <div class="footer-omb">
-                    <p><strong>OMB CONTROL#:</strong> 3084-0169</p>
-                    <p>Under the Paperwork Reduction Act, federal agencies are not allowed to collect information from the public without a valid OMB control number.</p>
+                    <p><strong>Notice:</strong> Replace all footer text with your own service information.</p>
+                    <p>This template is intended for your own original reporting portal content.</p>
                 </div>
                 <div class="footer-copy">
-                    <p>&copy; 2026 ReportFraud.ftc.gov</p>
+                    <p>&copy; 2026 ReportFraud</p>
                 </div>
             </div>
         </div>
