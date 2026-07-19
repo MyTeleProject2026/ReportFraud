@@ -1,1 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ReportFraud - Review & Submit</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/report.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+</head>
+<body class="report-page-body">
 
+    <!-- ===== GOV BANNER ===== -->
+    <div class="gov-banner report-gov-banner">
+        <div class="container">
+            <div class="gov-banner-inner">
+                <div class="gov-banner-left">
+                    <span class="gov-icon"><i class="fas fa-lock"></i></span>
+                    <span class="gov-text">An official website of the United States government</span>
+                </div>
+                <div class="gov-banner-right">
+                    <a href="#" class="gov-link">Here's how you know</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== HEADER ===== -->
+    <header class="report-header-shell">
+        <div class="container report-header-inner">
+            <a href="/" class="report-brand">
+                <img src="css/ftc-logo.svg" alt="FTC Logo" class="report-brand-logo" />
+                <div class="report-brand-text">
+                    <span class="report-brand-agency">FEDERAL TRADE COMMISSION</span>
+                    <span class="report-brand-site">ReportFraud.ftc.gov</span>
+                </div>
+            </a>
+        </div>
+    </header>
+
+    <!-- ===== REPORT FLOW ===== -->
+    <main class="report-flow-page">
+        <div class="container report-flow-container">
+            <!-- Progress Indicator -->
+            <section class="report-progress-card">
+                <div class="report-progress-row">
+                    <span class="report-progress-label">Start</span>
+                    <div class="report-progress-track" aria-hidden="true">
+                        <span class="report-progress-fill" style="width: 100%;"></span>
+                    </div>
+                    <span class="report-progress-label">Submit</span>
+                </div>
+            </section>
+
+            <!-- Step 4: Review -->
+            <section class="report-question-block">
+                <h1>Review your report</h1>
+                <p>Please review all information before submitting.</p>
+            </section>
+
+            <div class="review-container" id="reviewContainer">
+                <!-- Dynamic content loaded from sessionStorage -->
+                <div class="review-section">
+                    <h3>Category</h3>
+                    <p id="reviewCategory">—</p>
+                </div>
+                <div class="review-section">
+                    <h3>Incident Details</h3>
+                    <p id="reviewDescription">—</p>
+                    <div class="review-row">
+                        <span><strong>Date:</strong> <span id="reviewDate">—</span></span>
+                        <span><strong>Amount Lost:</strong> <span id="reviewAmount">—</span></span>
+                    </div>
+                    <p><strong>Payment Method:</strong> <span id="reviewPayment">—</span></p>
+                </div>
+                <div class="review-section">
+                    <h3>Suspect Information</h3>
+                    <p><strong>Name:</strong> <span id="reviewSuspectName">—</span></p>
+                    <p><strong>Email:</strong> <span id="reviewSuspectEmail">—</span></p>
+                    <p><strong>Phone:</strong> <span id="reviewSuspectPhone">—</span></p>
+                    <p><strong>Website:</strong> <span id="reviewSuspectWebsite">—</span></p>
+                </div>
+                <div class="review-section">
+                    <h3>Your Contact Information</h3>
+                    <p><strong>Name:</strong> <span id="reviewContactName">—</span></p>
+                    <p><strong>Email:</strong> <span id="reviewContactEmail">—</span></p>
+                    <p><strong>Phone:</strong> <span id="reviewContactPhone">—</span></p>
+                    <p><strong>Address:</strong> <span id="reviewContactAddress">—</span></p>
+                </div>
+            </div>
+
+            <div class="report-navigation review-actions">
+                <a href="/report-contact.html" class="btn btn-secondary">Back</a>
+                <button type="button" class="btn btn-success" id="submitBtn">
+                    <i class="fas fa-paper-plane"></i> Submit Report
+                </button>
+            </div>
+
+            <div class="report-bottom-space"></div>
+        </div>
+    </main>
+
+    <script src="js/report-review.js"></script>
+</body>
+</html>
