@@ -10,7 +10,6 @@ const API = {
     const url = activeOnly
       ? `${API_BASE}/categories?active_only=true`
       : `${API_BASE}/categories`;
-
     const response = await fetch(url);
     return response.json();
   },
@@ -18,9 +17,7 @@ const API = {
   submitReport: async (data) => {
     const response = await fetch(`${API_BASE}/reports/submit`, {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(data)
     });
     return response.json();
@@ -31,17 +28,7 @@ const API = {
       const response = await fetch(`${API_BASE}/reports/stats`);
       return response.json();
     } catch (e) {
-      return {
-        success: true,
-        stats: {
-          total: 0,
-          pending: 0,
-          reviewing: 0,
-          investigating: 0,
-          resolved: 0,
-          rejected: 0
-        }
-      };
+      return { success: false };
     }
   }
 };
