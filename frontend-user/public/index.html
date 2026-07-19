@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="css/responsive.css" />
     <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-    <link rel="stylesheet" href="css/mobile-menu-faq.css">
+    <link rel="stylesheet" href="css/mobile-menu-faq.css" />
 </head>
 <body>
 
@@ -40,37 +40,42 @@
                         </div>
                     </a>
                 </div>
+
                 <nav class="main-nav" id="mainNav">
                     <ul>
                         <li class="menu-label">MENU</li>
-                        <li><a href="#">FAQs</a></li>
+                        <li><a href="#faq-module">FAQs</a></li>
                         <li><a href="#">Languages</a></li>
                         <li><a href="/report.html" class="btn btn-primary btn-sm">Report Now</a></li>
                     </ul>
                 </nav>
-                <button class="mobile-toggle" id="mobileToggle" aria-label="Menu">
+
+                <button class="mobile-toggle" id="mobileToggle" aria-label="Menu" data-mobile-menu-toggle aria-expanded="false">
                     <i class="fas fa-bars"></i>
                 </button>
             </div>
         </div>
     </header>
 
+    <!-- ===== MOBILE UTILITY PANEL ===== -->
     <div class="mobile-utility-panel" data-mobile-utility-panel>
-    <div class="mobile-utility-inner">
-        <form class="mobile-faq-search" data-faq-search-form>
-            <input type="text" placeholder="Search FAQs on ReportFraud.ftc.gov" data-faq-search-input>
-            <button type="submit" aria-label="Search">⌕</button>
-        </form>
+        <div class="mobile-utility-inner">
+            <form class="mobile-faq-search" data-faq-search-form>
+                <input type="text" placeholder="Search FAQs on ReportFraud.ftc.gov" data-faq-search-input />
+                <button type="submit" aria-label="Search">
+                    <i class="fas fa-search"></i>
+                </button>
+            </form>
 
-        <div class="mobile-utility-links">
-            <a href="#faq-module" data-mobile-menu-close>FAQs</a>
-            <a href="/es" data-mobile-menu-close>Español</a>
-        </div>
+            <div class="mobile-utility-links">
+                <a href="#faq-module" data-mobile-menu-close>FAQs</a>
+                <a href="/es" data-mobile-menu-close>Español</a>
+            </div>
 
-        <div class="mobile-report-btn-wrap">
-            <a href="/report.html" class="mobile-report-btn" data-mobile-menu-close>Report Now</a>
+            <div class="mobile-report-btn-wrap">
+                <a href="/report.html" class="mobile-report-btn" data-mobile-menu-close>Report Now</a>
+            </div>
         </div>
-    </div>
     </div>
 
     <!-- ===== HERO SECTION ===== -->
@@ -138,6 +143,7 @@
                 <circle cx="372" cy="140" r="4" fill="#eaf7ff"/>
             </svg>
         </div>
+
         <div class="container">
             <div class="hero-content">
                 <h1>Report to help fight fraud!</h1>
@@ -154,25 +160,24 @@
             <div class="steps-grid">
                 <div class="step-card">
                     <div class="step-icon custom-illustration">
-                      <img src="css/icon-talk.svg" alt="Tell us what happened">
+                        <img src="css/icon-talk.svg" alt="Tell us what happened" />
                     </div>
-                    
                     <h3>Tell us what happened</h3>
                     <p>Report a scam, a company, or an unwanted call.</p>
                 </div>
+
                 <div class="step-card">
                     <div class="step-icon custom-illustration">
-                      <img src="css/icon-todo.svg" alt="Get your next steps">
+                        <img src="css/icon-todo.svg" alt="Get your next steps" />
                     </div>
-
                     <h3>Get your next steps</h3>
                     <p>Find out what you can do to protect yourself.</p>
                 </div>
+
                 <div class="step-card">
                     <div class="step-icon custom-illustration">
-                      <img src="css/icon-shield.svg" alt="Help stop fraud">
+                        <img src="css/icon-shield.svg" alt="Help stop fraud" />
                     </div>
-
                     <h3>Help stop fraud</h3>
                     <p>We use and share reports with our law enforcement partners to help with investigations.</p>
                 </div>
@@ -188,7 +193,7 @@
             <div class="stop-actions">
                 <a href="/report.html" class="stop-link strong-link">Get started now</a>
                 <span class="stop-or">Or you can</span>
-                <a href="#" class="stop-link">browse our FAQs.</a>
+                <a href="#faq-module" class="stop-link">browse our FAQs.</a>
             </div>
         </div>
     </section>
@@ -216,14 +221,213 @@
                 <p><a href="#" class="inline-link">Read our Privacy Act statement</a> to learn more about how we collect and use your information.</p>
 
                 <div class="trust-map-box">
-                    < img src="css/map-report-illustration.svg" alt="Report sharing illustration" class="trust-map-image">
+                    <img src="css/map-report-illustration.svg" alt="Report sharing illustration" class="trust-map-image" />
                 </div>
-
 
                 <p class="trust-bottom-text">
                     <a href="/report.html" class="inline-link">Start your report now</a>, or check out what is going on in your state or metro area by visiting
                     <a href="https://ftc.gov/exploredata" target="_blank" class="inline-link">ftc.gov/exploredata</a>.
                 </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FAQ SECTION ===== -->
+    <section class="faq-module" id="faq-module">
+        <div class="container">
+            <div class="faq-search-block">
+                <p class="faq-search-title">Use the search box or browse FAQ topics to learn more.</p>
+                <form class="faq-search-box" data-faq-search-form>
+                    <input type="text" placeholder="Search FAQs on ReportFraud.ftc.gov" data-faq-search-input />
+                    <button type="submit" aria-label="Search">⌕</button>
+                </form>
+            </div>
+
+            <h2 class="faq-topic-heading">View FAQs by topic</h2>
+
+            <ul class="faq-topic-list">
+                <li><button class="faq-topic-btn is-active" data-topic="all" aria-selected="true">All FAQs</button></li>
+                <li><button class="faq-topic-btn" data-topic="about" aria-selected="false">About my report</button></li>
+                <li><button class="faq-topic-btn" data-topic="filing" aria-selected="false">Filing a report</button></li>
+                <li><button class="faq-topic-btn" data-topic="after" aria-selected="false">After I file a report</button></li>
+                <li><button class="faq-topic-btn" data-topic="money" aria-selected="false">Getting my money back</button></li>
+                <li><button class="faq-topic-btn" data-topic="scams" aria-selected="false">Scams</button></li>
+                <li><button class="faq-topic-btn" data-topic="whatcanido" aria-selected="false">What you can do</button></li>
+            </ul>
+
+            <div class="faq-group is-active" data-topic-group="all">
+                <h2 class="faq-section-heading">About my report</h2>
+                <div class="faq-accordion">
+                    <div class="faq-item">
+                        <button class="faq-question" aria-expanded="false">
+                            <span class="faq-question-text">What can I report?</span>
+                            <span class="faq-icon">+</span>
+                        </button>
+                        <div class="faq-answer">
+                            You can report fraud, scams, bad business practices, suspicious calls, spam texts, phishing emails, and related issues.
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-question" aria-expanded="false">
+                            <span class="faq-question-text">I'm not sure if it's a scam or fraud — should I still report it?</span>
+                            <span class="faq-icon">+</span>
+                        </button>
+                        <div class="faq-answer">
+                            Yes. If it seems suspicious, misleading, or harmful, you should still report it. Even partial reports may help identify patterns.
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-question" aria-expanded="false">
+                            <span class="faq-question-text">I'm not sure which category to choose — what should I do?</span>
+                            <span class="faq-icon">+</span>
+                        </button>
+                        <div class="faq-answer">
+                            Choose the closest matching category. The most important part is describing what happened as clearly as possible.
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-question" aria-expanded="false">
+                            <span class="faq-question-text">Can I just report the number of an unwanted call?</span>
+                            <span class="faq-icon">+</span>
+                        </button>
+                        <div class="faq-answer">
+                            Yes. Include the phone number and any information you have about the call.
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-question" aria-expanded="false">
+                            <span class="faq-question-text">Can I report spam texts here?</span>
+                            <span class="faq-icon">+</span>
+                        </button>
+                        <div class="faq-answer">
+                            Yes. Include the sender number, text content, any links, and what happened after you received it.
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-question" aria-expanded="false">
+                            <span class="faq-question-text">Can I report spam and phishing emails here?</span>
+                            <span class="faq-icon">+</span>
+                        </button>
+                        <div class="faq-answer">
+                            Yes. Include email addresses, subject lines, suspicious links, and a short summary of the message.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-group" data-topic-group="about">
+                <h2 class="faq-section-heading">About my report</h2>
+                <div class="faq-accordion">
+                    <div class="faq-item">
+                        <button class="faq-question" aria-expanded="false">
+                            <span class="faq-question-text">Where should I report identity theft?</span>
+                            <span class="faq-icon">+</span>
+                        </button>
+                        <div class="faq-answer">
+                            Use the most appropriate reporting path for identity-related fraud and include details about what personal information was affected.
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-question" aria-expanded="false">
+                            <span class="faq-question-text">My personal information was exposed in a data breach, found on the dark web, lost, or stolen. Should I report it here?</span>
+                            <span class="faq-icon">+</span>
+                        </button>
+                        <div class="faq-answer">
+                            Yes. You can report it and include what data was exposed, when it happened, and whether you noticed any misuse.
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-question" aria-expanded="false">
+                            <span class="faq-question-text">I provided my personal information to someone I now think was a scammer. Should I report it here?</span>
+                            <span class="faq-icon">+</span>
+                        </button>
+                        <div class="faq-answer">
+                            Yes. Report what information you shared, when you shared it, and what the scammer said or requested.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-group" data-topic-group="filing">
+                <h2 class="faq-section-heading">Filing a report</h2>
+                <div class="faq-accordion">
+                    <div class="faq-item">
+                        <button class="faq-question" aria-expanded="false">
+                            <span class="faq-question-text">What details should I include when filing a report?</span>
+                            <span class="faq-icon">+</span>
+                        </button>
+                        <div class="faq-answer">
+                            Include names, dates, phone numbers, emails, websites, payment details, screenshots, and any other useful evidence.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-group" data-topic-group="after">
+                <h2 class="faq-section-heading">After I file a report</h2>
+                <div class="faq-accordion">
+                    <div class="faq-item">
+                        <button class="faq-question" aria-expanded="false">
+                            <span class="faq-question-text">What happens after I submit my report?</span>
+                            <span class="faq-icon">+</span>
+                        </button>
+                        <div class="faq-answer">
+                            Your report may help spot fraud patterns, support investigations, and improve public protection efforts.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-group" data-topic-group="money">
+                <h2 class="faq-section-heading">Getting my money back</h2>
+                <div class="faq-accordion">
+                    <div class="faq-item">
+                        <button class="faq-question" aria-expanded="false">
+                            <span class="faq-question-text">Can I get my money back after reporting?</span>
+                            <span class="faq-icon">+</span>
+                        </button>
+                        <div class="faq-answer">
+                            Maybe, depending on the situation. You should also contact your bank, card issuer, or payment provider immediately.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-group" data-topic-group="scams">
+                <h2 class="faq-section-heading">Scams</h2>
+                <div class="faq-accordion">
+                    <div class="faq-item">
+                        <button class="faq-question" aria-expanded="false">
+                            <span class="faq-question-text">How can I tell if a message is a scam?</span>
+                            <span class="faq-icon">+</span>
+                        </button>
+                        <div class="faq-answer">
+                            Common signs include urgency, threats, unusual payment requests, fake support claims, suspicious links, and requests for personal information.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="faq-group" data-topic-group="whatcanido">
+                <h2 class="faq-section-heading">What you can do</h2>
+                <div class="faq-accordion">
+                    <div class="faq-item">
+                        <button class="faq-question" aria-expanded="false">
+                            <span class="faq-question-text">What should I do if I think I was targeted?</span>
+                            <span class="faq-icon">+</span>
+                        </button>
+                        <div class="faq-answer">
+                            Stop communicating, keep evidence, secure your accounts, change passwords, notify your bank if needed, and submit a report.
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -249,7 +453,7 @@
                 </div>
 
                 <div class="footer-nav-links">
-                    <a href="#">FAQs</a>
+                    <a href="#faq-module">FAQs</a>
                     <a href="#">Languages</a>
                 </div>
 
