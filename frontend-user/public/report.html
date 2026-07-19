@@ -1,21 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ReportFraud - Submit Report</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/responsive.css">
-    <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ReportFraud.ftc.gov - Report</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/responsive.css" />
+    <link rel="stylesheet" href="css/report-page.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
 </head>
-<body>
-    <div class="gov-banner">
+<body class="report-page-body">
+
+    <div class="gov-banner report-gov-banner">
         <div class="container">
             <div class="gov-banner-inner">
                 <div class="gov-banner-left">
-                    <span class="gov-icon"><i class="fas fa-flag-usa"></i></span>
-                    <span class="gov-text">An official website information banner</span>
+                    <span class="gov-icon">🇺🇸</span>
+                    <span class="gov-text">An official website of the United States government</span>
                 </div>
                 <div class="gov-banner-right">
                     <a href="#" class="gov-link">Here's how you know</a>
@@ -24,211 +25,140 @@
         </div>
     </div>
 
-    <header class="site-header">
-        <div class="container">
-            <div class="header-inner">
-                <div class="logo-container">
-                    <a href="/" class="logo-link">
-                        <img src="css/ftc-logo.svg" alt="ReportFraud Logo" class="site-logo">
-                        <div class="logo-text">
-                            <span class="logo-agency">FEDERAL TRADE COMMISSION</span>
-                            <span class="logo-site">ReportFraud.ftc.gov</span>
-                        </div>
-                    </a>
+    <header class="report-header-shell">
+        <div class="container report-header-inner">
+            <a href="/" class="report-brand" aria-label="Go to homepage">
+                <img src="css/ftc-logo.svg" alt="Federal Trade Commission" class="report-brand-logo" />
+                <div class="report-brand-text">
+                    <span class="report-brand-agency">FEDERAL TRADE COMMISSION</span>
+                    <span class="report-brand-site">ReportFraud.ftc.gov</span>
                 </div>
-                <nav class="main-nav" id="mainNav">
-                    <ul>
-                        <li class="menu-label">MENU</li>
-                        <li><a href="/">Home</a></li>
-                        <li><a href="/report.html" class="active">Report Fraud</a></li>
-                        <li><a href="#">FAQs</a></li>
-                    </ul>
-                </nav>
-                <button class="mobile-toggle" id="mobileToggle" aria-label="Menu">
-                    <i class="fas fa-bars"></i>
-                </button>
-            </div>
+            </a>
         </div>
     </header>
 
-    <section class="report-section">
-        <div class="container">
-            <div class="report-container">
-                <div class="report-header">
-                    <h1>Submit a Fraud Report</h1>
-                    <p>Please provide as much detail as possible. All information is confidential and secure.</p>
-                    <div class="progress-bar">
-                        <div class="progress-step active">1. Your Details</div>
-                        <div class="progress-step">2. Incident Details</div>
-                        <div class="progress-step">3. Suspect Info</div>
-                        <div class="progress-step">4. Review & Submit</div>
+    <main class="report-flow-page">
+        <div class="container report-flow-container">
+            <section class="report-progress-card">
+                <div class="report-progress-row">
+                    <span class="report-progress-label">Start</span>
+                    <div class="report-progress-track" aria-hidden="true">
+                        <span class="report-progress-fill"></span>
                     </div>
+                    <span class="report-progress-label">Submit</span>
                 </div>
+            </section>
 
-                <form id="reportForm" class="report-form">
-                    <!-- Step 1 -->
-                    <div class="form-step active" data-step="1">
-                        <h2>Your Information</h2>
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="firstName">First Name <span class="required">*</span></label>
-                                <input type="text" id="firstName" name="first_name" required placeholder="Enter your first name">
-                            </div>
-                            <div class="form-group">
-                                <label for="lastName">Last Name <span class="required">*</span></label>
-                                <input type="text" id="lastName" name="last_name" required placeholder="Enter your last name">
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="email">Email Address <span class="required">*</span></label>
-                                <input type="email" id="email" name="email" required placeholder="your@email.com">
-                            </div>
-                            <div class="form-group">
-                                <label for="phone">Phone Number</label>
-                                <input type="tel" id="phone" name="phone" placeholder="(123) 456-7890">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="address">Street Address</label>
-                            <input type="text" id="address" name="address" placeholder="123 Main St">
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="city">City</label>
-                                <input type="text" id="city" name="city" placeholder="New York">
-                            </div>
-                            <div class="form-group">
-                                <label for="state">State/Province</label>
-                                <input type="text" id="state" name="state" placeholder="NY">
-                            </div>
-                            <div class="form-group">
-                                <label for="zipCode">Zip Code</label>
-                                <input type="text" id="zipCode" name="zip_code" placeholder="10001">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="country">Country</label>
-                            <input type="text" id="country" name="country" placeholder="United States">
-                        </div>
-                        <div class="form-nav">
-                            <button type="button" class="btn btn-primary next-step">Next <i class="fas fa-arrow-right"></i></button>
-                        </div>
-                    </div>
+            <section class="report-question-block">
+                <h1>Is your report about any of these common problems?</h1>
+                <p>Choose the best fit. If you don't see your problem, choose “Something else.”</p>
+            </section>
 
-                    <!-- Step 2 -->
-                    <div class="form-step" data-step="2">
-                        <h2>Incident Details</h2>
-                        <div class="form-group">
-                            <label for="category">Category of Fraud <span class="required">*</span></label>
-                            <select id="category" name="category_id" required>
-                                <option value="">Select a category</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="incidentDate">Date of Incident</label>
-                            <input type="date" id="incidentDate" name="incident_date">
-                        </div>
-                        <div class="form-group">
-                            <label for="incidentDescription">Description of Incident <span class="required">*</span></label>
-                            <textarea id="incidentDescription" name="incident_description" rows="6" required placeholder="Please describe in detail what happened, including dates, times, and any relevant information..."></textarea>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="amountLost">Amount Lost (if any)</label>
-                                <input type="number" id="amountLost" name="amount_lost" step="0.01" placeholder="0.00">
-                            </div>
-                            <div class="form-group">
-                                <label for="currency">Currency</label>
-                                <select id="currency" name="currency">
-                                    <option value="USD">USD - US Dollar</option>
-                                    <option value="EUR">EUR - Euro</option>
-                                    <option value="GBP">GBP - British Pound</option>
-                                    <option value="CAD">CAD - Canadian Dollar</option>
-                                    <option value="AUD">AUD - Australian Dollar</option>
-                                    <option value="INR">INR - Indian Rupee</option>
-                                    <option value="Other">Other</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="paymentMethod">Payment Method Used</label>
-                            <input type="text" id="paymentMethod" name="payment_method" placeholder="Credit Card, Bank Transfer, Cryptocurrency, etc.">
-                        </div>
-                        <div class="form-nav">
-                            <button type="button" class="btn btn-secondary prev-step"><i class="fas fa-arrow-left"></i> Previous</button>
-                            <button type="button" class="btn btn-primary next-step">Next <i class="fas fa-arrow-right"></i></button>
-                        </div>
-                    </div>
+            <form class="report-options-form" id="reportOptionsForm">
+                <label class="report-option-card">
+                    <input type="radio" name="report-topic" value="impersonator" />
+                    <span class="report-option-radio" aria-hidden="true"></span>
+                    <span class="report-option-copy">
+                        <span class="report-option-title">An impersonator</span>
+                        <span class="report-option-subtitle">(ex. fake government, business, love interest, grandchild)</span>
+                    </span>
+                </label>
 
-                    <!-- Step 3 -->
-                    <div class="form-step" data-step="3">
-                        <h2>Suspect Information</h2>
-                        <div class="form-group">
-                            <label for="suspectName">Suspect Name</label>
-                            <input type="text" id="suspectName" name="suspect_name" placeholder="Full name of suspect">
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="suspectEmail">Suspect Email</label>
-                                <input type="email" id="suspectEmail" name="suspect_email" placeholder="suspect@example.com">
-                            </div>
-                            <div class="form-group">
-                                <label for="suspectPhone">Suspect Phone</label>
-                                <input type="tel" id="suspectPhone" name="suspect_phone" placeholder="(123) 456-7890">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="suspectWebsite">Suspect Website</label>
-                            <input type="url" id="suspectWebsite" name="suspect_website" placeholder="https://example.com">
-                        </div>
-                        <div class="form-group">
-                            <label for="additionalInfo">Additional Information</label>
-                            <textarea id="additionalInfo" name="additional_info" rows="4" placeholder="Any other details that might help with the investigation..."></textarea>
-                        </div>
-                        <div class="form-nav">
-                            <button type="button" class="btn btn-secondary prev-step"><i class="fas fa-arrow-left"></i> Previous</button>
-                            <button type="button" class="btn btn-primary next-step">Next <i class="fas fa-arrow-right"></i></button>
-                        </div>
-                    </div>
+                <label class="report-option-card">
+                    <input type="radio" name="report-topic" value="shopping" />
+                    <span class="report-option-radio" aria-hidden="true"></span>
+                    <span class="report-option-copy">
+                        <span class="report-option-title">Online shopping</span>
+                    </span>
+                </label>
 
-                    <!-- Step 4 -->
-                    <div class="form-step" data-step="4">
-                        <h2>Review & Submit</h2>
-                        <div class="review-box">
-                            <p>Please review your information before submitting.</p>
-                            <div class="review-summary"></div>
-                        </div>
-                        <div class="form-actions">
-                            <button type="button" class="btn btn-secondary prev-step"><i class="fas fa-arrow-left"></i> Previous</button>
-                            <button type="submit" class="btn btn-primary btn-large">
-                                <i class="fas fa-paper-plane"></i> Submit Report
-                            </button>
-                        </div>
-                    </div>
-                </form>
-            </div>
+                <label class="report-option-card">
+                    <input type="radio" name="report-topic" value="job-investment" />
+                    <span class="report-option-radio" aria-hidden="true"></span>
+                    <span class="report-option-copy">
+                        <span class="report-option-title">Job, investment, money-making opportunity, franchise</span>
+                    </span>
+                </label>
+
+                <label class="report-option-card">
+                    <input type="radio" name="report-topic" value="sweepstakes" />
+                    <span class="report-option-radio" aria-hidden="true"></span>
+                    <span class="report-option-copy">
+                        <span class="report-option-title">Sweepstakes, prize, lottery</span>
+                    </span>
+                </label>
+
+                <label class="report-option-card">
+                    <input type="radio" name="report-topic" value="phone-service" />
+                    <span class="report-option-radio" aria-hidden="true"></span>
+                    <span class="report-option-copy">
+                        <span class="report-option-title">Phone, internet, TV service</span>
+                    </span>
+                </label>
+
+                <label class="report-option-card">
+                    <input type="radio" name="report-topic" value="auto" />
+                    <span class="report-option-radio" aria-hidden="true"></span>
+                    <span class="report-option-copy">
+                        <span class="report-option-title">Auto sale, repair</span>
+                    </span>
+                </label>
+
+                <label class="report-option-card">
+                    <input type="radio" name="report-topic" value="health" />
+                    <span class="report-option-radio" aria-hidden="true"></span>
+                    <span class="report-option-copy">
+                        <span class="report-option-title">Health</span>
+                        <span class="report-option-subtitle">(ex. weight loss, eye care, treatment)</span>
+                    </span>
+                </label>
+
+                <label class="report-option-card">
+                    <input type="radio" name="report-topic" value="credit" />
+                    <span class="report-option-radio" aria-hidden="true"></span>
+                    <span class="report-option-copy">
+                        <span class="report-option-title">Credit, debt, loan</span>
+                        <span class="report-option-subtitle">(ex. debt collection, credit report, student loan debt relief)</span>
+                    </span>
+                </label>
+
+                <label class="report-option-card">
+                    <input type="radio" name="report-topic" value="annoying-call" />
+                    <span class="report-option-radio" aria-hidden="true"></span>
+                    <span class="report-option-copy">
+                        <span class="report-option-title">Just an annoying call</span>
+                    </span>
+                </label>
+
+                <label class="report-option-card">
+                    <input type="radio" name="report-topic" value="something-else" />
+                    <span class="report-option-radio" aria-hidden="true"></span>
+                    <span class="report-option-copy">
+                        <span class="report-option-title">Something else</span>
+                        <span class="report-option-subtitle">(we'll get it to the right place)</span>
+                    </span>
+                </label>
+            </form>
+
+            <div class="report-bottom-space"></div>
         </div>
-    </section>
+    </main>
 
-    <footer class="site-footer simple-footer">
+    <div class="report-scroll-banner" id="reportScrollBanner">
         <div class="container">
-            <div class="footer-top simple-footer-top">
-                <div class="footer-brand">
-                    <span class="footer-logo-text">ReportFraud.ftc.gov</span>
-                    <p>Use this page to submit your report with accurate information.</p>
-                </div>
-                <div class="footer-links">
-                    <a href="/">Home</a>
-                    <a href="#">FAQs</a>
-                    <a href="#">Privacy Policy</a>
-                </div>
-            </div>
+            <span>Scroll to continue....</span>
         </div>
-    </footer>
+    </div>
 
-    <script src="js/api.js"></script>
-    <script src="js/main.js"></script>
-    <script src="js/report.js"></script>
+    <div class="report-sticky-actions">
+        <div class="container report-sticky-actions-inner">
+            <button class="report-continue-btn" id="reportContinueBtn" type="button" disabled>
+                Continue
+                <span class="report-continue-arrow" aria-hidden="true">→</span>
+            </button>
+        </div>
+    </div>
+
+    <script src="js/report-page.js"></script>
 </body>
 </html>
