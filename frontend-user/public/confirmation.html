@@ -6,54 +6,74 @@
     <title>ReportFraud - Report Submitted</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/responsive.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
-    <!-- Header -->
+    <div class="gov-banner">
+        <div class="container">
+            <div class="gov-banner-inner">
+                <div class="gov-banner-left">
+                    <span class="gov-icon"><i class="fas fa-lock"></i></span>
+                    <span class="gov-text">Report submission complete</span>
+                </div>
+                <div class="gov-banner-right">
+                    <a href="#" class="gov-link">View next steps</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <header class="site-header">
         <div class="container">
             <div class="header-inner">
                 <div class="logo-container">
                     <a href="/" class="logo-link">
-                        <img id="siteLogo" src="" alt="ReportFraud Logo" class="site-logo">
-                        <span id="siteName" class="site-name">ReportFraud</span>
+                        <img src="images/logo.svg" alt="Site Logo" class="site-logo">
+                        <div class="logo-text">
+                            <span class="logo-agency">Consumer Protection Service</span>
+                            <span class="logo-site">ReportFraud</span>
+                        </div>
                     </a>
                 </div>
-                <nav class="main-nav">
+
+                <nav class="main-nav" id="mainNav">
                     <ul>
+                        <li class="menu-label">MENU</li>
                         <li><a href="/">Home</a></li>
                         <li><a href="/report.html">Report Fraud</a></li>
-                        <li><a href="/#about">About</a></li>
-                        <li><a href="/#contact">Contact</a></li>
+                        <li><a href="/confirmation.html" class="active">Confirmation</a></li>
                     </ul>
                 </nav>
-                <button class="mobile-toggle" aria-label="Menu">
+
+                <button class="mobile-toggle" id="mobileToggle" aria-label="Menu">
                     <i class="fas fa-bars"></i>
                 </button>
             </div>
         </div>
     </header>
 
-    <!-- Confirmation Section -->
     <section class="confirmation-section">
         <div class="container">
             <div class="confirmation-container">
                 <div class="confirmation-icon">
                     <i class="fas fa-check-circle"></i>
                 </div>
+
                 <h1>Report Submitted Successfully</h1>
-                <p id="confirmationMessage">Thank you for your report. Our team will review it shortly.</p>
+                <p id="confirmationMessage">Thank you for submitting your report. Please save your report number for your records.</p>
+
                 <div class="confirmation-details">
                     <div class="detail-item">
-                        <span class="detail-label">Report Number:</span>
+                        <span class="detail-label">Report Number</span>
                         <span class="detail-value" id="reportNumber">RF-20260101-0001</span>
                     </div>
                     <div class="detail-item">
-                        <span class="detail-label">Status:</span>
+                        <span class="detail-label">Status</span>
                         <span class="detail-value status-pending">Pending Review</span>
                     </div>
                 </div>
+
                 <div class="confirmation-actions">
                     <a href="/" class="btn btn-primary"><i class="fas fa-home"></i> Return Home</a>
                     <a href="/report.html" class="btn btn-secondary"><i class="fas fa-plus"></i> Submit Another Report</a>
@@ -62,37 +82,37 @@
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="site-footer" id="contact">
+    <footer class="site-footer">
         <div class="container">
             <div class="footer-content">
                 <div class="footer-brand">
-                    <img id="footerLogo" src="" alt="ReportFraud" class="footer-logo">
-                    <span id="footerSiteName">ReportFraud</span>
-                    <p id="footerText">© 2026 ReportFraud. All rights reserved.</p>
+                    <span class="footer-logo">ReportFraud</span>
+                    <p>Replace this footer content with your own service details and support information.</p>
                 </div>
+
                 <div class="footer-links">
                     <h4>Quick Links</h4>
                     <ul>
                         <li><a href="/">Home</a></li>
                         <li><a href="/report.html">Report Fraud</a></li>
-                        <li><a href="/#about">About</a></li>
+                        <li><a href="/confirmation.html">Confirmation</a></li>
                     </ul>
                 </div>
+
                 <div class="footer-contact">
                     <h4>Contact</h4>
-                    <p id="footerEmail">Email: admin@reportfraud.com</p>
+                    <p>Email: you@example.com</p>
                 </div>
             </div>
+
             <div class="footer-bottom">
-                <p>An official reporting system for fraud and suspicious activities.</p>
+                <p>Update this legal and service text to match your own website.</p>
             </div>
         </div>
     </footer>
 
-    <script src="js/api.js"></script>
+    <script src="js/main.js"></script>
     <script>
-        // Load report number from URL parameter
         const urlParams = new URLSearchParams(window.location.search);
         const reportNumber = urlParams.get('report') || 'RF-20260101-0001';
         document.getElementById('reportNumber').textContent = reportNumber;
