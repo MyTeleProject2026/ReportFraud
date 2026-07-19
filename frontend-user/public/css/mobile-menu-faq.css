@@ -1,3 +1,78 @@
+/* =========================================
+   Hero mobile alignment fix to match reference
+   ========================================= */
+
+@media (max-width: 768px) {
+    .hero-section {
+        position: relative;
+        min-height: 520px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+    }
+
+    .hero-section .container {
+        position: relative;
+        z-index: 2;
+        width: 100%;
+    }
+
+    .hero-content {
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-height: 520px;
+        padding: 70px 20px 60px;
+    }
+
+    .hero-content h1 {
+        font-size: 34px;
+        line-height: 1.12;
+        font-weight: 700;
+        color: #1f4a7c;
+        max-width: 320px;
+        margin: 0 auto 28px;
+        text-align: center;
+    }
+
+    .hero-content .btn.btn-primary.btn-large {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 245px;
+        padding: 16px 26px;
+        font-size: 22px;
+        font-weight: 500;
+        margin: 0 auto 26px;
+        border-radius: 4px;
+    }
+
+    .hero-content p {
+        font-size: 18px;
+        line-height: 1.45;
+        color: #1f3656;
+        max-width: 340px;
+        margin: 0 auto;
+        text-align: center;
+    }
+
+    .hero-background {
+        position: absolute;
+        inset: 0;
+        z-index: 1;
+    }
+
+    .city-skyline {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+}
+
+
 /* =========================
    Mobile Menu + FAQ Module
    ========================= */
