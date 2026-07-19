@@ -209,3 +209,64 @@ async function handleSubmit(e) {
     }
   }
 }
+
+document.addEventListener('DOMContentLoaded', () => {
+  setupCategoryChooserScreen();
+});
+
+function setupCategoryChooserScreen() {
+  const chooser = document.getElementById('reportCategoryChooser');
+  const continueBtn = document.getElementById('reportChooserContinue');
+  const hiddenCategorySelect = document.getElementById('category');
+
+  if (!chooser || !continueBtn || !hiddenCategorySelect) return;
+
+  const topicInputs = chooser.querySelectorAll('input[name="report-topic-choice"]');
+  const topicCards = chooser.querySelectorAll('.report-topic-card');
+  const scrollHint = document.getElementById('reportScrollHint');
+  const reportContainer = document.querySelector('.report-section');
+
+  let selectedValue = '';
+
+  topicInputs.forEach((input) => {
+    input.addEventListener('change', () => {
+      selectedValue = input.value;
+
+      topicCards.forEach((card) => {
+        const radio = card.querySelector('input[name="report-topic-choice"]');
+        card.classList.toggle('is-selected', radio && radio.checked);
+      });
+
+      continueBtn.disabled = !selectedValue;
+    });
+  });
+
+  continueBtn.addEventListener('click', () => {
+    if (!selectedValue) return;
+
+    hiddenCategorySelect.value = selectedValue;
+    hiddenCategorySelect.dispatchEvent(new Event('change', { bubbles: true }));
+
+    chooser.classList.add('report-chooser-hidden');
+
+    if (reportContainer) {
+      reportContainer.classList.remove('report-chooser-hidden');
+    }
+
+    if (scrollHint) {
+      scrollHint.classList.add('is-hidden');
+    }
+
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+
+  function updateScrollHint() {
+    if (!scrollHint || chooser.classList.contains('report-chooser-hidden')) return;
+    const nearBottom = window.innerHeight + window.scrollY >= document.body.offsetHeight - 110;
+    scrollHint.classList.toggle('is-hidden', nearBottom);
+  }
+
+  updateScrollHint();
+  window.addEventListener('scroll', updateScrollHint, { passive: true });
+  window.addEventListener('resize', updateScrollHint);
+}
