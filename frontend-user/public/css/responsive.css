@@ -27,6 +27,12 @@
     }
 }
 
+@media (max-width: 768px) {
+    .step-icon.custom-illustration img {
+        width: 104px;
+    }
+}
+
 /* Small Mobile */
 @media (max-width: 480px) {
     .gov-banner {
