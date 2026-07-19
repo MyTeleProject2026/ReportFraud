@@ -1,0 +1,10 @@
+ <svg width="120" height="140" viewBox="0 0 120 140" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect x="22" y="12" width="76" height="108" fill="#73C8EB"/>
+  <text x="60" y="36" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="700" fill="#214F86">TO DO:</text>
+  <circle cx="40" cy="58" r="5" fill="#214F86"/>
+  <rect x="52" y="53" width="34" height="10" fill="#214F86"/>
+  <circle cx="40" cy="79" r="5" fill="#214F86"/>
+  <rect x="52" y="74" width="34" height="10" fill="#214F86"/>
+  <circle cx="40" cy="100" r="5" fill="#214F86"/>
+  <rect x="52" y="95" width="34" height="10" fill="#214F86"/>
+</svg>
