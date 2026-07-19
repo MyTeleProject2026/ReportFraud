@@ -1,1 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ReportFraud - Start Your Report</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/report.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+</head>
+<body class="report-page-body">
 
+    <!-- ===== GOV BANNER ===== -->
+    <div class="gov-banner report-gov-banner">
+        <div class="container">
+            <div class="gov-banner-inner">
+                <div class="gov-banner-left">
+                    <span class="gov-icon"><i class="fas fa-lock"></i></span>
+                    <span class="gov-text">An official website of the United States government</span>
+                </div>
+                <div class="gov-banner-right">
+                    <a href="#" class="gov-link">Here's how you know</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== HEADER ===== -->
+    <header class="report-header-shell">
+        <div class="container report-header-inner">
+            <a href="/" class="report-brand">
+                <img src="css/ftc-logo.svg" alt="FTC Logo" class="report-brand-logo" />
+                <div class="report-brand-text">
+                    <span class="report-brand-agency">FEDERAL TRADE COMMISSION</span>
+                    <span class="report-brand-site">ReportFraud.ftc.gov</span>
+                </div>
+            </a>
+        </div>
+    </header>
+
+    <!-- ===== REPORT FLOW ===== -->
+    <main class="report-flow-page">
+        <div class="container report-flow-container">
+            <!-- Progress Indicator -->
+            <section class="report-progress-card">
+                <div class="report-progress-row">
+                    <span class="report-progress-label">Start</span>
+                    <div class="report-progress-track" aria-hidden="true">
+                        <span class="report-progress-fill" style="width: 20%;"></span>
+                    </div>
+                    <span class="report-progress-label">Submit</span>
+                </div>
+            </section>
+
+            <!-- Step 1: Categorization -->
+            <section class="report-question-block">
+                <h1>What type of fraud are you reporting?</h1>
+                <p>Select the category that best describes your situation.</p>
+            </section>
+
+            <form class="report-options-form" id="categoryForm">
+                <div class="report-option-card" data-category="impersonator">
+                    <input type="radio" name="category" value="impersonator" id="cat-impersonator" />
+                    <span class="report-option-radio"></span>
+                    <span class="report-option-copy">
+                        <span class="report-option-title">An impersonator</span>
+                        <span class="report-option-subtitle">Fake government, business, love interest, grandchild</span>
+                    </span>
+                </div>
+
+                <div class="report-option-card" data-category="shopping">
+                    <input type="radio" name="category" value="shopping" id="cat-shopping" />
+                    <span class="report-option-radio"></span>
+                    <span class="report-option-copy">
+                        <span class="report-option-title">Online shopping</span>
+                        <span class="report-option-subtitle">Items not received, counterfeit goods</span>
+                    </span>
+                </div>
+
+                <div class="report-option-card" data-category="job-investment">
+                    <input type="radio" name="category" value="job-investment" id="cat-job" />
+                    <span class="report-option-radio"></span>
+                    <span class="report-option-copy">
+                        <span class="report-option-title">Job, investment, money-making opportunity</span>
+                        <span class="report-option-subtitle">Franchise, work-from-home scams</span>
+                    </span>
+                </div>
+
+                <div class="report-option-card" data-category="sweepstakes">
+                    <input type="radio" name="category" value="sweepstakes" id="cat-sweepstakes" />
+                    <span class="report-option-radio"></span>
+                    <span class="report-option-copy">
+                        <span class="report-option-title">Sweepstakes, prize, lottery</span>
+                        <span class="report-option-subtitle">Fake winnings, fee requests</span>
+                    </span>
+                </div>
+
+                <div class="report-option-card" data-category="phone-service">
+                    <input type="radio" name="category" value="phone-service" id="cat-phone" />
+                    <span class="report-option-radio"></span>
+                    <span class="report-option-copy">
+                        <span class="report-option-title">Phone, internet, TV service</span>
+                        <span class="report-option-subtitle">Billing issues, slamming, cramming</span>
+                    </span>
+                </div>
+
+                <div class="report-option-card" data-category="credit-debt" data-redirect="cfpb">
+                    <input type="radio" name="category" value="credit-debt" id="cat-credit" />
+                    <span class="report-option-radio"></span>
+                    <span class="report-option-copy">
+                        <span class="report-option-title">Credit, debt, loan</span>
+                        <span class="report-option-subtitle">Debt collection, credit report, student loans</span>
+                    </span>
+                </div>
+
+                <div class="report-option-card" data-category="something-else">
+                    <input type="radio" name="category" value="something-else" id="cat-other" />
+                    <span class="report-option-radio"></span>
+                    <span class="report-option-copy">
+                        <span class="report-option-title">Something else</span>
+                        <span class="report-option-subtitle">We'll get it to the right place</span>
+                    </span>
+                </div>
+            </form>
+
+            <div class="report-bottom-space"></div>
+        </div>
+    </main>
+
+    <!-- ===== REDIRECT MODAL ===== -->
+    <div class="modal-overlay" id="redirectModal" style="display:none;">
+        <div class="modal-content">
+            <div class="modal-icon"><i class="fas fa-external-link-alt"></i></div>
+            <h2>Redirecting to CFPB</h2>
+            <p>We are redirecting you to submit your report to the Consumer Financial Protection Bureau (CFPB) for credit, debt, and loan-related issues.</p>
+            <p class="modal-note">This ensures your report goes to the correct agency.</p>
+            <div class="modal-actions">
+                <button class="btn btn-secondary" id="modalCancel">Cancel</button>
+                <a href="https://www.consumerfinance.gov/complaint/" target="_blank" class="btn btn-primary" id="modalConfirm">Continue to CFPB</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== STICKY ACTIONS ===== -->
+    <div class="report-sticky-actions">
+        <div class="container report-sticky-actions-inner">
+            <button class="report-continue-btn" id="continueBtn" type="button" disabled>
+                Continue <i class="fas fa-arrow-right"></i>
+            </button>
+        </div>
+    </div>
+
+    <script src="js/report-start.js"></script>
+</body>
+</html>
