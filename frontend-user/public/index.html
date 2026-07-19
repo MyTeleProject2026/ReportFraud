@@ -32,7 +32,7 @@
             <div class="header-inner">
                 <div class="logo-container">
                     <a href="/" class="logo-link">
-                        <img src="css/ftc-logo.png" alt="FTC Logo" class="site-logo" />
+                        <img src="css/ftc-logo.svg" alt="FTC Logo" class="site-logo" />
                         <div class="logo-text">
                             <span class="logo-agency">FEDERAL TRADE COMMISSION</span>
                             <span class="logo-site">ReportFraud.ftc.gov</span>
@@ -54,184 +54,144 @@
         </div>
     </header>
 
-    <!-- ===== HERO SECTION WITH CITY SKYLINE BACKGROUND ===== -->
+    <!-- ===== HERO SECTION WITH CITY SKYLINE ===== -->
     <section class="hero-section">
         <div class="hero-background">
-            <!-- City Skyline SVG Illustration -->
-            <svg class="city-skyline" viewBox="0 0 1200 400" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
-                <!-- Sky gradient -->
+            <!-- City Skyline SVG -->
+            <svg class="city-skyline" viewBox="0 0 1200 450" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
                 <defs>
                     <linearGradient id="skyGrad" x1="0%" y1="0%" x2="0%" y2="100%">
                         <stop offset="0%" style="stop-color:#0a1a3a;stop-opacity:1" />
                         <stop offset="100%" style="stop-color:#003c78;stop-opacity:1" />
                     </linearGradient>
-                    <linearGradient id="buildingGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                    <linearGradient id="buildGrad" x1="0%" y1="0%" x2="0%" y2="100%">
                         <stop offset="0%" style="stop-color:#0d2847;stop-opacity:0.9" />
                         <stop offset="100%" style="stop-color:#0a1a3a;stop-opacity:0.95" />
                     </linearGradient>
                 </defs>
-                
-                <!-- Sky -->
-                <rect width="1200" height="400" fill="url(#skyGrad)" />
-                
+                <rect width="1200" height="450" fill="url(#skyGrad)" />
                 <!-- Building 1 -->
-                <rect x="50" y="200" width="40" height="200" fill="url(#buildingGrad)" stroke="#1a3a6a" stroke-width="1"/>
-                <rect x="55" y="210" width="8" height="12" fill="#2a5a8a" opacity="0.6"/>
-                <rect x="68" y="210" width="8" height="12" fill="#2a5a8a" opacity="0.6"/>
-                <rect x="55" y="230" width="8" height="12" fill="#2a5a8a" opacity="0.6"/>
-                <rect x="68" y="230" width="8" height="12" fill="#2a5a8a" opacity="0.6"/>
-                <rect x="55" y="250" width="8" height="12" fill="#2a5a8a" opacity="0.4"/>
-                <rect x="68" y="250" width="8" height="12" fill="#2a5a8a" opacity="0.4"/>
-                <rect x="55" y="270" width="8" height="12" fill="#2a5a8a" opacity="0.3"/>
-                <rect x="68" y="270" width="8" height="12" fill="#2a5a8a" opacity="0.3"/>
-                
-                <!-- Building 2 (Tall) -->
-                <rect x="110" y="100" width="35" height="300" fill="url(#buildingGrad)" stroke="#1a3a6a" stroke-width="1"/>
-                <rect x="115" y="110" width="7" height="10" fill="#2a5a8a" opacity="0.7"/>
-                <rect x="127" y="110" width="7" height="10" fill="#2a5a8a" opacity="0.7"/>
-                <rect x="115" y="130" width="7" height="10" fill="#2a5a8a" opacity="0.6"/>
-                <rect x="127" y="130" width="7" height="10" fill="#2a5a8a" opacity="0.6"/>
-                <rect x="115" y="150" width="7" height="10" fill="#2a5a8a" opacity="0.5"/>
-                <rect x="127" y="150" width="7" height="10" fill="#2a5a8a" opacity="0.5"/>
-                <rect x="115" y="170" width="7" height="10" fill="#2a5a8a" opacity="0.4"/>
-                <rect x="127" y="170" width="7" height="10" fill="#2a5a8a" opacity="0.4"/>
-                <rect x="115" y="190" width="7" height="10" fill="#2a5a8a" opacity="0.3"/>
-                <rect x="127" y="190" width="7" height="10" fill="#2a5a8a" opacity="0.3"/>
-                
+                <rect x="40" y="250" width="35" height="200" fill="url(#buildGrad)" stroke="#1a3a6a" stroke-width="1"/>
+                <rect x="46" y="260" width="6" height="8" fill="#2a5a8a" opacity="0.6"/>
+                <rect x="56" y="260" width="6" height="8" fill="#2a5a8a" opacity="0.6"/>
+                <rect x="46" y="275" width="6" height="8" fill="#2a5a8a" opacity="0.5"/>
+                <rect x="56" y="275" width="6" height="8" fill="#2a5a8a" opacity="0.5"/>
+                <!-- Building 2 -->
+                <rect x="90" y="180" width="40" height="270" fill="url(#buildGrad)" stroke="#1a3a6a" stroke-width="1"/>
+                <rect x="96" y="190" width="7" height="10" fill="#2a5a8a" opacity="0.7"/>
+                <rect x="108" y="190" width="7" height="10" fill="#2a5a8a" opacity="0.7"/>
+                <rect x="96" y="208" width="7" height="10" fill="#2a5a8a" opacity="0.6"/>
+                <rect x="108" y="208" width="7" height="10" fill="#2a5a8a" opacity="0.6"/>
+                <rect x="96" y="226" width="7" height="10" fill="#2a5a8a" opacity="0.5"/>
+                <rect x="108" y="226" width="7" height="10" fill="#2a5a8a" opacity="0.5"/>
                 <!-- Building 3 -->
-                <rect x="165" y="180" width="50" height="220" fill="url(#buildingGrad)" stroke="#1a3a6a" stroke-width="1"/>
-                <rect x="172" y="190" width="8" height="12" fill="#2a5a8a" opacity="0.6"/>
-                <rect x="188" y="190" width="8" height="12" fill="#2a5a8a" opacity="0.6"/>
-                <rect x="204" y="190" width="8" height="12" fill="#2a5a8a" opacity="0.6"/>
-                <rect x="172" y="210" width="8" height="12" fill="#2a5a8a" opacity="0.5"/>
-                <rect x="188" y="210" width="8" height="12" fill="#2a5a8a" opacity="0.5"/>
-                <rect x="204" y="210" width="8" height="12" fill="#2a5a8a" opacity="0.5"/>
-                <rect x="172" y="230" width="8" height="12" fill="#2a5a8a" opacity="0.4"/>
-                <rect x="188" y="230" width="8" height="12" fill="#2a5a8a" opacity="0.4"/>
-                <rect x="204" y="230" width="8" height="12" fill="#2a5a8a" opacity="0.4"/>
-                
+                <rect x="145" y="220" width="45" height="230" fill="url(#buildGrad)" stroke="#1a3a6a" stroke-width="1"/>
+                <rect x="152" y="230" width="7" height="10" fill="#2a5a8a" opacity="0.5"/>
+                <rect x="166" y="230" width="7" height="10" fill="#2a5a8a" opacity="0.5"/>
+                <rect x="180" y="230" width="7" height="10" fill="#2a5a8a" opacity="0.5"/>
+                <rect x="152" y="248" width="7" height="10" fill="#2a5a8a" opacity="0.4"/>
+                <rect x="166" y="248" width="7" height="10" fill="#2a5a8a" opacity="0.4"/>
+                <rect x="180" y="248" width="7" height="10" fill="#2a5a8a" opacity="0.4"/>
                 <!-- Building 4 (Skyscraper) -->
-                <rect x="235" y="80" width="30" height="320" fill="url(#buildingGrad)" stroke="#1a3a6a" stroke-width="1"/>
-                <polygon points="235,80 265,80 250,50" fill="#0d2847" stroke="#1a3a6a" stroke-width="1"/>
-                <rect x="240" y="90" width="6" height="10" fill="#2a5a8a" opacity="0.7"/>
-                <rect x="252" y="90" width="6" height="10" fill="#2a5a8a" opacity="0.7"/>
-                <rect x="240" y="110" width="6" height="10" fill="#2a5a8a" opacity="0.6"/>
-                <rect x="252" y="110" width="6" height="10" fill="#2a5a8a" opacity="0.6"/>
-                <rect x="240" y="130" width="6" height="10" fill="#2a5a8a" opacity="0.5"/>
-                <rect x="252" y="130" width="6" height="10" fill="#2a5a8a" opacity="0.5"/>
-                <rect x="240" y="150" width="6" height="10" fill="#2a5a8a" opacity="0.4"/>
-                <rect x="252" y="150" width="6" height="10" fill="#2a5a8a" opacity="0.4"/>
-                
+                <rect x="210" y="120" width="30" height="330" fill="url(#buildGrad)" stroke="#1a3a6a" stroke-width="1"/>
+                <polygon points="210,120 240,120 225,90" fill="#0d2847" stroke="#1a3a6a" stroke-width="1"/>
+                <rect x="215" y="130" width="6" height="10" fill="#2a5a8a" opacity="0.7"/>
+                <rect x="227" y="130" width="6" height="10" fill="#2a5a8a" opacity="0.7"/>
+                <rect x="215" y="148" width="6" height="10" fill="#2a5a8a" opacity="0.6"/>
+                <rect x="227" y="148" width="6" height="10" fill="#2a5a8a" opacity="0.6"/>
+                <rect x="215" y="166" width="6" height="10" fill="#2a5a8a" opacity="0.5"/>
+                <rect x="227" y="166" width="6" height="10" fill="#2a5a8a" opacity="0.5"/>
                 <!-- Building 5 -->
-                <rect x="285" y="220" width="45" height="180" fill="url(#buildingGrad)" stroke="#1a3a6a" stroke-width="1"/>
-                <rect x="292" y="230" width="8" height="12" fill="#2a5a8a" opacity="0.5"/>
-                <rect x="306" y="230" width="8" height="12" fill="#2a5a8a" opacity="0.5"/>
-                <rect x="320" y="230" width="8" height="12" fill="#2a5a8a" opacity="0.5"/>
-                <rect x="292" y="250" width="8" height="12" fill="#2a5a8a" opacity="0.4"/>
-                <rect x="306" y="250" width="8" height="12" fill="#2a5a8a" opacity="0.4"/>
-                <rect x="320" y="250" width="8" height="12" fill="#2a5a8a" opacity="0.4"/>
-                
+                <rect x="260" y="260" width="40" height="190" fill="url(#buildGrad)" stroke="#1a3a6a" stroke-width="1"/>
+                <rect x="266" y="270" width="7" height="10" fill="#2a5a8a" opacity="0.4"/>
+                <rect x="280" y="270" width="7" height="10" fill="#2a5a8a" opacity="0.4"/>
                 <!-- Building 6 -->
-                <rect x="350" y="150" width="40" height="250" fill="url(#buildingGrad)" stroke="#1a3a6a" stroke-width="1"/>
-                <rect x="355" y="160" width="8" height="12" fill="#2a5a8a" opacity="0.6"/>
-                <rect x="370" y="160" width="8" height="12" fill="#2a5a8a" opacity="0.6"/>
-                <rect x="355" y="180" width="8" height="12" fill="#2a5a8a" opacity="0.5"/>
-                <rect x="370" y="180" width="8" height="12" fill="#2a5a8a" opacity="0.5"/>
-                <rect x="355" y="200" width="8" height="12" fill="#2a5a8a" opacity="0.4"/>
-                <rect x="370" y="200" width="8" height="12" fill="#2a5a8a" opacity="0.4"/>
-                
+                <rect x="315" y="190" width="35" height="260" fill="url(#buildGrad)" stroke="#1a3a6a" stroke-width="1"/>
+                <rect x="321" y="200" width="6" height="10" fill="#2a5a8a" opacity="0.5"/>
+                <rect x="333" y="200" width="6" height="10" fill="#2a5a8a" opacity="0.5"/>
+                <rect x="321" y="218" width="6" height="10" fill="#2a5a8a" opacity="0.4"/>
+                <rect x="333" y="218" width="6" height="10" fill="#2a5a8a" opacity="0.4"/>
                 <!-- Building 7 -->
-                <rect x="410" y="120" width="35" height="280" fill="url(#buildingGrad)" stroke="#1a3a6a" stroke-width="1"/>
-                <rect x="415" y="130" width="7" height="10" fill="#2a5a8a" opacity="0.6"/>
-                <rect x="427" y="130" width="7" height="10" fill="#2a5a8a" opacity="0.6"/>
-                <rect x="415" y="150" width="7" height="10" fill="#2a5a8a" opacity="0.5"/>
-                <rect x="427" y="150" width="7" height="10" fill="#2a5a8a" opacity="0.5"/>
-                <rect x="415" y="170" width="7" height="10" fill="#2a5a8a" opacity="0.4"/>
-                <rect x="427" y="170" width="7" height="10" fill="#2a5a8a" opacity="0.4"/>
-                
+                <rect x="370" y="140" width="40" height="310" fill="url(#buildGrad)" stroke="#1a3a6a" stroke-width="1"/>
+                <rect x="376" y="150" width="7" height="10" fill="#2a5a8a" opacity="0.6"/>
+                <rect x="390" y="150" width="7" height="10" fill="#2a5a8a" opacity="0.6"/>
+                <rect x="376" y="168" width="7" height="10" fill="#2a5a8a" opacity="0.5"/>
+                <rect x="390" y="168" width="7" height="10" fill="#2a5a8a" opacity="0.5"/>
+                <rect x="376" y="186" width="7" height="10" fill="#2a5a8a" opacity="0.4"/>
+                <rect x="390" y="186" width="7" height="10" fill="#2a5a8a" opacity="0.4"/>
                 <!-- Building 8 -->
-                <rect x="465" y="200" width="50" height="200" fill="url(#buildingGrad)" stroke="#1a3a6a" stroke-width="1"/>
-                <rect x="472" y="210" width="8" height="12" fill="#2a5a8a" opacity="0.5"/>
-                <rect x="488" y="210" width="8" height="12" fill="#2a5a8a" opacity="0.5"/>
-                <rect x="504" y="210" width="8" height="12" fill="#2a5a8a" opacity="0.5"/>
-                <rect x="472" y="230" width="8" height="12" fill="#2a5a8a" opacity="0.4"/>
-                <rect x="488" y="230" width="8" height="12" fill="#2a5a8a" opacity="0.4"/>
-                
+                <rect x="430" y="240" width="50" height="210" fill="url(#buildGrad)" stroke="#1a3a6a" stroke-width="1"/>
+                <rect x="438" y="250" width="8" height="10" fill="#2a5a8a" opacity="0.5"/>
+                <rect x="454" y="250" width="8" height="10" fill="#2a5a8a" opacity="0.5"/>
+                <rect x="470" y="250" width="8" height="10" fill="#2a5a8a" opacity="0.5"/>
+                <rect x="438" y="268" width="8" height="10" fill="#2a5a8a" opacity="0.4"/>
+                <rect x="454" y="268" width="8" height="10" fill="#2a5a8a" opacity="0.4"/>
+                <rect x="470" y="268" width="8" height="10" fill="#2a5a8a" opacity="0.4"/>
                 <!-- Building 9 -->
-                <rect x="535" y="170" width="45" height="230" fill="url(#buildingGrad)" stroke="#1a3a6a" stroke-width="1"/>
-                <rect x="542" y="180" width="8" height="12" fill="#2a5a8a" opacity="0.5"/>
-                <rect x="558" y="180" width="8" height="12" fill="#2a5a8a" opacity="0.5"/>
-                <rect x="542" y="200" width="8" height="12" fill="#2a5a8a" opacity="0.4"/>
-                <rect x="558" y="200" width="8" height="12" fill="#2a5a8a" opacity="0.4"/>
-                
+                <rect x="500" y="200" width="35" height="250" fill="url(#buildGrad)" stroke="#1a3a6a" stroke-width="1"/>
+                <rect x="506" y="210" width="6" height="10" fill="#2a5a8a" opacity="0.5"/>
+                <rect x="518" y="210" width="6" height="10" fill="#2a5a8a" opacity="0.5"/>
+                <rect x="506" y="228" width="6" height="10" fill="#2a5a8a" opacity="0.4"/>
+                <rect x="518" y="228" width="6" height="10" fill="#2a5a8a" opacity="0.4"/>
                 <!-- Building 10 -->
-                <rect x="600" y="100" width="30" height="300" fill="url(#buildingGrad)" stroke="#1a3a6a" stroke-width="1"/>
-                <rect x="605" y="110" width="6" height="10" fill="#2a5a8a" opacity="0.6"/>
-                <rect x="617" y="110" width="6" height="10" fill="#2a5a8a" opacity="0.6"/>
-                <rect x="605" y="130" width="6" height="10" fill="#2a5a8a" opacity="0.5"/>
-                <rect x="617" y="130" width="6" height="10" fill="#2a5a8a" opacity="0.5"/>
-                <rect x="605" y="150" width="6" height="10" fill="#2a5a8a" opacity="0.4"/>
-                <rect x="617" y="150" width="6" height="10" fill="#2a5a8a" opacity="0.4"/>
-                
+                <rect x="555" y="160" width="45" height="290" fill="url(#buildGrad)" stroke="#1a3a6a" stroke-width="1"/>
+                <rect x="562" y="170" width="7" height="10" fill="#2a5a8a" opacity="0.5"/>
+                <rect x="576" y="170" width="7" height="10" fill="#2a5a8a" opacity="0.5"/>
+                <rect x="590" y="170" width="7" height="10" fill="#2a5a8a" opacity="0.5"/>
+                <rect x="562" y="188" width="7" height="10" fill="#2a5a8a" opacity="0.4"/>
+                <rect x="576" y="188" width="7" height="10" fill="#2a5a8a" opacity="0.4"/>
+                <rect x="590" y="188" width="7" height="10" fill="#2a5a8a" opacity="0.4"/>
                 <!-- Building 11 -->
-                <rect x="650" y="190" width="55" height="210" fill="url(#buildingGrad)" stroke="#1a3a6a" stroke-width="1"/>
-                <rect x="658" y="200" width="8" height="12" fill="#2a5a8a" opacity="0.5"/>
-                <rect x="674" y="200" width="8" height="12" fill="#2a5a8a" opacity="0.5"/>
-                <rect x="690" y="200" width="8" height="12" fill="#2a5a8a" opacity="0.5"/>
-                <rect x="658" y="220" width="8" height="12" fill="#2a5a8a" opacity="0.4"/>
-                <rect x="674" y="220" width="8" height="12" fill="#2a5a8a" opacity="0.4"/>
-                <rect x="690" y="220" width="8" height="12" fill="#2a5a8a" opacity="0.4"/>
-                
+                <rect x="620" y="230" width="30" height="220" fill="url(#buildGrad)" stroke="#1a3a6a" stroke-width="1"/>
+                <rect x="626" y="240" width="6" height="10" fill="#2a5a8a" opacity="0.4"/>
+                <rect x="636" y="240" width="6" height="10" fill="#2a5a8a" opacity="0.4"/>
                 <!-- Building 12 -->
-                <rect x="725" y="140" width="35" height="260" fill="url(#buildingGrad)" stroke="#1a3a6a" stroke-width="1"/>
-                <rect x="730" y="150" width="7" height="10" fill="#2a5a8a" opacity="0.5"/>
-                <rect x="742" y="150" width="7" height="10" fill="#2a5a8a" opacity="0.5"/>
-                <rect x="730" y="170" width="7" height="10" fill="#2a5a8a" opacity="0.4"/>
-                <rect x="742" y="170" width="7" height="10" fill="#2a5a8a" opacity="0.4"/>
-                
+                <rect x="670" y="180" width="40" height="270" fill="url(#buildGrad)" stroke="#1a3a6a" stroke-width="1"/>
+                <rect x="676" y="190" width="7" height="10" fill="#2a5a8a" opacity="0.5"/>
+                <rect x="690" y="190" width="7" height="10" fill="#2a5a8a" opacity="0.5"/>
+                <rect x="676" y="208" width="7" height="10" fill="#2a5a8a" opacity="0.4"/>
+                <rect x="690" y="208" width="7" height="10" fill="#2a5a8a" opacity="0.4"/>
                 <!-- Building 13 -->
-                <rect x="780" y="210" width="40" height="190" fill="url(#buildingGrad)" stroke="#1a3a6a" stroke-width="1"/>
-                <rect x="785" y="220" width="8" height="12" fill="#2a5a8a" opacity="0.4"/>
-                <rect x="800" y="220" width="8" height="12" fill="#2a5a8a" opacity="0.4"/>
-                <rect x="785" y="240" width="8" height="12" fill="#2a5a8a" opacity="0.3"/>
-                <rect x="800" y="240" width="8" height="12" fill="#2a5a8a" opacity="0.3"/>
-                
+                <rect x="730" y="260" width="50" height="190" fill="url(#buildGrad)" stroke="#1a3a6a" stroke-width="1"/>
+                <rect x="738" y="270" width="7" height="10" fill="#2a5a8a" opacity="0.4"/>
+                <rect x="752" y="270" width="7" height="10" fill="#2a5a8a" opacity="0.4"/>
+                <rect x="766" y="270" width="7" height="10" fill="#2a5a8a" opacity="0.4"/>
                 <!-- Building 14 -->
-                <rect x="840" y="160" width="30" height="240" fill="url(#buildingGrad)" stroke="#1a3a6a" stroke-width="1"/>
-                <rect x="845" y="170" width="6" height="10" fill="#2a5a8a" opacity="0.5"/>
-                <rect x="857" y="170" width="6" height="10" fill="#2a5a8a" opacity="0.5"/>
-                <rect x="845" y="190" width="6" height="10" fill="#2a5a8a" opacity="0.4"/>
-                <rect x="857" y="190" width="6" height="10" fill="#2a5a8a" opacity="0.4"/>
-                
+                <rect x="800" y="210" width="35" height="240" fill="url(#buildGrad)" stroke="#1a3a6a" stroke-width="1"/>
+                <rect x="806" y="220" width="6" height="10" fill="#2a5a8a" opacity="0.5"/>
+                <rect x="818" y="220" width="6" height="10" fill="#2a5a8a" opacity="0.5"/>
                 <!-- Building 15 -->
-                <rect x="890" y="230" width="50" height="170" fill="url(#buildingGrad)" stroke="#1a3a6a" stroke-width="1"/>
-                <rect x="897" y="240" width="8" height="12" fill="#2a5a8a" opacity="0.4"/>
-                <rect x="913" y="240" width="8" height="12" fill="#2a5a8a" opacity="0.4"/>
-                <rect x="929" y="240" width="8" height="12" fill="#2a5a8a" opacity="0.4"/>
-                
+                <rect x="855" y="150" width="40" height="300" fill="url(#buildGrad)" stroke="#1a3a6a" stroke-width="1"/>
+                <rect x="861" y="160" width="7" height="10" fill="#2a5a8a" opacity="0.6"/>
+                <rect x="875" y="160" width="7" height="10" fill="#2a5a8a" opacity="0.6"/>
+                <rect x="861" y="178" width="7" height="10" fill="#2a5a8a" opacity="0.5"/>
+                <rect x="875" y="178" width="7" height="10" fill="#2a5a8a" opacity="0.5"/>
+                <rect x="861" y="196" width="7" height="10" fill="#2a5a8a" opacity="0.4"/>
+                <rect x="875" y="196" width="7" height="10" fill="#2a5a8a" opacity="0.4"/>
                 <!-- Building 16 -->
-                <rect x="960" y="120" width="40" height="280" fill="url(#buildingGrad)" stroke="#1a3a6a" stroke-width="1"/>
-                <rect x="965" y="130" width="8" height="12" fill="#2a5a8a" opacity="0.5"/>
-                <rect x="980" y="130" width="8" height="12" fill="#2a5a8a" opacity="0.5"/>
-                <rect x="965" y="150" width="8" height="12" fill="#2a5a8a" opacity="0.4"/>
-                <rect x="980" y="150" width="8" height="12" fill="#2a5a8a" opacity="0.4"/>
-                <rect x="965" y="170" width="8" height="12" fill="#2a5a8a" opacity="0.3"/>
-                <rect x="980" y="170" width="8" height="12" fill="#2a5a8a" opacity="0.3"/>
-                
+                <rect x="915" y="240" width="45" height="210" fill="url(#buildGrad)" stroke="#1a3a6a" stroke-width="1"/>
+                <rect x="922" y="250" width="7" height="10" fill="#2a5a8a" opacity="0.4"/>
+                <rect x="936" y="250" width="7" height="10" fill="#2a5a8a" opacity="0.4"/>
+                <rect x="950" y="250" width="7" height="10" fill="#2a5a8a" opacity="0.4"/>
                 <!-- Building 17 -->
-                <rect x="1020" y="180" width="35" height="220" fill="url(#buildingGrad)" stroke="#1a3a6a" stroke-width="1"/>
-                <rect x="1025" y="190" width="7" height="10" fill="#2a5a8a" opacity="0.4"/>
-                <rect x="1037" y="190" width="7" height="10" fill="#2a5a8a" opacity="0.4"/>
-                
+                <rect x="980" y="190" width="30" height="260" fill="url(#buildGrad)" stroke="#1a3a6a" stroke-width="1"/>
+                <rect x="986" y="200" width="6" height="10" fill="#2a5a8a" opacity="0.5"/>
+                <rect x="996" y="200" width="6" height="10" fill="#2a5a8a" opacity="0.5"/>
                 <!-- Building 18 -->
-                <rect x="1075" y="200" width="45" height="200" fill="url(#buildingGrad)" stroke="#1a3a6a" stroke-width="1"/>
-                <rect x="1082" y="210" width="8" height="12" fill="#2a5a8a" opacity="0.4"/>
-                <rect x="1098" y="210" width="8" height="12" fill="#2a5a8a" opacity="0.4"/>
-                
+                <rect x="1030" y="220" width="50" height="230" fill="url(#buildGrad)" stroke="#1a3a6a" stroke-width="1"/>
+                <rect x="1038" y="230" width="7" height="10" fill="#2a5a8a" opacity="0.5"/>
+                <rect x="1052" y="230" width="7" height="10" fill="#2a5a8a" opacity="0.5"/>
+                <rect x="1066" y="230" width="7" height="10" fill="#2a5a8a" opacity="0.5"/>
                 <!-- Building 19 -->
-                <rect x="1140" y="150" width="30" height="250" fill="url(#buildingGrad)" stroke="#1a3a6a" stroke-width="1"/>
-                <rect x="1145" y="160" width="6" height="10" fill="#2a5a8a" opacity="0.5"/>
-                <rect x="1157" y="160" width="6" height="10" fill="#2a5a8a" opacity="0.5"/>
+                <rect x="1100" y="170" width="35" height="280" fill="url(#buildGrad)" stroke="#1a3a6a" stroke-width="1"/>
+                <rect x="1106" y="180" width="6" height="10" fill="#2a5a8a" opacity="0.5"/>
+                <rect x="1118" y="180" width="6" height="10" fill="#2a5a8a" opacity="0.5"/>
+                <rect x="1106" y="198" width="6" height="10" fill="#2a5a8a" opacity="0.4"/>
+                <rect x="1118" y="198" width="6" height="10" fill="#2a5a8a" opacity="0.4"/>
+                <!-- Building 20 -->
+                <rect x="1155" y="210" width="40" height="240" fill="url(#buildGrad)" stroke="#1a3a6a" stroke-width="1"/>
+                <rect x="1161" y="220" width="7" height="10" fill="#2a5a8a" opacity="0.4"/>
+                <rect x="1175" y="220" width="7" height="10" fill="#2a5a8a" opacity="0.4"/>
             </svg>
         </div>
         <div class="container">
