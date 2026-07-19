@@ -1354,5 +1354,11 @@ a:hover {
     .report-topic-subtitle {
         font-size: 0.74rem;
     }
+   
+   .report-option-card.is-selected {
+    background: #b8e8fb;
+    border-color: #97d4eb;
+    }
+   
 }
 
