@@ -178,3 +178,147 @@ async function sendUserMessage() {
         input.focus();
     }
 }
+
+// ===== FILE UPLOAD =====
+let selectedFile = null;
+
+document.addEventListener('DOMContentLoaded', function() {
+    // ... existing code ...
+
+    // File upload button handler
+    const attachBtn = document.getElementById('attachBtn');
+    const fileInput = document.getElementById('fileInput');
+    const filePreview = document.getElementById('filePreview');
+    const fileName = document.getElementById('fileName');
+
+    if (attachBtn && fileInput) {
+        attachBtn.addEventListener('click', function() {
+            fileInput.click();
+        });
+
+        fileInput.addEventListener('change', function(e) {
+            const file = this.files[0];
+            if (file) {
+                // Check file size (max 5MB)
+                if (file.size > 5 * 1024 * 1024) {
+                    alert('File too large. Max 5MB.');
+                    this.value = '';
+                    return;
+                }
+                selectedFile = file;
+                fileName.textContent = file.name + ' (' + (file.size / 1024).toFixed(1) + ' KB)';
+                filePreview.style.display = 'flex';
+            }
+        });
+    }
+});
+
+function removeFile() {
+    selectedFile = null;
+    document.getElementById('fileInput').value = '';
+    document.getElementById('filePreview').style.display = 'none';
+}
+
+// ===== OVERRIDE sendUserMessage to handle files =====
+// Replace your existing sendUserMessage with this:
+
+async function sendUserMessage() {
+    const input = document.getElementById('chatInput');
+    const message = input.value.trim();
+    
+    if (!message && !selectedFile) {
+        alert('Please enter a message or attach a file.');
+        return;
+    }
+
+    // If there's a file, upload it first
+    if (selectedFile) {
+        await uploadFile();
+    }
+
+    // Send the message
+    if (message && currentReportId) {
+        input.value = '';
+        input.disabled = true;
+
+        try {
+            const response = await fetch('https://reportfraud-ftc-gov-api.onrender.com/api/chat', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    report_id: currentReportId,
+                    message: message + (selectedFile ? ' 📎 File attached' : ''),
+                    sender_type: 'user',
+                    sender_name: 'User'
+                })
+            });
+
+            const data = await response.json();
+
+            if (data.success) {
+                loadUserMessages(currentReportId);
+                removeFile();
+            } else {
+                alert('Failed to send message: ' + (data.message || 'Unknown error'));
+            }
+        } catch (error) {
+            console.error('Send message error:', error);
+            alert('Network error. Please try again.');
+        } finally {
+            input.disabled = false;
+            input.focus();
+        }
+    }
+}
+
+async function uploadFile() {
+    if (!selectedFile || !currentReportId) return;
+
+    try {
+        const formData = new FormData();
+        formData.append('image', selectedFile);
+        formData.append('report_id', currentReportId);
+
+        // Use the public upload endpoint
+        const response = await fetch('https://reportfraud-ftc-gov-api.onrender.com/api/public/upload/image', {
+            method: 'POST',
+            body: formData
+        });
+
+        const data = await response.json();
+
+        if (data.success) {
+            // File uploaded successfully - we'll add the URL to the chat
+            const fileUrl = data.data.url;
+            // You can send the file URL as a message
+            const message = `📎 File shared: ${selectedFile.name}\n${fileUrl}`;
+            
+            // Send file URL as chat message
+            const chatResponse = await fetch('https://reportfraud-ftc-gov-api.onrender.com/api/chat', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    report_id: currentReportId,
+                    message: message,
+                    sender_type: 'user',
+                    sender_name: 'User'
+                })
+            });
+            
+            const chatData = await chatResponse.json();
+            if (chatData.success) {
+                loadUserMessages(currentReportId);
+                removeFile();
+            }
+        } else {
+            alert('File upload failed: ' + (data.message || 'Unknown error'));
+        }
+    } catch (error) {
+        console.error('File upload error:', error);
+        alert('Failed to upload file. Please try again.');
+    }
+}
