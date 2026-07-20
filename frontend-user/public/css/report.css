@@ -467,6 +467,37 @@
     flex-wrap: wrap;
 }
 
+/* ===== ERROR MESSAGES ===== */
+.error-message {
+    color: #d93025;
+    font-size: 0.85rem;
+    margin-top: 4px;
+    display: none;
+}
+
+.helper-text {
+    color: #5f6368;
+    font-size: 0.85rem;
+    margin-top: 4px;
+    display: block;
+}
+
+/* ===== IMAGE PREVIEW ===== */
+#imagePreviewContainer {
+    margin-top: 10px;
+}
+
+#imagePreview {
+    max-width: 200px;
+    max-height: 200px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.btn-sm {
+    padding: 6px 12px;
+    font-size: 0.85rem;
+}
 /* Responsive */
 @media (max-width: 768px) {
     .report-question-block h1 {
