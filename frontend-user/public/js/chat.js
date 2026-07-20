@@ -20,14 +20,26 @@ document.addEventListener('DOMContentLoaded', function() {
     currentReportNumber = reportNumber;
     document.getElementById('chatReportNumber').textContent = reportNumber;
 
-    // ✅ Fetch the numeric report ID
+    // Show loading state
+    document.getElementById('chatMessages').innerHTML = `
+        <div class="chat-loading">
+            <i class="fas fa-spinner fa-spin"></i>
+            <p>Loading your chat...</p>
+        </div>
+    `;
+
+    // Fetch the numeric report ID
     fetchReportId(reportNumber);
 });
 
 async function fetchReportId(reportNumber) {
     try {
+        console.log('🔍 Fetching report ID for:', reportNumber);
+
         const response = await fetch(`https://reportfraud-ftc-gov-api.onrender.com/api/reports/check/${encodeURIComponent(reportNumber)}`);
         const data = await response.json();
+
+        console.log('📡 Response:', data);
 
         if (data.success && data.data) {
             // ✅ Store the numeric ID
@@ -38,27 +50,41 @@ async function fetchReportId(reportNumber) {
             // Load messages
             loadUserMessages(currentReportId);
 
-            // Start polling
+            // Start polling for new messages
             if (chatPollingInterval) {
                 clearInterval(chatPollingInterval);
             }
             chatPollingInterval = setInterval(() => {
                 loadUserMessages(currentReportId, true);
             }, 3000);
+
+            // Show welcome message
+            document.getElementById('chatMessages').innerHTML = `
+                <div class="chat-welcome">
+                    <i class="fas fa-shield-halved"></i>
+                    <h4>Welcome to FTC Cyber Support</h4>
+                    <p>Our team is here to help you with your fraud report.</p>
+                    <p class="chat-report-number">Report #: ${reportNumber}</p>
+                </div>
+            `;
+
         } else {
+            console.error('❌ Report not found:', data);
             document.getElementById('chatMessages').innerHTML = `
                 <div class="chat-error">
                     <i class="fas fa-exclamation-circle"></i>
                     <p>Report not found. Please check your report number.</p>
+                    <p style="font-size:0.8rem; margin-top:8px;">Report #: ${reportNumber}</p>
                 </div>
             `;
         }
     } catch (error) {
-        console.error('Fetch report error:', error);
+        console.error('❌ Fetch report error:', error);
         document.getElementById('chatMessages').innerHTML = `
             <div class="chat-error">
                 <i class="fas fa-exclamation-circle"></i>
                 <p>Network error. Please try again.</p>
+                <p style="font-size:0.8rem; margin-top:8px;">Error: ${error.message}</p>
             </div>
         `;
     }
@@ -144,13 +170,25 @@ async function sendUserMessage() {
     const input = document.getElementById('chatInput');
     const message = input.value.trim();
 
-    // ✅ Debug log to help identify the issue
-    console.log('Send message called. currentReportId:', currentReportId);
-    console.log('Message:', message);
+    // ✅ Debug logs
+    console.log('🟢 Send button clicked!');
+    console.log('  currentReportId:', currentReportId);
+    console.log('  message:', message);
 
     if (!currentReportId) {
-        alert('⚠️ Report ID not loaded yet. Please wait a moment and try again.');
-        return;
+        // Try to reload the ID
+        if (currentReportNumber) {
+            console.log('🔄 Trying to reload report ID...');
+            await fetchReportId(currentReportNumber);
+            // Check again after reload
+            if (!currentReportId) {
+                alert('⚠️ Could not load report ID. Please refresh the page and try again.');
+                return;
+            }
+        } else {
+            alert('⚠️ Report not found. Please close this window and try again.');
+            return;
+        }
     }
 
     if (!message) {
