@@ -209,7 +209,7 @@ const getReportByNumber = async (req, res) => {
 
         const report = await queryOne(
             `SELECT 
-                r.id,     
+                r.id,                // ✅ This is selected
                 r.report_number, 
                 r.status, 
                 r.submitted_at, 
@@ -232,10 +232,11 @@ const getReportByNumber = async (req, res) => {
             });
         }
 
-        // Return only safe information (no sensitive data)
+        // ✅ ADD THE ID FIELD TO THE RESPONSE
         res.json({
             success: true,
             data: {
+                id: report.id,                    // ✅ ADD THIS LINE
                 report_number: report.report_number,
                 status: report.status,
                 submitted_at: report.submitted_at,
