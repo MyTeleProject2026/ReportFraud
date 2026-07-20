@@ -1,14 +1,58 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title></title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ReportFraud - Report Detail</title>
+    <link rel="stylesheet" href="css/admin-style.css" />
+    <link rel="stylesheet" href="css/admin-responsive.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 </head>
-
 <body>
-  
-</body>
 
+    <!-- ===== SIDEBAR ===== -->
+    <div class="admin-wrapper">
+        <aside class="admin-sidebar">
+            <div class="sidebar-brand">
+                <h2>ReportFraud</h2>
+                <span>Admin Panel</span>
+            </div>
+            <nav class="sidebar-nav">
+                <ul>
+                    <li><a href="/dashboard.html"><i class="fas fa-home"></i> Dashboard</a></li>
+                    <li><a href="/reports.html" class="active"><i class="fas fa-file-alt"></i> Reports</a></li>
+                    <li><a href="/categories.html"><i class="fas fa-tags"></i> Categories</a></li>
+                    <li><a href="/settings.html"><i class="fas fa-cog"></i> Settings</a></li>
+                    <li><a href="#" id="logoutBtn"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- ===== MAIN CONTENT ===== -->
+        <main class="admin-main">
+            <header class="admin-header">
+                <div class="header-left">
+                    <button class="sidebar-toggle" id="sidebarToggle">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <h1>Report Details</h1>
+                </div>
+                <div class="header-right">
+                    <span id="adminUser" class="admin-user"><i class="fas fa-user-circle"></i> Admin</span>
+                </div>
+            </header>
+
+            <div class="admin-content">
+                <!-- Report Detail Container -->
+                <div id="reportDetailContent">
+                    <!-- Loaded dynamically by report-detail.js -->
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="js/api.js"></script>
+    <script src="js/report-detail.js"></script>
+</body>
 </html>
