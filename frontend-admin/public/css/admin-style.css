@@ -906,4 +906,83 @@ a {
     border-top: 1px solid #e8eaed;
 }
 
-.chat-input-area
+.chat-input-area {
+    display: flex;
+    gap: 8px;
+}
+
+.chat-input-area input {
+    flex: 1;
+    padding: 10px 14px;
+    border: 1.5px solid #dadce0;
+    border-radius: 24px;
+    font-size: 0.95rem;
+    font-family: inherit;
+    outline: none;
+    transition: border-color 0.2s ease;
+}
+
+.chat-input-area input:focus {
+    border-color: #003c78;
+}
+
+.chat-send-btn {
+    width: 44px;
+    height: 44px;
+    border: none;
+    border-radius: 50%;
+    background: #003c78;
+    color: #fff;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.chat-send-btn:hover {
+    background: #002a55;
+}
+
+.chat-typing {
+    font-size: 0.8rem;
+    color: #5f6368;
+    padding: 4px 4px 0;
+}
+
+.chat-error {
+    color: #d93025;
+    text-align: center;
+    padding: 20px 0;
+}
+
+/* ============================================================
+   CHAT BUTTONS IN TABLE
+   ============================================================ */
+.btn-success {
+    background: #0f7b3e;
+    color: #fff;
+}
+
+.btn-success:hover {
+    background: #0b5f31;
+}
+
+.btn-info {
+    background: #1a73e8;
+    color: #fff;
+}
+
+.btn-info:hover {
+    background: #1557b0;
+}
+
+.btn-sm {
+    padding: 6px 10px;
+    font-size: 0.8rem;
+}
+
+.admin-table .btn-sm i {
+    font-size: 0.9rem;
+    }
