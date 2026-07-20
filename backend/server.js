@@ -12,6 +12,8 @@ const categoryRoutes = require('./src/routes/categoryRoutes');
 const settingRoutes = require('./src/routes/settingRoutes');
 const uploadRoutes = require('./src/routes/uploadRoutes');
 const publicUploadRoutes = require('./src/routes/publicUploadRoutes');
+const chatRoutes = require('./src/routes/chatRoutes');
+const emailRoutes = require('./src/routes/emailRoutes');
 
 const app = express();
 app.set('trust proxy', 1);
@@ -52,6 +54,8 @@ app.use('/api/categories', categoryRoutes);
 app.use('/api/settings', settingRoutes);
 app.use('/api/upload', uploadRoutes);
 app.use('/api/public', publicUploadRoutes);
+app.use('/api/chat', chatRoutes);
+app.use('/api/email', emailRoutes);
 // ===== ROOT ENDPOINTS (Welcome Messages) =====
 
 // Root endpoint - shows when visiting https://reportfraud-ftc-gov-api.onrender.com
