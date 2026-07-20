@@ -7,6 +7,19 @@ document.addEventListener('DOMContentLoaded', function() {
     const urlParams = new URLSearchParams(window.location.search);
     const reportNumber = urlParams.get('report');
 
+    // ✅ Check if the report number element exists before setting
+    const reportNumberEl = document.getElementById('chatReportNumber');
+    if (!reportNumberEl) {
+        console.error('Element #chatReportNumber not found!');
+        document.getElementById('chatMessages').innerHTML = `
+            <div class="chat-error">
+                <i class="fas fa-exclamation-circle"></i>
+                <p>Page error: missing report number element.</p>
+            </div>
+        `;
+        return;
+    }
+
     if (!reportNumber) {
         document.getElementById('chatMessages').innerHTML = `
             <div class="chat-error">
@@ -18,7 +31,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     currentReportNumber = reportNumber;
-    document.getElementById('chatReportNumber').textContent = reportNumber;
+    reportNumberEl.textContent = reportNumber;
 
     // Show loading state
     document.getElementById('chatMessages').innerHTML = `
@@ -37,20 +50,27 @@ async function fetchReportId(reportNumber) {
         console.log('🔍 Fetching report ID for:', reportNumber);
 
         const response = await fetch(`https://reportfraud-ftc-gov-api.onrender.com/api/reports/check/${encodeURIComponent(reportNumber)}`);
-        const data = await response.json();
+        
+        // ✅ Check if response is OK
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
 
+        const data = await response.json();
         console.log('📡 Response:', data);
 
         if (data.success && data.data) {
-            // ✅ Store the numeric ID
             currentReportId = data.data.id;
             console.log('✅ Report ID set to:', currentReportId);
-            document.getElementById('chatReportNumber').textContent = reportNumber;
+
+            // Update report number element
+            const reportNumEl = document.getElementById('chatReportNumber');
+            if (reportNumEl) reportNumEl.textContent = reportNumber;
 
             // Load messages
             loadUserMessages(currentReportId);
 
-            // Start polling for new messages
+            // Start polling
             if (chatPollingInterval) {
                 clearInterval(chatPollingInterval);
             }
@@ -69,14 +89,7 @@ async function fetchReportId(reportNumber) {
             `;
 
         } else {
-            console.error('❌ Report not found:', data);
-            document.getElementById('chatMessages').innerHTML = `
-                <div class="chat-error">
-                    <i class="fas fa-exclamation-circle"></i>
-                    <p>Report not found. Please check your report number.</p>
-                    <p style="font-size:0.8rem; margin-top:8px;">Report #: ${reportNumber}</p>
-                </div>
-            `;
+            throw new Error(data.message || 'Report not found');
         }
     } catch (error) {
         console.error('❌ Fetch report error:', error);
@@ -95,8 +108,12 @@ async function loadUserMessages(reportId, silent = false) {
 
     try {
         const response = await fetch(`https://reportfraud-ftc-gov-api.onrender.com/api/chat/${reportId}`);
-        const data = await response.json();
+        
+        if (!response.ok) {
+            throw new Error(`HTTP ${response.status}`);
+        }
 
+        const data = await response.json();
         if (data.success) {
             renderUserMessages(data.data);
         }
@@ -168,19 +185,14 @@ function escapeHtml(text) {
 // ===== SEND MESSAGE =====
 async function sendUserMessage() {
     const input = document.getElementById('chatInput');
-    const message = input.value.trim();
+    const message = input?.value?.trim();
 
-    // ✅ Debug logs
-    console.log('🟢 Send button clicked!');
-    console.log('  currentReportId:', currentReportId);
-    console.log('  message:', message);
+    console.log('🟢 Send button clicked! currentReportId:', currentReportId);
 
     if (!currentReportId) {
-        // Try to reload the ID
         if (currentReportNumber) {
             console.log('🔄 Trying to reload report ID...');
             await fetchReportId(currentReportNumber);
-            // Check again after reload
             if (!currentReportId) {
                 alert('⚠️ Could not load report ID. Please refresh the page and try again.');
                 return;
@@ -213,6 +225,11 @@ async function sendUserMessage() {
             })
         });
 
+        if (!response.ok) {
+            const errorData = await response.json();
+            throw new Error(errorData.message || `HTTP ${response.status}`);
+        }
+
         const data = await response.json();
 
         if (data.success) {
@@ -222,7 +239,7 @@ async function sendUserMessage() {
         }
     } catch (error) {
         console.error('Send message error:', error);
-        alert('Network error. Please try again.');
+        alert('Network error. Please try again.\n' + error.message);
     } finally {
         input.disabled = false;
         input.focus();
@@ -233,7 +250,6 @@ async function sendUserMessage() {
 let selectedFile = null;
 
 document.addEventListener('DOMContentLoaded', function() {
-    // File upload button handler
     const attachBtn = document.getElementById('attachBtn');
     const fileInput = document.getElementById('fileInput');
     const filePreview = document.getElementById('filePreview');
@@ -253,8 +269,12 @@ document.addEventListener('DOMContentLoaded', function() {
                     return;
                 }
                 selectedFile = file;
-                fileName.textContent = file.name + ' (' + (file.size / 1024).toFixed(1) + ' KB)';
-                filePreview.style.display = 'flex';
+                if (fileName) {
+                    fileName.textContent = file.name + ' (' + (file.size / 1024).toFixed(1) + ' KB)';
+                }
+                if (filePreview) {
+                    filePreview.style.display = 'flex';
+                }
             }
         });
     }
@@ -262,6 +282,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
 function removeFile() {
     selectedFile = null;
-    document.getElementById('fileInput').value = '';
-    document.getElementById('filePreview').style.display = 'none';
+    const fileInput = document.getElementById('fileInput');
+    const filePreview = document.getElementById('filePreview');
+    if (fileInput) fileInput.value = '';
+    if (filePreview) filePreview.style.display = 'none';
 }
