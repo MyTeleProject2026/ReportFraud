@@ -4,7 +4,7 @@ const { generateReportNumber, sanitizeInput } = require('../utils/helpers');
 const submitReport = async (req, res) => {
   try {
     const {
-      category_id,
+      category,
       first_name,
       last_name,
       email,
