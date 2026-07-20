@@ -209,6 +209,7 @@ const getReportByNumber = async (req, res) => {
 
         const report = await queryOne(
             `SELECT 
+                r.id,     
                 r.report_number, 
                 r.status, 
                 r.submitted_at, 
