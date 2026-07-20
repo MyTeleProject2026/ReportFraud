@@ -203,6 +203,58 @@ const getReportById = async (req, res) => {
   }
 };
 
+const getReportByNumber = async (req, res) => {
+    try {
+        const { reportNumber } = req.params;
+
+        const report = await queryOne(
+            `SELECT 
+                r.report_number, 
+                r.status, 
+                r.submitted_at, 
+                r.updated_at,
+                r.first_name,
+                r.last_name,
+                r.email,
+                r.incident_description,
+                c.name as category_name
+             FROM reports r
+             LEFT JOIN categories c ON r.category_id = c.id
+             WHERE r.report_number = ?`,
+            [reportNumber]
+        );
+
+        if (!report) {
+            return res.status(404).json({
+                success: false,
+                message: 'Report not found. Please check your report number.'
+            });
+        }
+
+        // Return only safe information (no sensitive data)
+        res.json({
+            success: true,
+            data: {
+                report_number: report.report_number,
+                status: report.status,
+                submitted_at: report.submitted_at,
+                updated_at: report.updated_at,
+                category: report.category_name || 'N/A',
+                first_name: report.first_name,
+                last_name: report.last_name,
+                email: report.email,
+                description: report.incident_description
+            }
+        });
+    } catch (error) {
+        console.error('Get report by number error:', error);
+        res.status(500).json({
+            success: false,
+            message: 'Server error while fetching report'
+        });
+    }
+};
+
 const updateReportStatus = async (req, res) => {
   try {
     const { id } = req.params;
