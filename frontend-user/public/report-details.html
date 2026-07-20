@@ -42,7 +42,7 @@
     <!-- ===== REPORT FLOW ===== -->
     <main class="report-flow-page">
         <div class="container report-flow-container">
-            <!-- Progress Indicator -->
+            <!-- Progress -->
             <section class="report-progress-card">
                 <div class="report-progress-row">
                     <span class="report-progress-label">Start</span>
@@ -56,19 +56,21 @@
             <!-- Step 2: Details -->
             <section class="report-question-block">
                 <h1>Tell us what happened</h1>
-                <p>Provide as much detail as possible about the fraud or scam.</p>
+                <p>Provide as much detail as possible. Fields marked with <span class="required">*</span> are required.</p>
             </section>
 
-            <form class="report-form" id="detailsForm">
+            <form class="report-form" id="detailsForm" novalidate>
                 <div class="form-group">
                     <label for="incidentDescription">Description of the incident <span class="required">*</span></label>
                     <textarea id="incidentDescription" name="incident_description" rows="6" required placeholder="Describe what happened, including dates, times, and any relevant information..."></textarea>
+                    <div class="error-message" id="incidentDescriptionError">Please describe the incident.</div>
                 </div>
 
                 <div class="form-row">
                     <div class="form-group">
-                        <label for="incidentDate">Date of incident</label>
-                        <input type="date" id="incidentDate" name="incident_date" />
+                        <label for="incidentDate">Date of incident <span class="required">*</span></label>
+                        <input type="date" id="incidentDate" name="incident_date" required />
+                        <div class="error-message" id="incidentDateError">Please select a date.</div>
                     </div>
                     <div class="form-group">
                         <label for="amountLost">Amount lost (if any)</label>
@@ -102,6 +104,18 @@
                 <div class="form-group">
                     <label for="suspectWebsite">Suspect website</label>
                     <input type="url" id="suspectWebsite" name="suspect_website" placeholder="https://example.com" />
+                </div>
+
+                <!-- ===== NEW: SUSPECT IMAGE UPLOAD (OPTIONAL) ===== -->
+                <div class="form-group">
+                    <label for="suspectImage">Upload suspect image (optional)</label>
+                    <input type="file" id="suspectImage" accept="image/*" />
+                    <small class="helper-text">Upload a photo, screenshot, or any image of the suspect. Max 5MB.</small>
+                    <div id="imagePreviewContainer" style="margin-top: 10px; display: none;">
+                        <img id="imagePreview" src="#" alt="Preview" style="max-width: 200px; max-height: 200px; border: 1px solid #ddd; border-radius: 4px;" />
+                        <button type="button" id="removeImageBtn" class="btn btn-secondary btn-sm" style="margin-top: 8px;">Remove Image</button>
+                    </div>
+                    <div id="imageUploadStatus" class="helper-text" style="color: #555;"></div>
                 </div>
 
                 <div class="form-group">
