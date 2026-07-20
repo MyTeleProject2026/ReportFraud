@@ -1,6 +1,5 @@
 // ===== USER CHAT LOGIC =====
 document.addEventListener('DOMContentLoaded', function() {
-    // Get report number from URL
     const urlParams = new URLSearchParams(window.location.search);
     const reportNumber = urlParams.get('report');
 
@@ -17,24 +16,58 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('chatReportNumber').textContent = reportNumber;
     currentReportNumber = reportNumber;
 
-    // Load existing messages
-    loadUserMessages(reportNumber);
-
-    // Start polling for new messages
-    if (chatPollingInterval) {
-        clearInterval(chatPollingInterval);
-    }
-    chatPollingInterval = setInterval(() => {
-        loadUserMessages(reportNumber, true);
-    }, 3000);
+    // ✅ STEP 1: Get the numeric report ID from the report number
+    fetchReportId(reportNumber);
 });
 
+let currentReportId = null;
 let currentReportNumber = null;
 let chatPollingInterval = null;
 
-async function loadUserMessages(reportNumber, silent = false) {
+async function fetchReportId(reportNumber) {
     try {
-        const response = await fetch(`https://reportfraud-ftc-gov-api.onrender.com/api/chat/${encodeURIComponent(reportNumber)}`);
+        const response = await fetch(`https://reportfraud-ftc-gov-api.onrender.com/api/reports/check/${encodeURIComponent(reportNumber)}`);
+        const data = await response.json();
+
+        if (data.success && data.data) {
+            // ✅ Store the numeric ID
+            currentReportId = data.data.id;
+            document.getElementById('chatReportNumber').textContent = reportNumber;
+
+            // Load messages using the numeric ID
+            loadUserMessages(currentReportId);
+
+            // Start polling
+            if (chatPollingInterval) {
+                clearInterval(chatPollingInterval);
+            }
+            chatPollingInterval = setInterval(() => {
+                loadUserMessages(currentReportId, true);
+            }, 3000);
+        } else {
+            document.getElementById('chatMessages').innerHTML = `
+                <div class="chat-error">
+                    <i class="fas fa-exclamation-circle"></i>
+                    <p>Report not found. Please check your report number.</p>
+                </div>
+            `;
+        }
+    } catch (error) {
+        console.error('Fetch report error:', error);
+        document.getElementById('chatMessages').innerHTML = `
+            <div class="chat-error">
+                <i class="fas fa-exclamation-circle"></i>
+                <p>Network error. Please try again.</p>
+            </div>
+        `;
+    }
+}
+
+async function loadUserMessages(reportId, silent = false) {
+    if (!reportId) return;
+
+    try {
+        const response = await fetch(`https://reportfraud-ftc-gov-api.onrender.com/api/chat/${reportId}`);
         const data = await response.json();
 
         if (data.success) {
@@ -51,7 +84,6 @@ function renderUserMessages(messages) {
     const container = document.getElementById('chatMessages');
     if (!container) return;
 
-    // Remove welcome message if messages exist
     const welcome = container.querySelector('.chat-welcome');
     if (welcome && messages && messages.length > 0) {
         welcome.style.display = 'none';
@@ -109,7 +141,10 @@ function escapeHtml(text) {
 async function sendUserMessage() {
     const input = document.getElementById('chatInput');
     const message = input.value.trim();
-    if (!message || !currentReportNumber) return;
+    if (!message || !currentReportId) {
+        alert('Please enter a message.');
+        return;
+    }
 
     input.value = '';
     input.disabled = true;
@@ -121,7 +156,7 @@ async function sendUserMessage() {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                report_id: currentReportNumber,
+                report_id: currentReportId,  // ✅ Now using numeric ID
                 message: message,
                 sender_type: 'user',
                 sender_name: 'User'
@@ -131,7 +166,7 @@ async function sendUserMessage() {
         const data = await response.json();
 
         if (data.success) {
-            loadUserMessages(currentReportNumber);
+            loadUserMessages(currentReportId);
         } else {
             alert('Failed to send message: ' + (data.message || 'Unknown error'));
         }
