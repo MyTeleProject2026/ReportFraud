@@ -46,7 +46,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const formData = new FormData();
         formData.append("image", file);
 
-        fetch("https://reportfraud-ftc-gov-api.onrender.com/api/upload/image", {
+        fetch("https://reportfraud-ftc-gov-api.onrender.com/api/public/upload/image", {
             method: "POST",
             body: formData
         })
