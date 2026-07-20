@@ -3,8 +3,10 @@ const { generateReportNumber, sanitizeInput } = require('../utils/helpers');
 
 const submitReport = async (req, res) => {
   try {
+    // Destructure all fields, including category (string) and optional category_id (number)
     const {
-      category,
+      category,          // string from frontend (e.g., "job-investment")
+      category_id,       // optional numeric ID (if frontend sends it)
       first_name,
       last_name,
       email,
@@ -26,17 +28,25 @@ const submitReport = async (req, res) => {
       additional_info
     } = req.body;
 
-    
-    // If category_id is not numeric, try to find it by name
-    if (category_id && isNaN(category_id)) {
-        // Treat as category name
-        const cat = await queryOne('SELECT id FROM categories WHERE name = ?', [category_id]);
-        category_id = cat ? cat.id : null;
-    } else if (!category_id && category) {
-        // Use the category string if provided
-        const cat = await queryOne('SELECT id FROM categories WHERE name = ?', [category]);
-        category_id = cat ? cat.id : null;
+    // Determine the final category_id
+    let finalCategoryId = null;
+
+    // 1. If category_id is provided and is a number, use it
+    if (category_id && !isNaN(category_id)) {
+      finalCategoryId = parseInt(category_id);
     }
+    // 2. If category_id is a string (like "job-investment"), treat as category name and look up
+    else if (category_id && isNaN(category_id)) {
+      const cat = await queryOne('SELECT id FROM categories WHERE name = ?', [category_id]);
+      finalCategoryId = cat ? cat.id : null;
+    }
+    // 3. If category (string) is provided and no category_id, look up by name
+    else if (category) {
+      const cat = await queryOne('SELECT id FROM categories WHERE name = ?', [category]);
+      finalCategoryId = cat ? cat.id : null;
+    }
+    // If none provided, finalCategoryId remains null (will be stored as NULL)
+
     // Validate required fields
     if (!first_name || !last_name || !email || !incident_description) {
       return res.status(400).json({
@@ -44,22 +54,22 @@ const submitReport = async (req, res) => {
         message: 'First name, last name, email, and incident description are required'
       });
     }
-    
+
     const reportNumber = generateReportNumber();
     const ipAddress = req.ip || req.connection.remoteAddress;
     const userAgent = req.headers['user-agent'] || '';
-    
+
     const result = await query(
       `INSERT INTO reports (
-                report_number, category_id, first_name, last_name, email, phone,
-                address, city, state, zip_code, country, incident_date,
-                incident_description, amount_lost, currency, payment_method,
-                suspect_name, suspect_email, suspect_phone, suspect_website,
-                additional_info, ip_address, user_agent, status
-            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+        report_number, category_id, first_name, last_name, email, phone,
+        address, city, state, zip_code, country, incident_date,
+        incident_description, amount_lost, currency, payment_method,
+        suspect_name, suspect_email, suspect_phone, suspect_website,
+        additional_info, ip_address, user_agent, status
+      ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
       [
         reportNumber,
-        category_id || null,
+        finalCategoryId,                      // <-- Use the resolved category ID
         sanitizeInput(first_name),
         sanitizeInput(last_name),
         sanitizeInput(email),
@@ -84,12 +94,12 @@ const submitReport = async (req, res) => {
         'pending'
       ]
     );
-    
+
     const newReport = await queryOne(
       'SELECT * FROM reports WHERE id = ?',
       [result.insertId]
     );
-    
+
     res.status(201).json({
       success: true,
       message: 'Report submitted successfully',
@@ -104,40 +114,44 @@ const submitReport = async (req, res) => {
   }
 };
 
+// --------------------------------------------------------------------
+// The rest of the controller functions remain unchanged
+// --------------------------------------------------------------------
+
 const getAllReports = async (req, res) => {
   try {
     const { status, search, page = 1, limit = 20 } = req.query;
     const offset = (parseInt(page) - 1) * parseInt(limit);
-    
+
     let whereClause = '1=1';
     let params = [];
-    
+
     if (status) {
       whereClause += ' AND r.status = ?';
       params.push(status);
     }
-    
+
     if (search) {
       whereClause += ' AND (r.first_name LIKE ? OR r.last_name LIKE ? OR r.email LIKE ? OR r.report_number LIKE ?)';
       const searchTerm = `%${search}%`;
       params.push(searchTerm, searchTerm, searchTerm, searchTerm);
     }
-    
+
     const countQuery = `SELECT COUNT(*) as total FROM reports r WHERE ${whereClause}`;
     const countResult = await queryOne(countQuery, params);
     const total = countResult.total;
-    
+
     const dataQuery = `
-            SELECT r.*, c.name as category_name 
-            FROM reports r
-            LEFT JOIN categories c ON r.category_id = c.id
-            WHERE ${whereClause}
-            ORDER BY r.submitted_at DESC
-            LIMIT ? OFFSET ?
-        `;
+      SELECT r.*, c.name as category_name 
+      FROM reports r
+      LEFT JOIN categories c ON r.category_id = c.id
+      WHERE ${whereClause}
+      ORDER BY r.submitted_at DESC
+      LIMIT ? OFFSET ?
+    `;
     params.push(parseInt(limit), offset);
     const reports = await query(dataQuery, params);
-    
+
     res.json({
       success: true,
       data: reports,
@@ -160,22 +174,22 @@ const getAllReports = async (req, res) => {
 const getReportById = async (req, res) => {
   try {
     const { id } = req.params;
-    
+
     const report = await queryOne(
       `SELECT r.*, c.name as category_name 
-             FROM reports r
-             LEFT JOIN categories c ON r.category_id = c.id
-             WHERE r.id = ?`,
+       FROM reports r
+       LEFT JOIN categories c ON r.category_id = c.id
+       WHERE r.id = ?`,
       [id]
     );
-    
+
     if (!report) {
       return res.status(404).json({
         success: false,
         message: 'Report not found'
       });
     }
-    
+
     res.json({
       success: true,
       data: report
@@ -193,7 +207,7 @@ const updateReportStatus = async (req, res) => {
   try {
     const { id } = req.params;
     const { status, admin_notes } = req.body;
-    
+
     const validStatuses = ['pending', 'reviewing', 'investigating', 'resolved', 'rejected'];
     if (!validStatuses.includes(status)) {
       return res.status(400).json({
@@ -201,7 +215,7 @@ const updateReportStatus = async (req, res) => {
         message: 'Invalid status value'
       });
     }
-    
+
     const report = await queryOne('SELECT * FROM reports WHERE id = ?', [id]);
     if (!report) {
       return res.status(404).json({
@@ -209,14 +223,14 @@ const updateReportStatus = async (req, res) => {
         message: 'Report not found'
       });
     }
-    
+
     await query(
       'UPDATE reports SET status = ?, admin_notes = ?, updated_at = CURRENT_TIMESTAMP WHERE id = ?',
       [status, admin_notes || null, id]
     );
-    
+
     const updatedReport = await queryOne('SELECT * FROM reports WHERE id = ?', [id]);
-    
+
     res.json({
       success: true,
       message: 'Report status updated successfully',
@@ -239,11 +253,11 @@ const getStats = async (req, res) => {
     const investigatingQuery = await queryOne('SELECT COUNT(*) as investigating FROM reports WHERE status = "investigating"');
     const resolvedQuery = await queryOne('SELECT COUNT(*) as resolved FROM reports WHERE status = "resolved"');
     const rejectedQuery = await queryOne('SELECT COUNT(*) as rejected FROM reports WHERE status = "rejected"');
-    
+
     const recentQuery = await query(
       'SELECT * FROM reports ORDER BY submitted_at DESC LIMIT 5'
     );
-    
+
     res.json({
       success: true,
       stats: {
