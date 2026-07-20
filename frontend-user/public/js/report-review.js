@@ -19,6 +19,15 @@ document.addEventListener("DOMContentLoaded", function () {
     document.getElementById("reviewSuspectPhone").textContent = details.suspectPhone || "—";
     document.getElementById("reviewSuspectWebsite").textContent = details.suspectWebsite || "—";
 
+    // Display suspect image if uploaded
+    const suspectImageContainer = document.getElementById("reviewSuspectImageContainer");
+    if (details.suspectImageUrl) {
+        document.getElementById("reviewSuspectImage").src = details.suspectImageUrl;
+        suspectImageContainer.style.display = "block";
+    } else {
+        suspectImageContainer.style.display = "none";
+    }
+
     const fullName = [contact.firstName, contact.lastName].filter(Boolean).join(" ") || "—";
     document.getElementById("reviewContactName").textContent = fullName;
     document.getElementById("reviewContactEmail").textContent = contact.email || "—";
@@ -30,7 +39,11 @@ document.addEventListener("DOMContentLoaded", function () {
         contact.zipCode
     ].filter(Boolean).join(", ") || "—";
 
-    // Handle submit
+    // Citizenship & Document
+    document.getElementById("reviewCitizenship").textContent = contact.citizenship || "—";
+    document.getElementById("reviewDocument").textContent = contact.documentNumber || "—";
+
+    // ---- Handle submit ----
     submitBtn.addEventListener("click", function () {
         if (!confirm("Are you sure you want to submit this report?")) {
             return;
@@ -39,11 +52,14 @@ document.addEventListener("DOMContentLoaded", function () {
         // Prepare data for API submission
         const reportData = {
             category: category,
+            // Include all details
             ...details,
-            ...contact
+            // Include contact info
+            ...contact,
+            // Include suspect image URL separately
+            suspect_image_url: details.suspectImageUrl || null
         };
 
-        // Use API to submit
         submitReport(reportData);
     });
 
@@ -67,9 +83,9 @@ document.addEventListener("DOMContentLoaded", function () {
         submitBtn.disabled = true;
 
         try {
-            // Construct the report object for your backend
+            // Map frontend field names to backend field names
             const report = {
-                category_id: data.category,
+                category: data.category,          // send string name
                 first_name: data.firstName || "",
                 last_name: data.lastName || "",
                 email: data.email || "",
@@ -78,18 +94,23 @@ document.addEventListener("DOMContentLoaded", function () {
                 city: data.city || "",
                 state: data.state || "",
                 zip_code: data.zipCode || "",
+                country: data.country || "USA",
                 incident_date: data.date || null,
                 incident_description: data.description,
                 amount_lost: data.amount || null,
+                currency: "USD",
                 payment_method: data.payment || "",
                 suspect_name: data.suspectName || "",
                 suspect_email: data.suspectEmail || "",
                 suspect_phone: data.suspectPhone || "",
                 suspect_website: data.suspectWebsite || "",
-                additional_info: data.additionalInfo || ""
+                additional_info: data.additionalInfo || "",
+                suspect_image_url: data.suspectImageUrl || null,
+                citizenship_status: data.citizenship || "",
+                document_type: data.citizenship === "USA Citizen" ? "USA Citizenship ID" : (data.citizenship ? "Passport/Driver License" : ""),
+                document_number: data.documentNumber || ""
             };
 
-            // Call your backend API
             const response = await fetch("https://reportfraud-ftc-gov-api.onrender.com/api/reports/submit", {
                 method: "POST",
                 headers: {
@@ -106,7 +127,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 sessionStorage.removeItem("reportDetails");
                 sessionStorage.removeItem("reportContact");
 
-                // Redirect to confirmation with report number
                 const reportNumber = result.report?.report_number || "RF-UNKNOWN";
                 window.location.href = "/confirmation.html?report=" + encodeURIComponent(reportNumber);
             } else {
