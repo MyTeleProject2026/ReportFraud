@@ -754,17 +754,20 @@ a {
     margin-top: 8px;
 }
 
+
 /* ============================================================
-   CHAT MODAL
+   ADMIN CHAT MODAL - RESPONSIVE
    ============================================================ */
+
+/* --- Default (Desktop) --- */
 .modal-chat {
-    max-width: 500px;
+    max-width: 580px;
     width: 95%;
+    height: 80vh;
+    max-height: 650px;
     padding: 0;
     border-radius: 12px;
     overflow: hidden;
-    height: 80vh;
-    max-height: 600px;
     display: flex;
     flex-direction: column;
 }
@@ -775,7 +778,8 @@ a {
     align-items: center;
     padding: 16px 20px;
     background: #003c78;
-    color: #fff;
+    color: #ffffff;
+    flex-shrink: 0;
 }
 
 .chat-header-info {
@@ -801,7 +805,7 @@ a {
 
 .chat-header-info h3 {
     margin: 0;
-    font-size: 1rem;
+    font-size: 1.1rem;
     font-weight: 700;
 }
 
@@ -904,11 +908,13 @@ a {
     padding: 12px 16px;
     background: #ffffff;
     border-top: 1px solid #e8eaed;
+    flex-shrink: 0;
 }
 
 .chat-input-area {
     display: flex;
     gap: 8px;
+    align-items: center;
 }
 
 .chat-input-area input {
@@ -920,10 +926,12 @@ a {
     font-family: inherit;
     outline: none;
     transition: border-color 0.2s ease;
+    min-height: 40px;
 }
 
 .chat-input-area input:focus {
     border-color: #003c78;
+    box-shadow: 0 0 0 3px rgba(0, 60, 120, 0.15);
 }
 
 .chat-send-btn {
@@ -939,6 +947,7 @@ a {
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-shrink: 0;
 }
 
 .chat-send-btn:hover {
@@ -957,32 +966,108 @@ a {
     padding: 20px 0;
 }
 
-/* ============================================================
-   CHAT BUTTONS IN TABLE
-   ============================================================ */
-.btn-success {
-    background: #0f7b3e;
-    color: #fff;
-}
-
-.btn-success:hover {
-    background: #0b5f31;
-}
-
-.btn-info {
-    background: #1a73e8;
-    color: #fff;
-}
-
-.btn-info:hover {
-    background: #1557b0;
-}
-
-.btn-sm {
-    padding: 6px 10px;
-    font-size: 0.8rem;
-}
-
-.admin-table .btn-sm i {
-    font-size: 0.9rem;
+/* --- RESPONSIVE: Tablets & Smaller --- */
+@media (max-width: 768px) {
+    .modal-chat {
+        max-width: 98%;
+        width: 98%;
+        max-height: 90vh;
+        height: 90vh;
+        border-radius: 8px;
     }
+
+    .chat-header {
+        padding: 12px 16px;
+    }
+
+    .chat-header-info h3 {
+        font-size: 1rem;
+    }
+
+    .chat-user-name {
+        font-size: 0.8rem;
+    }
+
+    .chat-report-id {
+        font-size: 0.7rem;
+    }
+
+    .chat-body {
+        padding: 12px 16px;
+    }
+
+    .chat-bubble {
+        max-width: 90%;
+        font-size: 0.9rem;
+        padding: 8px 12px;
+    }
+
+    .chat-input-area input {
+        padding: 8px 12px;
+        font-size: 0.9rem;
+        min-height: 36px;
+    }
+
+    .chat-send-btn {
+        width: 40px;
+        height: 40px;
+        font-size: 1rem;
+    }
+
+    .chat-footer {
+        padding: 8px 12px;
+    }
+}
+
+/* --- RESPONSIVE: Small Mobile --- */
+@media (max-width: 480px) {
+    .modal-chat {
+        max-width: 100%;
+        width: 100%;
+        max-height: 100vh;
+        height: 100vh;
+        border-radius: 0;
+    }
+
+    .chat-header {
+        padding: 10px 14px;
+    }
+
+    .chat-header-info h3 {
+        font-size: 0.9rem;
+    }
+
+    .chat-body {
+        padding: 10px 12px;
+    }
+
+    .chat-bubble {
+        font-size: 0.85rem;
+        padding: 6px 10px;
+        max-width: 95%;
+    }
+
+    .chat-input-area input {
+        padding: 6px 10px;
+        font-size: 0.85rem;
+        min-height: 32px;
+    }
+
+    .chat-send-btn {
+        width: 36px;
+        height: 36px;
+        font-size: 0.9rem;
+    }
+
+    .chat-footer {
+        padding: 6px 10px;
+    }
+
+    .chat-sender {
+        font-size: 0.65rem;
+    }
+
+    .chat-time {
+        font-size: 0.6rem;
+    }
+}
