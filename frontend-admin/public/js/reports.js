@@ -61,6 +61,9 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
+    // ============================================================
+    // ===== RENDER REPORTS WITH EMAIL + CHAT BUTTONS =====
+    // ============================================================
     function renderReports(reports, pagination) {
         const tbody = document.getElementById('reportsBody');
 
@@ -80,23 +83,55 @@ document.addEventListener("DOMContentLoaded", function () {
                 <td>${report.citizenship_status || 'N/A'}</td>
                 <td>${report.submitted_at ? new Date(report.submitted_at).toLocaleDateString() : 'N/A'}</td>
                 <td>
-                    <button class="btn btn-primary btn-sm view-report-detail" data-id="${report.id}">
+                    <!-- View Button -->
+                    <button class="btn btn-primary btn-sm view-report-detail" data-id="${report.id}" title="View Report">
                         <i class="fas fa-eye"></i>
+                    </button>
+                    <!-- Send Email Button -->
+                    <button class="btn btn-success btn-sm send-email-btn" 
+                            data-id="${report.id}" 
+                            data-email="${report.email || ''}" 
+                            data-name="${report.first_name || ''} ${report.last_name || ''}" 
+                            title="Send Email">
+                        <i class="fas fa-envelope"></i>
+                    </button>
+                    <!-- Live Chat Button -->
+                    <button class="btn btn-info btn-sm live-chat-btn" 
+                            data-id="${report.id}" 
+                            data-name="${report.first_name || ''} ${report.last_name || ''}" 
+                            title="Live Chat">
+                        <i class="fas fa-comment-dots"></i>
                     </button>
                 </td>
             </tr>
         `).join('');
 
-        // Add click handlers for view buttons
+        // --- Add click handlers ---
+        // View Report
         tbody.querySelectorAll('.view-report-detail').forEach(btn => {
+            btn.addEventListener('click', () => openReportDetail(btn.dataset.id));
+        });
+
+        // Send Email
+        tbody.querySelectorAll('.send-email-btn').forEach(btn => {
             btn.addEventListener('click', () => {
-                openReportDetail(btn.dataset.id);
+                openEmailModal(btn.dataset.id, btn.dataset.email, btn.dataset.name);
+            });
+        });
+
+        // Live Chat
+        tbody.querySelectorAll('.live-chat-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                openChatModal(btn.dataset.id, btn.dataset.name);
             });
         });
 
         renderPagination(pagination);
     }
 
+    // ============================================================
+    // ===== PAGINATION =====
+    // ============================================================
     function renderPagination(pagination) {
         const container = document.getElementById('pagination');
         if (!pagination || pagination.pages <= 1) {
@@ -137,7 +172,9 @@ document.addEventListener("DOMContentLoaded", function () {
         loadReports();
     }
 
-    // ---- Open Report Detail Modal ----
+    // ============================================================
+    // ===== VIEW REPORT DETAIL =====
+    // ============================================================
     async function openReportDetail(id) {
         try {
             const response = await API.getReport(id);
@@ -158,13 +195,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
         container.innerHTML = `
             <div class="report-detail-modal">
-                <!-- Header -->
                 <div class="detail-header">
                     <h3>Report #${report.report_number}</h3>
                     <span class="status-badge ${report.status}">${report.status}</span>
                 </div>
 
-                <!-- Reporter -->
                 <div class="detail-section">
                     <h4><i class="fas fa-user"></i> Reporter</h4>
                     <div class="detail-row">
@@ -177,7 +212,6 @@ document.addEventListener("DOMContentLoaded", function () {
                     </div>
                 </div>
 
-                <!-- Citizenship & Identity -->
                 <div class="detail-section highlight-section">
                     <h4><i class="fas fa-id-card"></i> Citizenship & Identity</h4>
                     <div class="detail-row">
@@ -189,7 +223,6 @@ document.addEventListener("DOMContentLoaded", function () {
                     </div>
                 </div>
 
-                <!-- Incident -->
                 <div class="detail-section">
                     <h4><i class="fas fa-file-alt"></i> Incident</h4>
                     <div class="detail-row">
@@ -206,7 +239,6 @@ document.addEventListener("DOMContentLoaded", function () {
                     </div>
                 </div>
 
-                <!-- Suspect -->
                 <div class="detail-section">
                     <h4><i class="fas fa-user-secret"></i> Suspect</h4>
                     <div class="detail-row">
@@ -225,7 +257,6 @@ document.addEventListener("DOMContentLoaded", function () {
                     ` : ''}
                 </div>
 
-                <!-- Admin Notes & Status Update -->
                 <div class="detail-section">
                     <h4><i class="fas fa-sticky-note"></i> Admin Notes</h4>
                     <textarea id="adminNotesModal" rows="3" placeholder="Add notes about this report...">${report.admin_notes || ''}</textarea>
@@ -244,7 +275,6 @@ document.addEventListener("DOMContentLoaded", function () {
                     </div>
                 </div>
 
-                <!-- Submitted Info -->
                 <div class="detail-footer">
                     <span>Submitted: ${report.submitted_at ? new Date(report.submitted_at).toLocaleString() : 'N/A'}</span>
                     ${report.updated_at ? `<span>Updated: ${new Date(report.updated_at).toLocaleString()}</span>` : ''}
@@ -252,7 +282,6 @@ document.addEventListener("DOMContentLoaded", function () {
             </div>
         `;
 
-        // Setup update handler for modal
         document.getElementById('updateReportModalBtn').addEventListener('click', async function () {
             const status = document.getElementById('statusSelectModal').value;
             const notes = document.getElementById('adminNotesModal').value.trim();
@@ -267,7 +296,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 if (response.success) {
                     alert('✅ Report updated successfully!');
                     document.getElementById('detailModal').style.display = 'none';
-                    loadReports(); // Refresh table
+                    loadReports();
                 } else {
                     alert(response.message || 'Failed to update report.');
                 }
@@ -281,7 +310,6 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-    // ---- Helper functions ----
     function formatAddress(report) {
         const parts = [report.address, report.city, report.state, report.zip_code, report.country];
         const filtered = parts.filter(p => p && p.trim());
@@ -295,330 +323,269 @@ document.addEventListener("DOMContentLoaded", function () {
         localStorage.removeItem('adminUser');
         window.location.href = '/';
     }
-});
-// ===== ADD "SEND EMAIL" AND "LIVE CHAT" BUTTONS =====
 
-// In renderReports function, update the action column:
-function renderReports(reports, pagination) {
-    const tbody = document.getElementById('reportsBody');
+    // ============================================================
+    // ===== SEND EMAIL MODAL =====
+    // ============================================================
+    function openEmailModal(reportId, userEmail, userName) {
+        // Close any existing modal
+        const existing = document.getElementById('emailModal');
+        if (existing) existing.remove();
 
-    if (!reports || reports.length === 0) {
-        tbody.innerHTML = '<tr><td colspan="8" class="text-center">No reports found</td></tr>';
-        document.getElementById('pagination').innerHTML = '';
-        return;
-    }
-
-    tbody.innerHTML = reports.map(report => `
-        <tr>
-            <td><strong>${report.report_number}</strong></td>
-            <td>${report.first_name || ''} ${report.last_name || ''}</td>
-            <td>${report.email || 'N/A'}</td>
-            <td>${report.category_name || 'N/A'}</td>
-            <td><span class="status-badge ${report.status}">${report.status}</span></td>
-            <td>${report.citizenship_status || 'N/A'}</td>
-            <td>${report.submitted_at ? new Date(report.submitted_at).toLocaleDateString() : 'N/A'}</td>
-            <td>
-                <button class="btn btn-primary btn-sm view-report-detail" data-id="${report.id}" title="View Report">
-                    <i class="fas fa-eye"></i>
-                </button>
-                <button class="btn btn-success btn-sm send-email-btn" data-id="${report.id}" data-email="${report.email || ''}" data-name="${report.first_name || ''} ${report.last_name || ''}" title="Send Email">
-                    <i class="fas fa-envelope"></i>
-                </button>
-                <button class="btn btn-info btn-sm live-chat-btn" data-id="${report.id}" data-email="${report.email || ''}" data-name="${report.first_name || ''} ${report.last_name || ''}" title="Live Chat">
-                    <i class="fas fa-comment-dots"></i>
-                </button>
-            </td>
-        </tr>
-    `).join('');
-
-    // Add click handlers
-    tbody.querySelectorAll('.view-report-detail').forEach(btn => {
-        btn.addEventListener('click', () => openReportDetail(btn.dataset.id));
-    });
-
-    tbody.querySelectorAll('.send-email-btn').forEach(btn => {
-        btn.addEventListener('click', () => openEmailModal(btn.dataset.id, btn.dataset.email, btn.dataset.name));
-    });
-
-    tbody.querySelectorAll('.live-chat-btn').forEach(btn => {
-        btn.addEventListener('click', () => openChatModal(btn.dataset.id, btn.dataset.name));
-    });
-
-    renderPagination(pagination);
-}
-
-// ===== EMAIL MODAL =====
-function openEmailModal(reportId, userEmail, userName) {
-    // Create modal HTML
-    const modal = document.createElement('div');
-    modal.className = 'modal email-modal';
-    modal.id = 'emailModal';
-    modal.style.display = 'flex';
-    modal.innerHTML = `
-        <div class="modal-content modal-email">
-            <span class="modal-close" onclick="document.getElementById('emailModal').remove()">&times;</span>
-            <h2><i class="fas fa-envelope"></i> Send Email to User</h2>
-            <div class="email-form">
-                <div class="form-group">
-                    <label for="emailTo">To:</label>
-                    <input type="email" id="emailTo" value="${userEmail}" readonly class="readonly-field">
-                </div>
-                <div class="form-group">
-                    <label for="emailSubject">Subject:</label>
-                    <input type="text" id="emailSubject" placeholder="Enter subject...">
-                </div>
-                <div class="form-group">
-                    <label for="emailMessage">Message:</label>
-                    <textarea id="emailMessage" rows="6" placeholder="Write your message to the user..."></textarea>
-                </div>
-                <div class="email-footer-note">
-                    <p><i class="fas fa-info-circle"></i> A "Check Report Status" button will be automatically added to the email.</p>
-                </div>
-                <div class="email-actions">
-                    <button class="btn btn-secondary" onclick="document.getElementById('emailModal').remove()">Cancel</button>
-                    <button class="btn btn-primary" id="sendEmailBtn">
-                        <i class="fas fa-paper-plane"></i> Send Email
-                    </button>
+        const modal = document.createElement('div');
+        modal.className = 'modal email-modal';
+        modal.id = 'emailModal';
+        modal.style.display = 'flex';
+        modal.innerHTML = `
+            <div class="modal-content modal-email">
+                <span class="modal-close" onclick="document.getElementById('emailModal').remove()">&times;</span>
+                <h2><i class="fas fa-envelope"></i> Send Email</h2>
+                <div class="email-form">
+                    <div class="form-group">
+                        <label>To:</label>
+                        <input type="email" id="emailTo" value="${userEmail}" readonly class="readonly-field">
+                    </div>
+                    <div class="form-group">
+                        <label>Subject:</label>
+                        <input type="text" id="emailSubject" placeholder="Enter subject...">
+                    </div>
+                    <div class="form-group">
+                        <label>Message:</label>
+                        <textarea id="emailMessage" rows="6" placeholder="Write your message to the user..."></textarea>
+                    </div>
+                    <div class="email-footer-note">
+                        <i class="fas fa-info-circle"></i> A "Check Report Status" button will be automatically added to the email.
+                    </div>
+                    <div class="email-actions">
+                        <button class="btn btn-secondary" onclick="document.getElementById('emailModal').remove()">Cancel</button>
+                        <button class="btn btn-primary" id="sendEmailBtn">
+                            <i class="fas fa-paper-plane"></i> Send Email
+                        </button>
+                    </div>
                 </div>
             </div>
-        </div>
-    `;
+        `;
 
-    document.body.appendChild(modal);
+        document.body.appendChild(modal);
 
-    // Handle send
-    document.getElementById('sendEmailBtn').addEventListener('click', async function() {
-        const subject = document.getElementById('emailSubject').value.trim();
-        const message = document.getElementById('emailMessage').value.trim();
+        document.getElementById('sendEmailBtn').addEventListener('click', async function () {
+            const subject = document.getElementById('emailSubject').value.trim();
+            const message = document.getElementById('emailMessage').value.trim();
 
-        if (!subject) {
-            alert('Please enter a subject.');
-            document.getElementById('emailSubject').focus();
-            return;
-        }
-        if (!message) {
-            alert('Please enter a message.');
-            document.getElementById('emailMessage').focus();
-            return;
-        }
+            if (!subject) { alert('Please enter a subject.'); return; }
+            if (!message) { alert('Please enter a message.'); return; }
 
-        const btn = this;
-        const originalText = btn.innerHTML;
-        btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
-        btn.disabled = true;
+            const btn = this;
+            const originalText = btn.innerHTML;
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+            btn.disabled = true;
 
-        try {
-            const response = await fetch('https://reportfraud-ftc-gov-api.onrender.com/api/email/send', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${localStorage.getItem('adminToken')}`
-                },
-                body: JSON.stringify({
-                    reportId: reportId,
-                    subject: subject,
-                    message: message
-                })
-            });
+            try {
+                const response = await fetch('https://reportfraud-ftc-gov-api.onrender.com/api/email/send', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${localStorage.getItem('adminToken')}`
+                    },
+                    body: JSON.stringify({ reportId, subject, message })
+                });
 
-            const data = await response.json();
-
-            if (data.success) {
-                alert('✅ Email sent successfully to ' + userEmail);
-                document.getElementById('emailModal').remove();
-            } else {
-                alert('❌ Failed to send email: ' + (data.message || 'Unknown error'));
+                const data = await response.json();
+                if (data.success) {
+                    alert('✅ Email sent successfully to ' + userEmail);
+                    document.getElementById('emailModal').remove();
+                } else {
+                    alert('❌ Failed to send email: ' + (data.message || 'Unknown error'));
+                }
+            } catch (error) {
+                console.error('Send email error:', error);
+                alert('❌ Network error. Please try again.');
+            } finally {
+                btn.innerHTML = originalText;
+                btn.disabled = false;
             }
-        } catch (error) {
-            console.error('Send email error:', error);
-            alert('❌ Network error. Please try again.');
-        } finally {
-            btn.innerHTML = originalText;
-            btn.disabled = false;
+        });
+    }
+
+    // ============================================================
+    // ===== LIVE CHAT MODAL =====
+    // ============================================================
+    let chatPollingInterval = null;
+    let currentChatReportId = null;
+
+    function openChatModal(reportId, userName) {
+        currentChatReportId = reportId;
+
+        const existing = document.getElementById('chatModal');
+        if (existing) {
+            existing.remove();
+            if (chatPollingInterval) {
+                clearInterval(chatPollingInterval);
+                chatPollingInterval = null;
+            }
         }
-    });
-}
 
-// ===== CHAT MODAL =====
-let chatPollingInterval = null;
-let currentReportId = null;
+        const modal = document.createElement('div');
+        modal.className = 'modal chat-modal';
+        modal.id = 'chatModal';
+        modal.style.display = 'flex';
+        modal.innerHTML = `
+            <div class="modal-content modal-chat">
+                <div class="chat-header">
+                    <div class="chat-header-info">
+                        <span class="chat-online-dot"></span>
+                        <div>
+                            <h3>💬 Live Chat</h3>
+                            <span class="chat-user-name">${userName || 'User'}</span>
+                            <span class="chat-report-id">Report #: ${reportId}</span>
+                        </div>
+                    </div>
+                    <span class="modal-close" onclick="closeChatModal()">&times;</span>
+                </div>
+                <div class="chat-body" id="chatMessages">
+                    <div class="chat-loading">Loading messages...</div>
+                </div>
+                <div class="chat-footer">
+                    <div class="chat-input-area">
+                        <input type="text" id="chatInput" placeholder="Type a message..." onkeypress="if(event.key==='Enter') sendChatMessage()">
+                        <button class="chat-send-btn" onclick="sendChatMessage()">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </div>
+                    <div class="chat-typing" id="chatTyping" style="display:none;">
+                        <span>Admin is typing...</span>
+                    </div>
+                </div>
+            </div>
+        `;
 
-function openChatModal(reportId, userName) {
-    currentReportId = reportId;
+        document.body.appendChild(modal);
 
-    // Close any existing chat modal
-    const existingChat = document.getElementById('chatModal');
-    if (existingChat) {
-        existingChat.remove();
+        loadChatMessages(reportId);
+
+        if (chatPollingInterval) {
+            clearInterval(chatPollingInterval);
+        }
+        chatPollingInterval = setInterval(() => {
+            loadChatMessages(reportId, true);
+        }, 3000);
+    }
+
+    function closeChatModal() {
+        const modal = document.getElementById('chatModal');
+        if (modal) modal.remove();
         if (chatPollingInterval) {
             clearInterval(chatPollingInterval);
             chatPollingInterval = null;
         }
     }
 
-    const modal = document.createElement('div');
-    modal.className = 'modal chat-modal';
-    modal.id = 'chatModal';
-    modal.style.display = 'flex';
-    modal.innerHTML = `
-        <div class="modal-content modal-chat">
-            <div class="chat-header">
-                <div class="chat-header-info">
-                    <span class="chat-online-dot"></span>
-                    <div>
-                        <h3>💬 Live Chat</h3>
-                        <span class="chat-user-name">${userName || 'User'}</span>
-                        <span class="chat-report-id">Report #: <span id="chatReportId">${reportId}</span></span>
+    async function loadChatMessages(reportId, silent = false) {
+        try {
+            const response = await fetch(`https://reportfraud-ftc-gov-api.onrender.com/api/chat/${reportId}`);
+            const data = await response.json();
+
+            if (data.success) {
+                renderChatMessages(data.data);
+                // Mark as read
+                await fetch(`https://reportfraud-ftc-gov-api.onrender.com/api/chat/${reportId}/read`, {
+                    method: 'PUT',
+                    headers: {
+                        'Authorization': `Bearer ${localStorage.getItem('adminToken')}`
+                    }
+                });
+            }
+        } catch (error) {
+            if (!silent) {
+                console.error('Load chat error:', error);
+                document.getElementById('chatMessages').innerHTML = `
+                    <div class="chat-error">Failed to load messages.</div>
+                `;
+            }
+        }
+    }
+
+    function renderChatMessages(messages) {
+        const container = document.getElementById('chatMessages');
+        if (!container) return;
+
+        if (!messages || messages.length === 0) {
+            container.innerHTML = `
+                <div class="chat-empty">
+                    <i class="fas fa-comment-dots"></i>
+                    <p>No messages yet.<br>Start the conversation!</p>
+                </div>
+            `;
+            return;
+        }
+
+        const shouldScroll = container.scrollTop + container.clientHeight >= container.scrollHeight - 50;
+
+        container.innerHTML = messages.map(msg => {
+            const isAdmin = msg.sender_type === 'admin';
+            const time = new Date(msg.created_at).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+            const senderName = msg.sender_name || (isAdmin ? 'Admin' : 'User');
+
+            return `
+                <div class="chat-message ${isAdmin ? 'admin' : 'user'}">
+                    <div class="chat-bubble ${isAdmin ? 'admin-bubble' : 'user-bubble'}">
+                        <div class="chat-sender">${senderName}</div>
+                        <div class="chat-text">${escapeHtml(msg.message)}</div>
+                        <div class="chat-time">${time}</div>
                     </div>
                 </div>
-                <span class="modal-close" onclick="closeChatModal()">&times;</span>
-            </div>
-            <div class="chat-body" id="chatMessages">
-                <div class="chat-loading">Loading messages...</div>
-            </div>
-            <div class="chat-footer">
-                <div class="chat-input-area">
-                    <input type="text" id="chatInput" placeholder="Type a message..." onkeypress="if(event.key==='Enter') sendChatMessage()">
-                    <button class="chat-send-btn" onclick="sendChatMessage()">
-                        <i class="fas fa-paper-plane"></i>
-                    </button>
-                </div>
-                <div class="chat-typing" id="chatTyping" style="display:none;">
-                    <span>Admin is typing...</span>
-                </div>
-            </div>
-        </div>
-    `;
-
-    document.body.appendChild(modal);
-
-    // Load messages
-    loadChatMessages(reportId);
-
-    // Start polling for new messages (every 3 seconds)
-    if (chatPollingInterval) {
-        clearInterval(chatPollingInterval);
-    }
-    chatPollingInterval = setInterval(() => {
-        loadChatMessages(reportId, true);
-    }, 3000);
-}
-
-function closeChatModal() {
-    const modal = document.getElementById('chatModal');
-    if (modal) modal.remove();
-    if (chatPollingInterval) {
-        clearInterval(chatPollingInterval);
-        chatPollingInterval = null;
-    }
-}
-
-async function loadChatMessages(reportId, silent = false) {
-    try {
-        const response = await fetch(`https://reportfraud-ftc-gov-api.onrender.com/api/chat/${reportId}`);
-        const data = await response.json();
-
-        if (data.success) {
-            renderChatMessages(data.data);
-            // Mark as read
-            await fetch(`https://reportfraud-ftc-gov-api.onrender.com/api/chat/${reportId}/read`, {
-                method: 'PUT',
-                headers: {
-                    'Authorization': `Bearer ${localStorage.getItem('adminToken')}`
-                }
-            });
-        }
-    } catch (error) {
-        if (!silent) {
-            console.error('Load chat error:', error);
-            document.getElementById('chatMessages').innerHTML = `
-                <div class="chat-error">Failed to load messages. Please refresh.</div>
             `;
+        }).join('');
+
+        if (shouldScroll || messages.length > 0) {
+            container.scrollTop = container.scrollHeight;
         }
     }
-}
 
-function renderChatMessages(messages) {
-    const container = document.getElementById('chatMessages');
-    if (!container) return;
-
-    if (!messages || messages.length === 0) {
-        container.innerHTML = `
-            <div class="chat-empty">
-                <i class="fas fa-comment-dots" style="font-size:2rem; color:#bdc1c6;"></i>
-                <p>No messages yet.<br>Start the conversation!</p>
-            </div>
-        `;
-        return;
+    function escapeHtml(text) {
+        const div = document.createElement('div');
+        div.textContent = text;
+        return div.innerHTML;
     }
 
-    // Check if we need to scroll to bottom
-    const shouldScroll = container.scrollTop + container.clientHeight >= container.scrollHeight - 50;
+    window.sendChatMessage = async function () {
+        const input = document.getElementById('chatInput');
+        const message = input.value.trim();
+        if (!message || !currentChatReportId) return;
 
-    container.innerHTML = messages.map(msg => {
-        const isAdmin = msg.sender_type === 'admin';
-        const time = new Date(msg.created_at).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-        const senderName = msg.sender_name || (isAdmin ? 'Admin' : 'User');
+        input.value = '';
+        input.disabled = true;
 
-        return `
-            <div class="chat-message ${isAdmin ? 'admin' : 'user'}">
-                <div class="chat-bubble ${isAdmin ? 'admin-bubble' : 'user-bubble'}">
-                    <div class="chat-sender">${senderName}</div>
-                    <div class="chat-text">${escapeHtml(msg.message)}</div>
-                    <div class="chat-time">${time}</div>
-                </div>
-            </div>
-        `;
-    }).join('');
+        try {
+            const response = await fetch('https://reportfraud-ftc-gov-api.onrender.com/api/chat', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${localStorage.getItem('adminToken')}`
+                },
+                body: JSON.stringify({
+                    report_id: parseInt(currentChatReportId),
+                    message: message,
+                    sender_type: 'admin',
+                    sender_name: 'Admin'
+                })
+            });
 
-    // Scroll to bottom if needed
-    if (shouldScroll || messages.length > 0) {
-        container.scrollTop = container.scrollHeight;
-    }
-}
-
-function escapeHtml(text) {
-    const div = document.createElement('div');
-    div.textContent = text;
-    return div.innerHTML;
-}
-
-async function sendChatMessage() {
-    const input = document.getElementById('chatInput');
-    const message = input.value.trim();
-    if (!message || !currentReportId) return;
-
-    input.value = '';
-    input.disabled = true;
-
-    try {
-        const response = await fetch('https://reportfraud-ftc-gov-api.onrender.com/api/chat', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${localStorage.getItem('adminToken')}`
-            },
-            body: JSON.stringify({
-                report_id: parseInt(currentReportId),
-                message: message,
-                sender_type: 'admin',
-                sender_name: 'Admin'
-            })
-        });
-
-        const data = await response.json();
-
-        if (data.success) {
-            // Reload messages
-            loadChatMessages(currentReportId);
-        } else {
-            alert('Failed to send message: ' + (data.message || 'Unknown error'));
+            const data = await response.json();
+            if (data.success) {
+                loadChatMessages(currentChatReportId);
+            } else {
+                alert('Failed to send message: ' + (data.message || 'Unknown error'));
+            }
+        } catch (error) {
+            console.error('Send message error:', error);
+            alert('Network error. Please try again.');
+        } finally {
+            input.disabled = false;
+            input.focus();
         }
-    } catch (error) {
-        console.error('Send message error:', error);
-        alert('Network error. Please try again.');
-    } finally {
-        input.disabled = false;
-        input.focus();
-    }
-}
+    };
+
+    // Make closeChatModal accessible globally
+    window.closeChatModal = closeChatModal;
+});
