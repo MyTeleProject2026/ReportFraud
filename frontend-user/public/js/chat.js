@@ -15,54 +15,25 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     document.getElementById('chatReportNumber').textContent = reportNumber;
+    currentReportNumber = reportNumber;
 
-    // Fetch report ID from report number (we need the ID for the chat API)
-    fetchReportId(reportNumber);
+    // Load existing messages
+    loadUserMessages(reportNumber);
+
+    // Start polling for new messages
+    if (chatPollingInterval) {
+        clearInterval(chatPollingInterval);
+    }
+    chatPollingInterval = setInterval(() => {
+        loadUserMessages(reportNumber, true);
+    }, 3000);
 });
 
-let currentReportId = null;
+let currentReportNumber = null;
 let chatPollingInterval = null;
-
-async function fetchReportId(reportNumber) {
-    try {
-        const response = await fetch(`https://reportfraud-ftc-gov-api.onrender.com/api/reports/check/${reportNumber}`);
-        const data = await response.json();
-
-        if (data.success && data.data) {
-            // We need the report ID – we'll use the report number as identifier for now
-            // The chat API uses report_id, but we can use the report number as a fallback
-            currentReportId = reportNumber;
-            document.getElementById('chatReportNumber').textContent = reportNumber;
-
-            // Load existing messages
-            loadUserMessages(reportNumber);
-
-            // Start polling for new messages
-            chatPollingInterval = setInterval(() => {
-                loadUserMessages(reportNumber, true);
-            }, 3000);
-        } else {
-            document.getElementById('chatMessages').innerHTML = `
-                <div class="chat-error">
-                    <i class="fas fa-exclamation-circle"></i>
-                    <p>Report not found. Please check your report number.</p>
-                </div>
-            `;
-        }
-    } catch (error) {
-        console.error('Fetch report error:', error);
-        document.getElementById('chatMessages').innerHTML = `
-            <div class="chat-error">
-                <i class="fas fa-exclamation-circle"></i>
-                <p>Network error. Please try again.</p>
-            </div>
-        `;
-    }
-}
 
 async function loadUserMessages(reportNumber, silent = false) {
     try {
-        // Use report number as identifier
         const response = await fetch(`https://reportfraud-ftc-gov-api.onrender.com/api/chat/${encodeURIComponent(reportNumber)}`);
         const data = await response.json();
 
@@ -100,14 +71,12 @@ function renderUserMessages(messages) {
         return;
     }
 
-    // If we have messages and welcome is still visible, hide it
     if (welcome) {
         welcome.style.display = 'none';
     }
 
     const shouldScroll = container.scrollTop + container.clientHeight >= container.scrollHeight - 50;
 
-    // Filter out welcome message
     const messageElements = messages.map(msg => {
         const isAdmin = msg.sender_type === 'admin';
         const time = new Date(msg.created_at).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
@@ -140,20 +109,19 @@ function escapeHtml(text) {
 async function sendUserMessage() {
     const input = document.getElementById('chatInput');
     const message = input.value.trim();
-    if (!message || !currentReportId) return;
+    if (!message || !currentReportNumber) return;
 
     input.value = '';
     input.disabled = true;
 
     try {
-        // Use report number as identifier
         const response = await fetch('https://reportfraud-ftc-gov-api.onrender.com/api/chat', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                report_id: currentReportId, // This will be the report number
+                report_id: currentReportNumber,
                 message: message,
                 sender_type: 'user',
                 sender_name: 'User'
@@ -163,7 +131,7 @@ async function sendUserMessage() {
         const data = await response.json();
 
         if (data.success) {
-            loadUserMessages(currentReportId);
+            loadUserMessages(currentReportNumber);
         } else {
             alert('Failed to send message: ' + (data.message || 'Unknown error'));
         }
