@@ -11,5 +11,6 @@ router.get('/', authMiddleware, reportController.getAllReports);
 router.get('/stats', authMiddleware, reportController.getStats);
 router.get('/:id', authMiddleware, reportController.getReportById);
 router.put('/:id/status', authMiddleware, reportController.updateReportStatus);
-
+// Add this route (public - no auth required)
+router.get('/check/:reportNumber', reportController.getReportByNumber);
 module.exports = router;
