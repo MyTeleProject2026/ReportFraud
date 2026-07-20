@@ -1,93 +1,107 @@
-document.addEventListener("DOMContentLoaded", function () {
-    const checkBtn = document.getElementById("checkReportBtn");
-    const reportInput = document.getElementById("reportNumberInput");
-    const resultDiv = document.getElementById("reportResult");
-    const errorDiv = document.getElementById("reportError");
-    const errorMessage = document.getElementById("errorMessage");
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ReportFraud - Check Your Report</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/report.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+</head>
+<body class="report-page-body">
 
-    // Allow Enter key to submit
-    reportInput.addEventListener("keypress", function (e) {
-        if (e.key === "Enter") {
-            checkBtn.click();
-        }
-    });
+    <!-- ===== GOV BANNER ===== -->
+    <div class="gov-banner report-gov-banner">
+        <div class="container">
+            <div class="gov-banner-inner">
+                <div class="gov-banner-left">
+                    <span class="gov-icon"><i class="fas fa-lock"></i></span>
+                    <span class="gov-text">An official website of the United States government</span>
+                </div>
+                <div class="gov-banner-right">
+                    <a href="#" class="gov-link">Here's how you know</a>
+                </div>
+            </div>
+        </div>
+    </div>
 
-    checkBtn.addEventListener("click", function () {
-        const reportNumber = reportInput.value.trim();
+    <!-- ===== HEADER ===== -->
+    <header class="report-header-shell">
+        <div class="container report-header-inner">
+            <a href="/" class="report-brand">
+                <img src="css/ftc-logo.svg" alt="FTC Logo" class="report-brand-logo" />
+                <div class="report-brand-text">
+                    <span class="report-brand-agency">FEDERAL TRADE COMMISSION</span>
+                    <span class="report-brand-site">ReportFraud.ftc.gov</span>
+                </div>
+            </a>
+        </div>
+    </header>
 
-        if (!reportNumber) {
-            document.getElementById("reportNumberError").style.display = "block";
-            return;
-        } else {
-            document.getElementById("reportNumberError").style.display = "none";
-        }
+    <!-- ===== CHECK REPORT ===== -->
+    <main class="report-flow-page">
+        <div class="container report-flow-container" style="max-width: 700px;">
+            <section class="report-question-block">
+                <h1>Check Your Report Status</h1>
+                <p>Enter your Report Number to check the current status of your submission.</p>
+            </section>
 
-        // Show loading
-        checkBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Checking...';
-        checkBtn.disabled = true;
+            <div class="check-report-form">
+                <div class="form-group">
+                    <label for="reportNumberInput">Report Number <span class="required">*</span></label>
+                    <input type="text" id="reportNumberInput" placeholder="e.g., RF-20260720-9648" />
+                    <div class="error-message" id="reportNumberError">Please enter your report number.</div>
+                </div>
 
-        // Hide previous results
-        resultDiv.style.display = "none";
-        errorDiv.style.display = "none";
+                <button type="button" class="btn btn-primary btn-large" id="checkReportBtn">
+                    <i class="fas fa-search"></i> Check Status
+                </button>
+            </div>
 
-        // API call
-        fetch(`https://reportfraud-ftc-gov-api.onrender.com/api/reports/check/${encodeURIComponent(reportNumber)}`)
-            .then(response => response.json())
-            .then(data => {
-                if (data.success) {
-                    displayReport(data.data);
-                } else {
-                    showError(data.message || "Report not found.");
-                }
-            })
-            .catch(err => {
-                console.error("Error:", err);
-                showError("Network error. Please try again.");
-            })
-            .finally(() => {
-                checkBtn.innerHTML = '<i class="fas fa-search"></i> Check Status';
-                checkBtn.disabled = false;
-            });
-    });
+            <!-- Results Container -->
+            <div id="reportResult" style="display:none; margin-top: 32px;">
+                <div class="review-container">
+                    <div class="review-section">
+                        <h3>Report Status</h3>
+                        <p><strong>Report Number:</strong> <span id="resultNumber">—</span></p>
+                        <p><strong>Status:</strong> <span id="resultStatus" class="status-badge">—</span></p>
+                        <p><strong>Category:</strong> <span id="resultCategory">—</span></p>
+                        <p><strong>Submitted:</strong> <span id="resultSubmitted">—</span></p>
+                        <p><strong>Last Updated:</strong> <span id="resultUpdated">—</span></p>
+                    </div>
+                    <div class="review-section">
+                        <h3>Reporter Information</h3>
+                        <p><strong>Name:</strong> <span id="resultName">—</span></p>
+                        <p><strong>Email:</strong> <span id="resultEmail">—</span></p>
+                    </div>
+                    <div class="review-section">
+                        <h3>Incident Description</h3>
+                        <p id="resultDescription">—</p>
+                    </div>
+                </div>
 
-    function displayReport(report) {
-        document.getElementById("resultNumber").textContent = report.report_number;
-        document.getElementById("resultCategory").textContent = report.category || "N/A";
-        document.getElementById("resultSubmitted").textContent = formatDate(report.submitted_at);
-        document.getElementById("resultUpdated").textContent = formatDate(report.updated_at);
-        document.getElementById("resultName").textContent = `${report.first_name || ""} ${report.last_name || ""}`.trim() || "N/A";
-        document.getElementById("resultEmail").textContent = report.email || "N/A";
-        document.getElementById("resultDescription").textContent = report.description || "N/A";
+                <!-- ===== ✅ NEW: LIVE CHAT SECTION ===== -->
+                <div id="chatSection" style="display: none; margin-top: 24px; padding-top: 20px; border-top: 1px solid #e8eaed;">
+                    <p style="font-size: 1rem; color: #003c78; font-weight: 600; margin-bottom: 12px;">
+                        <i class="fas fa-comment-dots" style="color: #27ae60;"></i> Need help from our FTC Cyber Team?
+                    </p>
+                    <button class="btn btn-success" id="liveChatBtn2" style="padding: 12px 28px; font-size: 1rem;">
+                        <i class="fas fa-comment-dots"></i> Live Chat with FTC Team
+                    </button>
+                </div>
+            </div>
 
-        // Status badge
-        const statusEl = document.getElementById("resultStatus");
-        const status = report.status || "pending";
-        statusEl.textContent = status.charAt(0).toUpperCase() + status.slice(1);
-        statusEl.className = `status-badge ${status}`;
+            <div id="reportError" style="display:none; margin-top: 20px; padding: 16px; background: #fde8e8; border: 1px solid #d93025; border-radius: 4px; color: #d93025;">
+                <i class="fas fa-exclamation-circle"></i> <span id="errorMessage">Report not found.</span>
+            </div>
 
-        resultDiv.style.display = "block";
-        errorDiv.style.display = "none";
-    }
+            <div style="margin-top: 24px; text-align: center;">
+                <a href="/" class="btn btn-secondary"><i class="fas fa-home"></i> Return Home</a>
+            </div>
+        </div>
+    </main>
 
-    function showError(message) {
-        errorMessage.textContent = message;
-        errorDiv.style.display = "block";
-        resultDiv.style.display = "none";
-    }
-
-    function formatDate(dateString) {
-        if (!dateString) return "N/A";
-        try {
-            const date = new Date(dateString);
-            return date.toLocaleString("en-US", {
-                year: "numeric",
-                month: "long",
-                day: "numeric",
-                hour: "2-digit",
-                minute: "2-digit"
-            });
-        } catch {
-            return dateString;
-        }
-    }
-});
+    <script src="js/check-report.js"></script>
+</body>
+</html>
