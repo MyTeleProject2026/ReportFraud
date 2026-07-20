@@ -592,3 +592,105 @@ a {
     font-weight: 600;
     margin-left: 12px;
 }
+
+/* ============================================================
+   REPORT DETAIL MODAL - NEW FIELDS
+   ============================================================ */
+
+.report-detail-modal .detail-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #e8eaed;
+    margin-bottom: 16px;
+}
+
+.detail-section {
+    margin-bottom: 20px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid #e8eaed;
+}
+
+.detail-section:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+}
+
+.detail-section h4 {
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+    color: #003c78;
+}
+
+.detail-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 24px;
+    margin-bottom: 6px;
+}
+
+.detail-row span {
+    font-size: 0.95rem;
+}
+
+.detail-description p {
+    background: #f8f9fa;
+    padding: 12px 16px;
+    border-radius: 4px;
+    margin-top: 6px;
+    line-height: 1.6;
+    border: 1px solid #e8eaed;
+    font-size: 0.95rem;
+}
+
+.detail-section.highlight-section {
+    background: #f0f7ff;
+    border-left: 4px solid #003c78;
+    padding: 12px 16px;
+    border-radius: 4px;
+}
+
+.detail-suspect-image {
+    margin-top: 10px;
+}
+
+.suspect-image {
+    max-width: 200px;
+    max-height: 200px;
+    border: 1px solid #e8eaed;
+    border-radius: 4px;
+    margin-top: 4px;
+}
+
+.detail-status-update {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-top: 12px;
+    padding-top: 12px;
+    border-top: 1px solid #e8eaed;
+}
+
+.detail-status-update select {
+    padding: 8px 14px;
+    border: 1px solid #dadce0;
+    border-radius: 4px;
+    font-size: 0.95rem;
+    background: #fff;
+    min-width: 150px;
+}
+
+.detail-footer {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+    padding-top: 12px;
+    border-top: 1px solid #e8eaed;
+    margin-top: 8px;
+    font-size: 0.85rem;
+    color: #5f6368;
+    }
