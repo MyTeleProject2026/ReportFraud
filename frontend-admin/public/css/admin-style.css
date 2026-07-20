@@ -524,3 +524,71 @@ a {
 }
 
 /* ===== RESPONSIVE OVERRIDES ===== */
+/* ============================================================
+   REPORT DETAIL NEW FIELDS
+   ============================================================ */
+
+.detail-section.highlight-section {
+    background: #f0f7ff;
+    border-left: 4px solid #003c78;
+    padding: 16px 20px;
+    border-radius: 4px;
+}
+
+.detail-suspect-image {
+    margin-top: 12px;
+}
+
+.suspect-image {
+    max-width: 200px;
+    max-height: 200px;
+    border: 1px solid #e8eaed;
+    border-radius: 4px;
+    margin-top: 6px;
+}
+
+.detail-description p {
+    background: #f8f9fa;
+    padding: 12px 16px;
+    border-radius: 4px;
+    margin-top: 6px;
+    line-height: 1.6;
+    border: 1px solid #e8eaed;
+}
+
+.detail-status-update {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-top: 12px;
+    padding-top: 12px;
+    border-top: 1px solid #e8eaed;
+}
+
+.detail-status-update select {
+    padding: 8px 14px;
+    border: 1px solid #dadce0;
+    border-radius: 4px;
+    font-size: 0.95rem;
+    background: #fff;
+    min-width: 150px;
+}
+
+.alert {
+    padding: 20px 24px;
+    border-radius: 6px;
+    margin: 20px 0;
+}
+
+.alert-error {
+    background: #fde8e8;
+    border: 1px solid #d93025;
+    color: #d93025;
+}
+
+.alert a {
+    color: #003c78;
+    font-weight: 600;
+    margin-left: 12px;
+}
