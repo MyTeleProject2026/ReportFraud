@@ -25,7 +25,18 @@ const submitReport = async (req, res) => {
       suspect_website,
       additional_info
     } = req.body;
+
     
+    // If category_id is not numeric, try to find it by name
+    if (category_id && isNaN(category_id)) {
+        // Treat as category name
+        const cat = await queryOne('SELECT id FROM categories WHERE name = ?', [category_id]);
+        category_id = cat ? cat.id : null;
+    } else if (!category_id && category) {
+        // Use the category string if provided
+        const cat = await queryOne('SELECT id FROM categories WHERE name = ?', [category]);
+        category_id = cat ? cat.id : null;
+    }
     // Validate required fields
     if (!first_name || !last_name || !email || !incident_description) {
       return res.status(400).json({
