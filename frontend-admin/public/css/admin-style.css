@@ -693,4 +693,217 @@ a {
     margin-top: 8px;
     font-size: 0.85rem;
     color: #5f6368;
-    }
+}
+
+/* ============================================================
+   EMAIL MODAL
+   ============================================================ */
+.modal-email {
+    max-width: 580px;
+    width: 95%;
+}
+
+.email-form .form-group {
+    margin-bottom: 16px;
+}
+
+.email-form .form-group label {
+    display: block;
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: #3c4043;
+    margin-bottom: 4px;
+}
+
+.email-form .form-group input,
+.email-form .form-group textarea {
+    width: 100%;
+    padding: 10px 14px;
+    border: 1.5px solid #dadce0;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-family: inherit;
+    transition: border-color 0.2s ease;
+}
+
+.email-form .form-group input:focus,
+.email-form .form-group textarea:focus {
+    outline: none;
+    border-color: #003c78;
+    box-shadow: 0 0 0 3px rgba(0, 60, 120, 0.15);
+}
+
+.email-form .form-group .readonly-field {
+    background: #f8f9fa;
+    color: #5f6368;
+}
+
+.email-footer-note {
+    background: #f0f7ff;
+    padding: 12px 16px;
+    border-radius: 4px;
+    margin: 12px 0 16px;
+    font-size: 0.9rem;
+    color: #003c78;
+}
+
+.email-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+    margin-top: 8px;
+}
+
+/* ============================================================
+   CHAT MODAL
+   ============================================================ */
+.modal-chat {
+    max-width: 500px;
+    width: 95%;
+    padding: 0;
+    border-radius: 12px;
+    overflow: hidden;
+    height: 80vh;
+    max-height: 600px;
+    display: flex;
+    flex-direction: column;
+}
+
+.chat-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 20px;
+    background: #003c78;
+    color: #fff;
+}
+
+.chat-header-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.chat-online-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #27ae60;
+    display: inline-block;
+    animation: pulse-dot 1.5s infinite;
+}
+
+@keyframes pulse-dot {
+    0% { opacity: 1; }
+    50% { opacity: 0.4; }
+    100% { opacity: 1; }
+}
+
+.chat-header-info h3 {
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 700;
+}
+
+.chat-user-name {
+    font-size: 0.85rem;
+    opacity: 0.85;
+    display: block;
+}
+
+.chat-report-id {
+    font-size: 0.75rem;
+    opacity: 0.7;
+    display: block;
+}
+
+.chat-body {
+    flex: 1;
+    padding: 16px 20px;
+    overflow-y: auto;
+    background: #f0f2f5;
+    min-height: 200px;
+}
+
+.chat-loading {
+    text-align: center;
+    color: #5f6368;
+    padding: 40px 0;
+}
+
+.chat-empty {
+    text-align: center;
+    color: #5f6368;
+    padding: 40px 0;
+}
+
+.chat-empty i {
+    font-size: 2.5rem;
+    color: #bdc1c6;
+    display: block;
+    margin-bottom: 12px;
+}
+
+.chat-message {
+    display: flex;
+    margin-bottom: 12px;
+}
+
+.chat-message.admin {
+    justify-content: flex-start;
+}
+
+.chat-message.user {
+    justify-content: flex-end;
+}
+
+.chat-bubble {
+    max-width: 80%;
+    padding: 10px 14px;
+    border-radius: 12px;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    word-wrap: break-word;
+}
+
+.chat-bubble.admin-bubble {
+    background: #ffffff;
+    border-top-left-radius: 4px;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.08);
+}
+
+.chat-bubble.user-bubble {
+    background: #003c78;
+    color: #ffffff;
+    border-top-right-radius: 4px;
+}
+
+.chat-sender {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: #5f6368;
+    margin-bottom: 2px;
+}
+
+.chat-bubble.user-bubble .chat-sender {
+    color: rgba(255,255,255,0.7);
+}
+
+.chat-time {
+    font-size: 0.7rem;
+    color: #9aa0a6;
+    margin-top: 4px;
+    text-align: right;
+}
+
+.chat-bubble.user-bubble .chat-time {
+    color: rgba(255,255,255,0.6);
+}
+
+.chat-footer {
+    padding: 12px 16px;
+    background: #ffffff;
+    border-top: 1px solid #e8eaed;
+}
+
+.chat-input-area
