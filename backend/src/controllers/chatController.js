@@ -1,7 +1,17 @@
 // ===== CHAT CONTROLLER =====
 const { query, queryOne } = require('../config/db');
 
-// Get all messages for a report
+// ---- SAVE MESSAGE (for Socket.IO) ----
+const saveMessage = async (report_id, message, sender_type, sender_name) => {
+    const result = await query(
+        `INSERT INTO chats (report_id, sender_type, sender_name, message, is_read)
+         VALUES (?, ?, ?, ?, ?)`,
+        [report_id, sender_type, sender_name || null, message, sender_type === 'user' ? 0 : 1]
+    );
+    return result;
+};
+
+// ---- GET MESSAGES ----
 const getMessages = async (req, res) => {
     try {
         const { reportId } = req.params;
@@ -27,7 +37,7 @@ const getMessages = async (req, res) => {
     }
 };
 
-// Send a message (admin or user)
+// ---- SEND MESSAGE (API) ----
 const sendMessage = async (req, res) => {
     try {
         const { report_id, message, sender_type, sender_name } = req.body;
@@ -39,7 +49,6 @@ const sendMessage = async (req, res) => {
             });
         }
 
-        // Validate sender_type
         if (!['admin', 'user'].includes(sender_type)) {
             return res.status(400).json({
                 success: false,
@@ -52,9 +61,6 @@ const sendMessage = async (req, res) => {
              VALUES (?, ?, ?, ?, ?)`,
             [report_id, sender_type, sender_name || null, message, sender_type === 'user' ? 0 : 1]
         );
-
-        // Mark user messages as unread for admin
-        // Mark admin messages as read
 
         const newMessage = await queryOne(
             'SELECT * FROM chats WHERE id = ?',
@@ -74,7 +80,7 @@ const sendMessage = async (req, res) => {
     }
 };
 
-// Mark messages as read (for admin)
+// ---- MARK AS READ ----
 const markAsRead = async (req, res) => {
     try {
         const { reportId } = req.params;
@@ -97,7 +103,7 @@ const markAsRead = async (req, res) => {
     }
 };
 
-// Get unread count for admin dashboard
+// ---- GET UNREAD COUNT ----
 const getUnreadCount = async (req, res) => {
     try {
         const result = await queryOne(
@@ -117,10 +123,11 @@ const getUnreadCount = async (req, res) => {
     }
 };
 
+// ---- EXPORT ALL ----
 module.exports = {
+    saveMessage,
     getMessages,
     sendMessage,
     markAsRead,
-    getUnreadCount,
-    saveMessage
+    getUnreadCount
 };
