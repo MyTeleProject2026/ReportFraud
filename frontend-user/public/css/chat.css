@@ -95,7 +95,6 @@ body {
     background: #f0f2f5;
 }
 
-/* Welcome Message */
 .chat-welcome {
     text-align: center;
     padding: 40px 20px;
@@ -128,7 +127,6 @@ body {
     font-size: 0.9rem;
 }
 
-/* Chat Messages */
 .chat-message {
     display: flex;
     margin-bottom: 12px;
@@ -185,7 +183,6 @@ body {
     color: rgba(255, 255, 255, 0.6);
 }
 
-/* Chat Empty */
 .chat-empty {
     text-align: center;
     color: #5f6368;
