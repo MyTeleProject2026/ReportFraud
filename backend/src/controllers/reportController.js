@@ -335,6 +335,7 @@ module.exports = {
   submitReport,
   getAllReports,
   getReportById,
+  getReportByNumber,
   updateReportStatus,
   getStats
 };
