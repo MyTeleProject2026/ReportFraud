@@ -73,12 +73,12 @@ document.addEventListener("DOMContentLoaded", function () {
         tbody.innerHTML = reports.map(report => `
             <tr>
                 <td><strong>${report.report_number}</strong></td>
-                <td>${report.first_name} ${report.last_name}</td>
-                <td>${report.email}</td>
+                <td>${report.first_name || ''} ${report.last_name || ''}</td>
+                <td>${report.email || 'N/A'}</td>
                 <td>${report.category_name || 'N/A'}</td>
                 <td><span class="status-badge ${report.status}">${report.status}</span></td>
-                <td>${report.citizenship_status || 'N/A'}</td>   <!-- ✅ NEW COLUMN -->
-                <td>${new Date(report.submitted_at).toLocaleDateString()}</td>
+                <td>${report.citizenship_status || 'N/A'}</td>
+                <td>${report.submitted_at ? new Date(report.submitted_at).toLocaleDateString() : 'N/A'}</td>
                 <td>
                     <button class="btn btn-primary btn-sm view-report-detail" data-id="${report.id}">
                         <i class="fas fa-eye"></i>
@@ -158,6 +158,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         container.innerHTML = `
             <div class="report-detail-modal">
+                <!-- Header -->
                 <div class="detail-header">
                     <h3>Report #${report.report_number}</h3>
                     <span class="status-badge ${report.status}">${report.status}</span>
@@ -176,7 +177,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     </div>
                 </div>
 
-                <!-- Citizenship & Identity (NEW) -->
+                <!-- Citizenship & Identity -->
                 <div class="detail-section highlight-section">
                     <h4><i class="fas fa-id-card"></i> Citizenship & Identity</h4>
                     <div class="detail-row">
@@ -196,8 +197,8 @@ document.addEventListener("DOMContentLoaded", function () {
                         <span><strong>Date:</strong> ${report.incident_date || 'N/A'}</span>
                     </div>
                     <div class="detail-row">
-                        <span><strong>Amount:</strong> ${report.amount_lost ? '$' + report.amount_lost : 'N/A'}</span>
-                        <span><strong>Payment:</strong> ${report.payment_method || 'N/A'}</span>
+                        <span><strong>Amount Lost:</strong> ${report.amount_lost ? '$' + report.amount_lost : 'N/A'}</span>
+                        <span><strong>Payment Method:</strong> ${report.payment_method || 'N/A'}</span>
                     </div>
                     <div class="detail-description">
                         <strong>Description:</strong>
@@ -227,7 +228,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 <!-- Admin Notes & Status Update -->
                 <div class="detail-section">
                     <h4><i class="fas fa-sticky-note"></i> Admin Notes</h4>
-                    <textarea id="adminNotesModal" rows="3" placeholder="Add notes...">${report.admin_notes || ''}</textarea>
+                    <textarea id="adminNotesModal" rows="3" placeholder="Add notes about this report...">${report.admin_notes || ''}</textarea>
                     <div class="detail-status-update">
                         <label for="statusSelectModal"><strong>Update Status:</strong></label>
                         <select id="statusSelectModal">
@@ -241,6 +242,12 @@ document.addEventListener("DOMContentLoaded", function () {
                             <i class="fas fa-save"></i> Update
                         </button>
                     </div>
+                </div>
+
+                <!-- Submitted Info -->
+                <div class="detail-footer">
+                    <span>Submitted: ${report.submitted_at ? new Date(report.submitted_at).toLocaleString() : 'N/A'}</span>
+                    ${report.updated_at ? `<span>Updated: ${new Date(report.updated_at).toLocaleString()}</span>` : ''}
                 </div>
             </div>
         `;
@@ -262,11 +269,11 @@ document.addEventListener("DOMContentLoaded", function () {
                     document.getElementById('detailModal').style.display = 'none';
                     loadReports(); // Refresh table
                 } else {
-                    alert(response.message || 'Failed to update.');
+                    alert(response.message || 'Failed to update report.');
                 }
             } catch (error) {
                 console.error('Update error:', error);
-                alert('An error occurred.');
+                alert('An error occurred while updating.');
             } finally {
                 btn.innerHTML = originalText;
                 btn.disabled = false;
