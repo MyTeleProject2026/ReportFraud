@@ -1,36 +1,42 @@
 // ===== EMAIL SERVICE =====
-// Use Mailgun, SendGrid, or Resend
-// For this example, we'll use Mailgun (free tier)
+const nodemailer = require('nodemailer');
 
-const formData = require('form-data');
-const Mailgun = require('mailgun.js');
-const mailgun = new Mailgun(formData);
+// Create a transporter using SMTP (if configured)
+let transporter = null;
 
-// Option 1: Mailgun
-const mg = mailgun.client({
-    username: 'api',
-    key: process.env.MAILGUN_API_KEY || '',
-    url: 'https://api.mailgun.net'
-});
-
-// Option 2: Resend (alternative)
-// const { Resend } = require('resend');
-// const resend = new Resend(process.env.RESEND_API_KEY);
-
-// Option 3: SendGrid (alternative)
-// const sgMail = require('@sendgrid/mail');
-// sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+if (process.env.SMTP_HOST && process.env.SMTP_USER && process.env.SMTP_PASS) {
+    transporter = nodemailer.createTransport({
+        host: process.env.SMTP_HOST,
+        port: process.env.SMTP_PORT || 587,
+        secure: false,
+        auth: {
+            user: process.env.SMTP_USER,
+            pass: process.env.SMTP_PASS
+        }
+    });
+}
 
 const sendEmail = async (to, subject, htmlContent) => {
     try {
-        // Using Mailgun
-        const result = await mg.messages.create(process.env.MAILGUN_DOMAIN, {
-            from: `ReportFraud <noreply@${process.env.MAILGUN_DOMAIN}>`,
-            to: [to],
-            subject: subject,
-            html: htmlContent
-        });
-        return { success: true, messageId: result.id };
+        // If SMTP is configured, send real email
+        if (transporter) {
+            const result = await transporter.sendMail({
+                from: process.env.SMTP_FROM || 'noreply@reportfraud.com',
+                to: to,
+                subject: subject,
+                html: htmlContent
+            });
+            return { success: true, messageId: result.messageId };
+        }
+
+        // If no SMTP, log the email (for testing)
+        console.log('📧 EMAIL WOULD BE SENT:');
+        console.log('  To:', to);
+        console.log('  Subject:', subject);
+        console.log('  Body:', htmlContent.substring(0, 200) + '...');
+
+        return { success: true, messageId: 'test-' + Date.now() };
+
     } catch (error) {
         console.error('Email send error:', error);
         return { success: false, error: error.message };
