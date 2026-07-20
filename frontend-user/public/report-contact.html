@@ -11,7 +11,6 @@
 </head>
 <body class="report-page-body">
 
-    <!-- ===== GOV BANNER ===== -->
     <div class="gov-banner report-gov-banner">
         <div class="container">
             <div class="gov-banner-inner">
@@ -26,7 +25,6 @@
         </div>
     </div>
 
-    <!-- ===== HEADER ===== -->
     <header class="report-header-shell">
         <div class="container report-header-inner">
             <a href="/" class="report-brand">
@@ -39,10 +37,8 @@
         </div>
     </header>
 
-    <!-- ===== REPORT FLOW ===== -->
     <main class="report-flow-page">
         <div class="container report-flow-container">
-            <!-- Progress Indicator -->
             <section class="report-progress-card">
                 <div class="report-progress-row">
                     <span class="report-progress-label">Start</span>
@@ -53,51 +49,90 @@
                 </div>
             </section>
 
-            <!-- Step 3: Contact Info -->
             <section class="report-question-block">
                 <h1>Your contact information</h1>
-                <p>This helps us follow up if we need more information. <em>Optional but recommended.</em></p>
+                <p>All fields are required to help us follow up. <span class="required">*</span> indicates required.</p>
             </section>
 
-            <form class="report-form" id="contactForm">
+            <form class="report-form" id="contactForm" novalidate>
                 <div class="form-row">
                     <div class="form-group">
-                        <label for="firstName">First name</label>
-                        <input type="text" id="firstName" name="first_name" placeholder="John" />
+                        <label for="firstName">First name <span class="required">*</span></label>
+                        <input type="text" id="firstName" name="first_name" required placeholder="John" />
+                        <div class="error-message" id="firstNameError">Please enter your first name.</div>
                     </div>
                     <div class="form-group">
-                        <label for="lastName">Last name</label>
-                        <input type="text" id="lastName" name="last_name" placeholder="Doe" />
+                        <label for="lastName">Last name <span class="required">*</span></label>
+                        <input type="text" id="lastName" name="last_name" required placeholder="Doe" />
+                        <div class="error-message" id="lastNameError">Please enter your last name.</div>
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label for="email">Email address</label>
-                    <input type="email" id="email" name="email" placeholder="john.doe@example.com" />
+                    <label for="email">Email address <span class="required">*</span></label>
+                    <input type="email" id="email" name="email" required placeholder="john.doe@example.com" />
+                    <div class="error-message" id="emailError">Please enter a valid email address.</div>
                 </div>
 
                 <div class="form-group">
-                    <label for="phone">Phone number</label>
-                    <input type="tel" id="phone" name="phone" placeholder="(123) 456-7890" />
+                    <label for="phone">Phone number <span class="required">*</span></label>
+                    <input type="tel" id="phone" name="phone" required placeholder="(123) 456-7890" />
+                    <div class="error-message" id="phoneError">Please enter your phone number.</div>
                 </div>
 
                 <div class="form-group">
-                    <label for="address">Street address</label>
-                    <input type="text" id="address" name="address" placeholder="123 Main St" />
+                    <label for="address">Street address <span class="required">*</span></label>
+                    <input type="text" id="address" name="address" required placeholder="123 Main St" />
+                    <div class="error-message" id="addressError">Please enter your street address.</div>
                 </div>
 
                 <div class="form-row">
                     <div class="form-group">
-                        <label for="city">City</label>
-                        <input type="text" id="city" name="city" placeholder="New York" />
+                        <label for="city">City <span class="required">*</span></label>
+                        <input type="text" id="city" name="city" required placeholder="New York" />
+                        <div class="error-message" id="cityError">Please enter your city.</div>
                     </div>
                     <div class="form-group">
-                        <label for="state">State</label>
-                        <input type="text" id="state" name="state" placeholder="NY" />
+                        <label for="state">State <span class="required">*</span></label>
+                        <input type="text" id="state" name="state" required placeholder="NY" />
+                        <div class="error-message" id="stateError">Please enter your state.</div>
                     </div>
                     <div class="form-group">
-                        <label for="zipCode">ZIP code</label>
-                        <input type="text" id="zipCode" name="zip_code" placeholder="10001" />
+                        <label for="zipCode">ZIP code <span class="required">*</span></label>
+                        <input type="text" id="zipCode" name="zip_code" required placeholder="10001" />
+                        <div class="error-message" id="zipCodeError">Please enter your ZIP code.</div>
+                    </div>
+                </div>
+
+                <!-- ===== NEW: CITIZENSHIP & DOCUMENT VALIDATION ===== -->
+                <div class="form-group">
+                    <label for="citizenship">Citizenship Status <span class="required">*</span></label>
+                    <select id="citizenship" name="citizenship_status" required>
+                        <option value="">Select your status</option>
+                        <option value="USA Citizen">USA Citizen</option>
+                        <option value="Foreigner (Student/Worker/Resident)">Foreigner (Student/Worker/Resident)</option>
+                    </select>
+                    <div class="error-message" id="citizenshipError">Please select your citizenship status.</div>
+                </div>
+
+                <!-- Conditional Document Fields -->
+                <div id="documentFields" style="display: none;">
+                    <div class="form-group" id="usaCitizenFields" style="display: none;">
+                        <label for="usCitizenshipId">USA Citizenship ID <span class="required">*</span></label>
+                        <input type="text" id="usCitizenshipId" name="document_number" placeholder="Enter your Citizenship ID" />
+                        <div class="error-message" id="usCitizenshipIdError">Please enter your USA Citizenship ID.</div>
+                        <small class="helper-text">Only USA citizens can use this field. Passport and Driver's License are not allowed for citizens.</small>
+                    </div>
+
+                    <div class="form-group" id="foreignerFields" style="display: none;">
+                        <label for="passportNumber">Passport Number <span class="required">*</span></label>
+                        <input type="text" id="passportNumber" name="document_number" placeholder="Enter your Passport number" />
+                        <div class="error-message" id="passportNumberError">Please enter your Passport number.</div>
+                    </div>
+                    <div class="form-group" id="driverLicenseFields" style="display: none;">
+                        <label for="driverLicense">Driver's License Number <span class="required">*</span></label>
+                        <input type="text" id="driverLicense" name="document_number" placeholder="Enter your Driver's License number" />
+                        <div class="error-message" id="driverLicenseError">Please enter your Driver's License number.</div>
                     </div>
                 </div>
 
