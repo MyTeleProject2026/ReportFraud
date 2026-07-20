@@ -121,5 +121,6 @@ module.exports = {
     getMessages,
     sendMessage,
     markAsRead,
-    getUnreadCount
+    getUnreadCount,
+    saveMessage
 };
