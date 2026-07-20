@@ -60,11 +60,13 @@
             </section>
 
             <div class="review-container" id="reviewContainer">
-                <!-- Dynamic content loaded from sessionStorage -->
+                <!-- Category -->
                 <div class="review-section">
                     <h3>Category</h3>
                     <p id="reviewCategory">—</p>
                 </div>
+
+                <!-- Incident Details -->
                 <div class="review-section">
                     <h3>Incident Details</h3>
                     <p id="reviewDescription">—</p>
@@ -74,13 +76,22 @@
                     </div>
                     <p><strong>Payment Method:</strong> <span id="reviewPayment">—</span></p>
                 </div>
+
+                <!-- Suspect Information -->
                 <div class="review-section">
                     <h3>Suspect Information</h3>
                     <p><strong>Name:</strong> <span id="reviewSuspectName">—</span></p>
                     <p><strong>Email:</strong> <span id="reviewSuspectEmail">—</span></p>
                     <p><strong>Phone:</strong> <span id="reviewSuspectPhone">—</span></p>
                     <p><strong>Website:</strong> <span id="reviewSuspectWebsite">—</span></p>
+                    <!-- Suspect Image -->
+                    <div id="reviewSuspectImageContainer" style="display:none; margin-top:12px;">
+                        <p><strong>Suspect Image:</strong></p>
+                        <img id="reviewSuspectImage" src="#" alt="Suspect Image" style="max-width:200px; max-height:200px; border:1px solid #ddd; border-radius:4px;" />
+                    </div>
                 </div>
+
+                <!-- Your Contact Information -->
                 <div class="review-section">
                     <h3>Your Contact Information</h3>
                     <p><strong>Name:</strong> <span id="reviewContactName">—</span></p>
@@ -88,8 +99,16 @@
                     <p><strong>Phone:</strong> <span id="reviewContactPhone">—</span></p>
                     <p><strong>Address:</strong> <span id="reviewContactAddress">—</span></p>
                 </div>
+
+                <!-- ===== NEW: Citizenship & Identity ===== -->
+                <div class="review-section">
+                    <h3>Citizenship & Identity</h3>
+                    <p><strong>Citizenship Status:</strong> <span id="reviewCitizenship">—</span></p>
+                    <p><strong>Document Number:</strong> <span id="reviewDocument">—</span></p>
+                </div>
             </div>
 
+            <!-- Navigation -->
             <div class="report-navigation review-actions">
                 <a href="/report-contact.html" class="btn btn-secondary">Back</a>
                 <button type="button" class="btn btn-success" id="submitBtn">
