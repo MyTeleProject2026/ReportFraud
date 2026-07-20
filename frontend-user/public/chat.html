@@ -1,1 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Live Chat - ReportFraud</title>
+    <link rel="stylesheet" href="css/chat.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+</head>
+<body>
+    <div class="chat-window">
+        <!-- Chat Header -->
+        <div class="chat-header">
+            <div class="chat-header-info">
+                <span class="chat-online-dot"></span>
+                <div>
+                    <h3>💬 FTC Cyber Team</h3>
+                    <span class="chat-status">Online</span>
+                </div>
+            </div>
+            <button class="chat-close-btn" onclick="window.close()">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
 
+        <!-- Chat Messages -->
+        <div class="chat-body" id="chatMessages">
+            <div class="chat-welcome">
+                <i class="fas fa-shield-halved"></i>
+                <h4>Welcome to FTC Cyber Support</h4>
+                <p>Our team is here to help you with your fraud report.</p>
+                <p class="chat-report-number">Report #: <span id="chatReportNumber">—</span></p>
+            </div>
+        </div>
+
+        <!-- Chat Input -->
+        <div class="chat-footer">
+            <div class="chat-input-area">
+                <input type="text" id="chatInput" placeholder="Type your message..." onkeypress="if(event.key==='Enter') sendUserMessage()">
+                <button class="chat-send-btn" onclick="sendUserMessage()">
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </div>
+            <div class="chat-typing" id="chatTyping" style="display:none;">
+                <span>FTC Team is typing...</span>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/chat.js"></script>
+</body>
+</html>
