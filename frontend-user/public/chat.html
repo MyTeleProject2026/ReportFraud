@@ -37,19 +37,16 @@
         <!-- Chat Input with File Upload -->
         <div class="chat-footer">
             <div class="chat-input-area">
-                <!-- ✅ File Upload Button -->
                 <button class="chat-attach-btn" id="attachBtn" title="Attach file">
                     <i class="fas fa-paperclip"></i>
                 </button>
                 <input type="file" id="fileInput" style="display:none;" accept="image/*,.pdf,.doc,.docx,.txt" multiple />
-                
                 <input type="text" id="chatInput" placeholder="Type a message..." onkeypress="if(event.key==='Enter') sendUserMessage()" />
-                
                 <button class="chat-send-btn" onclick="sendUserMessage()">
                     <i class="fas fa-paper-plane"></i>
                 </button>
             </div>
-            <!-- File Preview Area -->
+            <!-- File Preview -->
             <div class="chat-file-preview" id="filePreview" style="display:none;">
                 <span id="fileName"></span>
                 <button class="chat-remove-file" onclick="removeFile()">
