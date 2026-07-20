@@ -12,16 +12,16 @@
 </head>
 <body>
 
-    <!-- ===== OFFICIAL GOVERNMENT BANNER ===== -->
+    <!-- ===== OFFICIAL INFORMATION BANNER ===== -->
     <div class="gov-banner">
         <div class="container">
             <div class="gov-banner-inner">
                 <div class="gov-banner-left">
-                    <span class="gov-icon"><i class="fas fa-lock"></i></span>
-                    <span class="gov-text">An official website of the United States government</span>
+                    <span class="gov-icon"><i class="USA-flag"></i></span>
+                    <span class="gov-text">An official website information banner</span>
                 </div>
                 <div class="gov-banner-right">
-                    <a href="#" class="gov-link" id="howYouKnowLink">Here's how you know</a>
+                    <a href="#" class="gov-link">Here's how you know</a>
                 </div>
             </div>
         </div>
@@ -33,7 +33,7 @@
             <div class="header-inner">
                 <div class="logo-container">
                     <a href="/" class="logo-link">
-                        <img src="css/ftc-logo.svg" alt="FTC Logo" class="site-logo" />
+                        <img src="css/ftc-logo.svg" alt="Site Logo" class="site-logo" />
                         <div class="logo-text">
                             <span class="logo-agency">FEDERAL TRADE COMMISSION</span>
                             <span class="logo-site">ReportFraud.ftc.gov</span>
@@ -59,7 +59,7 @@
                         <li><a href="/report-start.html" class="btn btn-primary btn-sm">Report Now</a></li>
                     </ul>
                 </nav>
-                <button class="mobile-toggle" id="mobileToggle" aria-label="Menu">
+                <button class="mobile-toggle" id="mobileToggle" aria-label="Menu" data-mobile-menu-toggle aria-expanded="false">
                     <i class="fas fa-bars"></i>
                 </button>
             </div>
@@ -69,27 +69,73 @@
     <!-- ===== HERO SECTION ===== -->
     <section class="hero-section">
         <div class="hero-background">
-            <!-- City Skyline SVG -->
-            <svg class="city-skyline" viewBox="0 0 1200 400" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
-                <rect width="1200" height="400" fill="#f0f5fa" />
-                <rect x="0" y="300" width="1200" height="100" fill="#e0e8f0" />
-                <rect x="40" y="220" width="60" height="80" fill="#d5dce4" />
-                <rect x="130" y="180" width="80" height="120" fill="#c8d0d8" />
-                <rect x="240" y="150" width="70" height="150" fill="#d0d8e0" />
-                <rect x="340" y="200" width="90" height="100" fill="#c5cdd5" />
-                <rect x="460" y="170" width="60" height="130" fill="#d5dce4" />
-                <rect x="550" y="230" width="100" height="70" fill="#c8d0d8" />
-                <rect x="680" y="190" width="75" height="110" fill="#d0d8e0" />
-                <rect x="790" y="210" width="85" height="90" fill="#c5cdd5" />
-                <rect x="900" y="160" width="70" height="140" fill="#d5dce4" />
-                <rect x="1000" y="200" width="80" height="100" fill="#c8d0d8" />
-                <rect x="1110" y="240" width="60" height="60" fill="#d0d8e0" />
+            <svg class="city-skyline" viewBox="0 0 1200 450" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+                <rect width="1200" height="450" fill="#bfe8fb" />
+                <rect x="0" y="350" width="1200" height="100" fill="#8fc7e4" />
+
+                <rect x="30" y="250" width="80" height="110" fill="#9f9e8c"/>
+                <circle cx="50" cy="280" r="4" fill="#6f6e63"/>
+                <circle cx="80" cy="280" r="4" fill="#6f6e63"/>
+                <circle cx="50" cy="305" r="4" fill="#6f6e63"/>
+                <circle cx="80" cy="305" r="4" fill="#6f6e63"/>
+
+                <rect x="140" y="210" width="120" height="150" fill="#d8c4b8"/>
+                <rect x="155" y="230" width="12" height="18" fill="#b68f78"/>
+                <rect x="180" y="230" width="12" height="18" fill="#b68f78"/>
+                <rect x="205" y="230" width="12" height="18" fill="#b68f78"/>
+                <rect x="155" y="260" width="12" height="18" fill="#b68f78"/>
+                <rect x="180" y="260" width="12" height="18" fill="#b68f78"/>
+                <rect x="205" y="260" width="12" height="18" fill="#b68f78"/>
+
+                <rect x="280" y="170" width="110" height="190" fill="#a8d5f2"/>
+                <rect x="300" y="190" width="14" height="18" fill="#d7eefb"/>
+                <rect x="330" y="190" width="14" height="18" fill="#d7eefb"/>
+                <rect x="300" y="220" width="14" height="18" fill="#d7eefb"/>
+                <rect x="330" y="220" width="14" height="18" fill="#d7eefb"/>
+
+                <rect x="420" y="205" width="140" height="155" fill="#e2ccb8"/>
+                <rect x="445" y="225" width="16" height="55" fill="#b58d6d"/>
+                <rect x="485" y="225" width="16" height="55" fill="#b58d6d"/>
+                <rect x="525" y="225" width="16" height="55" fill="#b58d6d"/>
+
+                <rect x="590" y="230" width="140" height="130" fill="#a8bfd8"/>
+                <rect x="610" y="245" width="25" height="16" fill="#7f9dbd"/>
+                <rect x="645" y="245" width="25" height="16" fill="#7f9dbd"/>
+                <rect x="680" y="245" width="25" height="16" fill="#7f9dbd"/>
+                <rect x="640" y="300" width="35" height="60" fill="#86a4c2"/>
+
+                <rect x="760" y="210" width="160" height="150" fill="#8aa8c6"/>
+                <polygon points="760,210 910,210 890,180 780,180" fill="#38577b"/>
+                <rect x="790" y="240" width="50" height="10" fill="#c7d9ea"/>
+                <rect x="850" y="240" width="50" height="10" fill="#c7d9ea"/>
+                <rect x="820" y="300" width="40" height="60" fill="#6e8ea9"/>
+
+                <rect x="950" y="220" width="150" height="140" fill="#a6c6df"/>
+                <rect x="980" y="245" width="80" height="12" fill="#7089a2"/>
+                <rect x="980" y="275" width="80" height="12" fill="#7089a2"/>
+                <rect x="980" y="305" width="80" height="12" fill="#7089a2"/>
+
+                <circle cx="130" cy="330" r="22" fill="#8fd0f0"/>
+                <rect x="127" y="330" width="6" height="30" fill="#8c765f"/>
+                <line x1="130" y1="338" x2="115" y2="325" stroke="#8fd0f0" stroke-width="4"/>
+                <line x1="130" y1="343" x2="145" y2="330" stroke="#8fd0f0" stroke-width="4"/>
+
+                <circle cx="1120" cy="330" r="24" fill="#f0ad5f"/>
+                <rect x="1117" y="330" width="6" height="30" fill="#8c765f"/>
+                <line x1="1120" y1="338" x2="1103" y2="323" stroke="#f0ad5f" stroke-width="4"/>
+                <line x1="1120" y1="343" x2="1137" y2="329" stroke="#f0ad5f" stroke-width="4"/>
+
+                <rect x="310" y="120" width="70" height="70" fill="#cbeafb" opacity="0.85"/>
+                <circle cx="328" cy="140" r="4" fill="#eaf7ff"/>
+                <circle cx="350" cy="140" r="4" fill="#eaf7ff"/>
+                <circle cx="372" cy="140" r="4" fill="#eaf7ff"/>
             </svg>
         </div>
+
         <div class="container">
             <div class="hero-content">
                 <h1>Report to help fight fraud!</h1>
-                <a href="/report-start.html" class="btn btn-primary btn-large">Report Now <i class="fas fa-arrow-right"></i></a>
+                <a href="/report.html" class="btn btn-primary btn-large">Report Now <i class="fas fa-arrow-right"></i></a>
                 <p>Protect your community by reporting fraud, scams, and bad business practices.</p>
             </div>
         </div>
@@ -113,18 +159,29 @@
         <div class="container">
             <h2 class="section-title">How it works</h2>
             <div class="steps-grid">
+                <!-- ✅ Step 1 - Using your SVG file -->
                 <div class="step-card">
-                    <div class="step-icon"><i class="fas fa-tag"></i></div>
+                    <div class="step-icon custom-illustration">
+                        <img src="/css/icon-talk.svg" alt="Tell us what happened" />
+                    </div>
                     <h3>1. Choose a category</h3>
                     <p>Select the type of fraud you want to report.</p>
                 </div>
+
+                <!-- ✅ Step 2 - Using your SVG file -->
                 <div class="step-card">
-                    <div class="step-icon"><i class="fas fa-pen"></i></div>
+                    <div class="step-icon custom-illustration">
+                        <img src="/css/icon-todo.svg" alt="Get your next steps" />
+                    </div>
                     <h3>2. Tell us what happened</h3>
                     <p>Provide details about the scam or fraud.</p>
                 </div>
+
+                <!-- ✅ Step 3 - Using your SVG file -->
                 <div class="step-card">
-                    <div class="step-icon"><i class="fas fa-check-circle"></i></div>
+                    <div class="step-icon custom-illustration">
+                        <img src="/css/icon-shield.svg" alt="Help stop fraud" />
+                    </div>
                     <h3>3. Review & submit</h3>
                     <p>Review your report and submit it securely.</p>
                 </div>
@@ -198,7 +255,7 @@
                 <li><button class="faq-topic-btn" data-topic="whatcanido">What you can do</button></li>
             </ul>
 
-            <!-- FAQ Groups (abbreviated for brevity – keep your existing content) -->
+            <!-- FAQ Groups -->
             <div class="faq-group is-active" data-topic-group="all">
                 <h2 class="faq-section-heading">About my report</h2>
                 <div class="faq-accordion">
@@ -224,7 +281,6 @@
                         <div class="faq-answer">Yes. You can report a company, organization, or individual for unfair, deceptive, or fraudulent business practices.</div>
                     </div>
                 </div>
-                <!-- Add more FAQ groups as needed -->
             </div>
         </div>
     </section>
@@ -282,7 +338,6 @@
         </div>
     </footer>
 
-    <!-- ===== STYLES FOR CHECK STATUS BANNER ===== -->
     <style>
         .check-status-banner {
             padding: 40px 0 48px;
@@ -313,6 +368,13 @@
         .check-status-inner .btn-secondary:hover {
             background: #003c78;
             color: #fff;
+        }
+        /* ✅ Ensure SVG icons display properly */
+        .step-icon.custom-illustration img {
+            width: 80px;
+            height: auto;
+            display: block;
+            margin: 0 auto;
         }
     </style>
 
